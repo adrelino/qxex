@@ -3,3 +3,6 @@ cache-downloads
 inspector
 api
 source/inspector.html
+build
+source/script
+node_modules
