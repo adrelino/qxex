@@ -3,22 +3,22 @@
   {
     "name" : "qooxdoo-extensions",
 
-    "summary" : "Custom Application",
-    "description" : "This is a skeleton for a custom application with qooxdoo.",
+    "summary" : "qooxdoo-extensions contribution",
+    "description" : "This package provides extensions of core qooxdoo widgets (qx.ui -> qxex.ui).",
     
-    "homepage" : "http://some.homepage.url/",
+    "homepage" : "http://github.com/adrelino/qooxdoo-extensions/",
 
-    "license" : "SomeLicense",
+    "license" : "EPL",
     "authors" : 
     [
       {
-        "name" : "First Author (uid)",
-        "email" : "first.author@some.domain"
+        "name" : "Adrian Haarbach",
+        "email" : "mail AT adrian-haarbach DOT de"
       }
     ],
 
     "version" : "master",
-    "qooxdoo-versions": ["5.1"]
+    "qooxdoo-versions": ["5.0.1"]
   },
   
   "provides" : 
@@ -28,7 +28,7 @@
     "class"       : "source/class",
     "resource"    : "source/resource",
     "translation" : "source/translation",
-    "type"        : "application"
+    "type"        : "contribution"
   }
 }
 

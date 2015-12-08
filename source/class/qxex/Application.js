@@ -2,9 +2,9 @@
 
    Copyright:
 
-   License:
+   License: EPL
 
-   Authors:
+   Authors: Adrian Haarbach
 
 ************************************************************************ */
 
@@ -53,19 +53,32 @@ qx.Class.define("qxex.Application",
       -------------------------------------------------------------------------
       */
 
-      // Create a button
-      var button1 = new qx.ui.form.Button("First Button", "qxex/test.png");
-
       // Document is the application root
       var doc = this.getRoot();
 
-      // Add button to document at fixed coordinates
-      doc.add(button1, {left: 100, top: 50});
+      var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(2));
+      doc.add(container);
 
-      // Add an event listener
-      button1.addListener("execute", function(e) {
-        alert("Hello World!");
-      });
+      container.addWidgetWithLabel = function(widget){
+        container.add(new qx.ui.basic.Label(widget.classname));
+        container.add(widget);
+      }
+
+      var tristateBox = new qxex.ui.form.TristateCheckBox("toggle me");
+      container.addWidgetWithLabel(tristateBox);
+
+      var singleSelect = new qxex.ui.form.FilterSelectBox();
+      container.addWidgetWithLabel(singleSelect);
+
+      var multiSelect = new qxex.ui.form.FilterMultiSelectBox();
+      container.addWidgetWithLabel(multiSelect);
+
+      for (var i = 0; i < 6; i++) {
+        singleSelect.add(new qx.ui.form.ListItem("Item "+i,null,i));
+        multiSelect.add(new qx.ui.form.ListItem("Item "+i,null,i));
+      };
+
+      multiSelect.setSelectionByModelArr([2,3]);
     }
   }
 });

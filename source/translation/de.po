@@ -1,0 +1,59 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: you@your.org\n"
+"POT-Creation-Date: 2015-12-08 12:13+0200\n"
+"PO-Revision-Date: 2015-12-08 12:13+0200\n"
+"Last-Translator: you <you@your.org>\n"
+"Language-Team: Team <yourteam@your.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: qxex/ui/form/MSelectBoxFilter.js:38
+msgid "type to filter, backspace to clear"
+msgstr "Filtertext eintippen, löschen mit Rücktaste"
+
+#. tooltip
+#: qxex/ui/form/MSelectBoxFilter.js:39
+msgid ""
+"Start typing to filter list entries. Use backspace to undo filtering "
+"character-wise."
+msgstr ""
+"Tippen Sie den gewünschten Text ein um zu filtern. Mit der Rücktaste löschen"
+" Sie ihn wieder Buchstabe für Buchstabe."
+
+#: qxex/ui/form/MSelectBoxFilter.js:43
+msgid "Press backspace to clear the filter"
+msgstr "Rücktaste drücken um den Filter zu löschen"
+
+#. Label
+#: qxex/ui/form/MultiSelectBox.js:51
+msgid "All"
+msgstr "Alle"
+
+#. Label
+#: qxex/ui/form/MultiSelectBox.js:60
+msgid "None"
+msgstr "Keine"
+
+#. statusLine
+#: qxex/ui/form/MultiSelectBox.js:84
+msgid "Use Shift-click or Crtl-click for multiple selection"
+msgstr "Hochstelltaste+Klick oder Strg+Klick verwenden"
+
+#. Label
+#: qxex/ui/form/MultiSelectBox.js:298
+msgid "%1/%2 chosen"
+msgstr "%1/%2 ausgewählt"
+
+#. Tooltip
+#: qxex/ui/form/MultiSelectBox.js:303
+msgid "Please select at least one item"
+msgstr "Bitte wählen Sie mindestens einen Eintrag"
+
+#. Tooltip
+#: qxex/ui/form/MultiSelectBox.js:307
+msgid "You can select multiple items"
+msgstr "Mehrfachauswahl möglich"

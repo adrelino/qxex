@@ -15,7 +15,7 @@ qx.Theme.define("qxex.theme.Theme",
     color : qxex.theme.Color,
     decoration : qxex.theme.Decoration,
     font : qxex.theme.Font,
-    icon : qx.theme.icon.Tango,
+    icon : qx.theme.icon.Oxygen,
     appearance : qxex.theme.Appearance
   }
 });
