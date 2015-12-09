@@ -4,21 +4,36 @@
     "name" : "qooxdoo-extensions",
 
     "summary" : "qooxdoo-extensions contribution",
-    "description" : "This package provides extensions of core qooxdoo widgets (qx.ui -> qxex.ui).",
+    "description" : "Extensions of core qooxdoo widgets, especially from the qx.ui.form and qx.ui.table packages.",
     
-    "homepage" : "http://github.com/adrelino/qooxdoo-extensions/",
+    "homepage" : "http://github.com/adrelino/qooxdoo-extensions",
 
     "license" : "EPL",
     "authors" : 
     [
       {
-        "name" : "Adrian Haarbach",
-        "email" : "mail AT adrian-haarbach DOT de"
+        "name" : "Adrian Haarbach (adrelino)",
+        "email" : "mail@adrian-haarbach.de"
       }
     ],
 
     "version" : "master",
-    "qooxdoo-versions": ["5.0.1"]
+    "qooxdoo-versions": ["5.0.1"],
+
+    /**
+     * following entries only really needed in
+     * https://github.com/[adrelino/catalog|qooxdoo-contrib/catalog]/contributions/qooxdoo-extensions/Manifest.json
+     * which we should overwrite with this one here on each push so that they stay in sync.
+     */
+    "download" : "https://github.com/adrelino/qooxdoo-extensions/archive/master.zip",
+    "checksum" : "",
+    "category" : ["widget"],
+    "demos": [
+      {
+        "name": "default",
+        "url": "http://adrelino.github.io/qooxdoo-extensions/build/index.html"
+      }
+    ]
   },
   
   "provides" : 
