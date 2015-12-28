@@ -79,6 +79,12 @@ qx.Class.define("qxex.Application",
       };
 
       multiSelect.setSelectionByModelArr([2,3]);
+
+
+      var knobIconSlider = new qxex.ui.form.KnobIconSlider();
+      knobIconSlider.setKnobIcon("qxex/test.png");
+      container.addWidgetWithLabel(knobIconSlider);
+
     }
   }
 });
