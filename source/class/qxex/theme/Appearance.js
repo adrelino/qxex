@@ -8,6 +8,9 @@
 
 ************************************************************************ */
 
+/**
+ * @asset(qx/icon/${qx.icontheme}/16/apps/preferences-clock.png)
+ */
 qx.Theme.define("qxex.theme.Appearance",
 {
   extend : qx.theme.modern.Appearance,
@@ -23,9 +26,11 @@ qx.Theme.define("qxex.theme.Appearance",
 
       style : function(states)
       {
+      	//http://manual.qooxdoo.org/current/pages/desktop/ui_resources.html
         return {
-          icon : "qx/icon/Oxygen/16/apps/preferences-clock.png",
+          // icon : "qxex/preferences-clock.png", //TODO: use qooxdoo's original resource (themed), not copied one
           // icon : "qx/icon/Tango/16/apps/preferences-clock.png",
+          icon : "icon/16/apps/preferences-clock.png",
           padding : [0, 3],
           decorator : undefined
         };
