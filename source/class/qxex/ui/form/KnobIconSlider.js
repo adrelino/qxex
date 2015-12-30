@@ -21,7 +21,10 @@ qx.Class.define("qxex.ui.form.KnobIconSlider",{
         case "knob":
 //           control = new qx.ui.core.Widget(); // original widget, scales, but needs "scale" background repeat in decorator
 //           control = new qx.ui.basic.Image().set({"scale" : true}); //scales
-          control = new qx.ui.basic.Atom(); //keeps icon's orginal size
+          control = new qx.ui.basic.Atom(null,null); //keeps icon's orginal size
+          control.setDecorator("button");
+          control.setWidth(12);
+
 
           control.addListener("resize", this._onUpdate, this);
           control.addListener("pointerover", this._onPointerOver);

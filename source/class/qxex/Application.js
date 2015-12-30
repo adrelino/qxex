@@ -85,6 +85,21 @@ qx.Class.define("qxex.Application",
       knobIconSlider.setKnobIcon("qxex/test.png");
       container.addWidgetWithLabel(knobIconSlider);
 
+      {
+              var knobIconSlider = new qxex.ui.form.KnobIconSlider();
+      container.addWidgetWithLabel(knobIconSlider);
+      }
+
+      {
+      var widget = new qxex.ui.control.TimeChooser();
+      container.addWidgetWithLabel(widget);
+      }
+
+      {
+      var widget = new qxex.ui.form.TimeField();
+      container.addWidgetWithLabel(widget);
+      }
+
     }
   }
 });
