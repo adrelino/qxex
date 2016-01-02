@@ -1,5 +1,7 @@
 /**
  * A slider to choose the time from 0h to 24h in 15min steps
+ * The clock icon for the knob is slightly scaled
+ * @asset(qx/icon/${qx.icontheme}/16/apps/preferences-clock.png)
  */
 qx.Class.define("qxex.ui.control.TimeChooser", {
   extend :qx.ui.core.Widget,
@@ -88,6 +90,8 @@ qx.Class.define("qxex.ui.control.TimeChooser", {
       {
         case "slider" :
           control = new qxex.ui.form.KnobIconSlider();
+          control.setKnobIcon("icon/16/apps/preferences-clock.png");
+          control.setKnobSize(14);
 
           control.set({
             minimum :this.minValue,

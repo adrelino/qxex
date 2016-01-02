@@ -7,6 +7,13 @@ qx.Class.define("qxex.ui.form.KnobIconSlider",{
 		  check : "String",
 		  apply : "_applyKnobIcon",
 		  nullable : true
+		},
+
+		knobSize : 
+		{
+		  check : "Number",
+		  apply : "_applyKnobSize",
+		  nullable : true
 		}
 	},
 	
@@ -20,10 +27,10 @@ qx.Class.define("qxex.ui.form.KnobIconSlider",{
       {
         case "knob":
 //           control = new qx.ui.core.Widget(); // original widget, scales, but needs "scale" background repeat in decorator
-//           control = new qx.ui.basic.Image().set({"scale" : true}); //scales
-          control = new qx.ui.basic.Atom(null,null); //keeps icon's orginal size
+          control = new qx.ui.basic.Image();
+//           control = new qx.ui.basic.Atom(null,null); //keeps icon's orginal size
+          
           control.setDecorator("button");
-          control.setWidth(12);
 
 
           control.addListener("resize", this._onUpdate, this);
@@ -47,9 +54,18 @@ qx.Class.define("qxex.ui.form.KnobIconSlider",{
 //       dec.setBackgroundRepeat("scale");
 //       knob.setDecorator(dec); //Widget
 
-// 		knob.setSource(value); //Image
+		knob.setSource(value); //Image
 
-      knob.setIcon(value); //Atom
+//       knob.setIcon(value); //Atom
+    },
+
+    _applyKnobSize : function(value,old){
+      var knob = this.getChildControl("knob");
+      knob.set({
+        scale : true,
+        width : value,
+        height : value
+      });
     }
 
 	}

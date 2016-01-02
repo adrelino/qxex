@@ -11,7 +11,7 @@
 /**
  * This is the main application class of your custom application "qooxdoo-extensions"
  *
- * @asset(qxex/*)
+ * @asset(qx/icon/${qx.icontheme}/16/apps/preferences-clock.png)
  */
 qx.Class.define("qxex.Application",
 {
@@ -81,23 +81,22 @@ qx.Class.define("qxex.Application",
       multiSelect.setSelectionByModelArr([2,3]);
 
 
-      var knobIconSlider = new qxex.ui.form.KnobIconSlider();
-      knobIconSlider.setKnobIcon("qxex/test.png");
-      container.addWidgetWithLabel(knobIconSlider);
+      {
+        var widget = new qxex.ui.form.KnobIconSlider();
+        widget.setKnobIcon("icon/16/apps/preferences-clock.png");
+        widget.setKnobSize(14);
+        container.addWidgetWithLabel(widget);
+      }
+
 
       {
-              var knobIconSlider = new qxex.ui.form.KnobIconSlider();
-      container.addWidgetWithLabel(knobIconSlider);
+        var widget = new qxex.ui.control.TimeChooser();
+        container.addWidgetWithLabel(widget);
       }
 
       {
-      var widget = new qxex.ui.control.TimeChooser();
-      container.addWidgetWithLabel(widget);
-      }
-
-      {
-      var widget = new qxex.ui.form.TimeField();
-      container.addWidgetWithLabel(widget);
+        var widget = new qxex.ui.form.TimeField();
+        container.addWidgetWithLabel(widget);
       }
 
     }
