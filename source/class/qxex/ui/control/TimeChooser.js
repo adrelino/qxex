@@ -1,7 +1,13 @@
 /**
- * A slider to choose the time from 0h to 24h in 15min steps
+ * A *time chooser* is a small slider with a header bar to choose the time from 0:00h to 23:25h in 15min steps
+ * 
  * The clock icon for the knob is slightly scaled
  * @asset(qx/icon/${qx.icontheme}/16/apps/preferences-clock.png)
+ *
+ * @childControl slider {qxex.ui.form.KnobIconSlider} knob icon slider component
+ * @childControl minLabel {qx.ui.basic.Label} header bar label on the left
+ * @childControl currLabel {qx.ui.basic.Label} header bar label center, shows the currently selected time
+ * @childControl maxLabel {qx.ui.basic.Label} header bar label right
  */
 qx.Class.define("qxex.ui.control.TimeChooser", {
   extend :qx.ui.core.Widget,
@@ -83,6 +89,7 @@ qx.Class.define("qxex.ui.control.TimeChooser", {
 
   members : {
 
+    //overridden
     _createChildControlImpl : function(id, hash){
       var control;
 
@@ -156,13 +163,17 @@ qx.Class.define("qxex.ui.control.TimeChooser", {
       this.getChildControl("currLabel").setValue(descr);
     },
 
+    /**
+     *
+     */
     moveSliderTo: function(hours, minutes) {
       this.getChildControl("slider").setValue(hours*4 + Math.floor(minutes/15.0));
     },
     
     /**
-     * @param {String} currValue 25 (value of slider)
-     * @return {String} " 6:45"
+     * @param currValue {String} 25 (value of slider)
+     * @param align {Boolean ?} wheather to append a preceding '0' if hour is <=9
+     * @return {String} mm:ss formatted timestring, e.g. align ? "06:45" : " 6:45" 
      */
     __format : function(currValue, align) {
       var align = align || true;
@@ -189,15 +200,6 @@ qx.Class.define("qxex.ui.control.TimeChooser", {
       if (this.slider == null)
         return 0;
       return this.slider.getValue();
-    },
-    
-     /**
-     * @param val {Number} 0-96 the slider value (easy to compare to other slider)
-     */
-    setNumericTimeValue : function(val) {
-      if (this.slider != null){
-         this.slider.setValue(val);
-         }
     },
 
     /**
@@ -227,6 +229,9 @@ qx.Class.define("qxex.ui.control.TimeChooser", {
       return this.__format(this.slider.getValue(), false).time;
     },
 
+    /**
+     * @return {String} formatted time string
+     */
     getTimeStrFormatted : function(){
       var number = this.getChildControl("slider").getValue();
       var ret=this.__format(number);
@@ -252,8 +257,7 @@ qx.Class.define("qxex.ui.control.TimeChooser", {
 
     /**
      * Moves slider to the position corresponding to the Minutes and Hours in the Date Object
-     * 
-     * @param {Date} time
+     * @param time {Date} sets slider to the time (hours, minutes) in this Date object
      */
     setValue : function(time) {
     	this.moveSliderTo(time.getHours(), time.getMinutes());

@@ -4,19 +4,17 @@
 ************************************************************************ */
 
 /**
- * A *time field* is like a combo box with the time slider as popup. As button to
- * open the slider a watch icon is shown at the right to the textfield.
+ * A *time field* is like a combo box with the time slider as popup. 
+ * It is complementary to qooxdoo's built-in *date field*.
+ * As button to open the slider a watch icon is shown at the right to the textfield.
  *
- * To be conform with all form widgets, the {@link qx.ui.form.IForm} interface
- * is implemented.
- *
- * The following example creates a date field and sets the current
+ * The following example creates a time field and sets the current
  * time as selected.
  *
  * <pre class='javascript'>
- * var TimeField = new qxex.ui.form.TimeField();
- * this.getRoot().add(TimeField, {top: 20, left: 20});
- * TimeField.setValue(new Date());
+ * var timeField = new qxex.ui.form.TimeField();
+ * this.getRoot().add(timeField, {top: 20, left: 20});
+ * timeField.setValue(new Date());
  * </pre>
  *
  * @childControl list {qxex.ui.control.TimeChooser} time chooser component
@@ -25,8 +23,8 @@
 qx.Class.define("qxex.ui.form.TimeField",
 {
   extend : qx.ui.form.ComboBox,
-  //implement : [qx.ui.form.IDateForm],
-  //qx.ui.form.DateField,
+  // extend : qx.ui.form.DateField,
+  // implement : [qx.ui.form.IDateForm],
   
   construct : function() {
     this.base(arguments);
