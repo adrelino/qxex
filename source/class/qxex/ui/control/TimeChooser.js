@@ -9,20 +9,28 @@
  * @childControl currLabel {qx.ui.basic.Label} header bar label center, shows the currently selected time
  * @childControl maxLabel {qx.ui.basic.Label} header bar label right
  */
-qx.Class.define("qxex.ui.control.TimeChooser", {
+qx.Class.define("qxex.ui.control.TimeChooser",
+{
   extend :qx.ui.core.Widget,
-  // include : [
-  //   qx.ui.core.MExecutable,
-  //   qx.ui.form.MForm
-  // ],
-  // implement : [
-  //   qx.ui.form.IExecutable,
-  //   qx.ui.form.IForm,
-  //   qx.ui.form.IDateForm
-  // ],
+  include : [
+    qx.ui.core.MExecutable,
+    qx.ui.form.MForm
+  ],
+  implement : [
+    qx.ui.form.IExecutable,
+    qx.ui.form.IForm,
+    qx.ui.form.IDateForm
+  ],
+
+  /*
+  *****************************************************************************
+     CONSTRUCTOR
+  *****************************************************************************
+  */
   
   /**
    * @param time {Date ? null} The initial time to show. The date part is ignored.
+   * If <code>null</code> the current day (today) is shown.
    */
   construct : function(time) {
     this.base(arguments);
@@ -36,22 +44,17 @@ qx.Class.define("qxex.ui.control.TimeChooser", {
     layout.setColumnAlign(0, "left", "bottom");
     layout.setColumnAlign(1, "center", "bottom");
     layout.setColumnAlign(2, "right", "bottom");
-//     console.log(layout.getRowHeight(0));
-//     layout.setRowHeight(1,12);
-//     layout.setRowFlex(0,0);
-//     layout.setRowFlex(1,2);
     this._setLayout(layout);
-
-    this.hourAbrev = this.trc("hour abbreviation", "h");
-    this.minValue = 0;
-    this.maxValue = 95; // 24h*4=96 (for 15min steps)
-    this.minAllowed = this.minValue;
-    this.maxAllowed = this.maxValue;
 
     //create the child controls
     this.slider = this._createChildControl("slider");
     this._createChildControl("minLabel");
     this._createChildControl("maxLabel");
+
+    // listen for locale changes
+    if (qx.core.Environment.get("qx.dynlocale")) {
+      qx.locale.Manager.getInstance().addListener("changeLocale", this._updateTimePane, this);
+    }
     
     this.setDecorator("button-pressed");
 
@@ -65,29 +68,46 @@ qx.Class.define("qxex.ui.control.TimeChooser", {
 
  
   properties : {
-    /**
-     * @param knobIcon {String} xbGetIcon("12/sliderKnobUntil.png");
-     */
+    
+    /** The knobIcon to show in the slider. Gets scaled to 14x14 px by default */
     knobIcon : {
       check : "String",
       apply : "_applyKnobIcon",
       nullable : true
     },
 
+    /** The label to show left to the current time */
     label : {
       init : "",
       check : "String",
       apply : "_applyLabel",
       nullable : true
+    },
+
+    /** The fime value of the widget. */
+    value :
+    {
+      check : "Date",
+      init : null,
+      nullable : true,
+      event : "changeValue",
+      apply : "_applyValue"
     }
   },
-  
-  events :
-  {
-  	"releaseSlider" : "qx.event.type.Event"
-  },
+
+  /*
+  *****************************************************************************
+     MEMBERS
+  *****************************************************************************
+  */
 
   members : {
+
+    /*
+    ---------------------------------------------------------------------------
+      WIDGET INTERNALS
+    ---------------------------------------------------------------------------
+    */
 
     //overridden
     _createChildControlImpl : function(id, hash){
@@ -99,54 +119,65 @@ qx.Class.define("qxex.ui.control.TimeChooser", {
           control = new qxex.ui.form.KnobIconSlider();
           control.setKnobIcon("icon/16/apps/preferences-clock.png");
           control.setKnobSize(14);
+          control.setSelectable(false);
+          control.setAnonymous(true);
+          control.setCursor("ew-resize");
 
           control.set({
-            minimum :this.minValue,
-            maximum :this.maxValue,
+            minimum : 0,
+            maximum : 95, // 24h * 60min/h / 15min = 96 (15min steps) from 0..95
             singleStep :1,
-            pageStep :4,
-            minHeight : 16
-//             ,value :initHour * 4
+            pageStep :4
+//             minHeight : 16
+
           });
 
           control.addListener("pointerup", function(){ // "mouseup"
-              this.fireEvent("releaseSlider");
+              var time = this.__sliderValueToTime(control.getValue());
+              this.setValue(time);
+              this.execute();
           },this);
 
           control.addListener("keypress", function(e){
             if (e.getKeyIdentifier()=="Escape"){
-              this.fireEvent("releaseSlider");
+              this.execute();
             }
           },this);
 
           control.addListener("changeValue", function(e) {
-            this.updateCurrLabel();
+            var num = e.getData();
+            var time = this.__sliderValueToTime(num);
+            this._updateTimePane(time);
           }, this);
           
           this._add(control,{row:1, column:0, colSpan:3});
           break;
 
         case "minLabel" :
-          control = new qx.ui.basic.Label("00:00" + this.hourAbrev);
-          control.setTextColor("#808080"); // "grey"
-
+          control = this.__makeChildLabel(true);
           this._add(control,{row:0, column:0});
           break;
 
         case "currLabel" :
-          control = new qx.ui.basic.Label("");
+          control = this.__makeChildLabel();
           this._add(control,{row:0, column:1});
           break;
 
         case "maxLabel" :
-          control = new qx.ui.basic.Label("23:45" + this.hourAbrev);
-          control.setTextColor("#808080");
-
+          control = this.__makeChildLabel(true);
           this._add(control,{row:0, column:2});
           break;
       }
 
       return control || this.base(arguments, id);
+    },
+
+    __makeChildLabel : function(gray){
+      var control = new qx.ui.basic.Label();//"00:00" + this.hourAbrev);
+          control.setSelectable(false);
+          control.setAnonymous(true);
+          if(gray) control.setTextColor("#808080"); // "grey"
+      return control;
     },
 
     // property apply
@@ -158,114 +189,115 @@ qx.Class.define("qxex.ui.control.TimeChooser", {
     // property apply
     _applyLabel : function(value, old)
     {
-      var descr = value || "";
-      descr += this.getTimeStrFormatted();
-      this.getChildControl("currLabel").setValue(descr);
+      this._updateTimePane();
+    },
+
+    //property apply
+    _applyValue : function(value, old){
+      var num = this.__timeToSliderValue(value);
+      //Move slider to the position hours + 4 * minutes/15 in the Date Object
+      // this.setSliderPogrammatically=true;
+      this.getChildControl("slider").setValue(num);
+      // this.setSliderPogrammatically=false;
+      //Show the new time formatted in header pane;
+      this._updateTimePane();
     },
 
     /**
-     *
+     * Inverse of __sliderValueToTime
+     * @param time {Date} hours and minutes set correctly
+     * @return {Number} slider value in range 0 - 96
      */
-    moveSliderTo: function(hours, minutes) {
-      this.getChildControl("slider").setValue(hours*4 + Math.floor(minutes/15.0));
+    __timeToSliderValue: function(time){
+      if(!time) return 0;
+      var hours = time.getHours();
+      var minutes = time.getMinutes();
+      return hours*4 + Math.floor(minutes/15.0); //floors minutes to lower 15 minute intervals
+    },
+
+    /**
+     * Inverse of __timeToSliderValue
+     * @param num {Number} slider value in range 0 - 96
+     * @return {Date} hours and minutes set correctly
+     */
+    __sliderValueToTime: function(num){
+      var hours = Math.floor( num / 4.0 );
+      var minutes = Math.round((num / 4.0 - hours) * 60);
+      var date=new Date(0);
+      date.setHours(hours);
+      date.setMinutes(minutes);
+      return date;
     },
     
-    /**
-     * @param currValue {String} 25 (value of slider)
-     * @param align {Boolean ?} wheather to append a preceding '0' if hour is <=9
-     * @return {String} mm:ss formatted timestring, e.g. align ? "06:45" : " 6:45" 
-     */
-    __format : function(currValue, align) {
-      var align = align || true;
-      var fValue = parseFloat(currValue);
-      var hours = Math.floor( fValue / 4.0 );
-      var hoursStr = new String(hours);
-      if (align && hoursStr.length < 2)
-        hoursStr = "0" + hoursStr;  // " " has a different width than numbers!!! TODO: find somewthing in html (/b) and set label to rich so we get equal spacing
-      var minutes = Math.round((fValue / 4.0 - hours) * 60);
-      var minStr = ((minutes == 0) ? "00" : "" + minutes);
-      var time = ("" + hoursStr + ":" + minStr);
-      var ret = {
-          hours: hours,
-          minutes: minutes,
-          time: time
-      };
-      return ret;
-    },
+    // /**
+    //  * @param currValue {String} 25 (value of slider)
+    //  * @param align {Boolean ?} wheather to append a preceding '0' if hour is <=9
+    //  * @return {String} mm:ss formatted timestring, e.g. align ? "06:45" : " 6:45" 
+    //  */
+    // __format : function(currValue, align) {
+    //   var align = align || true;
+    //   var fValue = parseFloat(currValue);
+    //   var hours = Math.floor( fValue / 4.0 );
+    //   var hoursStr = new String(hours);
+    //   if (align && hoursStr.length < 2)
+    //     hoursStr = "0" + hoursStr;  // " " has a different width than numbers!!! TODO: find somewthing in html (/b) and set label to rich so we get equal spacing
+    //   var minutes = Math.round((fValue / 4.0 - hours) * 60);
+    //   var minStr = ((minutes == 0) ? "00" : "" + minutes);
+    //   var time = ("" + hoursStr + ":" + minStr);
+    //   var ret = {
+    //       hours: hours,
+    //       minutes: minutes,
+    //       time: time
+    //   };
+    //   return ret;
+    // },
 
     /**
-     * @return {Number} 0-96 the slider value (easy to compare to other slider)
+     * Updates the header/time pane with the formatted current time value.
      */
-    getNumericTimeValue : function() {
-      if (this.slider == null)
-        return 0;
-      return this.slider.getValue();
-    },
+    _updateTimePane : function(time){
+      var time = time || this.getValue();
 
-    /**
-     * @return {String} from "0" to "59"
-     */
-    getMinuteStr : function() {
-      if (this.slider == null)
-        return "";
-      return this.__format(this.slider.getValue(), false).minutes;
-    },
-    
-    /**
-     * @return {String} from "0" to "23"
-     */
-    getHourStr : function() {
-      if (this.slider == null)
-        return "";
-      return this.__format(this.slider.getValue(), false).hours;
-    },
-    
-    /**
-     * @return {String} for example "16:45" or "5:00"
-     */
-    getTimeStr : function() {
-      if (this.slider == null)
-        return "";
-      return this.__format(this.slider.getValue(), false).time;
-    },
+      // Create a help times;
+      var timeBegin = new Date(0); timeBegin.setHours(0); timeBegin.setMinutes(0);
+      var timeEnd   = new Date(0); timeEnd.setHours(23); timeEnd.setMinutes(45);
 
-    /**
-     * @return {String} formatted time string
-     */
-    getTimeStrFormatted : function(){
-      var number = this.getChildControl("slider").getValue();
-      var ret=this.__format(number);
-      return ret.time+this.hourAbrev;
-    },
+      var timeFormat = new qx.util.format.DateFormat(qx.locale.Date.getTimeFormat("short")); //todo add "medium" with seconds
 
-    updateCurrLabel : function(){
-      this.getChildControl("currLabel").setValue(this.getLabel()+this.getTimeStrFormatted());
-    },
+      this.getChildControl("minLabel").setValue(timeFormat.format(timeBegin));
+      this.getChildControl("currLabel").setValue( (this.getLabel() || "") + (timeFormat.format(time) || "--:--"));
+      this.getChildControl("maxLabel").setValue(timeFormat.format(timeEnd));
 
-    /**
-     * get Minutes and Hours in an js Date Object
-     * 
-     * @return {Date} date
-     */
-    getValue : function() {
-    	var date=new Date(0);
-    	date.setHours(parseInt(this.getHourStr()));
-    	date.setMinutes(parseInt(this.getMinuteStr()));
-    	//this.info("DayTimeSlider getValue: "+date.getHours()+":"+date.getMinutes());
-    	return date;
-    },
+      timeFormat.dispose();
 
-    /**
-     * Moves slider to the position corresponding to the Minutes and Hours in the Date Object
-     * @param time {Date} sets slider to the time (hours, minutes) in this Date object
-     */
-    setValue : function(time) {
-    	this.moveSliderTo(time.getHours(), time.getMinutes());
-    	this.updateCurrLabel();
     }
+
+    // /**
+    //  * get Minutes and Hours in an js Date Object
+    //  * 
+    //  * @return {Date} date
+    //  */
+    // getValue : function() {
+    // 	var date=new Date(0);
+    // 	date.setHours(parseInt(this.getHourStr()));
+    // 	date.setMinutes(parseInt(this.getMinuteStr()));
+    // 	//this.info("DayTimeSlider getValue: "+date.getHours()+":"+date.getMinutes());
+    // 	return date;
+    // },
+
   },
 
+
+
+  /*
+  *****************************************************************************
+     DESTRUCTOR
+  *****************************************************************************
+  */
+
   destruct : function() {
-    this._disposeObjects();
+    if (qx.core.Environment.get("qx.dynlocale")) {
+      qx.locale.Manager.getInstance().removeListener("changeLocale", this._updateTimePane, this);
+    }
   }
 });
