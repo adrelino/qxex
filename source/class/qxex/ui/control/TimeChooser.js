@@ -38,6 +38,7 @@ qx.Class.define("qxex.ui.control.TimeChooser",
     //set the layout
     var layout = new qx.ui.layout.Grid();
     layout.setSpacing(1);
+    layout.setSpacingX(8);
     layout.setColumnFlex(0, 1);
     layout.setColumnFlex(1, 1);
     layout.setColumnFlex(2, 1);
@@ -47,8 +48,9 @@ qx.Class.define("qxex.ui.control.TimeChooser",
     this._setLayout(layout);
 
     //create the child controls
-    this.slider = this._createChildControl("slider");
+    this._createChildControl("slider");
     this._createChildControl("minLabel");
+    this._createChildControl("currLabel");
     this._createChildControl("maxLabel");
 
     // listen for locale changes
@@ -63,6 +65,10 @@ qx.Class.define("qxex.ui.control.TimeChooser",
       time.setHours(0); //date with hour 0
     }
     this.setValue(time);
+
+    //register pointer up and down handler to avoid blur on header label click
+    this.addListener("pointerdown", this._onPointerUpDown, this);
+    this.addListener("pointerup", this._onPointerUpDown, this);
 
   },
 
@@ -119,35 +125,23 @@ qx.Class.define("qxex.ui.control.TimeChooser",
           control = new qxex.ui.form.KnobIconSlider();
           control.setKnobIcon("icon/16/apps/preferences-clock.png");
           control.setKnobSize(14);
-          control.setSelectable(false);
-          control.setAnonymous(true);
-          control.setCursor("ew-resize");
 
           control.set({
             minimum : 0,
             maximum : 95, // 24h * 60min/h / 15min = 96 (15min steps) from 0..95
             singleStep :1,
-            pageStep :4
-//             minHeight : 16
-
+            pageStep :4,
+            focusable : false //important so blur works correctly
           });
 
-          control.addListener("pointerup", function(){ // "mouseup"
-              var time = this.__sliderValueToTime(control.getValue());
-              this.setValue(time);
+          control.addListener("pointerup", function(){
               this.execute();
-          },this);
-
-          control.addListener("keypress", function(e){
-            if (e.getKeyIdentifier()=="Escape"){
-              this.execute();
-            }
           },this);
 
           control.addListener("changeValue", function(e) {
             var num = e.getData();
             var time = this.__sliderValueToTime(num);
-            this._updateTimePane(time);
+            this.setValue(time);
           }, this);
           
           this._add(control,{row:1, column:0, colSpan:3});
@@ -173,9 +167,10 @@ qx.Class.define("qxex.ui.control.TimeChooser",
     },
 
     __makeChildLabel : function(gray){
-      var control = new qx.ui.basic.Label();//"00:00" + this.hourAbrev);
+      var control = new qx.ui.basic.Label();
           control.setSelectable(false);
-          control.setAnonymous(true);
+//           control.setFocusable(false);
+//           control.setAnonymous(true);
           if(gray) control.setTextColor("#808080"); // "grey"
       return control;
     },
@@ -196,9 +191,7 @@ qx.Class.define("qxex.ui.control.TimeChooser",
     _applyValue : function(value, old){
       var num = this.__timeToSliderValue(value);
       //Move slider to the position hours + 4 * minutes/15 in the Date Object
-      // this.setSliderPogrammatically=true;
       this.getChildControl("slider").setValue(num);
-      // this.setSliderPogrammatically=false;
       //Show the new time formatted in header pane;
       this._updateTimePane();
     },
@@ -228,37 +221,15 @@ qx.Class.define("qxex.ui.control.TimeChooser",
       date.setMinutes(minutes);
       return date;
     },
-    
-    // /**
-    //  * @param currValue {String} 25 (value of slider)
-    //  * @param align {Boolean ?} wheather to append a preceding '0' if hour is <=9
-    //  * @return {String} mm:ss formatted timestring, e.g. align ? "06:45" : " 6:45" 
-    //  */
-    // __format : function(currValue, align) {
-    //   var align = align || true;
-    //   var fValue = parseFloat(currValue);
-    //   var hours = Math.floor( fValue / 4.0 );
-    //   var hoursStr = new String(hours);
-    //   if (align && hoursStr.length < 2)
-    //     hoursStr = "0" + hoursStr;  // " " has a different width than numbers!!! TODO: find somewthing in html (/b) and set label to rich so we get equal spacing
-    //   var minutes = Math.round((fValue / 4.0 - hours) * 60);
-    //   var minStr = ((minutes == 0) ? "00" : "" + minutes);
-    //   var time = ("" + hoursStr + ":" + minStr);
-    //   var ret = {
-    //       hours: hours,
-    //       minutes: minutes,
-    //       time: time
-    //   };
-    //   return ret;
-    // },
+
 
     /**
      * Updates the header/time pane with the formatted current time value.
      */
-    _updateTimePane : function(time){
-      var time = time || this.getValue();
+    _updateTimePane : function(){
+      var time = this.getValue();
 
-      // Create a help times;
+      // Create help times;
       var timeBegin = new Date(0); timeBegin.setHours(0); timeBegin.setMinutes(0);
       var timeEnd   = new Date(0); timeEnd.setHours(23); timeEnd.setMinutes(45);
 
@@ -270,20 +241,24 @@ qx.Class.define("qxex.ui.control.TimeChooser",
 
       timeFormat.dispose();
 
-    }
+    },
 
-    // /**
-    //  * get Minutes and Hours in an js Date Object
-    //  * 
-    //  * @return {Date} date
-    //  */
-    // getValue : function() {
-    // 	var date=new Date(0);
-    // 	date.setHours(parseInt(this.getHourStr()));
-    // 	date.setMinutes(parseInt(this.getMinuteStr()));
-    // 	//this.info("DayTimeSlider getValue: "+date.getHours()+":"+date.getMinutes());
-    // 	return date;
-    // },
+    /**
+     * Handler which stops the propagation of the tap event if
+     * the header labels will be tapped.
+     *
+     * @param e {qx.event.type.Pointer} The pointer up / down event
+     */
+    _onPointerUpDown : function(e) {
+      var target = e.getTarget();
+
+      if (target == this.getChildControl("minLabel") ||
+          target == this.getChildControl("currLabel") ||
+          target == this.getChildControl("maxLabel")) {
+        e.stopPropagation();
+        return;
+      }
+    },
 
   },
 

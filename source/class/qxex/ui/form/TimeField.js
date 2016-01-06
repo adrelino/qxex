@@ -22,7 +22,7 @@
  */
 qx.Class.define("qxex.ui.form.TimeField",
 {
-  extend : qx.ui.form.DateField,
+  extend : qxex.ui.form.DateField,
   
   properties : {
     // overridden
@@ -233,10 +233,6 @@ qx.Class.define("qxex.ui.form.TimeField",
 //       if(min==0) min="00";
 //       textField.setValue(date.getHours()+":"+min); // currently ignore seconds when from slider
 //       this.__closePopup();
-//     },
-
-    _onBlur : function(e){
-
-    }
+//     }
   }
 });

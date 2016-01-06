@@ -70,11 +70,23 @@ qx.Class.define("qxex.Application",
       var singleSelect = new qxex.ui.form.FilterSelectBox();
       container.addWidgetWithLabel(singleSelect);
 
+      var localeManager = qx.locale.Manager.getInstance();
+      localeManager.getAvailableLocales().forEach(function(locale){
+        singleSelect.add(new qx.ui.form.ListItem(locale,null,locale));
+      });
+
+      singleSelect.addListener("changeSelection",function(e){
+        var locale = e.getData()[0].getModel();
+        localeManager.setLocale(locale);
+      },this);
+
+      singleSelect.MIN_LIST_ITEMS_TO_SHOW_FILTER=2;
+
       var multiSelect = new qxex.ui.form.FilterMultiSelectBox();
       container.addWidgetWithLabel(multiSelect);
 
       for (var i = 0; i < 6; i++) {
-        singleSelect.add(new qx.ui.form.ListItem("Item "+i,null,i));
+//         singleSelect.add(new qx.ui.form.ListItem("Item "+i,null,i));
         multiSelect.add(new qx.ui.form.ListItem("Item "+i,null,i));
       };
 
@@ -88,16 +100,29 @@ qx.Class.define("qxex.Application",
         container.addWidgetWithLabel(widget);
       }
 
-
-      {
+      var that = this;
+      var closure = function(){
         var widget = new qxex.ui.control.TimeChooser();
         container.addWidgetWithLabel(widget);
-      }
+        widget.addListener("execute",function(e){
+          this.warn(widget.getValue());
+        },that);
+        widget.addListener("changeValue",function(e){
+          this.info(e.getData());
+        },that);
+      }();
 
       {
         var widget = new qxex.ui.form.TimeField();
         container.addWidgetWithLabel(widget);
       }
+
+       {
+        var widget = new qxex.ui.form.DateField();
+        container.addWidgetWithLabel(widget);
+      }
+
+
 
     }
   }
