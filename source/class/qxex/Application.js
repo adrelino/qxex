@@ -60,7 +60,10 @@ qx.Class.define("qxex.Application",
       doc.add(container);
 
       container.addWidgetWithLabel = function(widget){
-        container.add(new qx.ui.basic.Label(widget.classname));
+        var href = '<a href="../api/#'+widget.classname+'" target="qxex_api">'+widget.classname+'</a>';
+        var label = new qx.ui.basic.Label(href).set({rich:true});
+
+        container.add(label);
         container.add(widget);
       }
 
