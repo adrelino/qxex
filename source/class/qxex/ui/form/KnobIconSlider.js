@@ -1,6 +1,11 @@
 qx.Class.define("qxex.ui.form.KnobIconSlider",{
 	extend:qx.ui.form.Slider,
 
+	construct : function(){
+		this.base(arguments);
+		this.setCursor("pointer");//https://developer.mozilla.org/de/docs/Web/CSS/cursor
+	},
+
 	properties : {
 		knobIcon :
 		{
@@ -29,7 +34,7 @@ qx.Class.define("qxex.ui.form.KnobIconSlider",{
 //           control = new qx.ui.core.Widget(); // original widget, scales, but needs "scale" background repeat in decorator
           control = new qx.ui.basic.Image();
 //           control = new qx.ui.basic.Atom(null,null); //keeps icon's orginal size
-          
+
           control.setDecorator("button");
 
 
@@ -66,6 +71,16 @@ qx.Class.define("qxex.ui.form.KnobIconSlider",{
         width : value,
         height : value
       });
+    },
+
+    _onPointerDown: function(e){
+    	this.setCursor("ew-resize");//col-resize
+    	this.base(arguments,e);
+    },
+
+    _onPointerUp: function(e){
+    	this.setCursor("pointer");
+    	this.base(arguments,e);
     }
 
 	}
