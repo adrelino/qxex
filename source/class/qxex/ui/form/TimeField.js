@@ -212,7 +212,7 @@ qx.Class.define("qxex.ui.form.TimeField",
       }
 
       return control || this.base(arguments, id);
-    },
+    }
 
    /*
    ---------------------------------------------------------------------------

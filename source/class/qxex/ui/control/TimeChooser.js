@@ -166,12 +166,10 @@ qx.Class.define("qxex.ui.control.TimeChooser",
       return control || this.base(arguments, id);
     },
 
-    __makeChildLabel : function(gray){
+    __makeChildLabel : function(grey){
       var control = new qx.ui.basic.Label();
           control.setSelectable(false);
-//           control.setFocusable(false);
-//           control.setAnonymous(true);
-          if(gray) control.setTextColor("#808080"); // "grey"
+          if(grey) control.setTextColor("#808080"); // "grey"
       return control;
     },
 
@@ -190,8 +188,10 @@ qx.Class.define("qxex.ui.control.TimeChooser",
     //property apply
     _applyValue : function(value, old){
       var num = this.__timeToSliderValue(value);
+
       //Move slider to the position hours + 4 * minutes/15 in the Date Object
       this.getChildControl("slider").setValue(num);
+      
       //Show the new time formatted in header pane;
       this._updateTimePane();
     },
@@ -258,7 +258,7 @@ qx.Class.define("qxex.ui.control.TimeChooser",
         e.stopPropagation();
         return;
       }
-    },
+    }
 
   },
 
