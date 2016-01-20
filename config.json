@@ -42,9 +42,10 @@
   {
     "APPLICATION"  : "qxex",
     "QOOXDOO_PATH" : "../qooxdoo",
-    "QXTHEME"      : "qxex.theme.Theme",
+    "QXTHEME"      : "qx.theme.Modern",
+    "QXICONTHEME"  : ["Tango", "Oxygen"],
     "API_EXCLUDE"  : ["qx.*", "${APPLICATION}.theme.*", "${APPLICATION}.test.*"],
-    "LOCALES"      : [ "de", "en" ],
+    "LOCALES"      : [ "da", "de", "es", "en", "fr", "it", "ja", "pt", "ru", "vi", "zh"],
     "CACHE"        : "${TMPDIR}/qx${QOOXDOO_VERSION}/cache",
     "ROOT"         : "."
   },
@@ -63,7 +64,26 @@
     {
       "library" :
       [
-        // {"manifest" : "../SmartTableModelOriginal/Manifest.json"}
+        { "manifest" : "../Bamboo/Manifest.json"}
+       ,{ "manifest" : "../GraydientTheme/Manifest.json"}
+       ,{ "manifest" : "../DarkTheme/Manifest.json"}
+       ,{ "manifest" : "../SilverBlueTheme/Manifest.json"}
+       ,{ "manifest" : "../Bernstein/Manifest.json"}
+
+      ]
+    },
+
+    "includes" : {
+      "include" : [
+        "qx.theme.Modern"
+        ,"qx.theme.Classic"
+        ,"qx.theme.Simple"
+        ,"qx.theme.Indigo"
+        ,"bamboo.theme.Theme"
+        ,"graydienttheme.theme.Theme"
+        ,"darktheme.theme.Theme"   
+        ,"silverbluetheme.theme.Theme"
+        ,"bernstein.theme.Theme"
       ]
     }
     

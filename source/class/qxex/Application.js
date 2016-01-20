@@ -47,6 +47,10 @@ qx.Class.define("qxex.Application",
         qx.log.appender.Console;
       }
 
+      //mix our own theme additions into all available themes
+      qxex.util.ThemeManager.mergeTheme(qxex.theme.Appearance);
+
+
       /*
       -------------------------------------------------------------------------
         Below is your actual application code...
@@ -56,7 +60,8 @@ qx.Class.define("qxex.Application",
       // Document is the application root
       var doc = this.getRoot();
 
-      var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(2));
+      var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(5));
+      container.setMargin(10);
       doc.add(container);
 
       container.addWidgetWithLabel = function(widget){
@@ -67,33 +72,73 @@ qx.Class.define("qxex.Application",
         container.add(widget);
       }
 
-      var tristateBox = new qxex.ui.form.TristateCheckBox("toggle me");
-      container.addWidgetWithLabel(tristateBox);
+      ////////////
+      //control
 
+      {
+        var widget = new qxex.ui.control.LanguageSelector();
+        container.addWidgetWithLabel(widget);
+      }
+
+      {
+        var excludedThemes = ["qx.theme.Indigo"];
+        var widget = new qxex.ui.control.ThemeSelector(excludedThemes);
+        // widget.addListener("changeValue",function(e){
+        //   textfield.setValue(e.getData());
+        //   textfield.focus();
+        //   textfield.selectAllText();
+        //   document.execCommand('copy');
+        // },this);
+        container.addWidgetWithLabel(widget);
+      }
+
+      {
+        var that = this;
+        var closure = function(){ //to catch widget
+          var widget = new qxex.ui.control.TimeChooser();
+          container.addWidgetWithLabel(widget);
+          widget.addListener("execute",function(e){
+            this.warn(widget.getValue());
+          },that);
+          widget.addListener("changeValue",function(e){
+            this.info(e.getData());
+          },that);
+        }();
+      }
+
+      //only to illustrate effects of changing locale
+      {
+        var widget = new qx.ui.control.DateChooser();
+        container.addWidgetWithLabel(widget);
+      }
+
+      ////////////
+      //form
+      {
+        var tristateBox = new qxex.ui.form.TristateCheckBox();
+        tristateBox.addListener("changeValue",function(e){
+          var value = e.getData();
+          tristateBox.setLabel(value+"");
+        });
+        tristateBox.setValue(true);
+
+        container.addWidgetWithLabel(tristateBox);
+      }
+
+      {
       var singleSelect = new qxex.ui.form.FilterSelectBox();
       container.addWidgetWithLabel(singleSelect);
-
-      var localeManager = qx.locale.Manager.getInstance();
-      localeManager.getAvailableLocales().forEach(function(locale){
-        singleSelect.add(new qx.ui.form.ListItem(locale,null,locale));
-      });
-
-      singleSelect.addListener("changeSelection",function(e){
-        var locale = e.getData()[0].getModel();
-        localeManager.setLocale(locale);
-      },this);
-
-      singleSelect.MIN_LIST_ITEMS_TO_SHOW_FILTER=2;
 
       var multiSelect = new qxex.ui.form.FilterMultiSelectBox();
       container.addWidgetWithLabel(multiSelect);
 
       for (var i = 0; i < 6; i++) {
-//         singleSelect.add(new qx.ui.form.ListItem("Item "+i,null,i));
+        if (i<4) singleSelect.add(new qx.ui.form.ListItem("Item "+i,null,i));
         multiSelect.add(new qx.ui.form.ListItem("Item "+i,null,i));
       };
-
       multiSelect.setSelectionByModelArr([2,3]);
+      singleSelect.MIN_LIST_ITEMS_TO_SHOW_FILTER=2;
+      }
 
 
       {
@@ -103,17 +148,6 @@ qx.Class.define("qxex.Application",
         container.addWidgetWithLabel(widget);
       }
 
-      var that = this;
-      var closure = function(){
-        var widget = new qxex.ui.control.TimeChooser();
-        container.addWidgetWithLabel(widget);
-        widget.addListener("execute",function(e){
-          this.warn(widget.getValue());
-        },that);
-        widget.addListener("changeValue",function(e){
-          this.info(e.getData());
-        },that);
-      }();
 
       {
         var widget = new qxex.ui.form.TimeField();
@@ -125,8 +159,12 @@ qx.Class.define("qxex.Application",
         container.addWidgetWithLabel(widget);
       }
 
+      // var button = new qx.ui.form.Button(null,"icon/16/apps/preferences-clock.png");
+      // doc.add(button,{left:2,top:800-17});
 
-
+      // var textfield = new qx.ui.form.TextField();
+      // textfield.setWidth(200);
+      // doc.add(textfield,{left:2,top:900-18});
     }
   }
 });
