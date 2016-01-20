@@ -1,1 +1,1 @@
-{"attributes": {"fullName": "qx.ui.form.SelectBox", "packageName": "qx.ui.form", "isStatic": true, "name": "SelectBox", "childClasses": "qxex.ui.form.FilterSelectBox"}, "type": "class"}
+{"attributes": {"fullName": "qx.ui.form.SelectBox", "packageName": "qx.ui.form", "isStatic": true, "name": "SelectBox", "childClasses": "qxex.ui.control.LanguageSelector,qxex.ui.control.ThemeSelector,qxex.ui.form.FilterSelectBox"}, "type": "class"}
