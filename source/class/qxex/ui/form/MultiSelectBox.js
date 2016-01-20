@@ -2,10 +2,10 @@
  * A SelectBox that allows for multiple selection.
  * Modeled after the jQuery UI MultiSelect Widget: http://www.erichynds.com/examples/jquery-ui-multiselect-widget/demos/
  *
- * @asset(qx/icon/Oxygen/16/actions/dialog-apply.png)
- * @asset(qx/icon/Oxygen/32/actions/dialog-apply.png)
- * @asset(qx/icon/Oxygen/16/actions/edit-delete.png)
- * @asset(qx/icon/Oxygen/32/actions/edit-delete.png)
+ * @asset(qx/icon/${qx.icontheme}/16/actions/dialog-apply.png)
+ * @asset(qx/icon/${qx.icontheme}/32/actions/dialog-apply.png)
+ * @asset(qx/icon/${qx.icontheme}/16/actions/edit-delete.png)
+ * ---asset(qx/icon/${qx.icontheme}/32/actions/edit-delete.png)
  */
 qx.Class.define("qxex.ui.form.MultiSelectBox",
 {
@@ -49,7 +49,7 @@ qx.Class.define("qxex.ui.form.MultiSelectBox",
     var buttonContainer=new qx.ui.container.Composite(new qx.ui.layout.HBox(0));
     
     var labelAll="<b style='color:green;'>"+this.trc("Label","All")+"<b>";
-    this.allBtn = new qx.ui.form.Button(labelAll,"qx/icon/Oxygen/16/actions/dialog-apply.png").set({
+    this.allBtn = new qx.ui.form.Button(labelAll,"icon/16/actions/dialog-apply.png").set({
         focusable: false, rich: true, padding : 2, margin : 0
     });
     this.allBtn.addListener("click", function(e){
@@ -58,7 +58,7 @@ qx.Class.define("qxex.ui.form.MultiSelectBox",
     buttonContainer.add(this.allBtn,{flex : 1});
     
     var labelNone="<b style='color:red;'>"+this.trc("Label","None")+"<b>";
-    this.noneBtn = new qx.ui.form.Button(labelNone,"qx/icon/Oxygen/16/actions/edit-delete.png").set({
+    this.noneBtn = new qx.ui.form.Button(labelNone,"icon/16/actions/edit-delete.png").set({
         focusable: false, rich: true, padding : 2, margin : 0
     });
     this.noneBtn.addListener("click", function(e){
@@ -301,7 +301,7 @@ qx.Class.define("qxex.ui.form.MultiSelectBox",
       if(length==0){
         label = "<b style='color:red;'>"+label+"<b>";
         this.setToolTipText(this.trc("Tooltip","Please select at least one item"));
-        if(hasIcons) atom.setIcon("qx/icon/Oxygen/32/actions/edit-delete.png");
+        if(hasIcons) atom.setIcon("icon/32/actions/edit-delete.png");
       }else if(length==1){
         label+=" : "+this.__prettyPrintLabel(listItems[0]);
         this.setToolTipText(this.trc("Tooltip","You can select multiple items"));

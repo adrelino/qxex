@@ -19,6 +19,7 @@
  *
  * @childControl list {qxex.ui.control.TimeChooser} time chooser component
  * @childControl popup {qx.ui.popup.Popup} popup which shows the list control
+ * --asset(qx/icon/${qx.icontheme}/16/apps/preferences-clock.png)
  */
 qx.Class.define("qxex.ui.form.TimeField",
 {
@@ -29,7 +30,7 @@ qx.Class.define("qxex.ui.form.TimeField",
     appearance :
     {
       refine : true,
-      init : "watcheetimefield"
+      init : "timefield"
     }
   },
   
@@ -204,11 +205,15 @@ qx.Class.define("qxex.ui.form.TimeField",
       {
         case "list":
           control = new qxex.ui.control.TimeChooser();
-//           control = new qx.ui.control.DateChooser(); 
           control.setFocusable(false);
           control.setKeepFocus(true);
           control.addListener("execute", this._onChangeDate, this);
           break;
+
+//         case "button":
+//           control = this.base(arguments, id);
+//           control.setIcon("icon/16/apps/preferences-clock.png");
+//           break;
       }
 
       return control || this.base(arguments, id);

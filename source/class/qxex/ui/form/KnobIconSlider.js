@@ -35,9 +35,6 @@ qx.Class.define("qxex.ui.form.KnobIconSlider",{
           control = new qx.ui.basic.Image();
 //           control = new qx.ui.basic.Atom(null,null); //keeps icon's orginal size
 
-          control.setDecorator("button");
-
-
           control.addListener("resize", this._onUpdate, this);
           control.addListener("pointerover", this._onPointerOver);
           control.addListener("pointerout", this._onPointerOut);

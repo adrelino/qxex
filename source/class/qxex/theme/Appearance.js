@@ -21,9 +21,13 @@ qx.Theme.define("qxex.theme.Appearance",
 
   appearances :
   {
-  	"watcheetimefield" : "datefield",
+  	"timechooser" : "datechooser",
+  	"timechooser/slider" : "slider",
+  	"timechooser/slider/knob" : "image",
 
-    "watcheetimefield/button" :
+  	"timefield" : "datefield",
+  	"timefield/list" : "timechooser",
+    "timefield/button" :
     {
       style : function(states)
       {

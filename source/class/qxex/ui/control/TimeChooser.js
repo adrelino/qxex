@@ -57,8 +57,6 @@ qx.Class.define("qxex.ui.control.TimeChooser",
     if (qx.core.Environment.get("qx.dynlocale")) {
       qx.locale.Manager.getInstance().addListener("changeLocale", this._updateTimePane, this);
     }
-    
-    this.setDecorator("button-pressed");
 
     if(!time){
       time = new Date(0);
@@ -74,6 +72,13 @@ qx.Class.define("qxex.ui.control.TimeChooser",
 
  
   properties : {
+
+    // overridden
+    appearance :
+    {
+      refine : true,
+      init : "timechooser"
+    },
     
     /** The knobIcon to show in the slider. Gets scaled to 14x14 px by default */
     knobIcon : {
