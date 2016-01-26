@@ -5,7 +5,7 @@
  * @asset(qx/icon/${qx.icontheme}/16/actions/dialog-apply.png)
  * @asset(qx/icon/${qx.icontheme}/32/actions/dialog-apply.png)
  * @asset(qx/icon/${qx.icontheme}/16/actions/edit-delete.png)
- * ---asset(qx/icon/${qx.icontheme}/32/actions/edit-delete.png)
+ * @asset(qx/icon/${qx.icontheme}/32/actions/edit-delete.png)
  */
 qx.Class.define("qxex.ui.form.MultiSelectBox",
 {
