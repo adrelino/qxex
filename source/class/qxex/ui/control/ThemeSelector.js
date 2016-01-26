@@ -40,8 +40,8 @@ qx.Class.define("qxex.ui.control.ThemeSelector",{
 
     this.addListener("changeSelection",function(e){
       var name = e.getData()[0].getModel();
-      this.fireDataEvent("changeValue",name);
       qxex.util.ThemeManager.setByName(name);
+      this.fireDataEvent("changeValue",name);
     },this);
 
     //listen for theme changes made somewhere else

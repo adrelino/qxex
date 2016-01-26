@@ -26,8 +26,8 @@ qx.Class.define("qxex.ui.control.LanguageSelector",{
 
     this.addListener("changeSelection",function(e){
       var name = e.getData()[0].getModel();
-      this.fireDataEvent("changeValue",name);
       qxex.util.LanguageManager.setByName(name);
+      this.fireDataEvent("changeValue",name);
     },this);
 
     // listen for locale changes made somewhere else
