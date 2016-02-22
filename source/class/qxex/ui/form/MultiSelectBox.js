@@ -9,7 +9,7 @@
  */
 qx.Class.define("qxex.ui.form.MultiSelectBox",
 {
-  extend : qx.ui.form.AbstractSelectBox,
+  extend : qxex.ui.form.AbstractSelectBoxSimpler,
   implement : [
      qx.ui.core.IMultiSelection,
      qx.ui.form.IModelSelection
@@ -28,14 +28,6 @@ qx.Class.define("qxex.ui.form.MultiSelectBox",
   construct : function()
   {
     this.base(arguments);
-
-    this._createChildControl("atom");
-    this._createChildControl("spacer");
-    this._createChildControl("arrow");
-
-    this.addListener("mouseover", this._onPointerOver, this);
-    this.addListener("mouseout", this._onPointerOut, this);
-    this.addListener("tap", this._onTap, this); //was click
 
     this.addListener("keyinput", this._onKeyInput, this);
   
@@ -139,39 +131,14 @@ qx.Class.define("qxex.ui.form.MultiSelectBox",
 
       switch(id)
       {
-        case "spacer":
-          control = new qx.ui.core.Spacer();
-          this._add(control, {flex: 1});
-          break;
-
         case "atom":
-          control = new qx.ui.basic.Atom(" ");
-          control.setCenter(false);
-          control.setAnonymous(true);
+          control = this.base(arguments, id);
           control.setRich(true);
-
-          this._add(control, {flex:1});
-          break;
-
-        case "arrow":
-          control = new qx.ui.basic.Image();
-          control.setAnonymous(true);
-
-          this._add(control);
           break;
       }
 
       return control || this.base(arguments, id);
     },
-
-    // overridden
-    /**
-     * @lint ignoreReferenceField(_forwardStates)
-     */
-    // _forwardStates : {
-    //   focused : true
-    // },
-
 
     /*
     ---------------------------------------------------------------------------
@@ -351,55 +318,6 @@ qx.Class.define("qxex.ui.form.MultiSelectBox",
     ---------------------------------------------------------------------------
     */
 
-
-    /**
-     * Listener method for "mouseover" event
-     * <ul>
-     * <li>Adds state "hovered"</li>
-     * <li>Removes "abandoned" and adds "pressed" state (if "abandoned" state is set)</li>
-     * </ul>
-     *
-     * @param e {Event} Mouse event
-     */
-    _onPointerOver : function(e)
-    {
-      if (!this.isEnabled() || e.getTarget() !== this) {
-        return;
-      }
-
-      if (this.hasState("abandoned"))
-      {
-        this.removeState("abandoned");
-        this.addState("pressed");
-      }
-
-      this.addState("hovered");
-    },
-
-    /**
-     * Listener method for "mouseout" event
-     * <ul>
-     * <li>Removes "hovered" state</li>
-     * <li>Adds "abandoned" and removes "pressed" state (if "pressed" state is set)</li>
-     * </ul>
-     *
-     * @param e {Event} Mouse event
-     */
-    _onPointerOut : function(e)
-    {
-      if (!this.isEnabled() || e.getTarget() !== this) {
-        return;
-      }
-
-      this.removeState("hovered");
-
-      if (this.hasState("pressed"))
-      {
-        this.removeState("pressed");
-        this.addState("abandoned");
-      }
-    },
-
     /**
      * Toggles the popup's visibility.
      *
@@ -467,44 +385,6 @@ qx.Class.define("qxex.ui.form.MultiSelectBox",
       }
 
       this.update();
-    },
-
-    // overridden
-    _onPopupChangeVisibility : function(e)
-    {
-      this.base(arguments, e);
-
-      // Synchronize the current selection to the list selection
-      // when the popup is closed. The list selection may be invalid
-      // because of the quick selection handling which is not
-      // directly applied to the selectbox
-      var popup = this.getChildControl("popup");
-      if (!popup.isVisible())
-      {
-        /*var list = this.getChildControl("list");
-
-        // check if the list has any children before selecting
-        if (list.hasChildren()) {
-          list.setSelection(this.getSelection());
-        }*/
-      } else {
-        // ensure that the list is never biger that the max list height and
-        // the available space in the viewport
-        var distance = popup.getLayoutLocation(this);
-        var viewPortHeight = qx.bom.Viewport.getHeight();
-        // distance to the bottom and top borders of the viewport
-        var toTop = distance.top;
-        var toBottom = viewPortHeight - distance.bottom;
-        var availableHeigth = toTop > toBottom ? toTop : toBottom;
-
-        var maxListHeight = this.getMaxListHeight();
-        var list = this.getChildControl("list")
-        if (maxListHeight == null || maxListHeight > availableHeigth) {
-          list.setMaxHeight(availableHeigth);
-        } else if (maxListHeight < availableHeigth) {
-          list.setMaxHeight(maxListHeight);
-        }
-      }
     }
   }
 });
