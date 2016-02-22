@@ -18,7 +18,6 @@ qx.Class.define("qxex.Application",
   extend : qx.application.Standalone,
 
 
-
   /*
   *****************************************************************************
      MEMBERS
@@ -64,8 +63,9 @@ qx.Class.define("qxex.Application",
       container.setMargin(10);
       doc.add(container);
 
-      container.addWidgetWithLabel = function(widget){
+      container.addWidgetWithLabel = function(widget, additional){
         var href = '<a href="../api/#'+widget.classname+'" target="qxex_api">'+widget.classname+'</a>';
+        if(additional) href+=" "+additional;
         var label = new qx.ui.basic.Label(href).set({rich:true});
 
         container.add(label);
@@ -89,7 +89,13 @@ qx.Class.define("qxex.Application",
         //   textfield.selectAllText();
         //   document.execCommand('copy');
         // },this);
-        container.addWidgetWithLabel(widget);
+        container.addWidgetWithLabel(widget,"(meta)");
+      }
+
+      {
+        var excludedThemes = [];
+        var widget = new qxex.ui.control.ThemeSelector(excludedThemes,"icon");
+        container.addWidgetWithLabel(widget,"(icon)");
       }
 
       {
@@ -107,10 +113,10 @@ qx.Class.define("qxex.Application",
       }
 
       //only to illustrate effects of changing locale
-      {
-        var widget = new qx.ui.control.DateChooser();
-        container.addWidgetWithLabel(widget);
-      }
+//       {
+//         var widget = new qx.ui.control.DateChooser();
+//         container.addWidgetWithLabel(widget);
+//       }
 
       ////////////
       //form
@@ -128,6 +134,7 @@ qx.Class.define("qxex.Application",
       {
       var singleSelect = new qxex.ui.form.FilterSelectBox();
       container.addWidgetWithLabel(singleSelect);
+      singleSelect.addListener("changeSelection",this.changeSelectionLogger,this);
 
       var multiSelect = new qxex.ui.form.FilterMultiSelectBox();
       container.addWidgetWithLabel(multiSelect);
@@ -139,6 +146,8 @@ qx.Class.define("qxex.Application",
       multiSelect.setSelectionByModelArr([2,3]);
       singleSelect.MIN_LIST_ITEMS_TO_SHOW_FILTER=2;
       }
+
+      multiSelect.addListener("changeSelection",this.changeSelectionLogger,this);
 
 
       {
@@ -165,6 +174,49 @@ qx.Class.define("qxex.Application",
       // var textfield = new qx.ui.form.TextField();
       // textfield.setWidth(200);
       // doc.add(textfield,{left:2,top:900-18});
+
+      {
+        var tree = new qxex.ui.form.FilterTreeSelectBox();
+        container.addWidgetWithLabel(tree);
+
+        var abc = "abcdefghijklmnopqrstuvwxyz";
+        var l = abc.length;
+
+        function getText(){
+          var ll = 2 + Math.round(Math.random()*5);
+          var str = "";
+          for(var i=0; i<ll; i++){
+            str += abc[Math.round(Math.random()*(l-1))];
+          }
+          return str;
+        }
+
+        for(var i=0; i<5; i++){
+          var foo = new qx.ui.tree.TreeFolder(getText() + i);
+          tree.add(foo);
+
+          
+          var parent = foo;
+          var depth = 3;
+          for(var j=0; j<depth; j++){
+            var C = j==depth-1 ? qx.ui.tree.TreeFile : qx.ui.tree.TreeFolder;
+            var bar = new C(getText() + " " +j);
+            foo.add(bar);
+            parent.add(bar);
+            if(j%2==1) parent=bar;
+          }
+        }
+        tree.setSelection([foo]);
+      }
+
+      tree.addListener("changeSelection",this.changeSelectionLogger,this);
+
+
+    },
+
+
+    changeSelectionLogger : function(e){
+      this.debug(e.getData().map(function(item){return item.getLabel()}));
     }
   }
 });
