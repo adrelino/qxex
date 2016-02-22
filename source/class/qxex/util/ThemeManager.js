@@ -1,3 +1,6 @@
+/*
+ * Handles meta and icon themes
+ */
 qx.Class.define("qxex.util.ThemeManager",
 {
 	statics : {
@@ -12,26 +15,33 @@ qx.Class.define("qxex.util.ThemeManager",
 	      }
 	  },
 
-	  	getAll : function() {
-	  	  var onlyMetaThemes = [];
+	  	getAll : function(type) {
+	  	  var type = type || "meta"; //meta or icon
+	  	  if(type=="icon") type="other"; //somehow Oxygen and Tango dont have type defined, thus get other
+	  	  var onlyThemesWithCorrectType = [];
 	      var themes = qx.Theme.getAll();
 	      for (var key in themes) {
 	        var theme = themes[key];
-	        if (theme.type === "meta") {
-	          onlyMetaThemes.push(theme);
+	        if (theme.type === type) {
+	          onlyThemesWithCorrectType.push(theme);
 	        }
 	      }
-	      return onlyMetaThemes;
+	      return onlyThemesWithCorrectType;
 	    },
 
-	    getCurrent : function(){
-	    	return qx.theme.manager.Meta.getInstance().getTheme().name;
+	    getCurrent : function(type){
+	    	var type = type || "meta"; //meta or icon
+	    	var Type = type[0].toUpperCase() + type.slice(1);
+	    	return qx.theme.manager[Type].getInstance().getTheme().name;
 	    },
 
 	    setByName : function(theme_name) {
 	      var theme = qx.Theme.getByName(theme_name);
 	      if (theme) {
-	        qx.theme.manager.Meta.getInstance().setTheme(theme);
+	      	var type = theme.type;
+	  	  	if(type=="other") type="icon"; //somehow Oxygen and Tango dont have type defined, thus get other
+	      	var Type = type[0].toUpperCase() + type.slice(1);
+	        qx.theme.manager[Type].getInstance().setTheme(theme);
 	      }
 	    }
 	}
