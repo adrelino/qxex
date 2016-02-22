@@ -6,6 +6,10 @@ qx.Class.define("qxex.ui.control.LanguageSelector",{
   extend : qx.ui.form.SelectBox,
 
   events :{
+    /**
+     * Fired after the new locale has been set.
+     * Get the new locale with e.getData() (e.g. "en").
+     */
     "changeValue" : "qx.event.type.Data"
   },
 

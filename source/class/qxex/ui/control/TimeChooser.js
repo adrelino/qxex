@@ -22,6 +22,18 @@ qx.Class.define("qxex.ui.control.TimeChooser",
     qx.ui.form.IDateForm
   ],
 
+  events : {
+    /**
+     * fired when slider is released
+     */
+    "execute" : "qx.event.type.Event",
+    
+    /**
+     * fired when slider is dragged
+     */
+    "changeValue" : "qx.event.type.Data"
+  },
+
   /*
   *****************************************************************************
      CONSTRUCTOR
