@@ -6,19 +6,22 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
   include : qx.locale.MTranslation, //for this.trc to work
 
   construct : function(TableConstructor,ModelConstructor){
-  	this.base(arguments);
-  	this._setLayout(new qx.ui.layout.Grow());
-  	this.__TableConstructor = TableConstructor;
-  	this.__ModelConstructor = ModelConstructor;
+    this.base(arguments);
+    this._setLayout(new qx.ui.layout.Grow());
+    this.__TableConstructor = TableConstructor;
+    this.__ModelConstructor = ModelConstructor;
   },
 
   events : {
-    "changeSelectionData" : "qx.event.type.Data"
+    "changeSelectionData" : "qx.event.type.Data",
+    "cellTapData" : "qx.event.type.Data",
+    "cellDbltapData" : "qx.event.type.Data",
+    "cellContextmenuData" : "qx.event.type.Data"
   },
 
   members : {
 
-  	__primaryKeyColumnIdx : -1,
+    __primaryKeyColumnIdx : -1,
 
     _table : null,
     _model : null,
@@ -54,7 +57,7 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
       // Set up column renderers
       for (key in this._columns){
         var col = this._columns[key];
-        col.configure && col.configure(col.idx, this._model, this._tcm, this);
+        col.configure && col.configure.call(this,col.idx, this._model, this._tcm);
       }
       this.__addListeners();
 
@@ -64,29 +67,29 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
     },
 
     setPrimaryKeyColumn : function(idx){
-    	if(this.__primaryKeyColumnIdx != -1){
-    		//can only be set once
-    	}else{
-    		this.__primaryKeyColumnIdx = idx;
-    		this._model.addIndex(idx);
-    	}
+      if(this.__primaryKeyColumnIdx != -1){
+        //can only be set once
+      }else{
+        this.__primaryKeyColumnIdx = idx;
+        this._model.addIndex(idx);
+      }
     },
-
 
 
     /*
     ---------------------------------------------------------------------------
       PUBLIC CRUD METHODS to modify state of rows. https://de.wikipedia.org/wiki/CRUD
-      CRUD							SQL-92		REST
+      CRUD              SQL-92    REST
       -----------------------------------------
-      Create						INSERT		PUT oder POST
-			Read (Retrieve)		SELECT		GET
-			Update						UPDATE		PATCH oder PUT
-			Delete (Destroy)	DELETE		DELETE
+      Create            INSERT    PUT oder POST
+      Read (Retrieve)   SELECT    GET
+      Update            UPDATE    PATCH oder PUT
+      Delete (Destroy)  DELETE    DELETE
 
-			Access based on Primary Key!
+      Access based on Primary Key!
     ---------------------------------------------------------------------------
     */
+
 
     insertData : function(primaryKey, data){
       var view = 0;
@@ -109,32 +112,30 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
     },
 
     updateData : function(primaryKey, colIdx, value){
-    	var view = 0;
-    	var rowIdx = this.__getRowIdxFromPrimaryKey(primaryKey,view);
-    	
-    	if(rowIdx != null){
-    		this._model.setValue(colIdx,rowIdx,value,view);
-    		return true;
-    	}else{
-    		return false;
-    	}
+      var view = 0;
+      var rowIdx = this.__getRowIdxFromPrimaryKey(primaryKey,view);
+      if(rowIdx != null){
+        this._model.setValue(colIdx,rowIdx,value,view);
+        return true;
+      }else{
+        return false;
+      }
     },
 
     deleteData : function(primaryKey){
-    	var view = 0;
-
-    	var rowIdx = this.__getRowIdxFromPrimaryKey(primaryKey,view);
-    	if(rowIdx != null){
+      var view = 0;
+      var rowIdx = this.__getRowIdxFromPrimaryKey(primaryKey,view);
+      if(rowIdx != null){
         var retVal = this._model.removeRows(rowId,1,view);
         return true;
       }else{
-      	return false;
+        return false;
       }
     },
 
     //Convenience Bulk CRUD interface:
     deleteAllData : function(){
-    	this._model.clearAllRows();
+      this._model.clearAllRows();
     },
 
     /*
@@ -147,7 +148,7 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
       var row = [];
       for (var key in this._columns){
         var fun = this._columns[key].fun;
-        var result = fun(data);
+        var result = fun.call(this,data);
         row.push(result);
       }
       this.__insertDataIntoRow(row,data);
@@ -167,14 +168,20 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
       return this.__extractDataFromRow(row);
     },
 
+    /**
+     * Lookup the row index of the data entry by using its primary key.
+     *
+     * @param primaryKey {String} the primaryKey of the data entry.
+     * @param view {Number} the view, usually 0 works fine.
+     * @return {number | null} if no row with this primary key exists.
+     */
     __getRowIdxFromPrimaryKey : function(primaryKey,view){
-    	if(this.__primaryKeyColumnIdx==-1){
-    		//no primary key column configured
-    	}
-      var rowIdx = this._model.locate(this.__primaryKeyColumnIdx,primaryKey,view);
-      if(rowIdx==null){
-      	//no row with this primary key exists
+      if(this.__primaryKeyColumnIdx==-1){
+        //no primary key column configured
+        this.error("__getRowIdxFromPrimaryKey no primaryKeyColumnIdx configured!");
+        return null;
       }
+      var rowIdx = this._model.locate(this.__primaryKeyColumnIdx,primaryKey,view);
       return rowIdx;
     },
 
@@ -190,7 +197,7 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
 
         var label = key;
         if(col.headerLabel){
-          label=col.headerLabel(this);
+          label=col.headerLabel.call(this);
         }
         column_names[col.idx] = key;
 	    column_labels[col.idx] = label;
@@ -200,27 +207,36 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
     },
 
     __addListeners : function(){
-    	// Add cell click listeners
-      this._table.addListener("cellTap",function(e){
-        var iCol = e.getColumn();
-//         var colName = column_names[iCol];
-        var iRow = e.getRow();
-        //TODO: modifiers
-//         var isShiftPressed = e.isShiftPressed();
-//         var isCtrlPressed = e.isCtrlPressed();
+      // Add cell click listeners
 
-        //TODO: make sure we never make a copy of the row, then __data is gone
-        var view = undefined; // click from gui -> iRow is that of current view, not unfiltered view (0).
-        var data = this.__getDataFromRowIdx(iRow,view);
+      //http://demo.qooxdoo.org/devel/apiviewer/#qx.ui.table.Table~cellTap!event
+      var allMouseEvents = ["cellTap","cellDbltap","cellContextmenu"];
 
-        console.log("cellTapData",data,iRow);
-        this.fireDataEvent("cellTapData",data);
+      allMouseEvents.forEach(function(mouseEventName){
+        this._table.addListener(mouseEventName,function(e){
+          var iCol = e.getColumn();
+          var iRow = e.getRow();
+          var isShiftPressed = e.isShiftPressed();
+          var isCtrlPressed = e.isCtrlPressed();
 
-        if(this.__columnsArr[iCol].onTap){
-          console.log("cellTapData - calling column onTap function handler");
-          this.__columnsArr[iCol].onTap.call(this,data);
-        }
+          //TODO: make sure we never make a copy of the row, then __data is gone
+          var view = 0; // click from gui -> iRow is that of current view, not unfiltered view (0).
+          var data = this.__getDataFromRowIdx(iRow,view);
 
+          var column = this.__columnsArr[iCol];
+
+          var transferObj = {data : data, column : column, isShiftPressed : isShiftPressed, isCtrlPressed : isCtrlPressed};
+
+          var mouseEventNameWithData = mouseEventName+"Data";
+
+          console.log(mouseEventNameWithData,transferObj);
+          this.fireDataEvent(mouseEventNameWithData,transferObj);
+
+          if(this.__columnsArr[iCol][mouseEventNameWithData]){
+            console.log("calling column "+mouseEventNameWithData+" function handler");
+            this.__columnsArr[iCol][mouseEventNameWithData].call(this,data,isShiftPressed,isCtrlPressed);
+          }
+        },this);
       },this);
 
       // Add selection change listeners
@@ -229,7 +245,7 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
         var rowIndexe = [];
 
         this._table.getSelectionModel().iterateSelection(function(iRow) {
-          var view = undefined; // click from gui -> iRow is that of current view, not unfiltered view (0).
+          var view = 0; // click from gui -> iRow is that of current view, not unfiltered view (0).
           var data = this.__getDataFromRowIdx(iRow,view);
           sel.push(data);
           rowIndexe.push(iRow);
