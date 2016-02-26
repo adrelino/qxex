@@ -27,12 +27,17 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
     _model : null,
     _tcm : null,
 
-    _columns : {
-
-    },
+    /**
+     * Must be populated by deriving classes
+     *
+     * @type {Object}
+     */
+    _columns : null,
 
     /**
-     * array, will be filled with the objects in columns after a call to __setUpColumns();
+     * Will be filled with the objects in columns after a call to __setUpColumns();
+     *
+     * @type {Array} 
      */
     __columnsArr : null,
 
@@ -229,11 +234,11 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
 
           var mouseEventNameWithData = mouseEventName+"Data";
 
-          console.log(mouseEventNameWithData,transferObj);
+          this.debug(mouseEventNameWithData,transferObj);
           this.fireDataEvent(mouseEventNameWithData,transferObj);
 
           if(this.__columnsArr[iCol][mouseEventNameWithData]){
-            console.log("calling column "+mouseEventNameWithData+" function handler");
+            this.debug("calling column "+mouseEventNameWithData+" function handler");
             this.__columnsArr[iCol][mouseEventNameWithData].call(this,data,isShiftPressed,isCtrlPressed);
           }
         },this);
@@ -250,7 +255,7 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
           sel.push(data);
           rowIndexe.push(iRow);
         },this);
-        console.log("changeSelectionData",sel,rowIndexe);
+        this.debug("changeSelectionData",sel,rowIndexe);
         this.fireDataEvent("changeSelectionData",sel);
       },this);
 
