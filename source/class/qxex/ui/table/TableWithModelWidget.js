@@ -64,7 +64,7 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
         var col = this._columns[key];
         col.configure && col.configure.call(this,col.idx, this._model, this._tcm);
       }
-      this.__addListeners();
+      this._addListeners();
 
       //add children to widget
       this._add(this._table);
@@ -165,6 +165,7 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
     },
 
     __extractDataFromRow : function(row){
+      if(!row) return null;
       return row.__data;
     },
 
@@ -211,7 +212,7 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
       this._model.setColumns(column_labels,column_names);
     },
 
-    __addListeners : function(){
+    _addListeners : function(){
       // Add cell click listeners
 
       //http://demo.qooxdoo.org/devel/apiviewer/#qx.ui.table.Table~cellTap!event
@@ -231,7 +232,6 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
           var column = this.__columnsArr[iCol];
 
           var transferObj = {data : data, column : column, isShiftPressed : isShiftPressed, isCtrlPressed : isCtrlPressed};
-
           var mouseEventNameWithData = mouseEventName+"Data";
 
           this.debug(mouseEventNameWithData,iRow);
