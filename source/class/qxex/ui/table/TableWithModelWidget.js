@@ -225,7 +225,7 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
           var isCtrlPressed = e.isCtrlPressed();
 
           //TODO: make sure we never make a copy of the row, then __data is gone
-          var view = 0; // click from gui -> iRow is that of current view, not unfiltered view (0).
+          var view = undefined; // click from gui -> iRow is that of current view, not unfiltered view (0).
           var data = this.__getDataFromRowIdx(iRow,view);
 
           var column = this.__columnsArr[iCol];
@@ -234,7 +234,7 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
 
           var mouseEventNameWithData = mouseEventName+"Data";
 
-          this.debug(mouseEventNameWithData,transferObj);
+          this.debug(mouseEventNameWithData,iRow);
           this.fireDataEvent(mouseEventNameWithData,transferObj);
 
           if(this.__columnsArr[iCol][mouseEventNameWithData]){
