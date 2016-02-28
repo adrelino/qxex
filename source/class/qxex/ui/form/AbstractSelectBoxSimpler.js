@@ -8,6 +8,8 @@
 qx.Class.define("qxex.ui.form.AbstractSelectBoxSimpler",
 {
   extend : qx.ui.form.AbstractSelectBox,
+  type : "abstract",
+
 
   /*
   *****************************************************************************
