@@ -48,14 +48,24 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
     ---------------------------------------------------------------------------
     */
 
+    /**
+     * if we want to further customize the model before a call to create;
+     */
+    createModel : function(){
+      this._model = new this.__ModelConstructor();
+    },
+
 
     /**
      * Must be called after _columns contains all needed columns!
      */
     create : function(){
 
-      this._model = new this.__ModelConstructor();
-      this.__setUpColumns();
+      if(!this._model){
+        this.createModel();
+        this.__setUpColumns();
+      }
+
       this._table = new this.__TableConstructor(this._model);
       this._tcm = this._table.getTableColumnModel();
 
@@ -102,7 +112,7 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
       var overwritingExistingData = this.deleteData(primaryKey);
 
       var row = this.__makeRowFromData(data);
-      this._model.addRows([row],false);
+      this._model.addRows([row],false,false); //data changed
 
       return overwritingExistingData;
     },
@@ -139,6 +149,17 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
     },
 
     //Convenience Bulk CRUD interface:
+    readAllData : function(){
+      var array = [];
+      var arrarr = this._model.getData();   //Simple.model.Default points this to __rowData, wich is the currently selected view and not all the data?? do we want this?
+      for (var irow=0; irow<arrarr.length; irow++) {
+        var row = arrarr[irow];
+        var data = this.__extractDataFromRow(row);
+        array.push(data);
+      }
+      return array;
+    },
+
     deleteAllData : function(){
       this._model.clearAllRows();
     },
