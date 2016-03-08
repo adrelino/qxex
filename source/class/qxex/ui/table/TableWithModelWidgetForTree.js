@@ -21,7 +21,7 @@ qx.Class.define("qxex.ui.table.TableWithModelWidgetForTree", {
 
         // click from gui -> iRow is that of current view, not unfiltered view (0).
         var view = undefined; 
-        var data = this.__getDataFromRowIdx(rowIdx2,view);
+        var data = this._getDataFromRowIdx(rowIdx2,view);
 
         var transferObj = {data : data};
         this.debug("cellTapOnAtomData",rowIdx2);

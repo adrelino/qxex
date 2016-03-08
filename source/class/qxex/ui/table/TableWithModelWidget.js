@@ -121,7 +121,7 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
       var view = 0;
       var rowIdx = this.__getRowIdxFromPrimaryKey(primaryKey,view);
       if(rowIdx != null){
-        return this.__getDataFromRowIdx(rowIdx,view);
+        return this._getDataFromRowIdx(rowIdx,view);
       }
       return null;
     },
@@ -190,7 +190,8 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
       return row.__data;
     },
 
-    __getDataFromRowIdx : function(rowIdx, view){
+    //protected since needed in TableWithModelWidgetForTree.js
+    _getDataFromRowIdx : function(rowIdx, view){
       var row = this._model.getRowReference(rowIdx,view);
       return this.__extractDataFromRow(row);
     },
@@ -248,7 +249,7 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
 
           //TODO: make sure we never make a copy of the row, then __data is gone
           var view = undefined; // click from gui -> iRow is that of current view, not unfiltered view (0).
-          var data = this.__getDataFromRowIdx(iRow,view);
+          var data = this._getDataFromRowIdx(iRow,view);
 
           var column = this.__columnsArr[iCol];
 
@@ -272,7 +273,7 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
 
         this._table.getSelectionModel().iterateSelection(function(iRow) {
           var view = 0; // click from gui -> iRow is that of current view, not unfiltered view (0).
-          var data = this.__getDataFromRowIdx(iRow,view);
+          var data = this._getDataFromRowIdx(iRow,view);
           sel.push(data);
           rowIndexe.push(iRow);
         },this);
