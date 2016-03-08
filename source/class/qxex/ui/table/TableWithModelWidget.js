@@ -112,7 +112,7 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
       var overwritingExistingData = this.deleteData(primaryKey);
 
       var row = this.__makeRowFromData(data);
-      this._model.addRows([row],false,false); //data changed
+      this._model.addRows([row],false,true); //data changed
 
       return overwritingExistingData;
     },
