@@ -107,8 +107,6 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
 
 
     insertData : function(primaryKey, data){
-      var view = 0;
-
       var overwritingExistingData = this.deleteData(primaryKey);
 
       var row = this.__makeRowFromData(data);
@@ -141,14 +139,21 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
       var view = 0;
       var rowIdx = this.__getRowIdxFromPrimaryKey(primaryKey,view);
       if(rowIdx != null){
-        var retVal = this._model.removeRows(rowId,1,view);
+        var retVal = this._model.removeRows(rowIdx,1,view);
         return true;
       }else{
         return false;
       }
     },
 
+    ///////
     //Convenience Bulk CRUD interface:
+
+    insertAllData : function(array){
+      var rows = array.map(function(data){return this.__makeRowFromData(data)},this);
+      this._model.addRows(rows,false,true); //data changed
+    },
+
     readAllData : function(){
       var array = [];
       var arrarr = this._model.getData();   //Simple.model.Default points this to __rowData, wich is the currently selected view and not all the data?? do we want this?
@@ -220,7 +225,7 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
       var idx=0; 
       
       for (key in this._columns){
-        var col = this._columns[key]
+        var col = this._columns[key];
         col.idx=idx++;
 
         var label = key;
