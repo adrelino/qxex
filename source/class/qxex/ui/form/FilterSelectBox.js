@@ -3,7 +3,7 @@
  */
 qx.Class.define("qxex.ui.form.FilterSelectBox", {
   extend : qx.ui.form.SelectBox,
-  include : qxex.ui.form.MSelectBoxFilter,
+  include : [qxex.ui.form.MSelectBoxFilter,qxex.ui.form.MSelectBoxSyncListItemStyle],
 
   members : {
     // overridden

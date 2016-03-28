@@ -133,14 +133,22 @@ qx.Class.define("qxex.Application",
 
       {
       var singleSelect = new qxex.ui.form.FilterSelectBox();
-      container.addWidgetWithLabel(singleSelect);
+      singleSelect.setSyncListItemStyle(true);
+      container.addWidgetWithLabel(singleSelect,"<br>(syncListItemStyle:true)");
       singleSelect.addListener("changeSelection",this.changeSelectionLogger,this);
 
       var multiSelect = new qxex.ui.form.FilterMultiSelectBox();
       container.addWidgetWithLabel(multiSelect);
 
+      singleSelect.setToolTipText("original tooltip");
+
       for (var i = 0; i < 6; i++) {
-        if (i<4) singleSelect.add(new qx.ui.form.ListItem("Item "+i,null,i));
+        var item = new qx.ui.form.ListItem("Item "+i,null,i);
+        if(i==2){
+          item.set({toolTipText: "Item "+i+" tooltip"});
+          item.setTextColor("red");
+        }
+        if (i<4) singleSelect.add(item);
         multiSelect.add(new qx.ui.form.ListItem("Item "+i,null,i));
       };
       multiSelect.setSelectionByModelArr([2,3]);
