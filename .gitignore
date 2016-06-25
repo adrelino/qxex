@@ -6,3 +6,4 @@ source/script
 node_modules
 api
 build
+.DS_Store
