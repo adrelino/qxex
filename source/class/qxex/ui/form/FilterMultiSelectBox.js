@@ -32,7 +32,7 @@ qx.Class.define("qxex.ui.form.FilterMultiSelectBox", {
     /**
      * Alternative to getChildren() and linear search if we have a model for the listItem
      */
-    getChildByModel(model){
+    getChildByModel : function(model){
       return this._childrenByModelHash ? this._childrenByModelHash[model] : null;
     }
   }
