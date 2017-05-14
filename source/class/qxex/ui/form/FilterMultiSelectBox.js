@@ -10,6 +10,7 @@ qx.Class.define("qxex.ui.form.FilterMultiSelectBox", {
 
   members : {
     _childrenByModelHash : null,
+    hideInsteadOfDestroy : false,
 
     // overridden
     _onKeyPress : function(e)
@@ -34,6 +35,15 @@ qx.Class.define("qxex.ui.form.FilterMultiSelectBox", {
      */
     getChildByModel : function(model){
       return this._childrenByModelHash ? this._childrenByModelHash[model] : null;
+    },
+
+    //overrridden
+    destroy : function(){
+      if(this.hideInsteadOfDestroy){
+        this.exclude();
+      }else{
+        this.base(arguments);
+      }
     }
   }
 });

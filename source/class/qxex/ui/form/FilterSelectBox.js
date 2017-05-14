@@ -6,6 +6,8 @@ qx.Class.define("qxex.ui.form.FilterSelectBox", {
   include : [qxex.ui.form.MSelectBoxFilter,qxex.ui.form.MSelectBoxSyncListItemStyle],
 
   members : {
+    hideInsteadOfDestroy : false,
+
     // overridden
     _onKeyPress : function(e)
     {
@@ -14,6 +16,15 @@ qx.Class.define("qxex.ui.form.FilterSelectBox", {
         e.preventDefault(); //otherwise SelectBox.js _onKeypress calls this.toggle();
       }else{
         this.base(arguments, e);
+      }
+    },
+
+    //overrridden
+    destroy : function(){
+      if(this.hideInsteadOfDestroy){
+        this.exclude();
+      }else{
+        this.base(arguments);
       }
     }
   }
