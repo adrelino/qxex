@@ -22,6 +22,7 @@ qx.Class.define("qxex.ui.form.FilterSelectBox", {
     //overrridden
     destroy : function(){
       if(this.hideInsteadOfDestroy){
+        this.clearFilter();
         this.exclude();
       }else{
         this.base(arguments);

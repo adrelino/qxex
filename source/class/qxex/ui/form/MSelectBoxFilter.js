@@ -60,7 +60,14 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
   },
 
   members :
-  {  
+  {
+    filterTextField : null,
+    helpLabelEmpty : null,
+
+    clearFilter : function(){
+      this.filterTextField.setValue("");
+      this.filterList("");
+    },
 
     filterList : function(filterText){
       if(!this.showFilter) return;
