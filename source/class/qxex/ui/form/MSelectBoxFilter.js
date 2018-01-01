@@ -9,33 +9,29 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
     this.addListener("keyinput", this._MonKeyInput, this);
     this.addListener("keypress", this._MonKeyPress, this);
 
-    this.MIN_LIST_ITEMS_TO_SHOW_FILTER = 6; //we only display filter for 6 or more items
-
-    this.showFilter=false;
-
     //child controls
     var list = this.getChildrenContainer(); //same as this.getChildControl("list"); , is in AbstractSelectBox
     var popup = this.getChildControl("popup");
 
-    this.filterTextField = new qx.ui.form.TextField();
+    this.__filterTextField = new qx.ui.form.TextField();
     
     // we fill the textfield by forwarding keyinputs and keypress (delete) to it so we dont have to give it focus,
     // which would interfere with the blur events
-    this.filterTextField.setAnonymous(true);
-    this.filterTextField.setKeepFocus(true);
+    this.__filterTextField.setAnonymous(true);
+    this.__filterTextField.setKeepFocus(true);
     
-    this.filterTextField.addListener("input",function(e){
+    this.__filterTextField.addListener("input",function(e){
          var filterText = e.getData();
-         this.filterList(filterText);
+         this.__filterList(filterText);
     },this);
 
-    this.filterLabel = new qx.ui.basic.Label();
+    this.__filterLabel = new qx.ui.basic.Label();
 
     var box = new qx.ui.container.Composite(new qx.ui.layout.HBox());
-    box.add(this.filterTextField,{flex:1});
-    box.add(this.filterLabel);
+    box.add(this.__filterTextField,{flex:1});
+    box.add(this.__filterLabel);
 
-    this.filterTextField.setPlaceholder(this.tr("type to filter, backspace to clear"));
+    this.__filterTextField.setPlaceholder(this.tr("type to filter, backspace to clear"));
     box.setToolTipText(this.trc("tooltip","Start typing to filter list entries. Use backspace to undo filtering character-wise."))
 
     popup.addBefore(box,list);
@@ -49,10 +45,10 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
     popup.addListener("changeVisibility",function(e){
       var l = this.getChildren().length;
       if(l>=this.MIN_LIST_ITEMS_TO_SHOW_FILTER){
-        this.showFilter=true;
+        this.__showFilter=true;
         box.show();
       }else{
-        this.showFilter=false;
+        this.__showFilter=false;
         box.exclude();
       }
     },this);
@@ -60,10 +56,26 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
   },
 
   members :
-  {  
+  { 
 
-    filterList : function(filterText){
-      if(!this.showFilter) return;
+    //PUBLIC
+
+    MIN_LIST_ITEMS_TO_SHOW_FILTER : 6, //we only display filter for 6 or more items
+
+    setFilterText : function(filterText){
+      MIN_LIST_ITEMS_TO_SHOW_FILTER = 0; //if we set programmatically, we want to be able to remove filter again even if we have less than 5 entries!
+      this.__filterTextField.setValue(filterText);
+      this.__filterList(filterText);
+    },
+
+    //PRIVATE
+
+    __filterTextField : null,
+    __filterLabel : null,
+    __showFilter : false,
+
+    __filterList : function(filterText){
+      if(!this.__showFilter) return;
       var filterTextLower = filterText.toLowerCase();
       var count=0;
       var children = this.getChildren();
@@ -78,7 +90,7 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
 
       var all=children.length;
 
-      this.filterLabel.setValue(count + "/" + all);
+      this.__filterLabel.setValue(count + "/" + all);
       if(count==0){
         this.helpLabelEmpty.show();
       }else{
@@ -88,16 +100,16 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
 
     _MonKeyInput : function(e)
     {
-      var old = this.filterTextField.getValue() || "";
+      var old = this.__filterTextField.getValue() || "";
       var newVal = old+e.getChar();
-      this.filterTextField.setValue(newVal);
-      this.filterList(newVal);
+      this.__filterTextField.setValue(newVal);
+      this.__filterList(newVal);
       //forward to the filter:
 
 //       var clone = e.clone();
-//       clone.setTarget(this.filterTextField);
+//       clone.setTarget(this.__filterTextField);
 //       clone.setBubbles(false);
-//       this.filterTextField.dispatchEvent(clone);
+//       this.__filterTextField.dispatchEvent(clone);
     },
 
         // overridden
@@ -105,10 +117,10 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
     {
       var iden = e.getKeyIdentifier();
       if(iden=="Backspace"){
-        var old = this.filterTextField.getValue() || "";
+        var old = this.__filterTextField.getValue() || "";
         var newVal = old.slice(0, -1);
-        this.filterTextField.setValue(newVal);
-        this.filterList(newVal);
+        this.__filterTextField.setValue(newVal);
+        this.__filterList(newVal);
 
         e.preventDefault();
       }
