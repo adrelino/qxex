@@ -36,11 +36,11 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
 
     popup.addBefore(box,list);
 
-    this.helpLabelEmpty = new qx.ui.basic.Label(this.tr("Press backspace to clear the filter"));
-    this.helpLabelEmpty.setTextColor("red");
-    this.helpLabelEmpty.exclude();
+    this.__helpLabelEmpty = new qx.ui.basic.Label(this.tr("Press backspace to clear the filter"));
+    this.__helpLabelEmpty.setTextColor("red");
+    this.__helpLabelEmpty.exclude();
 
-    popup.addBefore(this.helpLabelEmpty,list);
+    popup.addBefore(this.__helpLabelEmpty,list);
 
     popup.addListener("changeVisibility",function(e){
       var l = this.getChildren().length;
@@ -55,11 +55,9 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
 
   },
 
-  members :
-  { 
+  members : { 
 
     //PUBLIC
-
     MIN_LIST_ITEMS_TO_SHOW_FILTER : 6, //we only display filter for 6 or more items
 
     setFilterText : function(filterText){
@@ -68,11 +66,16 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
       this.__filterList(filterText);
     },
 
-    //PRIVATE
+    clearFilter : function(){
+      this.__filterTextField.setValue("");
+      this.__filterList("");
+    },
 
+    //PRIVATE
     __filterTextField : null,
     __filterLabel : null,
     __showFilter : false,
+    __helpLabelEmpty : null,
 
     __filterList : function(filterText){
       if(!this.__showFilter) return;
@@ -92,9 +95,9 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
 
       this.__filterLabel.setValue(count + "/" + all);
       if(count==0){
-        this.helpLabelEmpty.show();
+        this.__helpLabelEmpty.show();
       }else{
-        this.helpLabelEmpty.exclude();
+        this.__helpLabelEmpty.exclude();
       }
     },
 
