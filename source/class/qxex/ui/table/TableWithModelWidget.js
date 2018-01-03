@@ -70,7 +70,7 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
       this._tcm = this._table.getTableColumnModel();
 
       // Set up column renderers
-      for (key in this._columns){
+      for (var key in this._columns){
         var col = this._columns[key];
         col.configure && col.configure.call(this,col.idx, this._model, this._tcm);
       }
@@ -220,11 +220,11 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
 
     __setUpColumns : function(){
     	// Set the columns
-      var key, column_names = [], column_labels=[];
+      var column_names = [], column_labels=[];
       this.__columnsArr = [];
       var idx=0; 
       
-      for (key in this._columns){
+      for (var key in this._columns){
         var col = this._columns[key];
         col.idx=idx++;
 

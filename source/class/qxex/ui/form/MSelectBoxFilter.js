@@ -61,7 +61,7 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
     MIN_LIST_ITEMS_TO_SHOW_FILTER : 6, //we only display filter for 6 or more items
 
     setFilterText : function(filterText){
-      MIN_LIST_ITEMS_TO_SHOW_FILTER = 0; //if we set programmatically, we want to be able to remove filter again even if we have less than 5 entries!
+      this.MIN_LIST_ITEMS_TO_SHOW_FILTER = 0; //if we set programmatically, we want to be able to remove filter again even if we have less than 5 entries!
       this.__filterTextField.setValue(filterText);
       this.__filterList(filterText);
     },
