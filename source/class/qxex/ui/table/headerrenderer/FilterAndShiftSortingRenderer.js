@@ -84,41 +84,14 @@ qx.Class.define("qxex.ui.table.headerrenderer.FilterAndShiftSortingRenderer",
     // overridden from headerrenderer.Default, but set ToolTip to rich
     updateHeaderCell : function(cellInfo, cellWidget)
     {
-      var DefaultHeaderCellRenderer = qx.ui.table.headerrenderer.Default;
-
-      // check for localization [BUG #2699]
-      if (cellInfo.name && cellInfo.name.translate) {
-        cellWidget.setLabel(cellInfo.name.translate());
-      } else {
-        cellWidget.setLabel(cellInfo.name);
-      }
-
-      // Set image tooltip if given
-      var widgetToolTip = cellWidget.getToolTip();
-      if (this.getToolTip() != null)
-      {
-        if (widgetToolTip == null)
-        {
-          // We have no tooltip yet -> Create one
-          widgetToolTip = new qx.ui.tooltip.ToolTip(this.getToolTip()).set({rich: true});
-          cellWidget.setToolTip(widgetToolTip);
-          // Link disposer to cellwidget to prevent memory leak
-          qx.util.DisposeUtil.disposeTriggeredBy(widgetToolTip, cellWidget);
-        }
-        else
-        {
-          // Update tooltip text
-          widgetToolTip.setLabel(this.getToolTip());
+      this.base(arguments,cellInfo, cellWidget);
+      
+      if(this.getToolTip() != null){
+        var widgetToolTip = cellWidget.getToolTip();
+        if(widgetToolTip){
+          widgetToolTip.setRich(true);
         }
       }
-
-      cellInfo.sorted ?
-        cellWidget.addState(DefaultHeaderCellRenderer.STATE_SORTED) :
-        cellWidget.removeState(DefaultHeaderCellRenderer.STATE_SORTED);
-
-      cellInfo.sortedAscending ?
-        cellWidget.addState(DefaultHeaderCellRenderer.STATE_SORTED_ASCENDING) :
-        cellWidget.removeState(DefaultHeaderCellRenderer.STATE_SORTED_ASCENDING);
 
       this.getShiftPressedSorting() ?
       	cellWidget.addState(this.self(arguments).STATE_SORTED_SHIFT) :
