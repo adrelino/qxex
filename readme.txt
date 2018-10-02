@@ -9,3 +9,12 @@ for further information.
 
 short:: is a standard qooxdoo GUI application
 copy_file:: tool/data/generator/needs_generation.js source/script/custom.js
+
+Manifest.js
+    /**
+     * following entries only really needed in
+     * https://github.com/[adrelino/catalog|qooxdoo-contrib/catalog]/contributions/qooxdoo-extensions/Manifest.json
+     * which we should overwrite with this one here on each push so that they stay in sync.
+     */
+     "download" : "https://github.com/adrelino/qooxdoo-extensions/archive/master.zip",
+
