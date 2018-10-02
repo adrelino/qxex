@@ -1,0 +1,34 @@
+{
+  "targets": [
+    {
+      "type": "source",
+      "outputPath": "source-output"
+    },
+    {
+      "type": "hybrid",
+      "outputPath": "hybrid-output"
+    },
+    {
+      "type": "build",
+      "outputPath": "build-output"
+    }
+  ],
+  "defaultTarget": "source",
+  "locales": ["en"],
+  "environment": { 
+      "qx.icontheme": "Tango"
+  },     
+  "applications": [
+    {
+      "class": "qxex.Application",
+      //"theme": "bamboo.theme.Theme",
+      "name": "qxex",
+      "writeIndexHtmlToRoot": true
+    }
+  ],
+
+  "libraries": [
+    "/home/watchee/.nvm/versions/node/v8.12.0/lib/node_modules/qxcompiler/node_modules/qooxdoo-sdk/framework",
+    "."
+  ]
+}
