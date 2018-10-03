@@ -1,60 +1,72 @@
-# 
+#
 msgid ""
-msgstr ""
-"Project-Id-Version: 1.0\n"
-"Report-Msgid-Bugs-To: you@your.org\n"
-"POT-Creation-Date: 2015-12-08 12:13+0200\n"
-"PO-Revision-Date: 2015-12-08 12:13+0200\n"
-"Last-Translator: you <you@your.org>\n"
-"Language-Team: Team <yourteam@your.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+msgstr "Project-Id-Version: 1.0\nReport-Msgid-Bugs-To: you@your.org\nPOT-Creation-Date: 2015-12-08 12:13+0200\nPO-Revision-Date: 2015-12-08 12:13+0200\nLast-Translator: you <you@your.org>\nLanguage-Team: Team <yourteam@your.org>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=utf-8\nContent-Transfer-Encoding: 8bit\n"
 
-#: qxex/ui/form/MSelectBoxFilter.js:38
+#: qxex/ui/form/MSelectBoxFilter.js:38 qxex/ui/form/MSelectBoxFilter.js:34
+#: qxex/ui/form/FilterTreeSelectBox.js:40
 msgid "type to filter, backspace to clear"
 msgstr ""
 
 #. tooltip
-#: qxex/ui/form/MSelectBoxFilter.js:39
-msgid ""
-"Start typing to filter list entries. Use backspace to undo filtering "
-"character-wise."
+#: qxex/ui/form/MSelectBoxFilter.js:39 qxex/ui/form/MSelectBoxFilter.js:35
+#: qxex/ui/form/FilterTreeSelectBox.js:41
+msgid "Start typing to filter list entries. Use backspace to undo filtering character-wise."
 msgstr ""
 
-#: qxex/ui/form/MSelectBoxFilter.js:43
+#: qxex/ui/form/MSelectBoxFilter.js:43 qxex/ui/form/MSelectBoxFilter.js:39
+#: qxex/ui/form/FilterTreeSelectBox.js:45
 msgid "Press backspace to clear the filter"
 msgstr ""
 
 #. Label
-#: qxex/ui/form/MultiSelectBox.js:51
+#: qxex/ui/form/MultiSelectBox.js:51 qxex/ui/form/MultiSelectBox.js:43
 msgid "All"
 msgstr ""
 
 #. Label
-#: qxex/ui/form/MultiSelectBox.js:60
+#: qxex/ui/form/MultiSelectBox.js:60 qxex/ui/form/MultiSelectBox.js:52
 msgid "None"
 msgstr ""
 
 #. statusLine
-#: qxex/ui/form/MultiSelectBox.js:84
+#: qxex/ui/form/MultiSelectBox.js:84 qxex/ui/form/MultiSelectBox.js:76
 msgid "Use Shift-click or Crtl-click for multiple selection"
 msgstr ""
 
 #. Label
-#: qxex/ui/form/MultiSelectBox.js:298
+#: qxex/ui/form/MultiSelectBox.js:298 qxex/ui/form/MultiSelectBox.js:265
 msgid "%1/%2 chosen"
 msgstr ""
 
 #. Tooltip
-#: qxex/ui/form/MultiSelectBox.js:303
+#: qxex/ui/form/MultiSelectBox.js:303 qxex/ui/form/MultiSelectBox.js:270
 msgid "Please select at least one item"
 msgstr ""
 
 #. Tooltip
-#: qxex/ui/form/MultiSelectBox.js:307
+#: qxex/ui/form/MultiSelectBox.js:307 qxex/ui/form/MultiSelectBox.js:274
 msgid "You can select multiple items"
 msgstr ""
 
-#~ msgid "Please select at least one entry"
-#~ msgstr ""
+#
+msgstr ""
+
+#: qxex/ui/form/DateField.js:51
+msgid "Invalid format. Correctly formatted example: %1"
+msgstr ""
+
+#: qx/ui/control/DateChooser.js:258
+msgid "Last year"
+msgstr ""
+
+#: qx/ui/control/DateChooser.js:270
+msgid "Last month"
+msgstr ""
+
+#: qx/ui/control/DateChooser.js:282
+msgid "Next month"
+msgstr ""
+
+#: qx/ui/control/DateChooser.js:294
+msgid "Next year"
+msgstr ""
