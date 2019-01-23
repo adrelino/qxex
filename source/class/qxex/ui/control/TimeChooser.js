@@ -148,7 +148,8 @@ qx.Class.define("qxex.ui.control.TimeChooser",
             maximum : 95, // 24h * 60min/h / 15min = 96 (15min steps) from 0..95
             singleStep :1,
             pageStep :4,
-            focusable : false //important so blur works correctly
+            focusable : false, //important so blur works correctly
+            keepFocus : true //important to prohibit a dragstart of the knobIcon in firefox
           });
 
           control.addListener("pointerup", function(){
