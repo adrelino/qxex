@@ -53,7 +53,7 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
       }
     },this);
 
-  },
+  },            
 
   members : { 
 
@@ -69,6 +69,15 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
     clearFilter : function(){
       this.__filterTextField.setValue("");
       this.__filterList("");
+    },
+
+    open : function(){
+      var popup = this.getChildControl("popup");
+      //popup.setPlaceMethod("widget");
+      //popup.setPosition("bottom-center");
+      popup.setMaxWidth((window.innerWidth*0.7));
+      popup.placeToWidget(this, true);
+      popup.show();
     },
 
     //PRIVATE
