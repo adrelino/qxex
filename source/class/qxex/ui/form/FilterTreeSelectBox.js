@@ -9,7 +9,7 @@ qx.Class.define("qxex.ui.form.FilterTreeSelectBox", {
     this.base(arguments);
 
     this.addListener("keyinput", this._MonKeyInput, this);
-    this.addListener("keypress", this._MonKeyPress, this);
+    this.addListener("keydown", this._MonKeyPress, this);
 
     this.MIN_LIST_ITEMS_TO_SHOW_FILTER = 0; //we only display filter for 6 or more items
 

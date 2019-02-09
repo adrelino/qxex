@@ -7,7 +7,7 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
   {
 
     this.addListener("keyinput", this._MonKeyInput, this);
-    this.addListener("keypress", this._MonKeyPress, this);
+    this.addListener("keydown", this._MonKeyPress, this);
 
     //child controls
     var list = this.getChildrenContainer(); //same as this.getChildControl("list"); , is in AbstractSelectBox

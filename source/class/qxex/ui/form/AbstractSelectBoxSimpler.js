@@ -30,6 +30,11 @@ qx.Class.define("qxex.ui.form.AbstractSelectBoxSimpler",
     this.addListener("pointerover", this._onPointerOver, this);
     this.addListener("pointerout", this._onPointerOut, this);
     this.addListener("tap", this._onTap, this);
+
+    //Firefox 65 removed support for backspace key on deprecated keypress. Use keydown instead.
+    //These two lines can be removed once this is fixed in qooxdoo's AbstractSelectBox
+    this.removeListener("keypress", this._onKeyPress);
+    this.addListener("keydown", this._onKeyPress);
   },
 
   /*

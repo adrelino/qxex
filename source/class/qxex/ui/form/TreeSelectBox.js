@@ -22,8 +22,8 @@ qx.Class.define("qxex.ui.form.TreeSelectBox",
 //     this.addListener("keyinput", this._onKeyInput, this);
 //     this.addListener("changeSelection", this.__onChangeSelection, this);
 
-    this.removeListener("keypress", this._onKeyPress);
-    this.addListener("keypress", function(e){
+    this.removeListener("keydown", this._onKeyPress);
+    this.addListener("keydown", function(e){
       // clone the event and re-calibrate the event
       var clone = e.clone();
       clone.setTarget(this.getChildControl("list"));
