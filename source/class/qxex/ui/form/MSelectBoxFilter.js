@@ -6,8 +6,9 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
   construct : function()
   {
 
-    this.addListener("keyinput", this._MonKeyInput, this);
-    this.addListener("keydown", this._MonKeyPress, this);
+    //this.addListener("keyinput", this._onInput, this); // OK in chrome, not fired in Firefox 66
+    //this.addListener("input", this._onInput, this); 
+    this.addListener("keydown", this._onKeyDown, this);
 
     //child controls
     var list = this.getChildrenContainer(); //same as this.getChildControl("list"); , is in AbstractSelectBox
@@ -110,7 +111,11 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
       }
     },
 
-    _MonKeyInput : function(e)
+    /**
+     * Not called eg for "Shift" key hits
+     */
+      /*
+    _onInput : function(e)
     {
       var old = this.__filterTextField.getValue() || "";
       var newVal = old+e.getChar();
@@ -118,14 +123,15 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
       this.__filterList(newVal);
       //forward to the filter:
 
-//       var clone = e.clone();
-//       clone.setTarget(this.__filterTextField);
-//       clone.setBubbles(false);
-//       this.__filterTextField.dispatchEvent(clone);
+      //       var clone = e.clone();
+      //       clone.setTarget(this.__filterTextField);
+      //       clone.setBubbles(false);
+      //       this.__filterTextField.dispatchEvent(clone);
     },
+      */
 
-        // overridden
-    _MonKeyPress : function(e)
+    // overridden
+    _onKeyDown : function(e)
     {
       var iden = e.getKeyIdentifier();
       if(iden=="Backspace"){
@@ -135,7 +141,21 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
         this.__filterList(newVal);
 
         e.preventDefault();
+        return;
       }
+
+      var keyCode = e.getKeyCode();
+      if (keyCode < 32) {
+        // _identifier: "Shift" _keyCode: 16
+        return;
+      }
+      var charEntered = e.getKeyIdentifier();
+      var old = this.__filterTextField.getValue() || "";
+      //var charEntered = e.getChar();
+      var newVal = old+charEntered;
+      this.__filterTextField.setValue(newVal);
+      this.__filterList(newVal);      
+
     }
   }
 });
