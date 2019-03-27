@@ -7,9 +7,10 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
   {
 
     //this.addListener("input", this._onInput, this);
-    var name = qx.core.Environment.get("browser.name");
-    var version = qx.core.Environment.get("browser.version");
-    this.hasInputEvent = !(name=="firefox" && version=="66.0");
+    //var name = qx.core.Environment.get("browser.name");
+    //var version = qx.core.Environment.get("browser.version");
+    //fix in qooxdoo 2019-03-25 for Firefox 66
+    this.hasInputEvent = true;//!(name=="firefox" && version=="66.0");
     if (this.hasInputEvent)
       this.addListener("keyinput", this._onInput, this); // OK in chrome, not fired in Firefox 66
     this.addListener("keydown", this._onKeyDown, this);
