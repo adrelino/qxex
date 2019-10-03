@@ -15,8 +15,9 @@ qx.Class.define("qxex.ui.form.MultiSelectBox",
      qx.ui.form.IModelSelection
   ],
   include : [
-  //qx.ui.core.MMultiSelectionHandling, 
-  qx.ui.form.MModelSelection
+    //qx.ui.core.MMultiSelectionHandling, 
+    qx.ui.form.MModelSelection,
+    qxex.ui.form.MSelectBoxSyncButtonStyle
   ],
 
   /*
@@ -93,12 +94,6 @@ qx.Class.define("qxex.ui.form.MultiSelectBox",
     {
       refine : true,
       init : "selectbox"
-    },
-    
-    //Icon to display when multiple items are selected but have different icons
-    someIcon :
-    {
-      init : null
     }
   },
 
@@ -251,64 +246,18 @@ qx.Class.define("qxex.ui.form.MultiSelectBox",
       var atom = this.getChildControl("atom");
 
       var listItems = list.getSelection();
-      var length=listItems.length;
       var items=this.getSelectables();
-      
+
       var hasIcons=items.some(function(listItem){
-          return listItem.getIcon();
+        return listItem.getIcon();
       });
-      
+
       var total=items.length;
-
-      var label = length+"/"+total;
-      if (length != 1) {
-        label = this.trc("Label", "%1/%2 chosen", length, total);
-      }
-      
-      if(length==0){
-        label = "<b style='color:red;'>"+label+"<b>";
-        this.setToolTipText(this.trc("Tooltip","Please select at least one item"));
-        if(hasIcons) atom.setIcon("icon/32/actions/edit-delete.png");
-      }else if(length==1){
-        label+=" : "+this.__prettyPrintLabel(listItems[0]);
-        this.setToolTipText(this.trc("Tooltip","You can select multiple items"));
-         if(hasIcons) atom.setIcon(listItems[0].getIcon());
-      }else{
-        var labels = listItems.map(function(listItem){
-          return this.__prettyPrintLabel(listItem);
-        },this);
-        this.setToolTipText(labels.join(","));
-        
-        if(hasIcons){
-            var icon=listItems[0].getIcon();
-            
-            var allHaveSameIcon = listItems.every(function(listItem){
-                return icon==listItem.getIcon();
-            });
-            
-            if(!allHaveSameIcon){
-               if(this.getSomeIcon()) icon=this.getSomeIcon(); //icon that displays that items have different icons
-               else{
-                 listItems.forEach(function(listItem){
-                      var otherIcon = listItem.getIcon();
-                      if(otherIcon>icon) icon=otherIcon; //lexicographic higher icon is selected, schoses online over offline for buddy icons, so if at least one is online, green icon is displayed
-                    },this);
-               }
-            }
-                
-            atom.setIcon(icon); //TODO: which icon to display when we have selected multiple (not all) items
-        }
-      }
-      
-      if(length==total){ //all selected
-          label = "<b style='color:green;'>"+label+"<b>";
-          //if(length > 1 && hasIcons) atom.setIcon("qx/icon/Oxygen/32/actions/dialog-apply.png"); //otherwise we dont see the only icon if total is just one
+      var iconFun = function(listItem){
+        return listItem.getIcon();
       }
 
-      atom.setLabel(label || "");
-      
-      
-     // this.statusLabel.setWidth(list.getWidth());
+      this.synchronizeButtonWithSelection(atom, listItems, total, this.__prettyPrintLabel.bind(this), hasIcons, iconFun);
     },
 
 
