@@ -31,15 +31,9 @@ qx.Class.define("qxex.ui.form.MultiSelectBox",
     this.base(arguments);
 
     this.addListener("keyinput", this._onKeyInput, this);
-  
-    //ADDED
-    var list = this.getChildrenContainer(); //same as this.getChildControl("list"); , is in AbstractSelectBox
-    list.setQuickSelection(false);
-    list.setSelectionMode("multi");
-
-
+ 
     //ALL AND NONE BUTTONS
-    var buttonContainer=new qx.ui.container.Composite(new qx.ui.layout.HBox(0));
+    this.__buttonContainer=new qx.ui.container.Composite(new qx.ui.layout.HBox(0));
     
     var labelAll="<b style='color:green;'>"+this.trc("Label","All")+"<b>";
     this.allBtn = new qx.ui.form.Button(labelAll,"icon/16/actions/dialog-apply.png").set({
@@ -48,7 +42,7 @@ qx.Class.define("qxex.ui.form.MultiSelectBox",
     this.allBtn.addListener("click", function(e){
       this.setSelection(this.getSelectables());
     },this);
-    buttonContainer.add(this.allBtn,{flex : 1});
+    this.__buttonContainer.add(this.allBtn,{flex : 1});
     
     var labelNone="<b style='color:red;'>"+this.trc("Label","None")+"<b>";
     this.noneBtn = new qx.ui.form.Button(labelNone,"icon/16/actions/edit-delete.png").set({
@@ -57,26 +51,13 @@ qx.Class.define("qxex.ui.form.MultiSelectBox",
     this.noneBtn.addListener("click", function(e){
       this.setSelection(null);
     },this);
-    buttonContainer.add(this.noneBtn,{flex : 1});
-    
-    //POPUP window config
-    var popup = this.getChildControl("popup");
-    popup.setFocusable(false);
-    popup.setKeepFocus(true); //so that anything inside the popup (also the buttons) never gets the focus, is needed because when the selectbox looses focus it is closed immediately
-    //popup.setAutoHide(true); //not needed, is handled by loosing focus and _onBlur
-    popup.addBefore(buttonContainer,list);
-
-//     popup.removeListener("tap", this.close, this);  //to undo effect of closing after single click from AbstractSelectBox._createChildControlImpl
-//     popup.removeListener("close", this.close, this);  //to undo effect of closing after single click from AbstractSelectBox._createChildControlImpl
-//https://github.com/qooxdoo/qooxdoo/blob/branch_5_0_x/framework/source/class/qx/ui/form/AbstractSelectBox.js#L157
-    list.getChildControl("pane").removeListener("tap", this.close, this);  //needed since qooxdoo 5.0.1: they changed the container structure
+    this.__buttonContainer.add(this.noneBtn,{flex : 1});
 
     //STATUSLABEL
-    this.statusLabel=new qx.ui.basic.Label(
+    this.__statusLabel=new qx.ui.basic.Label(
         //this.trc("label","Shift or Crtl for multi select")
         this.trc("statusLine", "Use Shift-click or Crtl-click for multiple selection")
        ).set({rich : true, wrap:true, allowGrowX: true, width: 80, backgroundColor: "#DFDFDF"}); //rich for multiline
-    popup.add(this.statusLabel, {flex:1});
   },
 
 
@@ -113,6 +94,9 @@ qx.Class.define("qxex.ui.form.MultiSelectBox",
 
   members :
   {  
+
+    __buttonContainer : null,
+    __statusLabel : null,
     /*
     ---------------------------------------------------------------------------
       WIDGET API
@@ -130,6 +114,25 @@ qx.Class.define("qxex.ui.form.MultiSelectBox",
           control = this.base(arguments, id);
           control.setRich(true);
           break;
+
+        case "list":
+          control = this.base(arguments, id);
+          control.setQuickSelection(false);
+          control.setSelectionMode("multi");
+          //     popup.removeListener("tap", this.close, this);  //to undo effect of closing after single click from AbstractSelectBox._createChildControlImpl
+//     popup.removeListener("close", this.close, this);  //to undo effect of closing after single click from AbstractSelectBox._createChildControlImpl
+//https://github.com/qooxdoo/qooxdoo/blob/branch_5_0_x/framework/source/class/qx/ui/form/AbstractSelectBox.js#L157
+          control.getChildControl("pane").removeListener("tap", this.close, this);  //needed since qooxdoo 5.0.1: they changed the container structure
+          break;
+
+        case "popup":
+          //POPUP window config
+          control = this.base(arguments, id);
+          control.setFocusable(false);
+          control.setKeepFocus(true); //so that anything inside the popup (also the buttons) never gets the focus, is needed because when the selectbox looses focus it is closed immediately
+          //popup.setAutoHide(true); //not needed, is handled by loosing focus and _onBlur
+          control.addBefore(this.__buttonContainer,this.getChildControl("list"));
+          control.add(this.__statusLabel, {flex:1});
       }
 
       return control || this.base(arguments, id);
