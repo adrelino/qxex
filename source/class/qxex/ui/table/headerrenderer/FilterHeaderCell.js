@@ -10,6 +10,7 @@ qx.Class.define("qxex.ui.table.headerrenderer.FilterHeaderCell",
   },
   
   events : {
+    "headerFilterTextFieldBlur" :"qx.event.type.Data",
     "filterTextChanged" :"qx.event.type.Data",
     "exactMatchChanged" :"qx.event.type.Data"
   },
@@ -128,6 +129,10 @@ qx.Class.define("qxex.ui.table.headerrenderer.FilterHeaderCell",
 
           control.addListener("tap", function(e) {
           		e.stop(); //otherwise, the sorted state would change   	
+          },this);
+          
+          control.addListener("blur",function(e){
+            this.fireDataEvent("headerFilterTextFieldBlur",e);
           },this);
 
           break;
