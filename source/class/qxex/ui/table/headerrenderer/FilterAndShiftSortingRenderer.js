@@ -32,7 +32,7 @@ qx.Class.define("qxex.ui.table.headerrenderer.FilterAndShiftSortingRenderer",
   
   events :
   {
-    "headerFilterTextFieldBlur" :"qx.event.type.Data",
+    "headerFilterTextFieldBlur" :"qx.event.type.Data"
   },
   
   members :
