@@ -27,6 +27,9 @@ qx.Class.define("qxex.ui.form.DateField",
     ---------------------------------------------------------------------------
     */
 
+    removeOriginalBlurListener : function (){
+      this.removeListener("blur", this._onBlur, this);
+    },
 
     /**
      * Returns the current set date, parsed from the input-field
