@@ -23,6 +23,18 @@ qx.Theme.define("qxex.theme.Appearance",
   	"timechooser/slider" : "slider",
   	"timechooser/slider/knob" : "image",
 
+    "datefield/button2" :
+    {
+      style : function(states)
+      {
+        return {
+          icon : "icon/16/actions/edit-delete.png",
+          padding : [0, 3],
+          decorator : undefined
+        };
+      }
+    },
+
   	"timefield" : "datefield",
   	"timefield/list" : "timechooser",
     "timefield/button" :
