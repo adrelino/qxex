@@ -32,6 +32,7 @@ qx.Class.define("qxex.ui.table.headerrenderer.FilterAndShiftSortingRenderer",
   
   events :
   {
+    "headerCellActivate" :"qx.event.type.Event",
     "headerFilterTextFieldBlur" :"qx.event.type.Data"
   },
   
@@ -63,6 +64,10 @@ qx.Class.define("qxex.ui.table.headerrenderer.FilterAndShiftSortingRenderer",
       var widget = new qxex.ui.table.headerrenderer.FilterHeaderCell(this.getRenderCheckbox());
       widget.addListener("headerFilterTextFieldBlur",function(e){
         this.fireDataEvent("headerFilterTextFieldBlur",e.getData());
+      },this);
+
+      widget.addListener("activate",function(){
+        this.fireEvent("headerCellActivate");
       },this);
 
       // Update it now, using the given cell information
