@@ -5,6 +5,11 @@ qx.Class.define("qxex.ui.form.FilterSelectBox", {
   extend : qx.ui.form.SelectBox,
   include : [qxex.ui.form.MSelectBoxFilter,qxex.ui.form.MSelectBoxSyncListItemStyle],
 
+  construct : function(){
+    this.base(arguments);
+    this.addFilterTextField();
+  },
+
   members : {
     hideInsteadOfDestroy : false,
 

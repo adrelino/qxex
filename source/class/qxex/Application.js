@@ -140,16 +140,19 @@ qx.Class.define("qxex.Application",
       var multiSelect = new qxex.ui.form.FilterMultiSelectBox();
       container.addWidgetWithLabel(multiSelect);
 
+      var comboBox = new qxex.ui.form.FilterComboBox();
+      container.addWidgetWithLabel(comboBox);
+
       singleSelect.setToolTipText("original tooltip");
 
-      for (var i = 0; i < 6; i++) {
-        var item = new qx.ui.form.ListItem("Item "+i,null,i);
-        if(i==2){
-          item.set({toolTipText: "Item "+i+" tooltip"});
-          item.setTextColor("red");
-        }
-        if (i<4) singleSelect.add(item);
-        multiSelect.add(new qx.ui.form.ListItem("Item "+i,null,i));
+      for (var i = 0; i < 2000; i++) {
+        var text = this.getText();
+        var item = new qx.ui.form.ListItem(text+i,null,i);
+        item.set({toolTipText: text+i+" tooltip"});
+        item.setTextColor("red");
+        singleSelect.add(item);
+        multiSelect.add(new qx.ui.form.ListItem(text+i,null,i));
+        comboBox.add(new qx.ui.form.ListItem(text+i,null,i));
       };
       multiSelect.setSelectionByModelArr([2,3]);
       singleSelect.MIN_LIST_ITEMS_TO_SHOW_FILTER=2;
@@ -187,20 +190,8 @@ qx.Class.define("qxex.Application",
         var tree = new qxex.ui.form.FilterTreeSelectBox();
         container.addWidgetWithLabel(tree);
 
-        var abc = "abcdefghijklmnopqrstuvwxyz";
-        var l = abc.length;
-
-        function getText(){
-          var ll = 2 + Math.round(Math.random()*5);
-          var str = "";
-          for(var i=0; i<ll; i++){
-            str += abc[Math.round(Math.random()*(l-1))];
-          }
-          return str;
-        }
-
         for(var i=0; i<5; i++){
-          var foo = new qx.ui.tree.TreeFolder(getText() + i);
+          var foo = new qx.ui.tree.TreeFolder(this.getText() + i);
           tree.add(foo);
 
           
@@ -208,7 +199,7 @@ qx.Class.define("qxex.Application",
           var depth = 3;
           for(var j=0; j<depth; j++){
             var C = j==depth-1 ? qx.ui.tree.TreeFile : qx.ui.tree.TreeFolder;
-            var bar = new C(getText() + " " +j);
+            var bar = new C(this.getText() + " " +j);
             foo.add(bar);
             parent.add(bar);
             if(j%2==1) parent=bar;
@@ -219,7 +210,17 @@ qx.Class.define("qxex.Application",
 
       tree.addListener("changeSelection",this.changeSelectionLogger,this);
 
+    },
 
+    getText : function(){
+        var abc = "abcdefghijklmnopqrstuvwxyz";
+        var l = abc.length;
+        var ll = 3 + Math.round(Math.random()*7);
+        var str = "";
+        for(var i=0; i<ll; i++){
+          str += abc[Math.round(Math.random()*(l-1))];
+        }
+        return str;
     },
 
 

@@ -62,15 +62,14 @@
    
     "libraries" :
     {
-      "library" :
+      /*"library" :
       [
         { "manifest" : "../Bamboo/Manifest.json"}
        ,{ "manifest" : "../GraydientTheme/Manifest.json"}
        ,{ "manifest" : "../DarkTheme/Manifest.json"}
        ,{ "manifest" : "../SilverBlueTheme/Manifest.json"}
        ,{ "manifest" : "../Bernstein/Manifest.json"}
-
-      ]
+      ]*/
     },
 
     "includes" : {
@@ -79,11 +78,11 @@
         ,"qx.theme.Classic"
         ,"qx.theme.Simple"
         ,"qx.theme.Indigo"
-        ,"bamboo.theme.Theme"
+        /*,"bamboo.theme.Theme"
         ,"graydienttheme.theme.Theme"
         ,"darktheme.theme.Theme"   
         ,"silverbluetheme.theme.Theme"
-        ,"bernstein.theme.Theme"
+        ,"bernstein.theme.Theme" */
       ]
     }
     

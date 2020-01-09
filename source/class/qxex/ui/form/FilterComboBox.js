@@ -1,13 +1,16 @@
 /**
  * ComboBox with search-as-you type autocomplete filter.
  */
-qx.Class.define("qxex.ui.form.FilterComboBox", { //TODO: search as you type
+qx.Class.define("qxex.ui.form.FilterComboBox", {
   extend : qx.ui.form.ComboBox,
+  include : qxex.ui.form.MSelectBoxFilter,
 
   construct : function(){
     this.base(arguments);
     this._childrenByModelHash={};
     this._childrenByLabelHash={};
+    this.getChildControl("button").setKeepFocus(true); //keep cursor in textfield when opening list
+    this.addFilterTextField(this.getChildControl("textfield"));
   },
 
   members : {
@@ -15,11 +18,18 @@ qx.Class.define("qxex.ui.form.FilterComboBox", { //TODO: search as you type
     _childrenByLabelHash : null,
 
     hideInsteadOfDestroy : false,
-
+    
     // overridden
     focus : function()
     {
       this.getChildControl("textfield").getFocusElement().focus();
+    },
+
+    // overridden
+    tabFocus : function()
+    {
+      this.focus();
+      this.selectAllText();
     },
 
     //overridden from http://www.qooxdoo.org/current/apiviewer/#qx.ui.form.AbstractSelectBox
@@ -31,12 +41,12 @@ qx.Class.define("qxex.ui.form.FilterComboBox", { //TODO: search as you type
 
     setModelValue : function(value)
     {
-      console.log("setModelValue",value);
       var item = this._childrenByModelHash[value];
       if(item){
         value = item.getLabel(); //key -> label replacement
       }
       this.setValue(value);
+      this.setFilterText(value);
     },
 
     getModelValue : function()
@@ -50,9 +60,48 @@ qx.Class.define("qxex.ui.form.FilterComboBox", { //TODO: search as you type
       return value;
     },
 
+    // overridden
+    _onTap: function(){
+      //do not close
+    },
+
+
+    // overridden
+    _onKeyPress : function(e)
+    {
+      var popup = this.getChildControl("popup");
+      var iden = e.getKeyIdentifier();
+
+      if (iden == "Enter" && !popup.isVisible())
+      {
+        this.open();
+        e.stop();
+      }
+      else if(iden == "Left" || iden == "Right")
+      {
+        //this.getChildControl("textfield").handleKeyPress(e);
+      }
+      else
+      {
+        this.base(arguments, e);
+      }
+    },
+
+
+    /**
+     * Puts the cursor after the end of the text
+     *
+     */
+    // overridden
+    selectAllText : function() {
+      var text = this.getValue() || "";
+      this.getChildControl("textfield").setTextSelection(text.length);
+    },
+
     //overrridden
     destroy : function(){
       if(this.hideInsteadOfDestroy){
+        this.clearFilter();
         this.exclude();
       }else{
         this.base(arguments);

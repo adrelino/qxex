@@ -27,9 +27,9 @@ function updateRepo(){
 
 cd ..;
 updateQooxdoo;
-updateRepo 'scro34' 'Bamboo';
-updateRepo 'scro34' 'GraydientTheme';
-updateRepo 'scro34' 'DarkTheme';
-updateRepo 'scro34' 'SilverBlueTheme';
-updateRepo 'scro34' 'Bernstein';
+#updateRepo 'scro34' 'Bamboo';
+#updateRepo 'scro34' 'GraydientTheme';
+#updateRepo 'scro34' 'DarkTheme';
+#updateRepo 'scro34' 'SilverBlueTheme';
+#updateRepo 'scro34' 'Bernstein';
 cd 'qooxdoo-extensions';

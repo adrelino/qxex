@@ -6,20 +6,18 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
   construct : function()
   {
 
-    //this.addListener("input", this._onInput, this);
-    //var name = qx.core.Environment.get("browser.name");
-    //var version = qx.core.Environment.get("browser.version");
-    //fix in qooxdoo 2019-03-25 for Firefox 66
-    this.hasInputEvent = true;//!(name=="firefox" && version=="66.0");
-    if (this.hasInputEvent)
-      this.addListener("keyinput", this._onInput, this); // OK in chrome, not fired in Firefox 66
-    this.addListener("keydown", this._onKeyDown, this);
+  },
+
+
+  members : { 
+
+    addFilterTextField : function(textField){
 
     //child controls
     var list = this.getChildrenContainer(); //same as this.getChildControl("list"); , is in AbstractSelectBox
     var popup = this.getChildControl("popup");
 
-    this.__filterTextField = new qx.ui.form.TextField();
+    this.__filterTextField = textField || new qx.ui.form.TextField();
     // input: The event is fired on every keystroke modifying the value of the field.
     //this.__filterTextField.addListener("keyinput", this._onInput, this); // Does not help Firefox 66
     //this.__filterTextField.addListener("input", this._onInput, this); // Does not help Firefox 66
@@ -27,22 +25,19 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
     
     // we fill the textfield by forwarding keyinputs and keypress (delete) to it so we dont have to give it focus,
     // which would interfere with the blur events
-    this.__filterTextField.setAnonymous(true);
-    this.__filterTextField.setKeepFocus(true);
-    
-    /*
-    // is this ever called??
-    this.__filterTextField.addListener("input",function(e){
-      //this._onInput(e); ´
-      var filterText = e.getData();
-      this.__filterList(filterText);
-    },this);
-    */
+    if(!textField){
+        this.addListener("keyinput", this._onInput, this);
+        this.addListener("keydown", this._onKeyDown, this);
+        this.__filterTextField.setAnonymous(true);
+        this.__filterTextField.setKeepFocus(true);
+    }else{
+        textField.addListener("input",this._onInputTextField, this);
+    }
 
     this.__filterLabel = new qx.ui.basic.Label();
 
     var box = new qx.ui.container.Composite(new qx.ui.layout.HBox());
-    box.add(this.__filterTextField,{flex:1});
+    if(!textField) box.add(this.__filterTextField,{flex:1});
     box.add(this.__filterLabel);
 
     this.__filterTextField.setPlaceholder(this.tr("type to filter, backspace to clear"));
@@ -67,9 +62,7 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
       }
     },this);
 
-  },            
-
-  members : { 
+    },
 
     //PUBLIC
     MIN_LIST_ITEMS_TO_SHOW_FILTER : 6, //we only display filter for 6 or more items
@@ -89,7 +82,7 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
       var popup = this.getChildControl("popup");
       //popup.setPlaceMethod("widget");
       //popup.setPosition("bottom-center");
-      popup.setMaxWidth((window.innerWidth*0.7));
+      popup.setMaxWidth(Math.round(window.innerWidth*0.7));
       popup.placeToWidget(this, true);
       popup.show();
     },
@@ -154,25 +147,13 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
         e.preventDefault();
         return;
       }
+    },
 
-      if (this.hasInputEvent)
-        return;
-
-      //var keyCode = e.getKeyCode();
-      //if (keyCode < 32) {
-      //  // _identifier: "Shift" _keyCode: 16
-      //  return;
-      //}
-      var charEntered = e.getKeyIdentifier();
-      if (charEntered.length > 1) {
-        return; // "Shift" or "Meta" "AltGraph" etc
-      }
-      var old = this.__filterTextField.getValue() || "";
-      //var charEntered = e.getChar();
-      var newVal = old+charEntered;
-      this.__filterTextField.setValue(newVal);
-      this.__filterList(newVal);      
-
+    // overridden
+    _onInputTextField : function(e)
+    {
+        var newVal = this.__filterTextField.getValue() || "";
+        this.__filterList(newVal);
     }
   }
 });

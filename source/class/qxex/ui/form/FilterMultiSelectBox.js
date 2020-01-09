@@ -8,6 +8,11 @@ qx.Class.define("qxex.ui.form.FilterMultiSelectBox", {
   extend : qxex.ui.form.MultiSelectBox,
   include : qxex.ui.form.MSelectBoxFilter,
 
+  construct : function(){
+    this.base(arguments);
+    this.addFilterTextField();
+  },
+
   members : {
     _childrenByModelHash : null,
     hideInsteadOfDestroy : false,
