@@ -16,7 +16,7 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
     {
       check : "Function",
       init  : function(item) {
-        return item.getUserData("filter").indexOf("47") > 0;
+        return item && item.getUserData("filter") && item.getUserData("filter").indexOf("47") > 0;
       }
     },
 
