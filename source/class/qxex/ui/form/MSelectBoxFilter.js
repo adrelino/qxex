@@ -12,6 +12,12 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
       apply : "_applyDisplayFilterCheckBox"
     },
 
+    textFilterExcludeItems : // setTextFilterExcludeItems(false);
+    {
+      check : "Boolean",
+      init : true
+    },
+
     groupFilter :
     {
       check : "Function",
@@ -165,15 +171,32 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
       var countGroup=0;
       var children = this.getChildren();
       children.forEach(function(item){
-          var showText = filterTextLower.length == 0 || this.getSearchFilter()(item, filterTextLower);
-          var showFilter = (this.__filterCheckBox == null || filterCheckBoxValue == false) || this.getGroupFilter()(item);
+          var textFilterMatches = filterTextLower.length == 0 || this.getSearchFilter()(item, filterTextLower);
+          var showText = textFilterMatches;
           if(showText) countSearch++;
+
+          var showFilter = (this.__filterCheckBox == null || filterCheckBoxValue == false) || this.getGroupFilter()(item);
           if(showFilter) countGroup++;
+
+          console.log("qxex.ui.form.MSelectBoxFilter: filterText='" + filterText + "', showText=" + showText + ", showFilter=" + showFilter);
+
+          if(!showText) {
+            if (!this.isTextFilterExcludeItems()) {
+              showText = true;
+            }
+          }
+
           if(showText && showFilter){
             item.show();
+            if (textFilterMatches && !this.isTextFilterExcludeItems()) {
+              // TODO loops when using setTextFilterExcludeItems(false):
+              this.setSelection([item]);
+            }
             count++;
           }
-          else item.exclude();
+          else {
+            item.exclude();  
+          }
       },this);
 
       var all=children.length;
