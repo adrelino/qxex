@@ -170,6 +170,7 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
       var countSearch=0;
       var countGroup=0;
       var children = this.getChildren();
+      var selection = [];
       children.forEach(function(item){
           var textFilterMatches = filterTextLower.length == 0 || this.getSearchFilter()(item, filterTextLower);
           var showText = textFilterMatches;
@@ -190,7 +191,7 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
             item.show();
             if (textFilterMatches && !this.isTextFilterExcludeItems()) {
               // TODO loops when using setTextFilterExcludeItems(false):
-              this.setSelection([item]);
+              selection.push(item);
             }
             count++;
           }
@@ -198,6 +199,10 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
             item.exclude();  
           }
       },this);
+
+      if(!this.isTextFilterExcludeItems()){
+         this.setSelection ? this.setSelection(selection) : this.getChildControl("list").setSelection(selection); 
+      }
 
       var all=children.length;
 
