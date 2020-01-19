@@ -13,6 +13,14 @@ qx.Class.define("qxex.ui.form.FilterComboBox", {
     this.addFilterTextField(this.getChildControl("textfield"));
   },
 
+  properties : {
+    ignoreListChangeSelection :
+    {
+      check : "Boolean",
+      init : false
+    }
+  },
+
   members : {
     _childrenByModelHash : null,
     _childrenByLabelHash : null,
@@ -85,6 +93,13 @@ qx.Class.define("qxex.ui.form.FilterComboBox", {
       {
         this.base(arguments, e);
       }
+    },
+
+    // overridden
+    _onListChangeSelection : function(e)
+    {
+      if(this.isIgnoreListChangeSelection()) return;
+      return this.base(arguments,e);
     },
 
 

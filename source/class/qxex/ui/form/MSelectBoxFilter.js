@@ -171,37 +171,36 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
       var countGroup=0;
       var children = this.getChildren();
       var selection = [];
-      children.forEach(function(item){
-          var textFilterMatches = filterTextLower.length == 0 || this.getSearchFilter()(item, filterTextLower);
-          var showText = textFilterMatches;
+
+      for(var i=0, l=children.length; i<l; i++){
+
+          var item = children[i];
+
+          var showText = filterTextLower.length == 0 || this.getSearchFilter()(item, filterTextLower);
           if(showText) countSearch++;
 
           var showFilter = (this.__filterCheckBox == null || filterCheckBoxValue == false) || this.getGroupFilter()(item);
           if(showFilter) countGroup++;
 
-          console.log("qxex.ui.form.MSelectBoxFilter: filterText='" + filterText + "', showText=" + showText + ", showFilter=" + showFilter);
 
-          if(!showText) {
-            if (!this.isTextFilterExcludeItems()) {
-              showText = true;
-            }
-          }
-
-          if(showText && showFilter){
+          if(showFilter){
             item.show();
-            if (textFilterMatches && !this.isTextFilterExcludeItems()) {
-              // TODO loops when using setTextFilterExcludeItems(false):
+            if (showText) {
+              count++;
               selection.push(item);
+            }else{
+              this.isTextFilterExcludeItems() && item.exclude();
             }
-            count++;
+          } else {
+            item.exclude();
           }
-          else {
-            item.exclude();  
-          }
-      },this);
+      };
 
       if(!this.isTextFilterExcludeItems()){
-         this.setSelection ? this.setSelection(selection) : this.getChildControl("list").setSelection(selection); 
+         this.setIgnoreListChangeSelection && this.setIgnoreListChangeSelection(true); //ignore event
+         var singleSelection = selection.length ? [selection[0]] : [];
+         this.setSelection ? this.setSelection(singleSelection) : this.getChildControl("list").setSelection(singleSelection);
+         this.setIgnoreListChangeSelection && this.setIgnoreListChangeSelection(false);
       }
 
       var all=children.length;
