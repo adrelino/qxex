@@ -17,7 +17,8 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
       check : "Function",
       init  : function(item) {
         return item && item.getUserData("filter") && item.getUserData("filter").indexOf("47") > 0;
-      }
+      },
+      apply : "_applyGroupFilter"
     },
 
     searchFilter :
@@ -47,14 +48,21 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
         this.addListener("keydown", this._onKeyDown, this);
         this.__filterTextField.setAnonymous(true);
         this.__filterTextField.setKeepFocus(true);
-        var atom = this.getChildControl("atom");
-        //atom.setHeight(22);//atom.setMaxHeight(22);
+    }else{
+      textField.addListener("input",function(e){
+        var newVal = textField.getValue() || "";
+        textField.fireDataEvent("changeValue", newVal);
+      },this);
     }
 
     this.__filterLabel = new qx.ui.basic.Label();
 
-    var box = new qx.ui.container.Composite(new qx.ui.layout.HBox());
-    if(!textField) box.add(this.__filterTextField,{flex:1});
+    var box = new qx.ui.container.Composite(new qx.ui.layout.HBox(2));
+    if(!textField){
+        box.add(this.__filterTextField,{flex:1});
+    }else{
+        box.add(new qx.ui.basic.Label(this.tr("Search filter") + ": "));
+    }
     box.add(this.__filterLabel);
 
     this.__filterTextField.setPlaceholder(this.tr("type to filter, backspace to clear"));
@@ -84,11 +92,16 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
     addFilterCheckBox : function(){
       var list = this.getChildrenContainer();
       var popup = this.getChildControl("popup");
-      this.__filterCheckBox = new qx.ui.form.CheckBox(this.trc("checkbox","Group filter"));
+      this.__filterCheckBox = new qx.ui.form.CheckBox(this.tr("Group filter") + ": ");
       this.__filterCheckBox.setKeepFocus(true);
       this.__filterCheckBox.addListener("changeValue",this._onFilterCheckBoxChangeValue, this);
-      this.__filterCheckBox.setToolTipText(this.trc("tooltip","Check to filter out entries based on group filter"))
-      popup.addBefore(this.__filterCheckBox,list);
+      this.__filterCheckBox.setToolTipText(this.trc("tooltip","Check to filter out entries based on group filter"));
+
+      this.__filterLabelGroup = new qx.ui.basic.Label();
+      var box = new qx.ui.container.Composite(new qx.ui.layout.HBox(2));
+      box.add(this.__filterCheckBox,{flex:1});
+      box.add(this.__filterLabelGroup);
+      popup.addBefore(box,list);
     },
 
     _onFilterCheckBoxChangeValue : function(val){
@@ -107,6 +120,10 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
       }
     },
 
+    _applyGroupFilter : function(){
+       this.__filterCheckBox && this.__filterCheckBox.fireDataEvent("changeValue",this.__filterCheckBox.getValue());   
+    },
+
     //PUBLIC
     MIN_LIST_ITEMS_TO_SHOW_FILTER : 6, //we only display filter for 6 or more items
 
@@ -117,6 +134,10 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
 
     clearFilter : function(){
       this.__filterTextField.setValue("");
+    },
+
+    setGroupFilterCheckBoxValue : function(value){
+      this.__filterCheckBox && this.__filterCheckBox.setValue(value);
     },
 
     open : function(){
@@ -132,6 +153,7 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
     __filterCheckBox : null,
     __filterTextField : null,
     __filterLabel : null,
+    __filterLabelGroup : null,
     __showFilter : false,
     __helpLabelEmpty : null,
 
@@ -139,10 +161,14 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
       if(!this.__showFilter && !this.__filterCheckBox) return;
       var filterTextLower = filterText.toLowerCase();
       var count=0;
+      var countSearch=0;
+      var countGroup=0;
       var children = this.getChildren();
       children.forEach(function(item){
           var showText = filterTextLower.length == 0 || this.getSearchFilter()(item, filterTextLower);
           var showFilter = (this.__filterCheckBox == null || filterCheckBoxValue == false) || this.getGroupFilter()(item);
+          if(showText) countSearch++;
+          if(showFilter) countGroup++;
           if(showText && showFilter){
             item.show();
             count++;
@@ -152,8 +178,9 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
 
       var all=children.length;
 
-      this.__filterLabel.setValue(count + "/" + all);
-      if(count==0){
+      this.__filterLabel.setValue(count + "/" + countGroup);
+      this.__filterLabelGroup && this.__filterLabelGroup.setValue(countGroup + "/" + all);
+      if(countSearch==0){
         this.__helpLabelEmpty.show();
       }else{
         this.__helpLabelEmpty.exclude();
