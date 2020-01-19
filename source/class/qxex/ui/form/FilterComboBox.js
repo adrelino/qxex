@@ -63,6 +63,12 @@ qx.Class.define("qxex.ui.form.FilterComboBox", {
       var item = this._childrenByLabelHash[value];
       if(item){
         value = item.getModel(); //label -> key replacement
+      }else{
+        //if ignoreListChangeSelection was true, value may not reflect current list selection
+        //but e.g. only a substring of it due to search as you type filter.
+        //So replace the search string with the selected == first matching item befor cellEditor closes.
+        var sel = this.getChildControl("list").getSelection();
+        if(sel.length) value = sel[0].getModel(); 
       }
       //console.log("getModelValue",value);
       return value;
