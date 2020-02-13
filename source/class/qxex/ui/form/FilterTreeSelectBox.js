@@ -113,7 +113,7 @@ qx.Class.define("qxex.ui.form.FilterTreeSelectBox", {
 
         var show = showNode || showChildren;
 
-        if(show || noFilter){
+        if((show || noFilter) && (depth > 0 || !this.getChildControl("list").getHideRoot())){
             node.show();
         }else{
             node.exclude();

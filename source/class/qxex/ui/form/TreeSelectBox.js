@@ -108,18 +108,20 @@ qx.Class.define("qxex.ui.form.TreeSelectBox",
         break;
 
         case "list":
-          control = new qx.ui.tree.Tree().set({
+          control = new qxex.ui.tree.Tree().set({
             focusable: false,
             keepFocus: true,
             height: null,
             width: null,
-            maxHeight: this.getMaxListHeight()
+            maxHeight: this.getMaxListHeight(),
+            openMode: "tap",
+            rootOpenClose: true
 //             selectionMode: "one",
 //             quickSelection: true
           });
 
           control.setRoot(this.getChildControl("root"));
-//           control.setHideRoot(true);
+          control.setHideRoot(true);
 
           control.addListener("changeSelection", this._onListChangeSelection, this);
           control.addListener("pointerdown", this._onListPointerDown, this);
@@ -135,11 +137,13 @@ qx.Class.define("qxex.ui.form.TreeSelectBox",
 //  */
 // qx.Mixin.define("qx.ui.core.MRemoteChildrenHandling",
     getChildrenContainer : function(){
-      return this.getChildControl("list").getChildrenContainer();
+      return this.getChildControl("root");
     },
 
     add : function(item){
-      return this.getChildControl("root").add(item);
+      var root = this.getChildrenContainer();
+      root.add(item);
+      if(root.getChildren().length==1) this.setSelection([item]); //mimic single selection where an item always has to be selected
     },
 
     /**
@@ -163,57 +167,6 @@ qx.Class.define("qxex.ui.form.TreeSelectBox",
       return valueLabel;
     },
 
-
-    /*
-    ---------------------------------------------------------------------------
-      HELPER METHODS FOR SELECTION API
-    ---------------------------------------------------------------------------
-    */
-
-    /**
-     * Returns the list items for the selection.
-     *
-     * @return {qx.ui.form.ListItem[]} List itmes to select.
-     */
-    _getItems : function() {
-      return this.getChildControl("list").getItems(true);
-    },
-
-    /**
-     * Returns if the selection could be empty or not.
-     *
-     * @return {Boolean} <code>true</code> If selection could be empty,
-     *    <code>false</code> otherwise.
-     */
-    _isAllowEmptySelection: function() {
-      return true;
-    },
-
-//     add : function(treeItem){
-//       this.getChildControl("root").add(treeItem);
-//     },
-
-    /**
-     * Event handler for <code>changeSelection</code>.
-     *
-     * @param e {qx.event.type.Data} Data event.
-     */
-//     __onChangeSelection : function(e)
-//     {
-//       var listItem = e.getData()[0];
-
-//       var list = this.getChildControl("list");
-//       if (list.getSelection()[0] != listItem) {
-//         if(listItem) {
-//           list.setSelection([listItem]);
-//         } else {
-//           list.resetSelection();
-//         }
-//       }
-
-//       this.__updateIcon();
-//       this.__updateLabel();
-//     },
 
 
     /**
