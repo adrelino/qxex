@@ -48,6 +48,7 @@ qx.Class.define("qxex.ui.form.FilterMultiSelectBox", {
         this.clearFilter();
         this.exclude();
       }else{
+        this._childrenByModelHash = null;
         this.base(arguments);
       }
     }
