@@ -21,9 +21,12 @@ qx.Class.define("qxex.util.LanguageManager",
 
 
 		getAll : function() {
-			return qx.locale.Manager.getInstance().getAvailableLocales().map(function(name){
-		      return { title: this.names[name], name: name};
-		    },this);
+			var locales = qx.locale.Manager.getInstance().getAvailableLocales();
+			var languages = [];
+			locales.forEach(function(name){
+				if(name.length==2) languages.push({ title: this.names[name], name: name});
+			},this);
+			return languages;
 	    },
 
 	    getCurrent : function(){

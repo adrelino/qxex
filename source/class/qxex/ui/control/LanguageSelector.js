@@ -30,7 +30,9 @@ qx.Class.define("qxex.ui.control.LanguageSelector",{
 
     this.addListener("changeSelection",function(e){
       var name = e.getData()[0].getModel();
-      qxex.util.LanguageManager.setByName(name);
+      if(qx.core.Environment.get("qx.dynlocale")){
+        qxex.util.LanguageManager.setByName(name);
+      }
       this.fireDataEvent("changeValue",name);
     },this);
 
@@ -43,6 +45,14 @@ qx.Class.define("qxex.ui.control.LanguageSelector",{
   members : {
     _updateLocale : function(){
       this.setModelSelection([qxex.util.LanguageManager.getCurrent()]);
+    },
+
+    getCurrentLanguage : function(){
+      return this.getSelection()[0].getModel();
+    },
+
+    setCurrentLanguage : function(key){
+      this.setModelSelection([key]);
     }
   },
 
