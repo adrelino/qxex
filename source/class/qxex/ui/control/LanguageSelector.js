@@ -16,23 +16,22 @@ qx.Class.define("qxex.ui.control.LanguageSelector",{
   construct : function(){
     this.base(arguments);
 
-    var props = { width : 40, height: 30, scale : true};
+    //var props = { width : 40, height: 30, scale : true};
+    //this.getChildControl("atom").getChildControl("icon").set(props);
 
-    this.getChildControl("atom").getChildControl("icon").set(props);
-
-    qxex.util.LanguageManager.getAll().forEach(function(locale){
-      var item = new qx.ui.form.ListItem(locale.title + " ("+locale.name+")","qxex/languageicons/flags/"+locale.name+".png",locale.name);
-      item.getChildControl("icon").set(props);
+    qxex.util.LanguageManager.getInstance().getAll().forEach(function(lang){
+      var item = new qx.ui.form.ListItem(lang[0],lang[1],lang[2]);
+      //item.getChildControl("icon").set(props);
       this.add(item);
-    },this,this);
+    },this);
 
     this._updateLocale();
 
     this.addListener("changeSelection",function(e){
       var name = e.getData()[0].getModel();
-      if(qx.core.Environment.get("qx.dynlocale")){
-        qxex.util.LanguageManager.setByName(name);
-      }
+      //if(qx.core.Environment.get("qx.dynlocale")){
+        qxex.util.LanguageManager.getInstance().setByName(name);
+      //}
       this.fireDataEvent("changeValue",name);
     },this);
 
@@ -44,7 +43,7 @@ qx.Class.define("qxex.ui.control.LanguageSelector",{
 
   members : {
     _updateLocale : function(){
-      this.setModelSelection([qxex.util.LanguageManager.getCurrent()]);
+      this.setModelSelection([qxex.util.LanguageManager.getInstance().getCurrent()]);
     },
 
     getCurrentLanguage : function(){

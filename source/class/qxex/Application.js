@@ -178,6 +178,10 @@ qx.Class.define("qxex.Application",
         var widget = new qxex.ui.form.DateField();
         container.addWidgetWithLabel(widget);
       }
+      {
+        var widget = new qxex.ui.form.MultiLangTextField();
+        container.addWidgetWithLabel(widget);
+      }
 
       // var button = new qx.ui.form.Button(null,"icon/16/apps/preferences-clock.png");
       // doc.add(button,{left:2,top:800-17});

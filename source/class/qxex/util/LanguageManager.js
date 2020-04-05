@@ -1,5 +1,9 @@
 qx.Class.define("qxex.util.LanguageManager",
 {
+  type: "singleton",
+  extend : qx.core.Object,
+  include : qx.locale.MTranslation,
+
 	statics : {
 
 		/**
@@ -18,19 +22,29 @@ qx.Class.define("qxex.util.LanguageManager",
 			"vi" : "Tiếng Việt",
 			"zh" : "中文"
 		},
+		none : "none"
+	},
 
-
+	members : {
 		getAll : function() {
 			var locales = qx.locale.Manager.getInstance().getAvailableLocales();
 			var languages = [];
+			languages.push([this.tr("None"),"icon/16/actions/edit-delete.png",qxex.util.LanguageManager.none]);
 			locales.forEach(function(name){
-				if(name.length==2) languages.push({ title: this.names[name], name: name});
+				if(name.length==2){
+					var label = qxex.util.LanguageManager.names[name] + " ("+name+")";
+					var icon = "qxex/languageicons/flags/"+name+".png";
+					var model = name;
+					languages.push([label,icon,model]);
+				}
 			},this);
 			return languages;
 	    },
 
-	    getCurrent : function(){
-	    	return qx.locale.Manager.getInstance().getLocale();
+			getCurrent : function(){
+				var locale =  qx.locale.Manager.getInstance().getLocale();
+				var lang = locale.split("_")[0];
+				return lang;
 	    },
 
 	    setByName : function(name) {
