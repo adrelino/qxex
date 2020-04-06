@@ -15,6 +15,9 @@ qx.Class.define("qxex.ui.form.MultiLangTextField",
       this.base(arguments);
       this.__items = {};
       qxex.util.LanguageManager.getInstance().getAll().forEach(function (lang) {
+        // var langName = lang[0]; // "Deutsch (de)"
+        // var langIconUrl = lang[1]; // "qxex/languageicons/flags/de.png"
+        // var localeId = lang[2]; // "de"
         var item = new qx.ui.form.ListItem(null, lang[1], lang[2]);
         item.setToolTipText(lang[0]);
         this.__items[lang[2]] = item;
