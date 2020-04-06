@@ -10,7 +10,7 @@ fi
 #initally
 #git checkout --orphan gh-pages
 #git rm -rf .
-if [ -d "$DIR" ]
+if [ -e "$DIR" ] #-e file or dir, -f file, -d dir
 then
 	echo "---- deploying folder $DIR to gh-pages----";
 	git add $DIR -f;
