@@ -15,6 +15,10 @@ qx.Class.define("qxex.ui.control.ThemeSelector",{
     "changeValue" : "qx.event.type.Data"
   },
 
+  /**
+   * @param excludedThemeNamesArr {String[] ?}  The names of the themes to hide.
+   * @param type {String ? 'meta'} Whether 'meta' or 'icon' theme.
+   */
   construct : function(excludedThemeNamesArr, type){
     this.base(arguments);
 

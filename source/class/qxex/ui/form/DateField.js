@@ -12,6 +12,9 @@ qx.Class.define("qxex.ui.form.DateField",
 {
   extend : qx.ui.form.DateField,
 
+  /**
+   * @param withClearButton {Boolean ? false} Whether to add an additional button to clear the date.
+   */
   construct : function(withClearButton)
   {
     this.base(arguments);
@@ -54,6 +57,9 @@ qx.Class.define("qxex.ui.form.DateField",
     ---------------------------------------------------------------------------
     */
 
+    /**
+     * Call to avoid that the popup closes on blur.
+     */
     removeOriginalBlurListener : function (){
       this.removeListener("blur", this._onBlur, this);
     },

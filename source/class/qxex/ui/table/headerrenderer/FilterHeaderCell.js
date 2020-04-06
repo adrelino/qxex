@@ -1,3 +1,6 @@
+/**
+ * A filter header cell composed of a TextField and optionally a CheckBox.
+ */
 qx.Class.define("qxex.ui.table.headerrenderer.FilterHeaderCell",
 {
   extend : qx.ui.table.headerrenderer.HeaderCell,

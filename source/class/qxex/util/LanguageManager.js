@@ -1,3 +1,7 @@
+/**
+ * Provides a set of languages and their names + flags.
+ * Also has a "none" language.
+ */
 qx.Class.define("qxex.util.LanguageManager",
 {
   type: "singleton",

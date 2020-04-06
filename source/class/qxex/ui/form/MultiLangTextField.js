@@ -44,6 +44,11 @@ qx.Class.define("qxex.ui.form.MultiLangTextField",
 
     members:
     {
+      /**
+       * Set the value in the language lang.
+       * @param value {String} The value in the language lang
+       * @param lang {String ? 'none'}
+       */
       setValue: function (value, lang) {
         var lang = lang || qxex.util.LanguageManager.none;
         if (this.__items[lang]) {
@@ -54,6 +59,11 @@ qx.Class.define("qxex.ui.form.MultiLangTextField",
         };
       },
 
+      /**
+       * Get the value in the language lang.
+       * @param lang {String ? 'none'}
+       * @return {String} The value in the language lang.
+       */
       getValue: function (lang) {
         var lang = lang || qxex.util.LanguageManager.none;
         if (this.__items[lang]) {

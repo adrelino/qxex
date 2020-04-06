@@ -1,3 +1,6 @@
+/**
+ * A Slider but with a styled knob.
+ */
 qx.Class.define("qxex.ui.form.KnobIconSlider",{
 	extend:qx.ui.form.Slider,
 

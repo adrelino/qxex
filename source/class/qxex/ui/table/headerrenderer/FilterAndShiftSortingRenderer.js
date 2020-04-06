@@ -1,3 +1,6 @@
+/**
+ * A header renderer which displays a filter header cell and allows different sorting on shift-click.
+ */
 qx.Class.define("qxex.ui.table.headerrenderer.FilterAndShiftSortingRenderer",
 {
   extend : qx.ui.table.headerrenderer.Default,

@@ -2,7 +2,7 @@
 Additional GUI widgets and other stuff for qooxdoo apps.
 
 ## Demo
-[Demo](build) | [API](api)
+[Demo](build) | [API](api#qxex)
 
 ## setup
 ```shell

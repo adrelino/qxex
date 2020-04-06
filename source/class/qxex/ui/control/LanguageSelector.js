@@ -1,6 +1,5 @@
 /**
- * Switch languages easily
- * @asset(qxex/languageicons/flags/*)
+ * Switch languages via a select box control.
  */
 qx.Class.define("qxex.ui.control.LanguageSelector",{
   extend : qx.ui.form.SelectBox,
@@ -46,10 +45,18 @@ qx.Class.define("qxex.ui.control.LanguageSelector",{
       this.setModelSelection([qxex.util.LanguageManager.getInstance().getCurrent()]);
     },
 
+    /**
+     * Get the current language
+     * @return {String} language like "de", "en", etc.
+     */
     getCurrentLanguage : function(){
       return this.getSelection()[0].getModel();
     },
-
+    
+    /**
+     * Set the current language.
+     * @param key {String} language like "de", "en", etc.
+     */
     setCurrentLanguage : function(key){
       this.setModelSelection([key]);
     }
