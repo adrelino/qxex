@@ -1,1 +1,1 @@
-{"attributes": {"fullName": "qx.ui.form.ComboBox", "packageName": "qx.ui.form", "isStatic": true, "name": "ComboBox", "childClasses": "qxex.ui.form.TimeField"}, "type": "class"}
+{"attributes": {"fullName": "qx.ui.form.ComboBox", "packageName": "qx.ui.form", "isStatic": true, "name": "ComboBox", "childClasses": "qxex.ui.form.FilterComboBox,qxex.ui.form.MultiLangTextField"}, "type": "class"}

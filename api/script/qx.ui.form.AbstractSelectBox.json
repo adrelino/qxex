@@ -1,1 +1,1 @@
-{"attributes": {"fullName": "qx.ui.form.AbstractSelectBox", "packageName": "qx.ui.form", "isStatic": true, "name": "AbstractSelectBox", "childClasses": "qxex.ui.form.MultiSelectBox"}, "type": "class"}
+{"attributes": {"fullName": "qx.ui.form.AbstractSelectBox", "packageName": "qx.ui.form", "isStatic": true, "name": "AbstractSelectBox", "childClasses": "qxex.ui.form.AbstractSelectBoxSimpler"}, "type": "class"}

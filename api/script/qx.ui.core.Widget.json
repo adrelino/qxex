@@ -1,1 +1,1 @@
-{"attributes": {"fullName": "qx.ui.core.Widget", "packageName": "qx.ui.core", "isStatic": true, "name": "Widget", "childClasses": "qxex.ui.control.TimeChooser"}, "type": "class"}
+{"attributes": {"fullName": "qx.ui.core.Widget", "packageName": "qx.ui.core", "isStatic": true, "name": "Widget", "childClasses": "qxex.ui.control.TimeChooser,qxex.ui.table.TableWithModelWidget"}, "type": "class"}
