@@ -1,7 +1,10 @@
 # qooxdoo-extensions
-qooxdoo extensions I developed over the last 5 years.
+Additional GUI widgets and other stuff for qooxdoo apps.
 
-##setup
+## Demo
+[Demo](build) | [API](api)
+
+## setup
 ```shell
 mkdir playground && cd playground
 git clone https://github.com/adrelino/qooxdoo-extensions.git
@@ -11,14 +14,15 @@ cd qooxdoo-extensions
 ./generate.py source-server
 ```
 
-###generate build version and api
+### generate build version and api
 ```shell
 ./generate.py build
 ./generate.py api
 ```
 
-###deploy to gh-pages
+### deploy to gh-pages
 ```shell
 ./deploy.sh build/
 ./deploy.sh api/
+./deploy.sh README.md
 ```
