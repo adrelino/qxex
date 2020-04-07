@@ -24,7 +24,8 @@ qx.Class.define("qxex.ui.form.MultiLangTextField",
       this._updateLocale();
       var textField = this.getChildControl("textfield");
       textField.addListener("input", function (e) {
-        this.__items[this.__currentLang].setLabel(textField.getValue());
+        var item = this.__items[this.__currentLang];
+        if(item) item.setLabel(textField.getValue());
       }, this);
     },
 
@@ -44,6 +45,8 @@ qx.Class.define("qxex.ui.form.MultiLangTextField",
 
     members:
     {
+      __items : null,
+      __currentLang : null,
       /**
        * Set the value in the language lang.
        * @param value {String} The value in the language lang
@@ -87,7 +90,10 @@ qx.Class.define("qxex.ui.form.MultiLangTextField",
 
       _updateLocale: function () {
         var lang = qxex.util.LanguageManager.getInstance().getCurrent();
-        this.getChildControl("list").setSelection([this.__items[lang]]);
+        var item = this.__items[lang];
+        if(item){
+          this.getChildControl("list").setSelection([]);
+        }
       }
     }
   });
