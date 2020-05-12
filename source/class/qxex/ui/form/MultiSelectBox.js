@@ -170,8 +170,9 @@ qx.Class.define("qxex.ui.form.MultiSelectBox",
     },
 
     resetSelection : function(){
-      return this.getChildrenContainer().resetSelection();
+      var ret =  this.getChildrenContainer().resetSelection();
       this.update();
+      return ret;
     },
 
     setSelection : function(listItems)
