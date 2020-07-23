@@ -7,5 +7,5 @@
 qx.Mixin.define("qxex.ui.form.MNativeContextMenu", {
   construct : function(){
     this.set({nativeContextMenu: true});
-  },
+  }
 });
