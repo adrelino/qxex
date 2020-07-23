@@ -126,13 +126,12 @@ qx.Class.define("qxex.ui.table.headerrenderer.FilterHeaderCell",
           control.setPadding(0, 0, 0, 0);  
           this._add(control, {row: 1, column: 0, colSpan: 3});
         
-          control.addListener("click", function(e) {
-          		e.stop(); //otherwise, the sorted state would change   	
-          },this);
-
-          control.addListener("tap", function(e) {
-          		e.stop(); //otherwise, the sorted state would change   	
-          },this);
+          var events = ["pointerdown","tap","pointerup"];
+          for(var i=0; i< events.length; i++){
+            control.addListener(events[i], function(e) {
+              e.stop(); //otherwise, the sorted state would change and column move would start
+            },this);
+          }
           
           control.addListener("blur",function(e){
             this.fireDataEvent("headerFilterTextFieldBlur",e);

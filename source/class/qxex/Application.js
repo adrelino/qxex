@@ -37,6 +37,8 @@ qx.Class.define("qxex.Application",
       // Call super class
       this.base(arguments);
 
+      qx.Class.include(qx.ui.form.AbstractField, qxex.ui.form.MNativeContextMenu);
+
       // Enable logging in debug variant
       if (qx.core.Environment.get("qx.debug"))
       {
