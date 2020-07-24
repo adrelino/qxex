@@ -38,34 +38,32 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
 
   members : { 
 
-    addFilterTextField : function(textField){
+    addFilterTextField : function(textField, filterListFun){
+
+    if(filterListFun) this.__filterList = filterListFun;
 
     //child controls
-    var list = this.getChildrenContainer(); //same as this.getChildControl("list"); , is in AbstractSelectBox
+    var list = this.getChildControl("list");
     var popup = this.getChildControl("popup");
 
     this.__filterTextField = textField || new qx.ui.form.TextField();
     this.__filterTextField.addListener("changeValue", this._onFilterTextFieldChangeValue, this);
     
-    // we fill the textfield by forwarding keyinputs and keypress (delete) to it so we dont have to give it focus,
-    // which would interfere with the blur events
-    if(!textField){
-        this.addListener("keyinput", this._onInput, this);
-        this.addListener("keydown", this._onKeyDown, this);
-        this.__filterTextField.setAnonymous(true);
-        this.__filterTextField.setKeepFocus(true);
-    }else{
-      textField.addListener("input",function(e){
-        var newVal = textField.getValue() || "";
-        textField.fireDataEvent("changeValue", newVal);
-      },this);
-    }
+    //search as you type -> fire event on every keystroke
+    this.__filterTextField.addListener("input",function(e){
+        var newVal = this.__filterTextField.getValue() || "";
+        this.__filterTextField.fireDataEvent("changeValue", newVal);
+    },this);
 
     this.__filterLabel = new qx.ui.basic.Label();
 
     var box = new qx.ui.container.Composite(new qx.ui.layout.HBox(2));
     if(!textField){
         box.add(this.__filterTextField,{flex:1});
+        this.__filterTextField.addListener("appear",function(e){
+          this.__filterTextField.focus();
+          this.__filterTextField.selectAllText();
+        },this);
     }else{
         box.add(new qx.ui.basic.Label(this.tr("Search filter") + ": "));
     }
@@ -211,32 +209,6 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
         this.__helpLabelEmpty.show();
       }else{
         this.__helpLabelEmpty.exclude();
-      }
-    },
-
-    /**
-     * Not called eg for "Shift" key hits
-     */
-    _onInput : function(e)
-    {
-      if(!this.__showFilter) return;
-      var old = this.__filterTextField.getValue() || "";
-      var newVal = old+e.getChar();
-      this.__filterTextField.setValue(newVal);
-    },
-
-    // overridden
-    _onKeyDown : function(e)
-    {
-      if(!this.__showFilter) return;
-      var iden = e.getKeyIdentifier();
-      if(iden=="Backspace"){
-        var old = this.__filterTextField.getValue() || "";
-        var newVal = old.slice(0, -1);
-        this.__filterTextField.setValue(newVal);
-
-        e.preventDefault();
-        return;
       }
     }
   }

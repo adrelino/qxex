@@ -68,6 +68,7 @@ qx.Class.define("qxex.ui.form.AbstractSelectBoxSimpler",
           control = new qx.ui.basic.Atom(" ");
           control.setCenter(false);
           control.setAnonymous(true);
+          control.setRich(true);
 
           this._add(control, {flex:1});
           break;
@@ -78,6 +79,11 @@ qx.Class.define("qxex.ui.form.AbstractSelectBoxSimpler",
 
           this._add(control);
           break;
+
+        case "popup":
+          control = this.base(arguments,id);
+          qxex.ui.core.Widget.registerLogicalChild(control,this);//we treat this=selectBox as "child" of popup. This avoids closing and immediate reopening of popup on click on this=selectBox
+          control.setAutoHide(true);
       }
 
       return control || this.base(arguments, id);
@@ -100,6 +106,10 @@ qx.Class.define("qxex.ui.form.AbstractSelectBoxSimpler",
       this.toggle();
     },
 
+    //overridden: do nothing when selectBox looses focus to e.g. textfield inside popup. Closing is handled via popup Manager and autohide
+    _onBlur : function(e){
+
+    },
 
     /*
     ---------------------------------------------------------------------------
@@ -169,12 +179,8 @@ qx.Class.define("qxex.ui.form.AbstractSelectBoxSimpler",
       var popup = this.getChildControl("popup");
       if (!popup.isVisible())
       {
-//         var list = this.getChildControl("list");
-
-//         // check if the list has any children before selecting
-//         if (list.hasChildren()) {
-//           list.setSelection(this.getSelection());
-//         }
+        //on closing of popup via autohide, we don't use _onBlur anymore
+        this.fireDataEvent("changeSelection", this.getSelection());
       } else {
         // ensure that the list is never biger that the max list height and
         // the available space in the viewport

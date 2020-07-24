@@ -134,6 +134,12 @@ qx.Class.define("qxex.Application",
       }
 
       {
+      var singleSelect2 = new qx.ui.form.SelectBox();
+      container.addWidgetWithLabel(singleSelect2);
+
+      var multiSelect2 = new qxex.ui.form.MultiSelectBox();
+      container.addWidgetWithLabel(multiSelect2);
+
       var singleSelect = new qxex.ui.form.FilterSelectBox();
       singleSelect.setSyncListItemStyle(true);
       container.addWidgetWithLabel(singleSelect,"<br>(syncListItemStyle:true)");
@@ -147,22 +153,20 @@ qx.Class.define("qxex.Application",
 
       singleSelect.setToolTipText("original tooltip");
 
-      for (var i = 0; i < 2000; i++) {
+      var arr = [singleSelect,singleSelect2,multiSelect,multiSelect2,comboBox];
+      for (var j=0; j< arr.length; j++){
+      for (var i = 0; i < 200; i++) {
         var text = this.getText();
         var item = new qx.ui.form.ListItem(text+i,null,i);
         item.set({toolTipText: text+i+" tooltip"});
         item.setTextColor("red");
-        singleSelect.add(item);
-        multiSelect.add(new qx.ui.form.ListItem(text+i,null,i));
-        comboBox.add(new qx.ui.form.ListItem(text+i,null,i));
+        arr[j].add(item);
+      }
+      arr[j].addListener("changeSelection",this.changeSelectionLogger,this);
       };
       multiSelect.setSelectionByModelArr([2,3]);
       singleSelect.MIN_LIST_ITEMS_TO_SHOW_FILTER=2;
       }
-
-      multiSelect.addListener("changeSelection",this.changeSelectionLogger,this);
-
-
       {
         var widget = new qxex.ui.form.KnobIconSlider();
         widget.setKnobIcon("icon/16/apps/preferences-clock.png");
@@ -193,7 +197,10 @@ qx.Class.define("qxex.Application",
       // doc.add(textfield,{left:2,top:900-18});
 
       {
-        var tree = new qxex.ui.form.FilterTreeSelectBox();
+        var arr = [new qxex.ui.form.TreeSelectBox(),new qxex.ui.form.FilterTreeSelectBox()];
+
+        for (var k=0; k< arr.length; k++){
+        var tree = arr[k];
         container.addWidgetWithLabel(tree);
 
         for(var i=0; i<5; i++){
@@ -206,15 +213,17 @@ qx.Class.define("qxex.Application",
           for(var j=0; j<depth; j++){
             var C = j==depth-1 ? qx.ui.tree.TreeFile : qx.ui.tree.TreeFolder;
             var bar = new C(this.getText() + " " +j);
+            if(j==depth-1) bar.isSelectable = function(){return true};
             foo.add(bar);
             parent.add(bar);
             if(j%2==1) parent=bar;
           }
         }
         tree.setSelection([foo]);
+        tree.addListener("changeSelection",this.changeSelectionLogger,this);
+        }
       }
 
-      tree.addListener("changeSelection",this.changeSelectionLogger,this);
 
     },
 
