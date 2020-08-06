@@ -2,10 +2,8 @@
  * A SelectBox that allows for multiple selection.
  * Modeled after the jQuery UI MultiSelect Widget: http://www.erichynds.com/examples/jquery-ui-multiselect-widget/demos/
  *
- * @asset(qx/icon/${qx.icontheme}/16/actions/dialog-apply.png)
- * @asset(qx/icon/${qx.icontheme}/32/actions/dialog-apply.png)
- * @asset(qx/icon/${qx.icontheme}/16/actions/edit-delete.png)
- * @asset(qx/icon/${qx.icontheme}/32/actions/edit-delete.png)
+ * @asset(qx/decoration/Modern/form/checkbox-checked-focused.png)
+ * @asset(qx/decoration/Modern/form/checkbox-focused-invalid.png)
  */
 qx.Class.define("qxex.ui.form.MultiSelectBox",
 {
@@ -36,7 +34,7 @@ qx.Class.define("qxex.ui.form.MultiSelectBox",
     this.__buttonContainer=new qx.ui.container.Composite(new qx.ui.layout.HBox(0));
     
     var labelAll="<b style='color:green;'>"+this.trc("Label","All")+"<b>";
-    this.allBtn = new qx.ui.form.Button(labelAll,"icon/16/actions/dialog-apply.png").set({
+    this.allBtn = new qx.ui.form.Button(labelAll,"decoration/form/checkbox-checked-focused.png").set({
         focusable: false, rich: true, padding : 2, margin : 0
     });
     this.allBtn.addListener("execute", function(e){
@@ -45,7 +43,7 @@ qx.Class.define("qxex.ui.form.MultiSelectBox",
     this.__buttonContainer.add(this.allBtn,{flex : 1});
     
     var labelNone="<b style='color:red;'>"+this.trc("Label","None")+"<b>";
-    this.noneBtn = new qx.ui.form.Button(labelNone,"icon/16/actions/edit-delete.png").set({
+    this.noneBtn = new qx.ui.form.Button(labelNone,"decoration/form/checkbox-focused-invalid.png").set({
         focusable: false, rich: true, padding : 2, margin : 0
     });
     this.noneBtn.addListener("execute", function(e){
