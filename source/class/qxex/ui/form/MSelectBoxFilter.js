@@ -60,10 +60,10 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
     var box = new qx.ui.container.Composite(new qx.ui.layout.HBox(2));
     if(!textField){
         box.add(this.__filterTextField,{flex:1});
-        this.__filterTextField.addListener("appear",function(e){
+        /*this.addListener("focusin",function(e){ //break tabbing trough cells!
           this.__filterTextField.focus();
           this.__filterTextField.selectAllText();
-        },this);
+        },this);*/
     }else{
         box.add(new qx.ui.basic.Label(this.tr("Search filter") + ": "));
     }

@@ -17,17 +17,6 @@ qx.Class.define("qxex.ui.form.FilterMultiSelectBox", {
     _childrenByModelHash : null,
     hideInsteadOfDestroy : false,
 
-    // overridden
-    _onKeyPress : function(e)
-    {
-      var iden = e.getKeyIdentifier();
-      if(iden == "Space"){
-        e.preventDefault(); //otherwise SelectBox.js _onKeypress calls this.toggle();
-      }else{
-        this.base(arguments, e);
-      }
-    },
-
     //overridden from http://www.qooxdoo.org/current/apiviewer/#qx.ui.form.AbstractSelectBox
     add : function(listItem, options){
       this.base(arguments,listItem, options);
@@ -44,6 +33,8 @@ qx.Class.define("qxex.ui.form.FilterMultiSelectBox", {
 
     //overrridden
     destroy : function(){
+      var popup = this.getChildControl("popup");
+      popup.exclude();
       if(this.hideInsteadOfDestroy){
         this.clearFilter();
         this.exclude();
