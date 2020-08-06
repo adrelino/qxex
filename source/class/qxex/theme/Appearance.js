@@ -19,6 +19,9 @@ qx.Theme.define("qxex.theme.Appearance",
 {
   appearances :
   {
+    "watcheecaptionbar" : "window/captionbar",
+    "watcheeclosebutton" : "window/close-button",
+
   	"timechooser" : "datechooser",
   	"timechooser/slider" : "slider",
   	"timechooser/slider/knob" : "image",

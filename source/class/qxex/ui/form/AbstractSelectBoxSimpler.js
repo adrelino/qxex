@@ -81,7 +81,13 @@ qx.Class.define("qxex.ui.form.AbstractSelectBoxSimpler",
           break;
 
         case "popup":
-          control = this.base(arguments,id);
+          //control = this.base(arguments,id);
+          control = new qxex.ui.popup.Popup();
+          control.getChildControl("captionbar").set({padding:0});
+          control.getChildControl("close-button").set({margin:2});
+          control.setAutoHide(false);
+          control.add(this.getChildControl("list"));
+          control.addListener("changeVisibility", this._onPopupChangeVisibility, this);
           qxex.ui.core.Widget.registerLogicalChild(control,this);//we treat this=selectBox as "child" of popup. This avoids closing and immediate reopening of popup on click on this=selectBox
           control.setAutoHide(true);
       }
