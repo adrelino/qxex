@@ -60,10 +60,27 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
     var box = new qx.ui.container.Composite(new qx.ui.layout.HBox(2));
     if(!textField){
         box.add(this.__filterTextField,{flex:1});
-        /*this.addListener("focusin",function(e){ //break tabbing trough cells!
+        
+        this.addListener("keypress",function(e){
+          var iden = e.getKeyIdentifier();
+          if(iden == "Down" || iden == "Up" ||
+             iden == "Enter" || iden == "Escape" || iden == "Tab"){
+            return;
+          }
           this.__filterTextField.focus();
           this.__filterTextField.selectAllText();
-        },this);*/
+        },this);
+        
+        this.__filterTextField.addListener("keypress",function(e){
+          var iden = e.getKeyIdentifier();
+          if(iden == "Down" || iden == "Up"){
+            this.getChildControl("list").handleKeyPress(e);
+          }else if(iden == "Enter" || iden == "Escape" || iden == "Tab"){
+            this.focus();
+            this.table && this.table.handleKeyPress && this.table.handleKeyPress(e);
+          }
+        },this);
+
     }else{
         box.add(new qx.ui.basic.Label(this.tr("Search filter") + ": "));
     }
@@ -74,11 +91,11 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
 
     popup.addBefore(box,list);
 
-    this.__helpLabelEmpty = new qx.ui.basic.Label(this.tr("Press backspace to clear the filter"));
+    /*this.__helpLabelEmpty = new qx.ui.basic.Label(this.tr("Press backspace to clear the filter"));
     this.__helpLabelEmpty.setTextColor("red");
     this.__helpLabelEmpty.exclude();
 
-    popup.addBefore(this.__helpLabelEmpty,list);
+    popup.addBefore(this.__helpLabelEmpty,list);*/
 
     popup.addListener("changeVisibility",function(e){
       var l = this.getChildren().length;
@@ -159,7 +176,7 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
     __filterLabel : null,
     __filterLabelGroup : null,
     __showFilter : false,
-    __helpLabelEmpty : null,
+    //__helpLabelEmpty : null,
 
     __filterList : function(filterText, filterCheckBoxValue){
       if(!this.__showFilter && !this.__filterCheckBox) return;
@@ -205,11 +222,11 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
 
       this.__filterLabel.setValue(count + "/" + countGroup);
       this.__filterLabelGroup && this.__filterLabelGroup.setValue(countGroup + "/" + all);
-      if(countSearch==0){
+      /*if(countSearch==0){
         this.__helpLabelEmpty.show();
       }else{
         this.__helpLabelEmpty.exclude();
-      }
+      }*/
     }
   }
 });
