@@ -14,6 +14,7 @@
  * Resource management:
  * http://manual.qooxdoo.org/current/pages/desktop/ui_resources.html
  * @asset(qx/icon/${qx.icontheme}/16/apps/preferences-clock.png)
+ * @asset(qx/icon/${qx.icontheme}/16/actions/edit-delete.png)
  */
 qx.Theme.define("qxex.theme.Appearance",
 {
