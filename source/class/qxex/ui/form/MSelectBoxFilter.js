@@ -61,7 +61,7 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
     if(!textField){
         box.add(this.__filterTextField,{flex:1});
         
-        this.addListener("keypress",function(e){
+        this.addListener("keydown",function(e){  //does not work using keypress in firefox, needs 2 inputs to focus and type text into textfield. See also https://github.com/qooxdoo/qooxdoo/issues/9626
           var iden = e.getKeyIdentifier();
           if(iden == "Down" || iden == "Up" ||
              iden == "Enter" || iden == "Escape" || iden == "Tab"){
