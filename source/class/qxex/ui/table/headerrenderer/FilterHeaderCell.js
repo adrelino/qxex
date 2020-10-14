@@ -5,10 +5,9 @@ qx.Class.define("qxex.ui.table.headerrenderer.FilterHeaderCell",
 {
   extend : qx.ui.table.headerrenderer.HeaderCell,
 
-  construct : function(renderCheckbox)
+  construct : function()
   {
     this.base(arguments);
-    this.renderCheckbox = renderCheckbox;
     this.getLayout().setColumnFlex(2, 0); //the sort icon should be right aligned, so no flex
   },
   
@@ -25,6 +24,13 @@ qx.Class.define("qxex.ui.table.headerrenderer.FilterHeaderCell",
       check : "Boolean",
       init : true,
       apply : "_applyFilterVisible"
+    },
+    
+    renderCheckbox :
+    {
+      check : "Boolean",
+      init : false,
+      apply : "_applyRenderCheckbox"
     },
     
     exactMatchVisible :
@@ -49,12 +55,19 @@ qx.Class.define("qxex.ui.table.headerrenderer.FilterHeaderCell",
     	else this.getChildControl("exactMatchCheckBox").hide(); //_excludeChildControl("filter");
     },
     
+    // property modifier
+    _applyRenderCheckbox : function(value, old){
+      if(value==old) return;
+      var stack = this.getChildControl("filter");
+      stack.setSelection([value ? this.getChildControl("checkbox") : this.getChildControl("textfield")]);
+    },
+    
   	setFilterText : function(text){ //triggered kein event, ist für das kopieren bei colmove
-  		this.getChildControl("filter").setValue(text);
+  		this.getChildControl("filter").getSelection()[0].setValue(text);
   	},
   	
   	getFilterText : function(){
-  		return this.getChildControl("filter").getValue();
+  		return this.getChildControl("filter").getSelection()[0].getValue();
   	},
   	
   	setExactMatch : function(value){ //triggered kein event, ist für das kopieren bei colmove
@@ -73,8 +86,15 @@ qx.Class.define("qxex.ui.table.headerrenderer.FilterHeaderCell",
       switch(id)
       {
         case "filter":
-          if(this.renderCheckbox){
+            control = new qx.ui.container.Stack();
+            control.add(this.getChildControl("checkbox"));
+            var textField =this.getChildControl("textfield");
+            control.add(textField);
+            control.setSelection([textField]);
+            this._add(control, {row: 1, column: 0, colSpan: 3});
+            break;
 
+        case "checkbox":
             control = new qx.ui.container.Composite(new qx.ui.layout.HBox(0).set({alignX: "center", alignY: "middle"})).set({
               focusable: true,
               height : 19
@@ -110,8 +130,9 @@ qx.Class.define("qxex.ui.table.headerrenderer.FilterHeaderCell",
               var text=event.getData();
               this.fireDataEvent("filterTextChanged",text);
             }, this);
+            break;
 
-          }else{
+        case "textfield":
             control = new qx.ui.form.TextField().set({
               anonymous: false,
               allowShrinkX: true
@@ -121,22 +142,6 @@ qx.Class.define("qxex.ui.table.headerrenderer.FilterHeaderCell",
                 var text=event.getData();
                 this.fireDataEvent("filterTextChanged",text);
             }, this);
-          }
-          
-          control.setPadding(0, 0, 0, 0);  
-          this._add(control, {row: 1, column: 0, colSpan: 3});
-        
-          var events = ["pointerdown","tap","pointerup"];
-          for(var i=0; i< events.length; i++){
-            control.addListener(events[i], function(e) {
-              e.stop(); //otherwise, the sorted state would change and column move would start
-            },this);
-          }
-          
-          control.addListener("blur",function(e){
-            this.fireDataEvent("headerFilterTextFieldBlur",e);
-          },this);
-
           break;
 
           
@@ -161,6 +166,21 @@ qx.Class.define("qxex.ui.table.headerrenderer.FilterHeaderCell",
           this._add(control, {row: 1, column: 3});
           break;
           
+      }
+
+      if(id=="checkbox" || id=="textfield"){
+        control.setPadding(0, 0, 0, 0);
+        
+        var events = ["pointerdown","tap","pointerup"];
+        for(var i=0; i< events.length; i++){
+          control.addListener(events[i], function(e) {
+            e.stop(); //otherwise, the sorted state would change and column move would start
+          },this);
+        }
+        
+        control.addListener("blur",function(e){
+          this.fireDataEvent("headerFilterTextFieldBlur",e);
+        },this);
       }
 
       return control || this.base(arguments, id);

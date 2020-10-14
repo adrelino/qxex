@@ -64,7 +64,7 @@ qx.Class.define("qxex.ui.table.headerrenderer.FilterAndShiftSortingRenderer",
     // overridden
     createHeaderCell : function(cellInfo)
     {
-      var widget = new qxex.ui.table.headerrenderer.FilterHeaderCell(this.getRenderCheckbox());
+      var widget = new qxex.ui.table.headerrenderer.FilterHeaderCell();
       widget.addListener("headerFilterTextFieldBlur",function(e){
         this.fireDataEvent("headerFilterTextFieldBlur",e.getData());
       },this);
@@ -109,6 +109,8 @@ qx.Class.define("qxex.ui.table.headerrenderer.FilterAndShiftSortingRenderer",
           widgetToolTip.setRich(true);
         }
       }
+
+      cellWidget.setRenderCheckbox(this.getRenderCheckbox());
 
       this.getShiftPressedSorting() ?
       	cellWidget.addState(this.self(arguments).STATE_SORTED_SHIFT) :
