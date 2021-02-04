@@ -150,7 +150,9 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
 
     setFilterText : function(filterText){
       this.MIN_LIST_ITEMS_TO_SHOW_FILTER = 0; //if we set programmatically, we want to be able to remove filter again even if we have less than 5 entries!
+      this.__showFilter = true;
       this.__filterTextField.setValue(filterText);
+      this.__filterList(filterText,this.__filterCheckBox && this.__filterCheckBox.getValue());
     },
 
     clearFilter : function(){
