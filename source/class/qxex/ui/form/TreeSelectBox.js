@@ -22,8 +22,8 @@ qx.Class.define("qxex.ui.form.TreeSelectBox",
 //     this.addListener("keyinput", this._onKeyInput, this);
 //     this.addListener("changeSelection", this.__onChangeSelection, this);
 
-    this.removeListener("keydown", this._onKeyPress);
-    this.addListener("keydown", function(e){
+    //this.removeListener("keydown", this._onKeyPress);
+    this.addListener("keyinput", function(e){
       // clone the event and re-calibrate the event
       var clone = e.clone();
       clone.setTarget(this.getChildControl("list"));
@@ -88,6 +88,20 @@ qx.Class.define("qxex.ui.form.TreeSelectBox",
       this.__updateLabel();
     },
 
+    // overridden
+    _onKeyPress : function(e)
+    {
+      var iden = e.getKeyIdentifier();
+      if(iden == "Enter" || iden == "Space")
+      {
+        this.toggle();
+      }
+      else
+      {
+        this.base(arguments, e);
+      }
+    },
+
     /*
     ---------------------------------------------------------------------------
       WIDGET API
@@ -125,6 +139,9 @@ qx.Class.define("qxex.ui.form.TreeSelectBox",
 
           control.addListener("changeSelection", this._onListChangeSelection, this);
           control.addListener("pointerdown", this._onListPointerDown, this);
+          control.addListener("close",function(){
+            this.close();
+          },this);
 //           control.getChildControl("pane").addListener("tap", this.close, this);
           break;
       }

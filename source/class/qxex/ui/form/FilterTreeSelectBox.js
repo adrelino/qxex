@@ -50,7 +50,20 @@ qx.Class.define("qxex.ui.form.FilterTreeSelectBox", {
     setNodeVisibilityAndRecurseIntoChildren: function(node, text, depth,obj){
         var noFilter = (text == "");
 
-        var showNode = (noFilter && depth==1) ? true : node.getLabel().toLowerCase().indexOf(text) >= 0;
+        var showNode = (noFilter && depth==1);
+        if(!showNode){
+          var labelRaw = qx.lang.String.stripTags(node.getLabel());
+
+          var matchPos = labelRaw.toLowerCase().indexOf(text);
+          showNode = matchPos >= 0;
+          if(showNode){
+            var labelRich = labelRaw.substring(0,matchPos)+"<span style='color:black;font-weight:bold'>"+labelRaw.substr(matchPos,text.length)+"</span>"+labelRaw.substr(matchPos+text.length);
+            node.setLabel(labelRich);
+          }
+        }else{
+            var labelRaw = qx.lang.String.stripTags(node.getLabel());
+            node.setLabel(labelRaw);
+        }
 
         var children = node.getChildren();
 
@@ -70,12 +83,11 @@ qx.Class.define("qxex.ui.form.FilterTreeSelectBox", {
 
         node.setOpen(showChildren || depth == 0);
 
-        if(showNode && (text != "")){
+        /*if(showNode && (text != "")){
             node.getChildControl("label").setTextColor("green");
         }else{
             node.getChildControl("label").setTextColor("black");
-
-        }
+        }*/
         if(showNode){obj.count++};
         obj.all++;
 

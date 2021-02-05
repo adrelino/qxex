@@ -81,7 +81,12 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
             this.getChildControl("list").handleKeyPress(e);
           }else if(iden == "Enter" || iden == "Escape" || iden == "Tab"){
             this.focus();
-            this.table && this.table.handleKeyPress && this.table.handleKeyPress(e);
+            if(this.table){
+                this.table.handleKeyPress && this.table.handleKeyPress(e);
+            }else{
+                //this._onKeyPress && this._onKeyPress(e); //TODO test all implications if enabled
+            }
+
           }
         },this);
 
