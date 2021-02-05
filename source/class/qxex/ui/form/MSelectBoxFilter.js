@@ -50,10 +50,11 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
     this.__filterTextField.addListener("changeValue", this._onFilterTextFieldChangeValue, this);
     
     //search as you type -> fire event on every keystroke
-    this.__filterTextField.addListener("input",function(e){
+    this.__filterTextField.setLiveUpdate(true);
+    /*this.__filterTextField.addListener("input",function(e){
         var newVal = this.__filterTextField.getValue() || "";
         this.__filterTextField.fireDataEvent("changeValue", newVal);
-    },this);
+    },this);*/
 
     this.__filterLabel = new qx.ui.basic.Label();
 
@@ -61,6 +62,8 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
     if(!textField){
         box.add(this.__filterTextField,{flex:1});
         
+        //only this combination of keydown -> focus -> setTextSelection 
+        //allows to forward the rest of the event as kepress to the textfield..
         this.addListener("keydown",function(e){  //does not work using keypress in firefox, needs 2 inputs to focus and type text into textfield. See also https://github.com/qooxdoo/qooxdoo/issues/9626
           var iden = e.getKeyIdentifier();
           if(iden == "Down" || iden == "Up" ||
@@ -68,9 +71,9 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
             return;
           }
           this.__filterTextField.focus();
-          this.__filterTextField.selectAllText();
+          this.__filterTextField.setTextSelection(this.__filterTextField.getValue().length);//puts cursor after end of current text
         },this);
-        
+
         this.__filterTextField.addListener("keypress",function(e){
           var iden = e.getKeyIdentifier();
           if(iden == "Down" || iden == "Up"){
