@@ -44,12 +44,6 @@ qx.Class.define("qxex.ui.form.FilterTreeSelectBox", {
          }
 
          this.__filterLabel.setValue(obj.count + "/" + obj.all);
-          if(obj.count==0){
-            this.__helpLabelEmpty.show();
-          }else{
-            this.__helpLabelEmpty.exclude();
-          }
-
 //       },this);
     },
 

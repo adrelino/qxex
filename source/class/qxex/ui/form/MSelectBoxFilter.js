@@ -71,7 +71,8 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
             return;
           }
           this.__filterTextField.focus();
-          this.__filterTextField.setTextSelection(this.__filterTextField.getValue().length);//puts cursor after end of current text
+          var value = this.__filterTextField.getValue() || "";
+          this.__filterTextField.setTextSelection(value.length);//puts cursor after end of current text
         },this);
 
         this.__filterTextField.addListener("keypress",function(e){
@@ -93,12 +94,6 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
     box.setToolTipText(this.trc("tooltip","Start typing to filter list entries. Use backspace to undo filtering character-wise."))
 
     popup.addBefore(box,list);
-
-    /*this.__helpLabelEmpty = new qx.ui.basic.Label(this.tr("Press backspace to clear the filter"));
-    this.__helpLabelEmpty.setTextColor("red");
-    this.__helpLabelEmpty.exclude();
-
-    popup.addBefore(this.__helpLabelEmpty,list);*/
 
     popup.addListener("changeVisibility",function(e){
       var l = this.getChildren().length;
@@ -181,7 +176,6 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
     __filterLabel : null,
     __filterLabelGroup : null,
     __showFilter : false,
-    //__helpLabelEmpty : null,
 
     __filterList : function(filterText, filterCheckBoxValue){
       if(!this.__showFilter && !this.__filterCheckBox) return;
@@ -227,11 +221,6 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
 
       this.__filterLabel.setValue(count + "/" + countGroup);
       this.__filterLabelGroup && this.__filterLabelGroup.setValue(countGroup + "/" + all);
-      /*if(countSearch==0){
-        this.__helpLabelEmpty.show();
-      }else{
-        this.__helpLabelEmpty.exclude();
-      }*/
     }
   }
 });
