@@ -98,6 +98,14 @@ qx.Class.define("qxex.ui.table.headerrenderer.FilterAndShiftSortingRenderer",
       return widget;
     },
 
+    setToolTip : function(text){
+      var old = this.getToolTip();
+      if(old){
+          text = old + "<br>" + text;
+      }
+      this.base(arguments,text);
+    },
+
     // overridden from headerrenderer.Default, but set ToolTip to rich
     updateHeaderCell : function(cellInfo, cellWidget)
     {
