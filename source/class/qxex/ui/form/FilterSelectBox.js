@@ -9,8 +9,10 @@ qx.Class.define("qxex.ui.form.FilterSelectBox", {
     this.base(arguments);
     this.addFilterTextField();
     var control = this.getChildControl("popup");
-    qxex.ui.core.Widget.registerLogicalChild(control,this);//we treat this=selectBox as "child" of popup. This avoids closing and immediate reopening of popup on click on this=selectBox
+    qxex.ui.core.Widget.registerLogicalChild(this, control);//only in this way it works for qxex.form.DateField. Both cannot be set, deadlock
+    //qxex.ui.core.Widget.registerLogicalChild(control,this);//we treat this=selectBox as "child" of popup. This avoids closing and immediate reopening of popup on click on this=selectBox
     control.setAutoHide(true);
+    this.addListener("disappear",this.close);
   },
 
   members : {
