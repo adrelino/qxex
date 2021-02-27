@@ -18,6 +18,7 @@ qx.Class.define("qxex.ui.form.DateField",
   construct : function(withClearButton)
   {
     this.base(arguments);
+    this.removeListener("blur", this._onBlur, this);
     if(withClearButton) this._createChildControl("button2");
   },
 
@@ -45,6 +46,20 @@ qx.Class.define("qxex.ui.form.DateField",
             this.setValue(null);
           }, this);
           this._add(control);
+          break;
+
+        case "list":
+          control = new qxex.ui.control.DateChooser();
+          control.setFocusable(false);
+          control.setKeepFocus(true);
+          control.addListener("daytap", this._onChangeDate, this);
+          control.addListener("execute", this._onChangeDate, this);
+          break;
+
+       case "popup":
+          control = this.base(arguments, id);
+          control.setAutoHide(true);
+          control.removeListener("pointerup", this._onChangeDate, this);
           break;
       }
 
