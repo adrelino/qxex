@@ -43,9 +43,11 @@ qx.Class.define("qxex.ui.control.DateChooser",
 
         case "location-bar":
           control = new qx.ui.container.Composite(new qx.ui.layout.Grid());
-          control.add(this.getChildControl("country").set({width:100}),{row:0, column:0});
-          control.add(this.getChildControl("state"),{row:0, column:1});
-          control.add(this.getChildControl("region"),{row:1, column:0, colSpan:2});
+          control.add(new qx.ui.basic.Label(this.tr("Holiday")).set({width:100,textAlign:"center"}),{row:0, column:0});
+          control.add(this.getChildControl("type"),{row:0, column:1});
+          control.add(this.getChildControl("country").set({width:100}),{row:1, column:0});
+          control.add(this.getChildControl("state"),{row:1, column:1});
+          control.add(this.getChildControl("region"),{row:2, column:0, colSpan:2});
           this._add(control);
           break;
 
@@ -54,6 +56,21 @@ qx.Class.define("qxex.ui.control.DateChooser",
         case "region":
           control = this.__initLocation(id);
           break;
+
+        case "type":
+          control = new qxex.ui.form.MultiSelectBox();
+          var types = this.__getHolidayType();
+          for (var key in types){
+            var item = new qx.ui.form.ListItem(types[key].label, null, key);//.set({rich:true});
+            item.setTextColor(types[key].color);
+            control.add(item);
+          }
+          control.setModelSelection(["public"]);
+          control.addListener("changeSelection", function (e) {
+            this.__updateMonthHolidays();
+          },this);
+
+
       }
 
       return control || this.base(arguments, id);
@@ -82,7 +99,9 @@ qx.Class.define("qxex.ui.control.DateChooser",
         }
         this.hd.init.apply(this.hd, args);
         var public = this.hd.getHolidays().filter(function (h) { return h.type == "public"; });
-        console.log(public.length);
+        var color = this.__getHolidayType("public").color;            
+        var text = "<span style='color:"+color+"'>"+public.length+"</span>";
+        item[0].setLabel((item[0].getUserData("label") || "") + " ("+text+")");
 
         this.__updateMonthHolidays();
         for (var j=i+1; j<this.__locationHierarchy.length; j++){
@@ -107,10 +126,11 @@ qx.Class.define("qxex.ui.control.DateChooser",
 
       var obj = fun.apply(this.hd, args);  //getCountries(), getStates(country) or getRegions(country,state)
       var keys = []
-      if (obj && id != "country") {
+      if (obj){//} && id != "country") {
         keys.push("");
       }
       for (var key in obj) keys.push(key);
+      if(keys[0]=="") obj[""] = this.__getHolidayLocation(id,args[0]).label;
       control.removeAll();
       if(keys.length<=1){
         control.exclude();
@@ -120,7 +140,8 @@ qx.Class.define("qxex.ui.control.DateChooser",
       for (var i=0; i<keys.length; i++) {
         var key = keys[i];
         var icon = (key && id!="region") ? "resource/qxex/region-flags/pngWx12px/" + args.concat([key]).join("-") + ".png" : null;
-        var item = new qx.ui.form.ListItem(obj[key] || "", icon, key);
+        var item = new qx.ui.form.ListItem(obj[key] || "", icon, key).set({rich:true});
+        item.setUserData("label",obj[key]);
         control.add(item);
         if (key == this.location[id]) {
           control.setSelection([item]);
@@ -128,7 +149,48 @@ qx.Class.define("qxex.ui.control.DateChooser",
       }
     },
 
+    __getHolidayType: function(opt_key){
+      var obj = {
+        "public" :    {color: "#a60000", label: this.tr("Public holiday")}, //red  //gestzlicher Feiertag
+        "bank" :      {color: "#a67f00", label: this.tr("Bank holiday")}, //orange
+        "school" :    {color: "#00a62a", label: this.tr("School holiday")},//green
+        "optional" :  {color: "#0045a6", label: this.tr("Optional holiday")},//blue
+        "observance" :{color: "#6c00a6", label: this.tr("Observance day")}//magenta  //Gedenktag / Aktionstag
+      }
+      if(opt_key){
+        return obj[opt_key];
+      }
+      return obj;
+    },
+
+    __getStateName: function(key){
+      switch(key){
+        case "US":
+          return this.tr("U.S. states");
+        case "CH":
+          return this.tr("Cantons");//Kantone
+        case "DE":
+        case "AT":
+        default:
+          return this.tr("States");//Bundesländer
+      }
+    },
+
+    __getHolidayLocation: function(id, opt_key){
+      var obj = {
+        "country" :   {label: this.tr("Country")},
+        "state" :     {label: this.tr("All") + " " + this.__getStateName(opt_key)},
+        "region" :    {label: this.tr("All") + " " + this.tr("Regions")}
+      }
+      if(id){
+        return obj[id];
+      }
+      return obj;
+    },
+
     __updateMonthHolidays: function () {
+      var chosenTypes = this.getChildControl("type").getSelectionAsModelArr();
+
       for (var week = 0; week < 6; week++) {
         for (var i = 0; i < 7; i++) {
           var dayLabel = this.__dayLabelArr[week * 7 + i];
@@ -139,26 +201,19 @@ qx.Class.define("qxex.ui.control.DateChooser",
 
           var hs = this.hd.isHoliday(helpDate);
 
-          if (hs) {
+          if (hs && chosenTypes.indexOf(hs[0].type)>=0) {
             var h = hs[0];
-            var tooltipText = h.name + " (" + h.type + ")";
+            var t = this.__getHolidayType(h.type);
+
+            var tooltipText = h.name + " (" + t.label + ")";
             if (h.note) tooltipText += " " + h.note;
             dayLabel.setToolTipText(tooltipText);
             //https://github.com/commenthol/date-holidays#types-of-holidays
-            var color = "red";
-            switch (h.type) {
-              case "public": color = "red"; break;
-              case "bank": color = "orange"; break;
-              case "school": color = "yellow"; break;
-              case "optional": color = "magenta"; break;
-              case "observance": color = "blue"; break;
-            }
-            //text = "<div style='color:"+color+"'>"+text+"</div>";
-            dayLabel.setTextColor(color);
-            //dayLabel.addState("today");
+            dayLabel.setTextColor(t.color);
+            dayLabel.addState("today");
           } else {
             dayLabel.setTextColor(null);
-            //dayLabel.removeState("today");
+            dayLabel.removeState("today");
             dayLabel.setToolTipText("");
           }
 
