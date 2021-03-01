@@ -66,6 +66,22 @@ qx.Class.define("qxex.ui.form.DateField",
       return control || this.base(arguments, id);
     },
 
+    //overridden
+    _onTextFieldChangeValue : function(e)
+    {
+      var notcreate = true;
+      // Apply to popup
+      var date = this.getValue();
+      if (date != null)
+      {
+        var list = this.getChildControl("list", notcreate);
+        list && list.setValue(date);
+      }
+
+      // Fire event
+      this.fireDataEvent("changeValue", this.getValue());
+    },
+
     /*
     ---------------------------------------------------------------------------
       PUBLIC METHODS

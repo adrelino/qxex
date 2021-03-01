@@ -3,6 +3,37 @@ qx.Class.define("qxex.ui.control.DateChooser",
   extend: qx.ui.control.DateChooser,
 
   construct: function (date) {
+    this.base(arguments, date);
+    var urls = this.self(arguments).dynScriptUrls;
+    if(urls && urls.length){
+      var dynLoader = new qx.util.DynamicScriptLoader(urls);
+      dynLoader.addListenerOnce('ready',function(e){
+        console.log("all scripts have been loaded!");
+        this.__init();
+      },this);
+      dynLoader.addListener('failed',function(e){
+        var data = e.getData();
+        console.log("failed to load "+data.script);
+      });
+      dynLoader.start();
+    }else{
+      this.__init(); //assume Holiday object is already available
+    }
+  },
+
+  events: {
+      "daytap" : "qx.event.type.Event"
+  },
+
+  statics: {
+    dynScriptUrls : ["https://unpkg.com/date-holidays@2.0.0/dist/umd.min.js"]
+  },
+
+  members: {
+
+    __initialized : false,
+
+    __init : function(){
     var country = qx.locale.Manager.getInstance().getTerritory().toUpperCase();
     this.location = { country: country, state: "", region: "" };
     this.lang = qx.locale.Manager.getInstance().getLanguage();
@@ -15,15 +46,9 @@ qx.Class.define("qxex.ui.control.DateChooser",
       "state": this.hd.getStates,
       "region": this.hd.getRegions
     };
-    this.base(arguments, date);
     this._createChildControl("location-bar");
-  },
-
-  events: {
-      "daytap" : "qx.event.type.Event"
-  },
-
-  members: {
+    this.__initialized = true;
+    },
 
     _onDayTap : function(evt)
     {
@@ -79,7 +104,7 @@ qx.Class.define("qxex.ui.control.DateChooser",
     // overridden
     _updateDatePane: function () {
       this.base(arguments);
-      this.__updateMonthHolidays();
+      this.__initialized && this.__updateMonthHolidays();
     },
 
     __initLocation: function (id) {
@@ -98,9 +123,9 @@ qx.Class.define("qxex.ui.control.DateChooser",
           if (this.__locationHierarchy[i] == id) break;
         }
         this.hd.init.apply(this.hd, args);
-        var public = this.hd.getHolidays().filter(function (h) { return h.type == "public"; });
-        var color = this.__getHolidayType("public").color;            
-        var text = "<span style='color:"+color+"'>"+public.length+"</span>";
+        var arrFiltered = this.hd.getHolidays().filter(function (h) { return h.type == "public"; });
+        var color = this.__getHolidayType("public").color;
+        var text = "<span style='color:"+color+"'>"+arrFiltered.length+"</span>";
         item[0].setLabel((item[0].getUserData("label") || "") + " ("+text+")");
 
         this.__updateMonthHolidays();
