@@ -19,6 +19,13 @@ qx.Class.define("qxex.ui.core.Widget",
       qx.ui.popup.Manager.getInstance().setContainsFunction(qxex.ui.core.Widget.contains);
     },
 
+    registerPopupOpeningButton : function(button, popup)
+    {
+      popup.setUserData("$$nonBlurSibling",button);
+      //we need to change the singleton's contains method latest on first time use of our logical child functionality
+      qx.ui.popup.Manager.getInstance().setContainsFunction(qxex.ui.core.Widget.contains);
+    },
+
     /**
      * Whether the "parent" widget contains the "child" widget.
      *
@@ -30,6 +37,9 @@ qx.Class.define("qxex.ui.core.Widget",
     {
       while (child)
       {
+        if(parent.getUserData("$$nonBlurSibling") == child){
+          return true;
+        }
         var pred = child.getLayoutParent();
         var predLogical = child.getUserData("$$parentLogical");
 
