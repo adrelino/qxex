@@ -26,7 +26,7 @@ qx.Class.define("qxex.ui.control.DateChooser",
   },
 
   statics: {
-    dynScriptUrls : ["https://unpkg.com/date-holidays@2.0.0/dist/umd.min.js"]
+    dynScriptUrls : ["resource/qxex/date-holidays/dist/umd.min.js"] //https://unpkg.com/date-holidays@2.0.0/dist/umd.min.js"]
   },
 
   members: {
