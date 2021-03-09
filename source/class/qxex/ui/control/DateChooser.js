@@ -34,7 +34,6 @@ qx.Class.define("qxex.ui.control.DateChooser",
     __initialized : false,
     __locationHierarchy : null,
     __locationFunction: null,
-    __dayLabelArr: null,
 
     __init : function(){
     var country = qx.locale.Manager.getInstance().getTerritory().toUpperCase();
@@ -221,7 +220,7 @@ qx.Class.define("qxex.ui.control.DateChooser",
 
       for (var week = 0; week < 6; week++) {
         for (var i = 0; i < 7; i++) {
-          var dayLabel = this.__dayLabelArr[week * 7 + i];
+          var dayLabel = this.getChildControl("day#" + ((week*7)+i));
           var helpDate = new Date(dayLabel.dateTime);
           var dayOfMonth = helpDate.getDate();
 

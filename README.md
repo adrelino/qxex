@@ -6,10 +6,8 @@ Additional GUI widgets and other stuff for qooxdoo apps.
 
 ## setup
 ```shell
-mkdir playground && cd playground
 git clone https://github.com/adrelino/qooxdoo-extensions.git
 cd qooxdoo-extensions
-./init.sh
 ./generate.py
 ./generate.py source-server
 ```
