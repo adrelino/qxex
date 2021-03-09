@@ -22,6 +22,8 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
   members : {
 
     __primaryKeyColumnIdx : -1,
+    __TableConstructor : null,
+    __ModelConstructor : null,
 
     _table : null,
     _model : null,

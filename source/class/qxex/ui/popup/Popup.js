@@ -45,6 +45,8 @@ qx.Class.define("qxex.ui.popup.Popup",
 
   members :
   {
+    __childrenBox : null,
+
     _forwardStates :
     {
       active : true

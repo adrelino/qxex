@@ -47,7 +47,15 @@
     "API_EXCLUDE"  : ["qx.*", "${APPLICATION}.theme.*", "${APPLICATION}.test.*"],
     "LOCALES"      : [ "da", "de", "es", "en", "fr", "it", "ja", "pt", "ru", "vi", "zh"],
     "CACHE"        : "${TMPDIR}/qx${QOOXDOO_VERSION}/cache",
-    "ROOT"         : "."
+    "ROOT"         : ".",
+    "LINT_CHECK"   : { 
+      "allowed-globals" : [ "Holidays"],
+      "ignore-no-loop-block" : true,
+      "ignore-undefined-globals" : false,
+      "ignore-shadowing-locals" : true,
+      "ignore-unused-variables" : true,
+      "run" : true
+    }
   },
 
   // You only need to edit the remainder of this file, if you want to customize
@@ -70,6 +78,20 @@
        ,{ "manifest" : "../SilverBlueTheme/Manifest.json"}
        ,{ "manifest" : "../Bernstein/Manifest.json"}
       ]*/
+    },
+
+    "lint" : {
+      "lint-check" : "${LINT_CHECK}"
+    }, 
+
+    "source-hybrid" : {
+      "lint-check" : "${LINT_CHECK}",
+      "extend" : ["lint"]
+    },  
+
+    "build" : {
+      "lint-check" : "${LINT_CHECK}",
+      "extend" : ["lint"]
     },
 
     "includes" : {

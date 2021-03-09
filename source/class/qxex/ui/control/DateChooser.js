@@ -32,6 +32,9 @@ qx.Class.define("qxex.ui.control.DateChooser",
   members: {
 
     __initialized : false,
+    __locationHierarchy : null,
+    __locationFunction: null,
+    __dayLabelArr: null,
 
     __init : function(){
     var country = qx.locale.Manager.getInstance().getTerritory().toUpperCase();

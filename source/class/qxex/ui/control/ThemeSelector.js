@@ -69,6 +69,8 @@ qx.Class.define("qxex.ui.control.ThemeSelector",{
   },
 
   members : {
+    __type : "",
+
     _updateTheme : function(){
       this.setModelSelection([qxex.util.ThemeManager.getCurrent(this.__type)]);
     }
