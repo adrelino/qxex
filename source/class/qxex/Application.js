@@ -180,7 +180,22 @@ qx.Class.define("qxex.Application",
         container.addWidgetWithLabel(widget);
       }
 
-       {
+      {
+        var widget = new qxex.ui.control.DateChooser();
+        container.addWidgetWithLabel(widget);
+        
+        var label = new qx.ui.basic.Label();
+        label.setRich(true);
+        container.add(label);
+        widget.addListener("changeValue",function(e){
+          var date = e.getData();
+          var str = qxex.util.HolidayDateManager.getInstance().formatDate(date);
+          label.setValue(str);
+        },this);
+        widget.setValue(new Date("2021-01-01"));
+      }
+
+      {
         var widget = new qxex.ui.form.DateField();
         container.addWidgetWithLabel(widget);
       }

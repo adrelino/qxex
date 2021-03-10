@@ -4,7 +4,7 @@ qx.Class.define("qxex.ui.control.DateChooser",
 
   construct: function (date) {
     this.base(arguments, date);
-    qxex.util.HolidayDateManager.getInstance().lazyLoadLibrary(function(){
+    qxex.util.HolidayDateManager.getInstance().addListener("initialized",function(){
       this.__init();
     },this);
   },
@@ -21,17 +21,15 @@ qx.Class.define("qxex.ui.control.DateChooser",
 
     __init : function(){
       var man = qxex.util.HolidayDateManager.getInstance();
-    //https://github.com/commenthol/date-holidays#holiday-object
-    //https://github.com/commenthol/date-holidays-parser/blob/master/docs/Holidays.md
-    this.hd = new Holidays(man.getLocation("country"));
-    this.__locationHierarchy = ["country", "state", "region"];
-    this.__locationFunction = {
-      "country": this.hd.getCountries,
-      "state": this.hd.getStates,
-      "region": this.hd.getRegions
-    };
-    this._createChildControl("location-bar");
-    this.__initialized = true;
+      this.__locationHierarchy = ["country", "state", "region"];
+      this.__locationFunction = {
+        "country": man.hd.getCountries,
+        "state": man.hd.getStates,
+        "region": man.hd.getRegions
+      };
+      this._createChildControl("location-bar");
+      this.__initialized = true;
+      this.__updateMonthHolidays();
     },
 
     _onDayTap : function(evt)
@@ -101,14 +99,8 @@ qx.Class.define("qxex.ui.control.DateChooser",
         if (!item || item.length == 0) return;
         var key = item[0].getModel();
         var man = qxex.util.HolidayDateManager.getInstance();
-        man.setLocation(id,key);
-        var args = [];
-        for (var i = 0; i < this.__locationHierarchy.length; i++) {
-          args.push(man.getLocation(this.__locationHierarchy[i]));
-          if (this.__locationHierarchy[i] == id) break;
-        }
-        this.hd.init.apply(this.hd, args);
-        var arrFiltered = this.hd.getHolidays().filter(function (h) { return h.type == "public"; });
+        var i = man.setLocation(id,key);
+        var arrFiltered = man.hd.getHolidays().filter(function (h) { return h.type == "public"; });
         var color = this.__getHolidayType("public").color;
         var text = "<span style='color:"+color+"'>"+arrFiltered.length+"</span>";
         item[0].setLabel((item[0].getUserData("label") || "") + " ("+text+")");
@@ -135,7 +127,7 @@ qx.Class.define("qxex.ui.control.DateChooser",
         args.push(man.getLocation(this.__locationHierarchy[i])); //state needs country, region needs state and country
       }
 
-      var obj = fun.apply(this.hd, args);  //getCountries(), getStates(country) or getRegions(country,state)
+      var obj = fun.apply(man.hd, args);  //getCountries(), getStates(country) or getRegions(country,state)
       var keys = []
       if (obj){//} && id != "country") {
         keys.push("");
@@ -202,6 +194,8 @@ qx.Class.define("qxex.ui.control.DateChooser",
     __updateMonthHolidays: function () {
       var chosenTypes = this.getChildControl("type").getSelectionAsModelArr();
 
+      var man = qxex.util.HolidayDateManager.getInstance();
+
       for (var week = 0; week < 6; week++) {
         for (var i = 0; i < 7; i++) {
           var dayLabel = this.getChildControl("day#" + ((week*7)+i));
@@ -210,7 +204,7 @@ qx.Class.define("qxex.ui.control.DateChooser",
 
           var text = "" + dayOfMonth;
 
-          var hs = this.hd.isHoliday(helpDate);
+          var hs = man.hd.isHoliday(helpDate);
 
           if (hs && chosenTypes.indexOf(hs[0].type)>=0) {
             var h = hs[0];
