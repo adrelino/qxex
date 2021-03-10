@@ -29,7 +29,8 @@ qx.Class.define("qxex.util.HolidayDateManager", {
 	},
 
 	events: {
-		"initialized": "qx.event.type.Event"
+		"initialized": "qx.event.type.Event",
+		"changeLocation": "qx.event.type.Event"
 	},
 
 
@@ -83,6 +84,7 @@ qx.Class.define("qxex.util.HolidayDateManager", {
 				this.__args[i] = null; 
 			}
 			this.hd.init.apply(this.hd, this.__args);
+			this.fireEvent("changeLocation");
 			return idx;
 		},
 
@@ -90,7 +92,7 @@ qx.Class.define("qxex.util.HolidayDateManager", {
 			return this.__args[this.__idToIdx[id]];
 		},
 
-		formatDate: function(date){
+		__formatDate: function(date){
 			var fmt = qx.locale.Date.getDateFormat("medium", qx.locale.Manager.getInstance().getLocale());
 			fmt = "EE " + fmt;
 			var df = new qx.util.format.DateFormat(fmt);
@@ -103,6 +105,15 @@ qx.Class.define("qxex.util.HolidayDateManager", {
 			}
 			return str;
 		},
+
+		formatDateAsync: function(date,callback,tthis){
+			if(this.__libraryLoaded){
+				callback.call(tthis,this.__formatDate(date));
+			}else{
+				this.addListenerOnce("initialized",function(){
+					callback.call(tthis,this.__formatDate(date));
+				},this);
+			}
 		}
 	}
 });

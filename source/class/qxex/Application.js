@@ -180,7 +180,7 @@ qx.Class.define("qxex.Application",
         container.addWidgetWithLabel(widget);
       }
 
-      {
+      function foo(){
         var widget = new qxex.ui.control.DateChooser();
         container.addWidgetWithLabel(widget);
         
@@ -189,11 +189,20 @@ qx.Class.define("qxex.Application",
         container.add(label);
         widget.addListener("changeValue",function(e){
           var date = e.getData();
-          var str = qxex.util.HolidayDateManager.getInstance().formatDate(date);
-          label.setValue(str);
+          qxex.util.HolidayDateManager.getInstance().formatDateAsync(date,function(str){
+            label.setValue(str);
+          },this);
         },this);
+
+        qxex.util.HolidayDateManager.getInstance().addListener("changeLocation",function(){
+          var date = widget.getValue();
+          qxex.util.HolidayDateManager.getInstance().formatDateAsync(date,function(str){
+            label.setValue(str);
+          },this);
+        },this);
+
         widget.setValue(new Date("2021-01-01"));
-      }
+      };foo();
 
       {
         var widget = new qxex.ui.form.DateField();
