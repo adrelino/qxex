@@ -4,29 +4,13 @@ qx.Class.define("qxex.ui.control.DateChooser",
 
   construct: function (date) {
     this.base(arguments, date);
-    var urls = this.self(arguments).dynScriptUrls;
-    if(urls && urls.length){
-      var dynLoader = new qx.util.DynamicScriptLoader(urls);
-      dynLoader.addListenerOnce('ready',function(e){
-        console.log("all scripts have been loaded!");
-        this.__init();
-      },this);
-      dynLoader.addListener('failed',function(e){
-        var data = e.getData();
-        console.log("failed to load "+data.script);
-      });
-      dynLoader.start();
-    }else{
-      this.__init(); //assume Holiday object is already available
-    }
+    qxex.util.HolidayDateManager.getInstance().lazyLoadLibrary(function(){
+      this.__init();
+    },this);
   },
 
   events: {
       "daytap" : "qx.event.type.Event"
-  },
-
-  statics: {
-    dynScriptUrls : ["resource/qxex/date-holidays/dist/umd.min.js"] //https://unpkg.com/date-holidays@2.0.0/dist/umd.min.js"]
   },
 
   members: {
@@ -36,12 +20,10 @@ qx.Class.define("qxex.ui.control.DateChooser",
     __locationFunction: null,
 
     __init : function(){
-    var country = qx.locale.Manager.getInstance().getTerritory().toUpperCase();
-    this.location = { country: country, state: "", region: "" };
-    this.lang = qx.locale.Manager.getInstance().getLanguage();
+      var man = qxex.util.HolidayDateManager.getInstance();
     //https://github.com/commenthol/date-holidays#holiday-object
     //https://github.com/commenthol/date-holidays-parser/blob/master/docs/Holidays.md
-    this.hd = new Holidays(this.location["country"]);
+    this.hd = new Holidays(man.getLocation("country"));
     this.__locationHierarchy = ["country", "state", "region"];
     this.__locationFunction = {
       "country": this.hd.getCountries,
@@ -118,10 +100,11 @@ qx.Class.define("qxex.ui.control.DateChooser",
         var item = e.getData();
         if (!item || item.length == 0) return;
         var key = item[0].getModel();
-        this.location[id] = key;
+        var man = qxex.util.HolidayDateManager.getInstance();
+        man.setLocation(id,key);
         var args = [];
         for (var i = 0; i < this.__locationHierarchy.length; i++) {
-          args.push(this.location[this.__locationHierarchy[i]]);
+          args.push(man.getLocation(this.__locationHierarchy[i]));
           if (this.__locationHierarchy[i] == id) break;
         }
         this.hd.init.apply(this.hd, args);
@@ -144,11 +127,12 @@ qx.Class.define("qxex.ui.control.DateChooser",
     __updateLocation: function (id, control) {
       var control = control || this.getChildControl(id);
 
+      var man = qxex.util.HolidayDateManager.getInstance();
       var fun = this.__locationFunction[id];
       var args = [];
       for (var i = 0; i < this.__locationHierarchy.length; i++) {
         if (this.__locationHierarchy[i] == id) break;  //if country need no args
-        args.push(this.location[this.__locationHierarchy[i]]); //state needs country, region needs state and country
+        args.push(man.getLocation(this.__locationHierarchy[i])); //state needs country, region needs state and country
       }
 
       var obj = fun.apply(this.hd, args);  //getCountries(), getStates(country) or getRegions(country,state)
@@ -170,7 +154,7 @@ qx.Class.define("qxex.ui.control.DateChooser",
         var item = new qx.ui.form.ListItem(obj[key] || "", icon, key).set({rich:true});
         item.setUserData("label",obj[key]);
         control.add(item);
-        if (key == this.location[id]) {
+        if (key == man.getLocation(id)) {
           control.setSelection([item]);
         }
       }
