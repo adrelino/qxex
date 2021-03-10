@@ -8,6 +8,7 @@
  * https://github.com/commenthol/date-holidays#holiday-object
  * https://github.com/commenthol/date-holidays-parser/blob/master/docs/Holidays.md 
  *
+ * @asset(qxex/date-holidays/dist/umd.min.js)
  */
 qx.Class.define("qxex.util.HolidayDateManager", {
 	type: "singleton",
@@ -25,7 +26,7 @@ qx.Class.define("qxex.util.HolidayDateManager", {
 	},
 
 	statics: {
-		dynScriptUrls: ["resource/qxex/date-holidays/dist/umd.min.js"] //https://unpkg.com/date-holidays@2.0.0/dist/umd.min.js"]
+		dynScriptUrls: ["qxex/date-holidays/dist/umd.min.js"] //https://unpkg.com/date-holidays@2.0.0/dist/umd.min.js"]
 	},
 
 	events: {

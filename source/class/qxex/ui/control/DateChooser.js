@@ -1,3 +1,6 @@
+/**
+ * @asset(qxex/region-flags/pngWx12px/*)
+ */
 qx.Class.define("qxex.ui.control.DateChooser",
 {
   extend: qx.ui.control.DateChooser,
@@ -142,7 +145,7 @@ qx.Class.define("qxex.ui.control.DateChooser",
       }
       for (var i=0; i<keys.length; i++) {
         var key = keys[i];
-        var icon = (key && id!="region") ? "resource/qxex/region-flags/pngWx12px/" + args.concat([key]).join("-") + ".png" : null;
+        var icon = (key && id!="region") ? "qxex/region-flags/pngWx12px/" + args.concat([key]).join("-") + ".png" : null;
         var item = new qx.ui.form.ListItem(obj[key] || "", icon, key).set({rich:true});
         item.setUserData("label",obj[key]);
         control.add(item);
