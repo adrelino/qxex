@@ -7,7 +7,7 @@ qx.Class.define("qxex.ui.control.DateChooser",
 
   construct: function (date) {
     this.base(arguments, date);
-    qxex.util.HolidayDateManager.getInstance().addListener("initialized",function(){
+    qxex.util.HolidayDateManager.getInstance().runAsync(function(){
       this.__init();
     },this);
   },

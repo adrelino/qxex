@@ -82,6 +82,20 @@ qx.Class.define("qxex.ui.form.DateField",
       this.fireDataEvent("changeValue", this.getValue());
     },
 
+    //overridden
+    setValue : function(value)
+    {
+      // set the date to the textfield
+      var textField = this.getChildControl("textfield");
+      textField.setValue(this.getDateFormat().format(value));
+
+      var notcreate = true;
+
+      // set the date in the datechooser
+      var dateChooser = this.getChildControl("list", notcreate);
+      dateChooser && dateChooser.setValue(value);
+    },
+
     /*
     ---------------------------------------------------------------------------
       PUBLIC METHODS

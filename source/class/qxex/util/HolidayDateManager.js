@@ -107,6 +107,16 @@ qx.Class.define("qxex.util.HolidayDateManager", {
 			return str;
 		},
 
+		runAsync: function(callback, tthis){
+			if(this.__libraryLoaded){
+				callback.call(tthis);
+			}else{
+				this.addListenerOnce("initialized",function(){
+					callback.call(tthis);
+				},this);
+			}
+		},
+
 		formatDateAsync: function(date,callback,tthis){
 			if(this.__libraryLoaded){
 				callback.call(tthis,this.__formatDate(date));
