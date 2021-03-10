@@ -11,17 +11,103 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: qxex/ui/control/DateChooser.js
+msgid "Bank holiday"
+msgstr "Bank Feiertag"
+
+#: qxex/ui/control/DateChooser.js
+msgid "Country"
+msgstr "Land"
+
+#: qxex/ui/control/DateChooser.js
+msgid "Holiday"
+msgstr "Feiertag"
+
+#: qxex/ui/control/DateChooser.js
+msgid "Observance day"
+msgstr "Kirchenfest"
+
+#: qxex/ui/control/DateChooser.js
+msgid "Optional holiday"
+msgstr "optionaler Feiertag"
+
+#: qxex/ui/control/DateChooser.js
+msgid "Public holiday"
+msgstr "gesetzlicher Feiertag"
+
+#: qxex/ui/control/DateChooser.js
+msgid "Regions"
+msgstr "Regionen"
+
+#: qxex/ui/control/DateChooser.js
+msgid "School holiday"
+msgstr "Schulfrei"
+
+#: qxex/ui/control/DateChooser.js
+msgid "U.S. states"
+msgstr "US-Bundesstaat"
+
+#: qxex/ui/control/DateChooser.js
+msgid "autonomous communities"
+msgstr "Autonome Gemeinschaften"
+
+#: qxex/ui/control/DateChooser.js
+msgid "cantons"
+msgstr "Kantone"
+
+#: qxex/ui/control/DateChooser.js
+msgid "countries and provinces"
+msgstr "Landesteile"
+
+#: qxex/ui/control/DateChooser.js
+msgid "departments and overseas regions"
+msgstr "Départements und Übersee-Regionen"
+
+#: qxex/ui/control/DateChooser.js
+msgid "federated states"
+msgstr "Bundesländer"
+
+#: qxex/ui/control/DateChooser.js
+msgid "provinces and territories"
+msgstr "Provinzen und Territorien"
+
+#: qxex/ui/control/DateChooser.js
+msgid "regions"
+msgstr "Regionen"
+
+#: qxex/ui/control/DateChooser.js
+msgid "states"
+msgstr "Staaten"
+
+#: qxex/ui/control/DateChooser.js
+msgid "states and territories"
+msgstr "Bundesstaaten und Territorien"
+
+#. Label
+#: qxex/ui/form/MultiSelectBox.js qxex/ui/control/DateChooser.js
+msgid "All"
+msgstr "Alle"
+
 #. tooltip
-#: qxex/ui/form/DateField.js:81
+#: qxex/ui/form/DateField.js
 msgid "Invalid format. Correctly formatted example: %1"
 msgstr "Falsches Format. Richtig formatiertes Beispiel: %1"
 
-#: qxex/ui/form/FilterTreeSelectBox.js:40 qxex/ui/form/MSelectBoxFilter.js:74
-msgid "type to filter, backspace to clear"
-msgstr "Filtertext eintippen, löschen mit Rücktaste"
+#. tooltip
+#: qxex/ui/form/MSelectBoxFilter.js
+msgid "Check to filter out entries based on group filter"
+msgstr "Ankreuzen um Einträge zu filtern basierend auf dem Gruppenfilter"
+
+#: qxex/ui/form/MSelectBoxFilter.js
+msgid "Group filter"
+msgstr "Gruppenfilter"
+
+#: qxex/ui/form/MSelectBoxFilter.js
+msgid "Search filter"
+msgstr "Suchfilter"
 
 #. tooltip
-#: qxex/ui/form/FilterTreeSelectBox.js:41 qxex/ui/form/MSelectBoxFilter.js:75
+#: qxex/ui/form/MSelectBoxFilter.js
 msgid ""
 "Start typing to filter list entries. Use backspace to undo filtering "
 "character-wise."
@@ -29,64 +115,49 @@ msgstr ""
 "Tippen Sie den gewünschten Text ein um zu filtern. Mit der Rücktaste löschen"
 " Sie ihn wieder Buchstabe für Buchstabe."
 
-#: qxex/ui/form/FilterTreeSelectBox.js:45 qxex/ui/form/MSelectBoxFilter.js:79
-msgid "Press backspace to clear the filter"
-msgstr "Rücktaste drücken um den Filter zu löschen"
-
-#: qxex/ui/form/MSelectBoxFilter.js:70
-msgid "Search filter"
-msgstr "Suchfilter"
-
-#: qxex/ui/form/MSelectBoxFilter.js:101
-msgid "Group filter"
-msgstr "Gruppenfilter"
-
-#. tooltip
-#: qxex/ui/form/MSelectBoxFilter.js:104
-msgid "Check to filter out entries based on group filter"
-msgstr "Ankreuzen um Einträge zu filtern basierend auf dem Gruppenfilter"
+#: qxex/ui/form/MSelectBoxFilter.js
+msgid "type to filter, backspace to clear"
+msgstr "Filtertext eintippen, löschen mit Rücktaste"
 
 #. Label
-#: qxex/ui/form/MSelectBoxSyncButtonStyle.js:19
+#: qxex/ui/form/MSelectBoxSyncButtonStyle.js
 msgid "%1/%2 chosen"
 msgstr "%1/%2 ausgewählt"
 
 #. Tooltip
-#: qxex/ui/form/MSelectBoxSyncButtonStyle.js:24
+#: qxex/ui/form/MSelectBoxSyncButtonStyle.js
 msgid "Please select at least one item"
 msgstr "Bitte wählen Sie mindestens einen Eintrag"
 
 #. Tooltip
-#: qxex/ui/form/MSelectBoxSyncButtonStyle.js:28
+#: qxex/ui/form/MSelectBoxSyncButtonStyle.js
 msgid "You can select multiple items"
 msgstr "Mehrfachauswahl möglich"
 
 #. Label
-#: qxex/ui/form/MultiSelectBox.js:38
-msgid "All"
-msgstr "Alle"
-
-#. Label
-#: qxex/ui/form/MultiSelectBox.js:47
+#: qxex/util/LanguageManager.js qxex/ui/form/MultiSelectBox.js
 msgid "None"
 msgstr "Keine"
 
 #. statusLine
-#: qxex/ui/form/MultiSelectBox.js:59
+#: qxex/ui/form/MultiSelectBox.js
 msgid "Use Shift-click or Crtl-click for multiple selection"
 msgstr "Hochstelltaste+Klick oder Strg+Klick verwenden"
 
 #. label
-#: qxex/ui/table/headerrenderer/FilterHeaderCell.js:79
-msgid "click to toggle between 3 states: true, false, both"
-msgstr "Klicken um zwischen 3 Zuständen zu wechseln: Wahr, Falsch, Beides"
-
-#. label
-#: qxex/ui/table/headerrenderer/FilterHeaderCell.js:116
+#: qxex/ui/table/headerrenderer/FilterHeaderCell.js
 msgid "Enter texts which must match appropriate column:"
 msgstr "Texte eintragen welche mit der Spalte übereinstimmen müssen:"
 
 #. label
-#: qxex/ui/table/headerrenderer/FilterHeaderCell.js:149
+#: qxex/ui/table/headerrenderer/FilterHeaderCell.js
 msgid "Whether text must match exactly"
 msgstr "Ob der Text genau übereinstimmen muss"
+
+#. label
+#: qxex/ui/table/headerrenderer/FilterHeaderCell.js
+msgid "click to toggle between 3 states: true, false, both"
+msgstr "Klicken um zwischen 3 Zuständen zu wechseln: Wahr, Falsch, Beides"
+
+#~ msgid "Press backspace to clear the filter"
+#~ msgstr "Rücktaste drücken um den Filter zu löschen"

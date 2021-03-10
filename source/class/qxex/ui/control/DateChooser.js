@@ -156,9 +156,9 @@ qx.Class.define("qxex.ui.control.DateChooser",
       var obj = {
         "public" :    {color: "#a60000", label: this.tr("Public holiday")}, //red  //gestzlicher Feiertag
         "bank" :      {color: "#a67f00", label: this.tr("Bank holiday")}, //orange
-        "school" :    {color: "#00a62a", label: this.tr("School holiday")},//green
+        "school" :    {color: "#00a62a", label: this.tr("School holiday")},//green  //Schulfrei
         "optional" :  {color: "#0045a6", label: this.tr("Optional holiday")},//blue
-        "observance" :{color: "#6c00a6", label: this.tr("Observance day")}//magenta  //Gedenktag / Aktionstag
+        "observance" :{color: "#6c00a6", label: this.tr("Observance day")}//magenta  //Gedenktag / Aktionstag / Kirchenfest / kirchlicher Feiertag
       }
       if(opt_key){
         return obj[opt_key];
@@ -166,16 +166,35 @@ qx.Class.define("qxex.ui.control.DateChooser",
       return obj;
     },
 
+    /*
+     * Translations based on corresponding German wiki
+     * https://en.wikipedia.org/wiki/ISO_3166-2:AU
+     * https://www.iso.org/obp/ui/#iso:code:3166:AU
+     */
     __getStateName: function(key){
       switch(key){
+        case "AT":
+        case "DE":
+          return this.tr("federated states");//Bundesländer
+        case "AU": 
+          return this.tr("states and territories");//Bundesstaaten und Territorien
+        case "BE":
+        case "IT":
+          return this.tr("regions");
+        case "CA":
+          return this.tr("provinces and territories");//Provinzen und Territorien
+        case "CH":
+          return this.tr("cantons");//Kantone
+        case "ES":
+          return this.tr("autonomous communities");//autonome Gemeinschaften
+        case "FR":
+          return this.tr("departments and overseas regions");//Départements und 5 Übersee-Regionen 
+        case "GB":
+          return this.tr("countries and provinces");//Landesteile   //alternative: constituent countries
         case "US":
           return this.tr("U.S. states");
-        case "CH":
-          return this.tr("Cantons");//Kantone
-        case "DE":
-        case "AT":
         default:
-          return this.tr("States");//Bundesländer
+          return this.tr("states");
       }
     },
 

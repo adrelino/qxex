@@ -63,6 +63,19 @@
 
   "jobs" :
   {
+    "translation" : //https://github.com/qooxdoo/qooxdoo/pull/9486
+    {
+      "translate" :
+      {
+        // Create Mac OS style .po files
+        // with each PO entry preceded by `#:` comments only containing source file(s) in
+        // which the key is used (no line-number)
+        //"eol-style" : "CR",
+        "poentry-with-occurrences" : true,
+        "occurrences-with-linenumber" : false
+      }
+    },
+
     // Uncomment the following entry to add a contrib or library to your
     // project; make sure to adapt the path to the Manifest.json; if you are
     // using a contrib: library, it will be downloaded into the path specified
