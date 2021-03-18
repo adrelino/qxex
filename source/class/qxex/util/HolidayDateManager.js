@@ -61,7 +61,7 @@ qx.Class.define("qxex.util.HolidayDateManager", {
 		},
 
 		__init: function(){
-			var territory = qx.locale.Manager.getInstance().getTerritory().toUpperCase();
+			var territory = qx.locale.Manager.getInstance().getTerritory().toUpperCase() || "DE";
 			this.__args = [territory];
 			//if(typeof Holidays == "undefined") return;
 			this.hd = new Holidays();
@@ -100,6 +100,16 @@ qx.Class.define("qxex.util.HolidayDateManager", {
 			var str = df.format(date);
 
 			if(typeof Holidays == "undefined") return str;
+			var holiday = this.hd.isHoliday(date);
+			if(holiday){
+			  str = "<b>" + str + " (" + holiday[0].name + ")<b/>";
+			}
+			return str;
+		},
+
+		formatHoliday:function(date){
+			var str = "";
+			if(typeof Holidays == "undefined") return " [holiday loading]";
 			var holiday = this.hd.isHoliday(date);
 			if(holiday){
 			  str = "<b>" + str + " (" + holiday[0].name + ")<b/>";

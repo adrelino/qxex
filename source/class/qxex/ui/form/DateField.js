@@ -15,10 +15,11 @@ qx.Class.define("qxex.ui.form.DateField",
   /**
    * @param withClearButton {Boolean ? false} Whether to add an additional button to clear the date.
    */
-  construct : function(withClearButton)
+  construct : function(withClearButton, showHoliday)
   {
     this.base(arguments);
-    this.removeListener("blur", this._onBlur, this);
+    this.__showHoliday = showHoliday;
+    showHoliday && this.removeListener("blur", this._onBlur, this);
     if(withClearButton) this._createChildControl("button2");
   },
 
@@ -49,6 +50,7 @@ qx.Class.define("qxex.ui.form.DateField",
           break;
 
         case "list":
+          if(!this.__showHoliday) break;
           control = new qxex.ui.control.DateChooser();
           control.setFocusable(false);
           control.setKeepFocus(true);
@@ -57,6 +59,7 @@ qx.Class.define("qxex.ui.form.DateField",
           break;
 
        case "popup":
+          if(!this.__showHoliday) break;
           control = this.base(arguments, id);
           control.setAutoHide(true);
           control.removeListener("pointerup", this._onChangeDate, this);
