@@ -1,28 +1,26 @@
 # qooxdoo-extensions
-Additional GUI widgets and other stuff for qooxdoo apps.
+Additional GUI widgets (in `ui/*`) and utilities (static/singleton Manager's in `util/`) for qooxdoo apps.
 
 ## Demo
-[Demo](build) | [API](api#qxex)
+[Application](build/qxex) | [API](build/apiviewer#qxex)
 
-## setup
+## Development
+
+### setup
 ```shell
-mkdir playground && cd playground
 git clone https://github.com/adrelino/qooxdoo-extensions.git
 cd qooxdoo-extensions
-./init.sh
-./generate.py
-./generate.py source-server
+npm install
+./serve.sh
 ```
 
-### generate build version and api
+### generate build
 ```shell
-./generate.py build
-./generate.py api
+./compile.sh
 ```
 
 ### deploy to gh-pages
 ```shell
 ./deploy.sh build/
-./deploy.sh api/
 ./deploy.sh README.md
 ```
