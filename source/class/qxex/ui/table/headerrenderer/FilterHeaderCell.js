@@ -41,45 +41,45 @@ qx.Class.define("qxex.ui.table.headerrenderer.FilterHeaderCell",
     }
   },
 
-  members :
+  members:
   {
-  	 // property modifier
-    _applyFilterVisible : function(value, old){
-    	if(value) this._showChildControl("filter");
-    	else this.getChildControl("filter").hide(); //_excludeChildControl("filter");
-    },
-    
-     // property modifier
-    _applyExactMatchVisible : function(value, old){
-    	if(value) this._showChildControl("exactMatchCheckBox");
-    	else this.getChildControl("exactMatchCheckBox").hide(); //_excludeChildControl("filter");
-    },
-    
     // property modifier
-    _applyRenderCheckbox : function(value, old){
-      if(value==old) return;
+    _applyFilterVisible: function (value) {
+      if (value) this._showChildControl("filter");
+      else this.getChildControl("filter").hide(); //_excludeChildControl("filter");
+    },
+
+    // property modifier
+    _applyExactMatchVisible: function (value) {
+      if (value) this._showChildControl("exactMatchCheckBox");
+      else this.getChildControl("exactMatchCheckBox").hide(); //_excludeChildControl("filter");
+    },
+
+    // property modifier
+    _applyRenderCheckbox: function (value, old) {
+      if (value == old) return;
       var stack = this.getChildControl("filter");
       stack.setSelection([value ? this.getChildControl("checkbox") : this.getChildControl("textfield")]);
     },
-    
-  	setFilterText : function(text){ //triggered kein event, ist für das kopieren bei colmove
-  		this.getChildControl("filter").getSelection()[0].setValue(text);
-  	},
-  	
-  	getFilterText : function(){
-  		return this.getChildControl("filter").getSelection()[0].getValue();
-  	},
-  	
-  	setExactMatch : function(value){ //triggered kein event, ist für das kopieren bei colmove
-  		this.getChildControl("exactMatchCheckBox").setValue(value);
-  	},
-  	
-  	getExactMatch : function(){
-  		return this.getChildControl("exactMatchCheckBox").getValue();
-  	},
+
+    setFilterText: function (text) { //triggered kein event, ist für das kopieren bei colmove
+      this.getChildControl("filter").getSelection()[0].setValue(text);
+    },
+
+    getFilterText: function () {
+      return this.getChildControl("filter").getSelection()[0].getValue();
+    },
+
+    setExactMatch: function (value) { //triggered kein event, ist für das kopieren bei colmove
+      this.getChildControl("exactMatchCheckBox").setValue(value);
+    },
+
+    getExactMatch: function () {
+      return this.getChildControl("exactMatchCheckBox").getValue();
+    },
 
     // overridden
-    _createChildControlImpl : function(id, hash)
+    _createChildControlImpl : function(id)
     {
       var control;
 
@@ -155,12 +155,12 @@ qx.Class.define("qxex.ui.table.headerrenderer.FilterHeaderCell",
           
           control.setToolTipText(this.trc("label", "Whether text must match exactly"));
             control.addListener("input", function(event) {
-          	var value=event.getData();
+            var value=event.getData();
             this.fireDataEvent("exactMatchChanged",value);
             }, this);
         
           control.addListener("click", function(e) {
-          		e.stop(); //otherwise, the sorted state would change   	
+              e.stop(); //otherwise, the sorted state would change   	
               },this);
          
           this._add(control, {row: 1, column: 3});

@@ -21,13 +21,13 @@ qx.Theme.define("qxex.theme.Appearance",
   appearances :
   {
     "watcheecaptionbar" : "window/captionbar",
-    "watcheeclosebutton" : "window/close-button",
+    "watcheeclosebutton": "window/close-button",
 
-  	"timechooser" : "datechooser",
-  	"timechooser/slider" : "slider",
-  	"timechooser/slider/knob" : "image",
+    "timechooser": "datechooser",
+    "timechooser/slider": "slider",
+    "timechooser/slider/knob": "image",
 
-    "datefield/button2" :
+    "datefield/button2":
     {
       style : function(states)
       {
@@ -40,7 +40,7 @@ qx.Theme.define("qxex.theme.Appearance",
     },
 
     "multilangtextfield" : "datefield",
-  	//"multilangtextfield/list" : "timechooser",
+    //"multilangtextfield/list" : "timechooser",
     "multilangtextfield/button" :
     {
       style : function(states)
@@ -53,9 +53,9 @@ qx.Theme.define("qxex.theme.Appearance",
       }
     },
 
-  	"timefield" : "datefield",
-  	"timefield/list" : "timechooser",
-    "timefield/button" :
+    "timefield": "datefield",
+    "timefield/list": "timechooser",
+    "timefield/button":
     {
       style : function(states)
       {

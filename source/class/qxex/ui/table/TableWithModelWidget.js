@@ -221,7 +221,7 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
     },
 
     __setUpColumns : function(){
-    	// Set the columns
+      // Set the columns
       var column_names = [], column_labels=[];
       this.__columnsArr = [];
       var idx=0; 
@@ -235,8 +235,8 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
           label=col.headerLabel.call(this);
         }
         column_names[col.idx] = key;
-	    column_labels[col.idx] = label;
-	    this.__columnsArr[col.idx] = col; //so we can reference by idx and not by id. Needed in event listeners
+      column_labels[col.idx] = label;
+      this.__columnsArr[col.idx] = col; //so we can reference by idx and not by id. Needed in event listeners
       }
       this._model.setColumns(column_labels,column_names);
     },

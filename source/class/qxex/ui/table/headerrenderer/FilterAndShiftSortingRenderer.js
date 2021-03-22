@@ -18,18 +18,18 @@ qx.Class.define("qxex.ui.table.headerrenderer.FilterAndShiftSortingRenderer",
     filterVisible :
     {
       check : "Boolean",
-      init : true
+      init: true
     },
 
-    renderCheckbox : {
-    	check : "Boolean",
-    	init : false
+    renderCheckbox: {
+      check: "Boolean",
+      init: false
     },
 
-    shiftPressedSorting : 
+    shiftPressedSorting:
     {
-      check : "Boolean",
-      init : false
+      check: "Boolean",
+      init: false
     }
   },
   
@@ -41,7 +41,7 @@ qx.Class.define("qxex.ui.table.headerrenderer.FilterAndShiftSortingRenderer",
   
   members :
   {
-  	__widget : null,
+    __widget : null,
 
     /**
      * Get the header cell widget that contains the textfield
@@ -121,8 +121,8 @@ qx.Class.define("qxex.ui.table.headerrenderer.FilterAndShiftSortingRenderer",
       cellWidget.setRenderCheckbox(this.getRenderCheckbox());
 
       this.getShiftPressedSorting() ?
-      	cellWidget.addState(this.self(arguments).STATE_SORTED_SHIFT) :
-      	cellWidget.removeState(this.self(arguments).STATE_SORTED_SHIFT);
+        cellWidget.addState(this.self(arguments).STATE_SORTED_SHIFT) :
+        cellWidget.removeState(this.self(arguments).STATE_SORTED_SHIFT);
     }
   }
 });

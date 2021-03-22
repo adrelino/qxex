@@ -310,7 +310,7 @@ qx.Class.define("qxex.ui.form.MultiSelectBox",
       }
 
       if (current.length > 0){
-      	// Add listeners for icon and label changes
+        // Add listeners for icon and label changes
         current[0].addListener("changeIcon", this.update, this);
         current[0].addListener("changeLabel", this.update, this);
       }

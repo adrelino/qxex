@@ -15,14 +15,14 @@ qx.Class.define("qxex.util.HolidayDateManager", {
 	extend: qx.core.Object,
 	include: qx.locale.MTranslation,
 
-	construct: function(){
+	construct: function () {
 		this.__idToIdx = {
-			"country" : 0,
-			"state" : 1,
-			"region" : 2
+			"country": 0,
+			"state": 1,
+			"region": 2
 		};
 		this.__args = [];
-		this.__lazyLoadLibrary(this.__init,this);
+		this.__lazyLoadLibrary(this.__init, this);
 	},
 
 	statics: {
@@ -37,15 +37,15 @@ qx.Class.define("qxex.util.HolidayDateManager", {
 
 	members: {
 		__libraryLoaded: false,
-		__args : null,
-		__idToIdx : null,
-		hd : null,
+		__args: null,
+		__idToIdx: null,
+		hd: null,
 
 		__lazyLoadLibrary: function (callback, tthis) {
 			var urls = this.self(arguments).dynScriptUrls;
 			if (!this.__libraryLoaded) {
 				var dynLoader = new qx.util.DynamicScriptLoader(urls);
-				dynLoader.addListenerOnce('ready', function (e) {
+				dynLoader.addListenerOnce('ready', function () {
 					console.log("all scripts have been loaded!");
 					this.__libraryLoaded = true;
 					callback.call(tthis); //1st call
@@ -60,80 +60,80 @@ qx.Class.define("qxex.util.HolidayDateManager", {
 			}
 		},
 
-		__init: function(){
+		__init: function () {
 			var territory = qx.locale.Manager.getInstance().getTerritory().toUpperCase() || "DE";
 			this.__args = [territory];
 			//if(typeof Holidays == "undefined") return;
 			this.hd = new Holidays();
 			var countries = this.hd.getCountries();
 			var chosenCountry = countries[territory];
-			if(!chosenCountry){
-			  console.log(territory + "does not exist in holidays");
-			}else{
-			  console.log("getting holidays for " + territory +  " " + chosenCountry);
+			if (!chosenCountry) {
+				console.log(territory + "does not exist in holidays");
+			} else {
+				console.log("getting holidays for " + territory + " " + chosenCountry);
 			}
 			this.hd.init(this.getLocation("country"));
 			this.fireEvent("initialized");
 		},
 
-		setLocation: function(id, value){
+		setLocation: function (id, value) {
 			var idx = this.__idToIdx[id];
 			this.__args[idx] = value;
-			for (var i = idx+1; i < this.__args.length; i++) {
+			for (var i = idx + 1; i < this.__args.length; i++) {
 				//if id==country, set state and region = null
 				//if id==state, set region = null
-				this.__args[i] = null; 
+				this.__args[i] = null;
 			}
 			this.hd.init.apply(this.hd, this.__args);
 			this.fireEvent("changeLocation");
 			return idx;
 		},
 
-		getLocation: function(id){
+		getLocation: function (id) {
 			return this.__args[this.__idToIdx[id]];
 		},
 
-		__formatDate: function(date){
+		__formatDate: function (date) {
 			var fmt = qx.locale.Date.getDateFormat("medium", qx.locale.Manager.getInstance().getLocale());
 			fmt = "EE " + fmt;
 			var df = new qx.util.format.DateFormat(fmt);
 			var str = df.format(date);
 
-			if(typeof Holidays == "undefined") return str;
+			if (typeof Holidays == "undefined") return str;
 			var holiday = this.hd.isHoliday(date);
-			if(holiday){
-			  str = "<b>" + str + " (" + holiday[0].name + ")<b/>";
+			if (holiday) {
+				str = "<b>" + str + " (" + holiday[0].name + ")<b/>";
 			}
 			return str;
 		},
 
-		formatHoliday:function(date){
+		formatHoliday: function (date) {
 			var str = "";
-			if(typeof Holidays == "undefined") return " [holiday loading]";
+			if (typeof Holidays == "undefined") return " [holiday loading]";
 			var holiday = this.hd.isHoliday(date);
-			if(holiday){
-			  str = "<b>" + str + " (" + holiday[0].name + ")<b/>";
+			if (holiday) {
+				str = "<b>" + str + " (" + holiday[0].name + ")<b/>";
 			}
 			return str;
 		},
 
-		runAsync: function(callback, tthis){
-			if(this.__libraryLoaded){
+		runAsync: function (callback, tthis) {
+			if (this.__libraryLoaded) {
 				callback.call(tthis);
-			}else{
-				this.addListenerOnce("initialized",function(){
+			} else {
+				this.addListenerOnce("initialized", function () {
 					callback.call(tthis);
-				},this);
+				}, this);
 			}
 		},
 
-		formatDateAsync: function(date,callback,tthis){
-			if(this.__libraryLoaded){
-				callback.call(tthis,this.__formatDate(date));
-			}else{
-				this.addListenerOnce("initialized",function(){
-					callback.call(tthis,this.__formatDate(date));
-				},this);
+		formatDateAsync: function (date, callback, tthis) {
+			if (this.__libraryLoaded) {
+				callback.call(tthis, this.__formatDate(date));
+			} else {
+				this.addListenerOnce("initialized", function () {
+					callback.call(tthis, this.__formatDate(date));
+				}, this);
 			}
 		}
 	}
