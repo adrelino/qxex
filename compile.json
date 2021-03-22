@@ -35,6 +35,8 @@
       "class": "qxex.Application",
       "theme": "qx.theme.TangibleLight",
       "name": "qxex",
+      "title": "qxex Demo Application",
+      "bootPath": "source/boot",
       "include": [
         "qx.theme.Modern",
         "qx.theme.TangibleLight",
