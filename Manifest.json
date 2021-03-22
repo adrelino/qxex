@@ -14,7 +14,6 @@
     ],
     "version": "1.0.0"
   },
-  
   "provides": {
     "namespace": "qxex",
     "encoding": "utf-8",
@@ -22,9 +21,9 @@
     "resource": "source/resource",
     "translation": "source/translation"
   },
-
   "requires": {
     "@qooxdoo/framework": "^6.0.0",
-    "@qooxdoo/compiler" : "^1.0.0"
+    "@qooxdoo/compiler": "^1.0.0",
+    "qooxdoo/qxl.apiviewer": "^1.0.18"
   }
 }

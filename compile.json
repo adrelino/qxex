@@ -14,24 +14,53 @@
     }
   ],
   "defaultTarget": "source",
-  "locales": ["da", "de", "en", "es", "fr", "it", "ja", "pt", "ru", "vi", "zh"],
+  "locales": [
+    "da",
+    "de",
+    "en",
+    "es",
+    "fr",
+    "it",
+    "ja",
+    "pt",
+    "ru",
+    "vi",
+    "zh"
+  ],
   "environment": {
-      "qx.icontheme": "Tango"
+    "qx.icontheme": "Tango"
   },
   "applications": [
     {
       "class": "qxex.Application",
-      "theme": "qx.theme.TangibleDark",
+      "theme": "qx.theme.TangibleLight",
       "name": "qxex",
-      "bootPath": "source/boot",
       "include": [
-        "qx.theme.Modern"
-        ,"qx.theme.Classic"
-        ,"qx.theme.Simple"
-        ,"qx.theme.Indigo"
-        ,"qx.theme.TangibleLight"
-        ,"qx.theme.TangibleDark"
+        "qx.theme.Modern",
+        "qx.theme.TangibleLight",
+        "qx.theme.TangibleDark"
       ]
+    },
+    {
+      //https://github.com/qooxdoo/qxl.apiviewer/blob/master/README.md
+      "class": "qxl.apiviewer.Application",
+      "theme": "qxl.apiviewer.Theme",
+      "name": "apiviewer",
+      "title": "qxex API Viewer",
+      "environment": {
+        "qx.icontheme": "Tango",
+        "qxl.apiviewer.applicationName": "",
+        "qxl.apiviewer.exclude": [
+          "qx.*",
+          "qxl.*",
+          "qxWeb",
+          "q",
+          "qxex.Application"
+        ],
+        "qxl.apiviewer.include": [
+          "qxex.u*"
+        ]
+      }
     }
   ]
 }
