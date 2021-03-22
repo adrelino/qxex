@@ -1,11 +1,11 @@
 {
   "$schema": "https://qooxdoo.org/schema/Manifest-1-0-0.json",
   "info": {
-    "name": "qooxdoo-extensions",
-    "summary": "qooxdoo-extensions contribution",
-    "description": "Extensions of core qooxdoo widgets, especially from the qx.ui.form and qx.ui.table packages.",
-    "homepage": "http://github.com/adrelino/qooxdoo-extensions",
-    "license": "EPL",
+    "name": "qxex",
+    "summary": "Additional GUI widgets and utilities for qooxdoo apps.",
+    "description": "Additional GUI widgets (in ui/*) and utilities (static/singleton Manager's in util/) for qooxdoo apps. These are extensions of core qooxdoo widgets, especially from the qx.ui.form and qx.ui.table packages.",
+    "homepage": "adrelino.github.io/qxex",
+    "license": "MIT license",
     "authors": [
       {
         "name": "Adrian Haarbach (adrelino)",

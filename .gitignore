@@ -5,7 +5,7 @@ node_modules
 api
 build
 .DS_Store
-skeleton
+skeleton*
 /compiled
 /qx_packages
 .package-cache.json
