@@ -1,0 +1,107 @@
+{
+  "className": "qxex.ui.core.Widget",
+  "packageName": "qxex.ui.core",
+  "name": "Widget",
+  "superClass": null,
+  "interfaces": [],
+  "mixins": [],
+  "functionName": null,
+  "clazz": {
+    "location": {
+      "start": {
+        "line": 1,
+        "column": 0
+      },
+      "end": {
+        "line": 57,
+        "column": 3
+      }
+    }
+  },
+  "type": "class",
+  "statics": {
+    "registerLogicalChild": {
+      "location": {
+        "start": {
+          "line": 15,
+          "column": 4
+        },
+        "end": {
+          "line": 20,
+          "column": 5
+        }
+      },
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "<p>Add a logical child to the parent</p>"
+          }
+        ]
+      },
+      "type": "function",
+      "access": "public"
+    },
+    "registerPopupOpeningButton": {
+      "location": {
+        "start": {
+          "line": 22,
+          "column": 4
+        },
+        "end": {
+          "line": 27,
+          "column": 5
+        }
+      },
+      "type": "function",
+      "access": "public"
+    },
+    "contains": {
+      "location": {
+        "start": {
+          "line": 36,
+          "column": 4
+        },
+        "end": {
+          "line": 55,
+          "column": 5
+        }
+      },
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "<p>Whether the \"parent\" widget contains the \"child\" widget.</p>"
+          }
+        ],
+        "@param": [
+          {
+            "name": "@param",
+            "body": "parent {qx.ui.core.Widget} The parent widget",
+            "paramName": "parent",
+            "description": " The parent widget",
+            "type": "qx.ui.core.Widget"
+          },
+          {
+            "name": "@param",
+            "body": "child {qx.ui.core.Widget} The child widget",
+            "paramName": "child",
+            "description": " The child widget",
+            "type": "qx.ui.core.Widget"
+          }
+        ],
+        "@return": [
+          {
+            "name": "@return",
+            "body": "{Boolean} Whether one of the \"child\"'s parents is \"parent\"",
+            "type": "Boolean",
+            "description": " Whether one of the \"child\"'s parents is \"parent\""
+          }
+        ]
+      },
+      "type": "function",
+      "access": "public"
+    }
+  },
+  "descendants": []
+}

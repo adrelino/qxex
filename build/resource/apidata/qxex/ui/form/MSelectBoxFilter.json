@@ -1,0 +1,660 @@
+{
+  "className": "qxex.ui.form.MSelectBoxFilter",
+  "packageName": "qxex.ui.form",
+  "name": "MSelectBoxFilter",
+  "superClass": null,
+  "interfaces": [],
+  "mixins": [],
+  "functionName": null,
+  "clazz": {
+    "location": {
+      "start": {
+        "line": 4,
+        "column": 0
+      },
+      "end": {
+        "line": 231,
+        "column": 3
+      }
+    },
+    "jsdoc": {
+      "@description": [
+        {
+          "name": "@description",
+          "body": "<p>Mixin which adds basic filtering functionality to SelectBox and MultiSelectBox</p>"
+        }
+      ]
+    }
+  },
+  "type": "mixin",
+  "properties": {
+    "displayFilterCheckBox": {
+      "location": {
+        "start": {
+          "line": 8,
+          "column": 4
+        },
+        "end": {
+          "line": 13,
+          "column": 5
+        }
+      },
+      "name": "displayFilterCheckBox",
+      "propertyType": "new",
+      "apply": "_applyDisplayFilterCheckBox",
+      "init": false,
+      "check": "Boolean",
+      "defaultValue": false
+    },
+    "textFilterExcludeItems": {
+      "location": {
+        "start": {
+          "line": 15,
+          "column": 4
+        },
+        "end": {
+          "line": 19,
+          "column": 5
+        }
+      },
+      "name": "textFilterExcludeItems",
+      "propertyType": "new",
+      "init": true,
+      "check": "Boolean",
+      "defaultValue": true
+    },
+    "groupFilter": {
+      "location": {
+        "start": {
+          "line": 21,
+          "column": 4
+        },
+        "end": {
+          "line": 28,
+          "column": 5
+        }
+      },
+      "name": "groupFilter",
+      "propertyType": "new",
+      "apply": "_applyGroupFilter",
+      "check": "Function"
+    },
+    "searchFilter": {
+      "location": {
+        "start": {
+          "line": 30,
+          "column": 4
+        },
+        "end": {
+          "line": 36,
+          "column": 5
+        }
+      },
+      "name": "searchFilter",
+      "propertyType": "new",
+      "check": "Function"
+    }
+  },
+  "members": {
+    "addFilterTextField": {
+      "location": {
+        "start": {
+          "line": 41,
+          "column": 4
+        },
+        "end": {
+          "line": 114,
+          "column": 5
+        }
+      },
+      "type": "function",
+      "access": "public"
+    },
+    "addFilterCheckBox": {
+      "location": {
+        "start": {
+          "line": 116,
+          "column": 4
+        },
+        "end": {
+          "line": 129,
+          "column": 5
+        }
+      },
+      "type": "function",
+      "access": "public"
+    },
+    "_onFilterCheckBoxChangeValue": {
+      "location": {
+        "start": {
+          "line": 131,
+          "column": 4
+        },
+        "end": {
+          "line": 133,
+          "column": 5
+        }
+      },
+      "type": "function",
+      "access": "protected"
+    },
+    "_onFilterTextFieldChangeValue": {
+      "location": {
+        "start": {
+          "line": 135,
+          "column": 4
+        },
+        "end": {
+          "line": 137,
+          "column": 5
+        }
+      },
+      "type": "function",
+      "access": "protected"
+    },
+    "_applyDisplayFilterCheckBox": {
+      "location": {
+        "start": {
+          "line": 139,
+          "column": 4
+        },
+        "end": {
+          "line": 145,
+          "column": 5
+        }
+      },
+      "type": "function",
+      "access": "protected",
+      "applyFor": [
+        "displayFilterCheckBox"
+      ]
+    },
+    "_applyGroupFilter": {
+      "location": {
+        "start": {
+          "line": 147,
+          "column": 4
+        },
+        "end": {
+          "line": 149,
+          "column": 5
+        }
+      },
+      "type": "function",
+      "access": "protected",
+      "applyFor": [
+        "groupFilter"
+      ]
+    },
+    "MIN_LIST_ITEMS_TO_SHOW_FILTER": {
+      "location": {
+        "start": {
+          "line": 152,
+          "column": 4
+        },
+        "end": {
+          "line": 152,
+          "column": 37
+        }
+      },
+      "jsdoc": {},
+      "type": "variable",
+      "access": "public"
+    },
+    "setFilterText": {
+      "location": {
+        "start": {
+          "line": 154,
+          "column": 4
+        },
+        "end": {
+          "line": 159,
+          "column": 5
+        }
+      },
+      "jsdoc": {},
+      "type": "function",
+      "access": "public"
+    },
+    "clearFilter": {
+      "location": {
+        "start": {
+          "line": 161,
+          "column": 4
+        },
+        "end": {
+          "line": 163,
+          "column": 5
+        }
+      },
+      "type": "function",
+      "access": "public"
+    },
+    "setGroupFilterCheckBoxValue": {
+      "location": {
+        "start": {
+          "line": 165,
+          "column": 4
+        },
+        "end": {
+          "line": 167,
+          "column": 5
+        }
+      },
+      "type": "function",
+      "access": "public"
+    },
+    "open": {
+      "location": {
+        "start": {
+          "line": 169,
+          "column": 4
+        },
+        "end": {
+          "line": 176,
+          "column": 5
+        }
+      },
+      "type": "function",
+      "access": "public"
+    },
+    "__filterCheckBox": {
+      "location": {
+        "start": {
+          "line": 179,
+          "column": 4
+        },
+        "end": {
+          "line": 179,
+          "column": 27
+        }
+      },
+      "jsdoc": {},
+      "type": "variable",
+      "access": "private"
+    },
+    "__filterTextField": {
+      "location": {
+        "start": {
+          "line": 180,
+          "column": 4
+        },
+        "end": {
+          "line": 180,
+          "column": 28
+        }
+      },
+      "type": "variable",
+      "access": "private"
+    },
+    "__filterLabel": {
+      "location": {
+        "start": {
+          "line": 181,
+          "column": 4
+        },
+        "end": {
+          "line": 181,
+          "column": 24
+        }
+      },
+      "type": "variable",
+      "access": "private"
+    },
+    "__filterLabelGroup": {
+      "location": {
+        "start": {
+          "line": 182,
+          "column": 4
+        },
+        "end": {
+          "line": 182,
+          "column": 29
+        }
+      },
+      "type": "variable",
+      "access": "private"
+    },
+    "__showFilter": {
+      "location": {
+        "start": {
+          "line": 183,
+          "column": 4
+        },
+        "end": {
+          "line": 183,
+          "column": 24
+        }
+      },
+      "type": "variable",
+      "access": "private"
+    },
+    "__filterList": {
+      "location": {
+        "start": {
+          "line": 185,
+          "column": 4
+        },
+        "end": {
+          "line": 229,
+          "column": 5
+        }
+      },
+      "type": "function",
+      "access": "private"
+    },
+    "getDisplayFilterCheckBox": {
+      "type": "function",
+      "name": "getDisplayFilterCheckBox",
+      "abstract": false,
+      "mixin": false,
+      "inherited": false,
+      "access": "public",
+      "property": "get",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Gets the (computed) value of the property <code>displayFilterCheckBox</code>.\n\nFor further details take a look at the property definition: {@link #displayFilterCheckBox}."
+          }
+        ],
+        "@return": [
+          {
+            "name": "@return",
+            "type": "Boolean",
+            "desc": "Returns the value for displayFilterCheckBox"
+          }
+        ]
+      }
+    },
+    "isDisplayFilterCheckBox": {
+      "type": "function",
+      "name": "isDisplayFilterCheckBox",
+      "abstract": false,
+      "mixin": false,
+      "inherited": false,
+      "access": "public",
+      "property": "is",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Gets the (computed) value of the property <code>displayFilterCheckBox</code>.\n\nFor further details take a look at the property definition: {@link #displayFilterCheckBox}."
+          }
+        ],
+        "@return": [
+          {
+            "name": "@return",
+            "type": "Boolean",
+            "desc": "Returns the value for displayFilterCheckBox"
+          }
+        ]
+      }
+    },
+    "setDisplayFilterCheckBox": {
+      "type": "function",
+      "name": "setDisplayFilterCheckBox",
+      "abstract": false,
+      "mixin": false,
+      "inherited": false,
+      "access": "public",
+      "property": "set",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Sets the user value of the property <code>displayFilterCheckBox</code>.\n\nFor further details take a look at the property definition: {@link #displayFilterCheckBox}."
+          }
+        ],
+        "@param": [
+          {
+            "name": "@param",
+            "type": "Boolean",
+            "paramName": "value",
+            "desc": "Value for displayFilterCheckBox"
+          }
+        ]
+      }
+    },
+    "resetDisplayFilterCheckBox": {
+      "type": "function",
+      "name": "resetDisplayFilterCheckBox",
+      "abstract": false,
+      "mixin": false,
+      "inherited": false,
+      "access": "public",
+      "property": "reset",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Resets the user value of the property <code>displayFilterCheckBox</code>.\n\nThe computed value falls back to the next available value e.g. appearance, init or inheritance value depending on the property configuration and value availability.\n\nFor further details take a look at the property definition: {@link #displayFilterCheckBox}."
+          }
+        ]
+      }
+    },
+    "getTextFilterExcludeItems": {
+      "type": "function",
+      "name": "getTextFilterExcludeItems",
+      "abstract": false,
+      "mixin": false,
+      "inherited": false,
+      "access": "public",
+      "property": "get",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Gets the (computed) value of the property <code>textFilterExcludeItems</code>.\n\nFor further details take a look at the property definition: {@link #textFilterExcludeItems}."
+          }
+        ],
+        "@return": [
+          {
+            "name": "@return",
+            "type": "Boolean",
+            "desc": "Returns the value for textFilterExcludeItems"
+          }
+        ]
+      }
+    },
+    "isTextFilterExcludeItems": {
+      "type": "function",
+      "name": "isTextFilterExcludeItems",
+      "abstract": false,
+      "mixin": false,
+      "inherited": false,
+      "access": "public",
+      "property": "is",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Gets the (computed) value of the property <code>textFilterExcludeItems</code>.\n\nFor further details take a look at the property definition: {@link #textFilterExcludeItems}."
+          }
+        ],
+        "@return": [
+          {
+            "name": "@return",
+            "type": "Boolean",
+            "desc": "Returns the value for textFilterExcludeItems"
+          }
+        ]
+      }
+    },
+    "setTextFilterExcludeItems": {
+      "type": "function",
+      "name": "setTextFilterExcludeItems",
+      "abstract": false,
+      "mixin": false,
+      "inherited": false,
+      "access": "public",
+      "property": "set",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Sets the user value of the property <code>textFilterExcludeItems</code>.\n\nFor further details take a look at the property definition: {@link #textFilterExcludeItems}."
+          }
+        ],
+        "@param": [
+          {
+            "name": "@param",
+            "type": "Boolean",
+            "paramName": "value",
+            "desc": "Value for textFilterExcludeItems"
+          }
+        ]
+      }
+    },
+    "resetTextFilterExcludeItems": {
+      "type": "function",
+      "name": "resetTextFilterExcludeItems",
+      "abstract": false,
+      "mixin": false,
+      "inherited": false,
+      "access": "public",
+      "property": "reset",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Resets the user value of the property <code>textFilterExcludeItems</code>.\n\nThe computed value falls back to the next available value e.g. appearance, init or inheritance value depending on the property configuration and value availability.\n\nFor further details take a look at the property definition: {@link #textFilterExcludeItems}."
+          }
+        ]
+      }
+    },
+    "getGroupFilter": {
+      "type": "function",
+      "name": "getGroupFilter",
+      "abstract": false,
+      "mixin": false,
+      "inherited": false,
+      "access": "public",
+      "property": "get",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Gets the (computed) value of the property <code>groupFilter</code>.\n\nFor further details take a look at the property definition: {@link #groupFilter}."
+          }
+        ],
+        "@return": [
+          {
+            "name": "@return",
+            "type": "Function",
+            "desc": "Returns the value for groupFilter"
+          }
+        ]
+      }
+    },
+    "setGroupFilter": {
+      "type": "function",
+      "name": "setGroupFilter",
+      "abstract": false,
+      "mixin": false,
+      "inherited": false,
+      "access": "public",
+      "property": "set",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Sets the user value of the property <code>groupFilter</code>.\n\nFor further details take a look at the property definition: {@link #groupFilter}."
+          }
+        ],
+        "@param": [
+          {
+            "name": "@param",
+            "type": "Function",
+            "paramName": "value",
+            "desc": "Value for groupFilter"
+          }
+        ]
+      }
+    },
+    "resetGroupFilter": {
+      "type": "function",
+      "name": "resetGroupFilter",
+      "abstract": false,
+      "mixin": false,
+      "inherited": false,
+      "access": "public",
+      "property": "reset",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Resets the user value of the property <code>groupFilter</code>.\n\nThe computed value falls back to the next available value e.g. appearance, init or inheritance value depending on the property configuration and value availability.\n\nFor further details take a look at the property definition: {@link #groupFilter}."
+          }
+        ]
+      }
+    },
+    "getSearchFilter": {
+      "type": "function",
+      "name": "getSearchFilter",
+      "abstract": false,
+      "mixin": false,
+      "inherited": false,
+      "access": "public",
+      "property": "get",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Gets the (computed) value of the property <code>searchFilter</code>.\n\nFor further details take a look at the property definition: {@link #searchFilter}."
+          }
+        ],
+        "@return": [
+          {
+            "name": "@return",
+            "type": "Function",
+            "desc": "Returns the value for searchFilter"
+          }
+        ]
+      }
+    },
+    "setSearchFilter": {
+      "type": "function",
+      "name": "setSearchFilter",
+      "abstract": false,
+      "mixin": false,
+      "inherited": false,
+      "access": "public",
+      "property": "set",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Sets the user value of the property <code>searchFilter</code>.\n\nFor further details take a look at the property definition: {@link #searchFilter}."
+          }
+        ],
+        "@param": [
+          {
+            "name": "@param",
+            "type": "Function",
+            "paramName": "value",
+            "desc": "Value for searchFilter"
+          }
+        ]
+      }
+    },
+    "resetSearchFilter": {
+      "type": "function",
+      "name": "resetSearchFilter",
+      "abstract": false,
+      "mixin": false,
+      "inherited": false,
+      "access": "public",
+      "property": "reset",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Resets the user value of the property <code>searchFilter</code>.\n\nThe computed value falls back to the next available value e.g. appearance, init or inheritance value depending on the property configuration and value availability.\n\nFor further details take a look at the property definition: {@link #searchFilter}."
+          }
+        ]
+      }
+    }
+  },
+  "descendants": []
+}

@@ -1,0 +1,60 @@
+{
+  "className": "qxex.ui.form.MSelectBoxBlur",
+  "packageName": "qxex.ui.form",
+  "name": "MSelectBoxBlur",
+  "superClass": null,
+  "interfaces": [],
+  "mixins": [],
+  "functionName": null,
+  "clazz": {
+    "location": {
+      "start": {
+        "line": 4,
+        "column": 0
+      },
+      "end": {
+        "line": 16,
+        "column": 3
+      }
+    },
+    "jsdoc": {
+      "@description": [
+        {
+          "name": "@description",
+          "body": "<p>Mixin which adds correct blur functionality for popups that get opened below a button by click on a button like SelectBox and MultiSelectBox</p>"
+        }
+      ]
+    }
+  },
+  "type": "mixin",
+  "construct": {
+    "location": {
+      "start": {
+        "line": 5,
+        "column": 15
+      },
+      "end": {
+        "line": 7,
+        "column": 5
+      }
+    },
+    "jsdoc": {}
+  },
+  "members": {
+    "_fixPopupBlur": {
+      "location": {
+        "start": {
+          "line": 10,
+          "column": 8
+        },
+        "end": {
+          "line": 14,
+          "column": 9
+        }
+      },
+      "type": "function",
+      "access": "protected"
+    }
+  },
+  "descendants": []
+}

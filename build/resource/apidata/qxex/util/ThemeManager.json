@@ -1,0 +1,89 @@
+{
+  "className": "qxex.util.ThemeManager",
+  "packageName": "qxex.util",
+  "name": "ThemeManager",
+  "superClass": null,
+  "interfaces": [],
+  "mixins": [],
+  "functionName": null,
+  "clazz": {
+    "location": {
+      "start": {
+        "line": 7,
+        "column": 0
+      },
+      "end": {
+        "line": 51,
+        "column": 3
+      }
+    },
+    "jsdoc": {
+      "@description": [
+        {
+          "name": "@description",
+          "body": "<p>Handles meta and icon themes\n based on _getThemeNames and _setThemes from\n https://qooxdoo.org/documentation/6.0/#/desktop/gui/theming?id=multi-theme-applications</p>"
+        }
+      ]
+    }
+  },
+  "type": "class",
+  "statics": {
+    "mergeTheme": {
+      "location": {
+        "start": {
+          "line": 10,
+          "column": 2
+        },
+        "end": {
+          "line": 19,
+          "column": 4
+        }
+      },
+      "type": "function",
+      "access": "public"
+    },
+    "getAll": {
+      "location": {
+        "start": {
+          "line": 21,
+          "column": 4
+        },
+        "end": {
+          "line": 33,
+          "column": 6
+        }
+      },
+      "type": "function",
+      "access": "public"
+    },
+    "getCurrent": {
+      "location": {
+        "start": {
+          "line": 35,
+          "column": 5
+        },
+        "end": {
+          "line": 39,
+          "column": 6
+        }
+      },
+      "type": "function",
+      "access": "public"
+    },
+    "setByName": {
+      "location": {
+        "start": {
+          "line": 41,
+          "column": 5
+        },
+        "end": {
+          "line": 49,
+          "column": 6
+        }
+      },
+      "type": "function",
+      "access": "public"
+    }
+  },
+  "descendants": []
+}

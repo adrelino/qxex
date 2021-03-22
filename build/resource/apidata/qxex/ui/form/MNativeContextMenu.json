@@ -1,0 +1,44 @@
+{
+  "className": "qxex.ui.form.MNativeContextMenu",
+  "packageName": "qxex.ui.form",
+  "name": "MNativeContextMenu",
+  "superClass": null,
+  "interfaces": [],
+  "mixins": [],
+  "functionName": null,
+  "clazz": {
+    "location": {
+      "start": {
+        "line": 7,
+        "column": 0
+      },
+      "end": {
+        "line": 11,
+        "column": 3
+      }
+    },
+    "jsdoc": {
+      "@description": [
+        {
+          "name": "@description",
+          "body": "<p>Mixin to enable context menu for specific classes globally withouth patching qooxdoo code.\n To enable conextMenu for TextField and TextArea, call at start of application:\n qx.Class.include(qx.ui.form.AbstractField, qxex.ui.form.MNativeContextMenu);</p>"
+        }
+      ]
+    }
+  },
+  "type": "mixin",
+  "construct": {
+    "location": {
+      "start": {
+        "line": 8,
+        "column": 14
+      },
+      "end": {
+        "line": 10,
+        "column": 3
+      }
+    },
+    "jsdoc": {}
+  },
+  "descendants": []
+}

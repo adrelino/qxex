@@ -1,0 +1,130 @@
+{
+  "className": "qxex.ui.form.MSelectBoxSyncButtonStyle",
+  "packageName": "qxex.ui.form",
+  "name": "MSelectBoxSyncButtonStyle",
+  "superClass": null,
+  "interfaces": [],
+  "mixins": [],
+  "functionName": null,
+  "clazz": {
+    "location": {
+      "start": {
+        "line": 4,
+        "column": 0
+      },
+      "end": {
+        "line": 65,
+        "column": 3
+      }
+    },
+    "jsdoc": {
+      "@description": [
+        {
+          "name": "@description",
+          "body": "<p>Mixin which adds syncing capability to (Multi) SelectBox so that the icon and label of the button matches the selection</p>"
+        }
+      ]
+    }
+  },
+  "type": "mixin",
+  "properties": {
+    "someIcon": {
+      "location": {
+        "start": {
+          "line": 8,
+          "column": 6
+        },
+        "end": {
+          "line": 11,
+          "column": 7
+        }
+      },
+      "jsdoc": {},
+      "name": "someIcon",
+      "propertyType": "new"
+    }
+  },
+  "members": {
+    "synchronizeButtonWithSelection": {
+      "location": {
+        "start": {
+          "line": 14,
+          "column": 6
+        },
+        "end": {
+          "line": 63,
+          "column": 7
+        }
+      },
+      "type": "function",
+      "access": "public"
+    },
+    "getSomeIcon": {
+      "type": "function",
+      "name": "getSomeIcon",
+      "abstract": false,
+      "mixin": false,
+      "inherited": false,
+      "access": "public",
+      "property": "get",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Gets the (computed) value of the property <code>someIcon</code>.\n\nFor further details take a look at the property definition: {@link #someIcon}."
+          }
+        ],
+        "@return": [
+          {
+            "name": "@return",
+            "type": "any",
+            "desc": "Returns the value for someIcon"
+          }
+        ]
+      }
+    },
+    "setSomeIcon": {
+      "type": "function",
+      "name": "setSomeIcon",
+      "abstract": false,
+      "mixin": false,
+      "inherited": false,
+      "access": "public",
+      "property": "set",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Sets the user value of the property <code>someIcon</code>.\n\nFor further details take a look at the property definition: {@link #someIcon}."
+          }
+        ],
+        "@param": [
+          {
+            "name": "@param",
+            "type": "any",
+            "paramName": "value",
+            "desc": "Value for someIcon"
+          }
+        ]
+      }
+    },
+    "resetSomeIcon": {
+      "type": "function",
+      "name": "resetSomeIcon",
+      "abstract": false,
+      "mixin": false,
+      "inherited": false,
+      "access": "public",
+      "property": "reset",
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": "Resets the user value of the property <code>someIcon</code>.\n\nThe computed value falls back to the next available value e.g. appearance, init or inheritance value depending on the property configuration and value availability.\n\nFor further details take a look at the property definition: {@link #someIcon}."
+          }
+        ]
+      }
+    }
+  },
+  "descendants": []
+}
