@@ -1,6 +1,8 @@
 /**
  * Provides a set of languages and their names + flags.
  * Also has a "none" language.
+ * 
+ * @asset(qxex/languageicons/flags/*.png)
  */
 qx.Class.define("qxex.util.LanguageManager",
 {
@@ -37,7 +39,7 @@ qx.Class.define("qxex.util.LanguageManager",
 			locales.forEach(function(name){
 				if(name.length==2){
 					var label = qxex.util.LanguageManager.names[name] + " ("+name+")";
-					var icon = "resource/qxex/languageicons/flags/"+name+".png";
+					var icon = "qxex/languageicons/flags/"+name+".png";
 					var model = name;
 					languages.push([label,icon,model]);
 				}

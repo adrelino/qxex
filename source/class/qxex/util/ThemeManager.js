@@ -1,5 +1,8 @@
 /*
  * Handles meta and icon themes
+ *
+ * based on _getThemeNames and _setThemes from 
+ * https://qooxdoo.org/documentation/6.0/#/desktop/gui/theming?id=multi-theme-applications
  */
 qx.Class.define("qxex.util.ThemeManager",
 {
