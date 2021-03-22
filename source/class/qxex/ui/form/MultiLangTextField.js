@@ -59,10 +59,10 @@ qx.Class.define("qxex.ui.form.MultiLangTextField",
         var lang = lang || qxex.util.LanguageManager.none;
         if (this.__items[lang]) {
           this.__items[lang].setLabel(value);
-        };
+        }
         if (this.__currentLang == lang) {
           this.getChildControl("textfield").setValue(value);
-        };
+        }
       },
 
       /**
@@ -74,7 +74,7 @@ qx.Class.define("qxex.ui.form.MultiLangTextField",
         var lang = lang || qxex.util.LanguageManager.none;
         if (this.__items[lang]) {
           return this.__items[lang].getLabel();
-        };
+        }
       },
 
       _onListChangeSelection: function (e) {

@@ -163,7 +163,7 @@ qx.Class.define("qxex.Application",
         arr[j].add(item);
       }
       arr[j].addListener("changeSelection",this.changeSelectionLogger,this);
-      };
+      }
       multiSelect.setSelectionByModelArr([2,3]);
       singleSelect.MIN_LIST_ITEMS_TO_SHOW_FILTER=2;
       }
@@ -202,7 +202,7 @@ qx.Class.define("qxex.Application",
         },this);
 
         widget.setValue(new Date("2021-01-01"));
-      };foo();
+      }foo();
 
       {
         var widget = new qxex.ui.form.DateField();

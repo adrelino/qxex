@@ -213,7 +213,7 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
           } else {
             item.exclude();
           }
-      };
+      }
 
       if(!this.isTextFilterExcludeItems()){
          this.setIgnoreListChangeSelection && this.setIgnoreListChangeSelection(true); //ignore event
