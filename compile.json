@@ -30,6 +30,36 @@
   "environment": {
     "qx.icontheme": "Tango"
   },
+  "ignores" : [
+    "Holidays"
+  ],
+  "eslintConfig": {
+    "extends" : [
+      "eslint:recommended"
+      //"@qooxdoo/qx/browser"
+    ],
+    "env":{
+      "browser" : true,
+      "es6": true //enables ES6 syntax automatically, but
+    },
+    "parserOptions": { //https://eslint.org/docs/user-guide/configuring/language-options#specifying-parser-options
+      "ecmaVersion": 6  //does not enable ES6 globals automatically.
+    },
+    "rules": {
+      "curly" : "off",
+      "eol-last" : "off",
+      "no-redeclare" : "off",
+      "comma-spacing" : "off",
+      "no-console" : "off",
+      "space-before-blocks" : "off",
+      "quotes" : "off",
+      "no-unused-vars" : "off"
+    },
+    "globals" : {
+      "Holidays" : true
+      ,"qx" : true
+    }
+  },
   "applications": [
     {
       "class": "qxex.Application",
