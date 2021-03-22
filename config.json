@@ -45,7 +45,7 @@
     "QXTHEME"      : "qx.theme.Modern",
     "QXICONTHEME"  : ["Tango", "Oxygen"],
     "API_EXCLUDE"  : ["qx.*", "${APPLICATION}.theme.*", "${APPLICATION}.test.*"],
-    "LOCALES"      : [ "da", "de", "es", "en", "fr", "it", "ja", "pt", "ru", "vi", "zh"],
+    "LOCALES"      : [ "da", "de", "en", "es", "fr", "it", "ja", "pt", "ru", "vi", "zh"],
     "CACHE"        : "${TMPDIR}/qx${QOOXDOO_VERSION}/cache",
     "ROOT"         : ".",
     "LINT_CHECK"   : { 
@@ -113,6 +113,8 @@
         ,"qx.theme.Classic"
         ,"qx.theme.Simple"
         ,"qx.theme.Indigo"
+        ,"qx.theme.TangibleLight"
+        ,"qx.theme.TangibleDark"
         /*,"bamboo.theme.Theme"
         ,"graydienttheme.theme.Theme"
         ,"darktheme.theme.Theme"   

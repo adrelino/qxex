@@ -1,5 +1,3 @@
-cache
-cache-downloads
 inspector
 source/inspector.html
 source/script
@@ -7,4 +5,7 @@ node_modules
 api
 build
 .DS_Store
-source-output
+skeleton
+/compiled
+/qx_packages
+.package-cache.json

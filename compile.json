@@ -1,35 +1,37 @@
 {
+  "$schema": "https://qooxdoo.org/schema/compile-1-0-0.json",
   "targets": [
     {
       "type": "source",
-      "outputPath": "source-output"
-    },
-    {
-      "type": "hybrid",
-      "outputPath": "hybrid-output"
+      "outputPath": "compiled/source",
+      "bundle": {
+        "include": "qx.*"
+      }
     },
     {
       "type": "build",
-      "outputPath": "build-output"
+      "outputPath": "compiled/build"
     }
   ],
   "defaultTarget": "source",
-  "locales": ["en","de"],
-  "environment": { 
+  "locales": ["da", "de", "en", "es", "fr", "it", "ja", "pt", "ru", "vi", "zh"],
+  "environment": {
       "qx.icontheme": "Tango"
-  },     
+  },
   "applications": [
     {
       "class": "qxex.Application",
-      "theme": "qx.theme.Modern",
+      "theme": "qx.theme.TangibleDark",
       "name": "qxex",
-      "writeIndexHtmlToRoot": true
+      "bootPath": "source/boot",
+      "include": [
+        "qx.theme.Modern"
+        ,"qx.theme.Classic"
+        ,"qx.theme.Simple"
+        ,"qx.theme.Indigo"
+        ,"qx.theme.TangibleLight"
+        ,"qx.theme.TangibleDark"
+      ]
     }
-  ],
-
-  "libraries": [
-    //"/usr/local/lib/node_modules/qxcompiler/node_modules/qooxdoo-sdk/framework",
-    "/home/watchee/.nvm/versions/node/v8.12.0/lib/node_modules/qxcompiler/node_modules/qooxdoo-sdk/framework",
-    "."
   ]
 }
