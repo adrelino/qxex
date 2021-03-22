@@ -8,13 +8,13 @@ Additional GUI widgets and other stuff for qooxdoo apps.
 ```shell
 git clone https://github.com/adrelino/qooxdoo-extensions.git
 cd qooxdoo-extensions
-./generate.py
-./generate.py source-server
+npm install
+./serve.sh
 ```
 
 ### generate build version and api
 ```shell
-./generate.py build
+./compile.sh
 ./generate.py api
 ```
 
