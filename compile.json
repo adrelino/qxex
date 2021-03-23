@@ -35,8 +35,8 @@
   ],
   "eslintConfig": {
     "extends" : [
-      "eslint:recommended"
-      //"@qooxdoo/qx/browser"
+      //"eslint:recommended"
+      "@qooxdoo/qx/browser"
     ],
     "env":{
       "browser" : true,
@@ -50,6 +50,13 @@
       "eol-last" : "off",
       "no-redeclare" : "off",
       "comma-spacing" : "off",
+      "keyword-spacing" : "off",
+      "brace-style": "off",
+      "padded-blocks" : "off",
+      "no-else-return" : "off",
+      "no-undef-init": "off",
+      "no-warning-comments": "off",
+      "no-multi-spaces": "off",
       "no-console" : "off",
       "space-before-blocks" : "off",
       "quotes" : "off",
@@ -57,7 +64,7 @@
     },
     "globals" : {
       "Holidays" : true
-      ,"qx" : true
+      //,"qx" : true
     }
   },
   "applications": [
