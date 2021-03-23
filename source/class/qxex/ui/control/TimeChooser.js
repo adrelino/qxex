@@ -140,8 +140,7 @@ qx.Class.define("qxex.ui.control.TimeChooser",
       {
         case "slider":
           control = new qxex.ui.form.KnobIconSlider();
-          control.setKnobIcon("icon/16/apps/preferences-clock.png");
-          control.setKnobSize(14);
+          control.setKnobSize(16);
 
           control.set({
             minimum : 0,

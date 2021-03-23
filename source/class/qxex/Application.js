@@ -49,7 +49,7 @@ qx.Class.define("qxex.Application",
       }
 
       //mix our own theme additions into all available themes
-      qxex.util.ThemeManager.mergeTheme(qxex.theme.Appearance);
+      qxex.util.ThemeManager.mergeThemes();
 
 
       /*
@@ -66,7 +66,7 @@ qx.Class.define("qxex.Application",
       doc.add(container);
 
       container.addWidgetWithLabel = function(widget, additional){
-        var href = '<a href="../api/#'+widget.classname+'" target="qxex_api">'+widget.classname+'</a>';
+        var href = '<a href="../apiviewer/#'+widget.classname+'" target="qxex_api">'+widget.classname+'</a>';
         if(additional) href+=" "+additional;
         var label = new qx.ui.basic.Label(href).set({rich:true});
 
@@ -226,7 +226,7 @@ qx.Class.define("qxex.Application",
         tree.setSelection([foo]);
         tree.addListener("changeSelection",this.changeSelectionLogger,this);
         }
-      })();
+      }).call(this);
 
 
     },
