@@ -7,9 +7,9 @@ qx.Class.define("qxex.ui.tree.Tree",
 
     //copied from qx.ui.form.List
     handleKeyPress : function(e){
-      if (!this._onKeyPress(e)) {
+      //if (!this._onKeyPress(e)) {
         this._getManager().handleKeyPress(e);
-      }
+      //}
     },
 
 
@@ -27,7 +27,7 @@ qx.Class.define("qxex.ui.tree.Tree",
           this.fireEvent("close");
           return;
       }
-      return this.base(arguments,e);
+      this.base(arguments,e);
     }
   }
 });

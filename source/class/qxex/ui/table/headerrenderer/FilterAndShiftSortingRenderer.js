@@ -111,7 +111,7 @@ qx.Class.define("qxex.ui.table.headerrenderer.FilterAndShiftSortingRenderer",
     {
       this.base(arguments,cellInfo, cellWidget);
       
-      if(this.getToolTip() != null){
+      if(this.getToolTip() !== null){
         var widgetToolTip = cellWidget.getToolTip();
         if(widgetToolTip){
           widgetToolTip.setRich(true);

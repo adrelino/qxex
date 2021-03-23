@@ -140,8 +140,8 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
     deleteData : function(primaryKey){
       var view = 0;
       var rowIdx = this.__getRowIdxFromPrimaryKey(primaryKey,view);
-      if(rowIdx != null){
-        var retVal = this._model.removeRows(rowIdx,1,view);
+      if(rowIdx !== null){
+        this._model.removeRows(rowIdx,1,view);
         return true;
       }else{
         return false;
@@ -152,7 +152,9 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
     //Convenience Bulk CRUD interface:
 
     insertAllData : function(array){
-      var rows = array.map(function(data){return this.__makeRowFromData(data)},this);
+      var rows = array.map(function(data){
+        return this.__makeRowFromData(data);
+      },this);
       this._model.addRows(rows,false,true); //data changed
     },
 

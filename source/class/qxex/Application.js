@@ -202,7 +202,8 @@ qx.Class.define("qxex.Application",
         },this);
 
         widget.setValue(new Date("2021-01-01"));
-      }foo();
+      }
+      foo();
 
       {
         var widget = new qxex.ui.form.DateField();
