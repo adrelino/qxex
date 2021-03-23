@@ -9,11 +9,11 @@
   "clazz": {
     "location": {
       "start": {
-        "line": 19,
+        "line": 21,
         "column": 0
       },
       "end": {
-        "line": 72,
+        "line": 37,
         "column": 3
       }
     },
@@ -21,21 +21,14 @@
       "@description": [
         {
           "name": "@description",
-          "body": "<p>qooxdoo extensions theme.\n Applications that use qxex.ui.form.TimeField should extend this theme in their Appearance.js\n Resource management:\n http://manual.qooxdoo.org/current/pages/desktop/ui_resources.html</p>"
-        }
-      ],
-      "@asset": [
-        {
-          "name": "@asset",
-          "body": "qx/icon/${qx.icontheme}/16/apps/preferences-clock.png"
-        },
-        {
-          "name": "@asset",
-          "body": "qx/icon/${qx.icontheme}/16/actions/edit-delete.png"
+          "body": "<p>qxex theme.\n Applications that use qxex.ui.form.TimeField should extend this theme in their Appearance.js</p>"
         }
       ]
     }
   },
   "type": "theme",
-  "descendants": []
+  "descendants": [
+    "qxex.theme.AppearanceMaterialIcons",
+    "qxex.theme.AppearanceTangoAndOxygenIcons"
+  ]
 }

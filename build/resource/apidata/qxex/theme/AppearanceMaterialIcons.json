@@ -1,0 +1,31 @@
+{
+  "className": "qxex.theme.AppearanceMaterialIcons",
+  "packageName": "qxex.theme",
+  "name": "AppearanceMaterialIcons",
+  "superClass": "qxex.theme.Appearance",
+  "interfaces": [],
+  "mixins": [],
+  "functionName": null,
+  "clazz": {
+    "location": {
+      "start": {
+        "line": 7,
+        "column": 0
+      },
+      "end": {
+        "line": 61,
+        "column": 3
+      }
+    },
+    "jsdoc": {
+      "@description": [
+        {
+          "name": "@description",
+          "body": "<p>All available icons: https://marella.me/material-icons/demo/\n qooxdoo/framework/source/class/qx/theme/tangible/Appearance.js\n qooxdoo/framework/source/class/qx/theme/tangible/Image.js</p>"
+        }
+      ]
+    }
+  },
+  "type": "theme",
+  "descendants": []
+}

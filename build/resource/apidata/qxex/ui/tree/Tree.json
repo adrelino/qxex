@@ -78,398 +78,6 @@
         ]
       }
     },
-    "selectAll": {
-      "type": "function",
-      "name": "selectAll",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "public",
-      "overriddenFrom": "qx.ui.core.IMultiSelection",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Selects all items of the managed object.</p>"
-          }
-        ]
-      }
-    },
-    "addToSelection": {
-      "type": "function",
-      "name": "addToSelection",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "public",
-      "overriddenFrom": "qx.ui.core.IMultiSelection",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Adds the given item to the existing selection.</p>"
-          }
-        ],
-        "@param": [
-          {
-            "name": "@param",
-            "body": "item {qx.ui.core.Widget} Any valid item",
-            "paramName": "item",
-            "description": " Any valid item",
-            "type": "qx.ui.core.Widget"
-          }
-        ],
-        "@throws": [
-          {
-            "name": "@throws",
-            "body": "{Error} if the item is not a child element.",
-            "type": "Error",
-            "description": " if the item is not a child element."
-          }
-        ]
-      }
-    },
-    "removeFromSelection": {
-      "type": "function",
-      "name": "removeFromSelection",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "public",
-      "overriddenFrom": "qx.ui.core.IMultiSelection",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Removes the given item from the selection.\n Use {@link qx.ui.core.ISingleSelection#resetSelection} when you\n want to clear the whole selection at once.</p>"
-          }
-        ],
-        "@param": [
-          {
-            "name": "@param",
-            "body": "item {qx.ui.core.Widget} Any valid item",
-            "paramName": "item",
-            "description": " Any valid item",
-            "type": "qx.ui.core.Widget"
-          }
-        ],
-        "@throws": [
-          {
-            "name": "@throws",
-            "body": "{Error} if the item is not a child element.",
-            "type": "Error",
-            "description": " if the item is not a child element."
-          }
-        ]
-      }
-    },
-    "getSelection": {
-      "type": "function",
-      "name": "getSelection",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "public",
-      "overriddenFrom": "qx.ui.core.IMultiSelection",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Returns an array of currently selected items.\n Note: The result is only a set of selected items, so the order can\n differ from the sequence in which the items were added.</p>"
-          }
-        ],
-        "@return": [
-          {
-            "name": "@return",
-            "body": "{qx.ui.core.Widget[]} List of items.",
-            "type": "qx.ui.core.Widget[]",
-            "description": " List of items."
-          }
-        ]
-      }
-    },
-    "setSelection": {
-      "type": "function",
-      "name": "setSelection",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "public",
-      "overriddenFrom": "qx.ui.core.IMultiSelection",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Replaces current selection with the given items.</p>"
-          }
-        ],
-        "@param": [
-          {
-            "name": "@param",
-            "body": "items {qx.ui.core.Widget[]} Items to select.",
-            "paramName": "items",
-            "description": " Items to select.",
-            "type": "qx.ui.core.Widget[]"
-          }
-        ],
-        "@throws": [
-          {
-            "name": "@throws",
-            "body": "{Error} if the item is not a child element.",
-            "type": "Error",
-            "description": " if the item is not a child element."
-          }
-        ]
-      }
-    },
-    "resetSelection": {
-      "type": "function",
-      "name": "resetSelection",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "public",
-      "overriddenFrom": "qx.ui.core.IMultiSelection",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Clears the whole selection at once.</p>"
-          }
-        ]
-      }
-    },
-    "isSelected": {
-      "type": "function",
-      "name": "isSelected",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "public",
-      "overriddenFrom": "qx.ui.core.IMultiSelection",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Detects whether the given item is currently selected.</p>"
-          }
-        ],
-        "@param": [
-          {
-            "name": "@param",
-            "body": "item {qx.ui.core.Widget} Any valid selectable item",
-            "paramName": "item",
-            "description": " Any valid selectable item",
-            "type": "qx.ui.core.Widget"
-          }
-        ],
-        "@return": [
-          {
-            "name": "@return",
-            "body": "{Boolean} Whether the item is selected.",
-            "type": "Boolean",
-            "description": " Whether the item is selected."
-          }
-        ],
-        "@throws": [
-          {
-            "name": "@throws",
-            "body": "{Error} if the item is not a child element.",
-            "type": "Error",
-            "description": " if the item is not a child element."
-          }
-        ]
-      }
-    },
-    "isSelectionEmpty": {
-      "type": "function",
-      "name": "isSelectionEmpty",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "public",
-      "overriddenFrom": "qx.ui.core.IMultiSelection",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Whether the selection is empty.</p>"
-          }
-        ],
-        "@return": [
-          {
-            "name": "@return",
-            "body": "{Boolean} Whether the selection is empty.",
-            "type": "Boolean",
-            "description": " Whether the selection is empty."
-          }
-        ]
-      }
-    },
-    "getSelectables": {
-      "type": "function",
-      "name": "getSelectables",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "public",
-      "overriddenFrom": "qx.ui.core.IMultiSelection",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Returns all elements which are selectable.</p>"
-          }
-        ],
-        "@param": [
-          {
-            "name": "@param",
-            "body": "all {Boolean} true for all selectables, false for the\n   selectables the user can interactively select",
-            "paramName": "all",
-            "description": " true for all selectables, false for the\n   selectables the user can interactively select",
-            "type": "Boolean"
-          }
-        ],
-        "@return": [
-          {
-            "name": "@return",
-            "body": "{qx.ui.core.Widget[]} The contained items.",
-            "type": "qx.ui.core.Widget[]",
-            "description": " The contained items."
-          }
-        ]
-      }
-    },
-    "setModelSelection": {
-      "type": "function",
-      "name": "setModelSelection",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "public",
-      "overriddenFrom": "qx.ui.form.IModelSelection",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Tries to set the selection using the given array containing the\n representative models for the selectables.</p>"
-          }
-        ],
-        "@param": [
-          {
-            "name": "@param",
-            "body": "value {Array} An array of models.",
-            "paramName": "value",
-            "description": " An array of models.",
-            "type": "Array"
-          }
-        ]
-      }
-    },
-    "getModelSelection": {
-      "type": "function",
-      "name": "getModelSelection",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "public",
-      "overriddenFrom": "qx.ui.form.IModelSelection",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Returns an array of the selected models.</p>"
-          }
-        ],
-        "@return": [
-          {
-            "name": "@return",
-            "body": "{Array} An array containing the models of the currently selected\n   items.",
-            "type": "Array",
-            "description": " An array containing the models of the currently selected\n   items."
-          }
-        ]
-      }
-    },
-    "setValue": {
-      "type": "function",
-      "name": "setValue",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "public",
-      "overriddenFrom": "qx.ui.form.IField",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Sets the field model value. Should also update the UI.</p>"
-          }
-        ],
-        "@param": [
-          {
-            "name": "@param",
-            "body": "value {var|null} Updates the field with the new model value.",
-            "paramName": "value",
-            "description": " Updates the field with the new model value.",
-            "type": [
-              "var",
-              "null"
-            ]
-          }
-        ],
-        "@return": [
-          {
-            "name": "@return",
-            "body": "{null|Error} Should return an error when the type of\n  model value is not compatible with the implementing class (the concrete field).",
-            "type": "null|Error",
-            "description": " Should return an error when the type of\n  model value is not compatible with the implementing class (the concrete field)."
-          }
-        ]
-      }
-    },
-    "resetValue": {
-      "type": "function",
-      "name": "resetValue",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "public",
-      "overriddenFrom": "qx.ui.form.IField",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Resets the model value to its initial value. Should also update the UI.</p>"
-          }
-        ]
-      }
-    },
-    "getValue": {
-      "type": "function",
-      "name": "getValue",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "public",
-      "overriddenFrom": "qx.ui.form.IField",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Returns a consistent and up-to-date model value.\n Note: returned value can also be a promise of type <code>Promise&amp;lt;*|null&amp;gt;</code>.</p>"
-          }
-        ],
-        "@return": [
-          {
-            "name": "@return",
-            "body": "{var|null} The model value plain or as promise.",
-            "type": "var|null",
-            "description": " The model value plain or as promise."
-          }
-        ]
-      }
-    },
     "setEnabled": {
       "type": "function",
       "name": "setEnabled",
@@ -477,7 +85,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.form.IForm",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -504,7 +112,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.form.IForm",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -527,10 +135,10 @@
       "type": "function",
       "name": "setRequired",
       "abstract": false,
-      "mixin": true,
+      "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.form.IForm",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -554,10 +162,10 @@
       "type": "function",
       "name": "getRequired",
       "abstract": false,
-      "mixin": true,
+      "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.form.IForm",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -580,10 +188,10 @@
       "type": "function",
       "name": "setValid",
       "abstract": false,
-      "mixin": true,
+      "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.form.IForm",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -607,10 +215,10 @@
       "type": "function",
       "name": "getValid",
       "abstract": false,
-      "mixin": true,
+      "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.form.IForm",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -633,10 +241,10 @@
       "type": "function",
       "name": "setInvalidMessage",
       "abstract": false,
-      "mixin": true,
+      "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.form.IForm",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -660,10 +268,10 @@
       "type": "function",
       "name": "getInvalidMessage",
       "abstract": false,
-      "mixin": true,
+      "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.form.IForm",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -686,10 +294,10 @@
       "type": "function",
       "name": "setRequiredInvalidMessage",
       "abstract": false,
-      "mixin": true,
+      "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.form.IForm",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -713,10 +321,10 @@
       "type": "function",
       "name": "getRequiredInvalidMessage",
       "abstract": false,
-      "mixin": true,
+      "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.form.IForm",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -735,212 +343,6 @@
         ]
       }
     },
-    "selectRange": {
-      "type": "function",
-      "name": "selectRange",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "public",
-      "overriddenFrom": "qx.ui.core.MMultiSelectionHandling",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Selects an item range between two given items.</p>"
-          }
-        ],
-        "@param": [
-          {
-            "name": "@param",
-            "body": "begin {qx.ui.core.Widget} Item to start with",
-            "paramName": "begin",
-            "description": " Item to start with",
-            "type": "qx.ui.core.Widget"
-          },
-          {
-            "name": "@param",
-            "body": "end {qx.ui.core.Widget} Item to end at",
-            "paramName": "end",
-            "description": " Item to end at",
-            "type": "qx.ui.core.Widget"
-          }
-        ]
-      }
-    },
-    "getSortedSelection": {
-      "type": "function",
-      "name": "getSortedSelection",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "public",
-      "overriddenFrom": "qx.ui.core.MMultiSelectionHandling",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Returns an array of currently selected items sorted\n by their index in the container.</p>"
-          }
-        ],
-        "@return": [
-          {
-            "name": "@return",
-            "body": "{qx.ui.core.Widget[]} Sorted list of items",
-            "type": "qx.ui.core.Widget[]",
-            "description": " Sorted list of items"
-          }
-        ]
-      }
-    },
-    "getSelectionContext": {
-      "type": "function",
-      "name": "getSelectionContext",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "public",
-      "overriddenFrom": "qx.ui.core.MMultiSelectionHandling",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Returns the last selection context.</p>"
-          }
-        ],
-        "@return": [
-          {
-            "name": "@return",
-            "body": "{String | null} One of <code>tap</code>, <code>quick</code>,\n    <code>drag</code> or <code>key</code> or <code>null</code>.",
-            "type": "String | null",
-            "description": " One of <code>tap</code>, <code>quick</code>,\n    <code>drag</code> or <code>key</code> or <code>null</code>."
-          }
-        ]
-      }
-    },
-    "_getManager": {
-      "type": "function",
-      "name": "_getManager",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "protected",
-      "overriddenFrom": "qx.ui.core.MMultiSelectionHandling",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Returns the internal selection manager. Use this with\n caution!</p>"
-          }
-        ],
-        "@return": [
-          {
-            "name": "@return",
-            "body": "{qx.ui.core.selection.Abstract} The selection manager",
-            "type": "qx.ui.core.selection.Abstract",
-            "description": " The selection manager"
-          }
-        ]
-      }
-    },
-    "invertSelection": {
-      "type": "function",
-      "name": "invertSelection",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "public",
-      "overriddenFrom": "qx.ui.core.MMultiSelectionHandling",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Invert the selection. Select the non selected and deselect the selected.</p>"
-          }
-        ]
-      }
-    },
-    "_getLeadItem": {
-      "type": "function",
-      "name": "_getLeadItem",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "protected",
-      "overriddenFrom": "qx.ui.core.MMultiSelectionHandling",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Returns the current lead item. Generally the item which was last modified\n by the user (tapped on etc.)</p>"
-          }
-        ],
-        "@return": [
-          {
-            "name": "@return",
-            "body": "{qx.ui.core.Widget} The lead item or <code>null</code>",
-            "type": "qx.ui.core.Widget",
-            "description": " The lead item or <code>null</code>"
-          }
-        ]
-      }
-    },
-    "_applySelectionMode": {
-      "type": "function",
-      "name": "_applySelectionMode",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "protected",
-      "overriddenFrom": "qx.ui.core.MMultiSelectionHandling",
-      "jsdoc": {}
-    },
-    "_applyDragSelection": {
-      "type": "function",
-      "name": "_applyDragSelection",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "protected",
-      "overriddenFrom": "qx.ui.core.MMultiSelectionHandling",
-      "jsdoc": {}
-    },
-    "_applyQuickSelection": {
-      "type": "function",
-      "name": "_applyQuickSelection",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "protected",
-      "overriddenFrom": "qx.ui.core.MMultiSelectionHandling",
-      "jsdoc": {}
-    },
-    "_onSelectionChange": {
-      "type": "function",
-      "name": "_onSelectionChange",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "protected",
-      "overriddenFrom": "qx.ui.core.MMultiSelectionHandling",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Event listener for <code>changeSelection</code> event on selection manager.</p>"
-          }
-        ],
-        "@param": [
-          {
-            "name": "@param",
-            "body": "e {qx.event.type.Data} Data event",
-            "paramName": "e",
-            "description": " Data event",
-            "type": "qx.event.type.Data"
-          }
-        ]
-      }
-    },
     "getSelectionMode": {
       "type": "function",
       "name": "getSelectionMode",
@@ -948,6 +350,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -972,6 +375,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -997,6 +401,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -1014,6 +419,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -1038,6 +444,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "is",
       "jsdoc": {
         "@description": [
@@ -1062,6 +469,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -1087,6 +495,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -1104,6 +513,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -1128,6 +538,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "is",
       "jsdoc": {
         "@description": [
@@ -1152,6 +563,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -1177,6 +589,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -1187,16 +600,6 @@
         ]
       }
     },
-    "_applyContentPadding": {
-      "type": "function",
-      "name": "_applyContentPadding",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "protected",
-      "overriddenFrom": "qx.ui.core.MContentPadding",
-      "jsdoc": {}
-    },
     "getContentPaddingTop": {
       "type": "function",
       "name": "getContentPaddingTop",
@@ -1204,6 +607,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -1228,6 +632,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -1253,6 +658,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -1270,6 +676,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -1294,6 +701,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -1319,6 +727,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -1336,6 +745,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -1360,6 +770,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -1385,6 +796,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -1402,6 +814,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -1426,6 +839,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -1451,6 +865,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -1468,6 +883,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -1493,6 +909,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -1503,90 +920,14 @@
         ]
       }
     },
-    "__onModelSelectionChange": {
-      "type": "function",
-      "name": "__onModelSelectionChange",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "private",
-      "overriddenFrom": "qx.ui.form.MModelSelection",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Handler for the selection change of the including class e.g. SelectBox,\n List, …\n It sets the new modelSelection via {@link #setModelSelection}.</p>"
-          }
-        ]
-      }
-    },
-    "__onModelSelectionArrayChange": {
-      "type": "function",
-      "name": "__onModelSelectionArrayChange",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "private",
-      "overriddenFrom": "qx.ui.form.MModelSelection",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Listener for the change of the internal model selection data array.</p>"
-          }
-        ]
-      }
-    },
-    "_applyValid": {
-      "type": "function",
-      "name": "_applyValid",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "protected",
-      "overriddenFrom": "qx.ui.form.MForm",
-      "jsdoc": {}
-    },
-    "__onChangeLocale": {
-      "type": "function",
-      "name": "__onChangeLocale",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "private",
-      "overriddenFrom": "qx.ui.form.MForm",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Locale change event handler</p>"
-          }
-        ],
-        "@signature": [
-          {
-            "name": "@signature",
-            "body": "function(e)"
-          }
-        ],
-        "@param": [
-          {
-            "name": "@param",
-            "body": "e {Event} the change event",
-            "paramName": "e",
-            "description": " the change event",
-            "type": "Event"
-          }
-        ]
-      }
-    },
     "isValid": {
       "type": "function",
       "name": "isValid",
       "abstract": false,
-      "mixin": true,
+      "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.form.MForm",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "is",
       "jsdoc": {
         "@description": [
@@ -1608,10 +949,10 @@
       "type": "function",
       "name": "resetValid",
       "abstract": false,
-      "mixin": true,
+      "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.form.MForm",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -1626,10 +967,10 @@
       "type": "function",
       "name": "isRequired",
       "abstract": false,
-      "mixin": true,
+      "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.form.MForm",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "is",
       "jsdoc": {
         "@description": [
@@ -1651,10 +992,10 @@
       "type": "function",
       "name": "resetRequired",
       "abstract": false,
-      "mixin": true,
+      "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.form.MForm",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -1669,10 +1010,10 @@
       "type": "function",
       "name": "resetInvalidMessage",
       "abstract": false,
-      "mixin": true,
+      "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.form.MForm",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -1687,627 +1028,16 @@
       "type": "function",
       "name": "resetRequiredInvalidMessage",
       "abstract": false,
-      "mixin": true,
+      "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.form.MForm",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
           {
             "name": "@description",
             "body": "Resets the user value of the property <code>requiredInvalidMessage</code>.\n\nThe computed value falls back to the next available value e.g. appearance, init or inheritance value depending on the property configuration and value availability.\n\nFor further details take a look at the property definition: {@link #requiredInvalidMessage}."
-          }
-        ]
-      }
-    },
-    "_createScrollBar": {
-      "type": "function",
-      "name": "_createScrollBar",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "protected",
-      "overriddenFrom": "qx.ui.core.scroll.MScrollBarFactory",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Creates a new scrollbar. This can either be a styled qooxdoo scrollbar\n or a native browser scrollbar.</p>"
-          }
-        ],
-        "@param": [
-          {
-            "name": "@param",
-            "body": "orientation {String?\"horizontal\"} The initial scroll bar orientation",
-            "paramName": "orientation",
-            "description": " The initial scroll bar orientation",
-            "optional": true,
-            "defaultValue": "\"horizontal\"",
-            "type": "String"
-          }
-        ],
-        "@return": [
-          {
-            "name": "@return",
-            "body": "{qx.ui.core.scroll.IScrollBar} The scrollbar instance",
-            "type": "qx.ui.core.scroll.IScrollBar",
-            "description": " The scrollbar instance"
-          }
-        ]
-      }
-    },
-    "_addRollHandling": {
-      "type": "function",
-      "name": "_addRollHandling",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "protected",
-      "overriddenFrom": "qx.ui.core.scroll.MRoll",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Responsible for adding the event listener needed for scroll handling.</p>"
-          }
-        ]
-      }
-    },
-    "_removeRollHandling": {
-      "type": "function",
-      "name": "_removeRollHandling",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "protected",
-      "overriddenFrom": "qx.ui.core.scroll.MRoll",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Responsible for removing the event listener needed for scroll handling.</p>"
-          }
-        ]
-      }
-    },
-    "_onPointerDownForRoll": {
-      "type": "function",
-      "name": "_onPointerDownForRoll",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "protected",
-      "overriddenFrom": "qx.ui.core.scroll.MRoll",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Handler for the pointerdown event which simply stops the momentum scrolling.</p>"
-          }
-        ],
-        "@param": [
-          {
-            "name": "@param",
-            "body": "e {qx.event.type.Pointer} pointerdown event",
-            "paramName": "e",
-            "description": " pointerdown event",
-            "type": "qx.event.type.Pointer"
-          }
-        ]
-      }
-    },
-    "_onRoll": {
-      "type": "function",
-      "name": "_onRoll",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "protected",
-      "overriddenFrom": "qx.ui.core.scroll.MRoll",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Roll event handler</p>"
-          }
-        ],
-        "@param": [
-          {
-            "name": "@param",
-            "body": "e {qx.event.type.Roll} Roll event",
-            "paramName": "e",
-            "description": " Roll event",
-            "type": "qx.event.type.Roll"
-          }
-        ]
-      }
-    },
-    "_findScrollableParent": {
-      "type": "function",
-      "name": "_findScrollableParent",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "protected",
-      "overriddenFrom": "qx.ui.core.MDragDropScrolling",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Finds the first scrollable parent (in the parent chain).</p>"
-          }
-        ],
-        "@param": [
-          {
-            "name": "@param",
-            "body": "widget {qx.ui.core.LayoutItem} The widget to start from.",
-            "paramName": "widget",
-            "description": " The widget to start from.",
-            "type": "qx.ui.core.LayoutItem"
-          }
-        ],
-        "@return": [
-          {
-            "name": "@return",
-            "body": "{qx.ui.core.Widget} A scrollable widget.",
-            "type": "qx.ui.core.Widget",
-            "description": " A scrollable widget."
-          }
-        ]
-      }
-    },
-    "_isScrollable": {
-      "type": "function",
-      "name": "_isScrollable",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "protected",
-      "overriddenFrom": "qx.ui.core.MDragDropScrolling",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Whether the widget is scrollable.</p>"
-          }
-        ],
-        "@param": [
-          {
-            "name": "@param",
-            "body": "widget {qx.ui.core.Widget} The widget to check.",
-            "paramName": "widget",
-            "description": " The widget to check.",
-            "type": "qx.ui.core.Widget"
-          }
-        ],
-        "@return": [
-          {
-            "name": "@return",
-            "body": "{Boolean} Whether the widget is scrollable.",
-            "type": "Boolean",
-            "description": " Whether the widget is scrollable."
-          }
-        ]
-      }
-    },
-    "_getBounds": {
-      "type": "function",
-      "name": "_getBounds",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "protected",
-      "overriddenFrom": "qx.ui.core.MDragDropScrolling",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Gets the bounds of the given scrollable.</p>"
-          }
-        ],
-        "@param": [
-          {
-            "name": "@param",
-            "body": "scrollable {qx.ui.core.Widget} Scrollable which has scrollbar child controls.",
-            "paramName": "scrollable",
-            "description": " Scrollable which has scrollbar child controls.",
-            "type": "qx.ui.core.Widget"
-          }
-        ],
-        "@return": [
-          {
-            "name": "@return",
-            "body": "{Map} A map with all four bounds (e.g. {\"left\":0, \"top\":20, \"right\":0, \"bottom\":80}).",
-            "type": "Map",
-            "description": " A map with all four bounds (e.g. {\"left\":0, \"top\":20, \"right\":0, \"bottom\":80})."
-          }
-        ]
-      }
-    },
-    "_getEdgeType": {
-      "type": "function",
-      "name": "_getEdgeType",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "protected",
-      "overriddenFrom": "qx.ui.core.MDragDropScrolling",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Gets the edge type or null if the pointer isn't within one of the thresholds.</p>"
-          }
-        ],
-        "@param": [
-          {
-            "name": "@param",
-            "body": "diff {Map} Difference map with all for edgeTypes.",
-            "paramName": "diff",
-            "description": " Difference map with all for edgeTypes.",
-            "type": "Map"
-          },
-          {
-            "name": "@param",
-            "body": "thresholdX {Number} x-axis threshold.",
-            "paramName": "thresholdX",
-            "description": " x-axis threshold.",
-            "type": "Number"
-          },
-          {
-            "name": "@param",
-            "body": "thresholdY {Number} y-axis threshold.",
-            "paramName": "thresholdY",
-            "description": " y-axis threshold.",
-            "type": "Number"
-          }
-        ],
-        "@return": [
-          {
-            "name": "@return",
-            "body": "{String} One of the four edgeTypes ('left', 'right', 'top', 'bottom').",
-            "type": "String",
-            "description": " One of the four edgeTypes ('left', 'right', 'top', 'bottom')."
-          }
-        ]
-      }
-    },
-    "_getAxis": {
-      "type": "function",
-      "name": "_getAxis",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "protected",
-      "overriddenFrom": "qx.ui.core.MDragDropScrolling",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Gets the axis ('x' or 'y') by the edge type.</p>"
-          }
-        ],
-        "@param": [
-          {
-            "name": "@param",
-            "body": "edgeType {String} One of the four edgeTypes ('left', 'right', 'top', 'bottom').",
-            "paramName": "edgeType",
-            "description": " One of the four edgeTypes ('left', 'right', 'top', 'bottom').",
-            "type": "String"
-          }
-        ],
-        "@throws": [
-          {
-            "name": "@throws",
-            "body": "{Error} If edgeType is not one of the distinct four ones.",
-            "type": "Error",
-            "description": " If edgeType is not one of the distinct four ones."
-          }
-        ],
-        "@return": [
-          {
-            "name": "@return",
-            "body": "{String} Returns 'y' or 'x'.",
-            "type": "String",
-            "description": " Returns 'y' or 'x'."
-          }
-        ]
-      }
-    },
-    "_getThresholdByEdgeType": {
-      "type": "function",
-      "name": "_getThresholdByEdgeType",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "protected",
-      "overriddenFrom": "qx.ui.core.MDragDropScrolling",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Gets the threshold amount by edge type.</p>"
-          }
-        ],
-        "@param": [
-          {
-            "name": "@param",
-            "body": "edgeType {String} One of the four edgeTypes ('left', 'right', 'top', 'bottom').",
-            "paramName": "edgeType",
-            "description": " One of the four edgeTypes ('left', 'right', 'top', 'bottom').",
-            "type": "String"
-          }
-        ],
-        "@return": [
-          {
-            "name": "@return",
-            "body": "{Number} The threshold of the x or y axis.",
-            "type": "Number",
-            "description": " The threshold of the x or y axis."
-          }
-        ]
-      }
-    },
-    "_isScrollbarVisible": {
-      "type": "function",
-      "name": "_isScrollbarVisible",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "protected",
-      "overriddenFrom": "qx.ui.core.MDragDropScrolling",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Whether the scrollbar is visible.</p>"
-          }
-        ],
-        "@param": [
-          {
-            "name": "@param",
-            "body": "scrollable {qx.ui.core.Widget} Scrollable which has scrollbar child controls.",
-            "paramName": "scrollable",
-            "description": " Scrollable which has scrollbar child controls.",
-            "type": "qx.ui.core.Widget"
-          },
-          {
-            "name": "@param",
-            "body": "axis {String} Can be 'y' or 'x'.",
-            "paramName": "axis",
-            "description": " Can be 'y' or 'x'.",
-            "type": "String"
-          }
-        ],
-        "@return": [
-          {
-            "name": "@return",
-            "body": "{Boolean} Whether the scrollbar is visible.",
-            "type": "Boolean",
-            "description": " Whether the scrollbar is visible."
-          }
-        ]
-      }
-    },
-    "_isScrollbarExceedingMaxPos": {
-      "type": "function",
-      "name": "_isScrollbarExceedingMaxPos",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "protected",
-      "overriddenFrom": "qx.ui.core.MDragDropScrolling",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Whether the scrollbar is exceeding it's maximum position.</p>"
-          }
-        ],
-        "@param": [
-          {
-            "name": "@param",
-            "body": "scrollbar {qx.ui.core.scroll.IScrollBar} Scrollbar to check.",
-            "paramName": "scrollbar",
-            "description": " Scrollbar to check.",
-            "type": "qx.ui.core.scroll.IScrollBar"
-          },
-          {
-            "name": "@param",
-            "body": "axis {String} Can be 'y' or 'x'.",
-            "paramName": "axis",
-            "description": " Can be 'y' or 'x'.",
-            "type": "String"
-          },
-          {
-            "name": "@param",
-            "body": "amount {Number} Amount to scroll which may be negative.",
-            "paramName": "amount",
-            "description": " Amount to scroll which may be negative.",
-            "type": "Number"
-          }
-        ],
-        "@return": [
-          {
-            "name": "@return",
-            "body": "{Boolean} Whether the amount will exceed the scrollbar max position.",
-            "type": "Boolean",
-            "description": " Whether the amount will exceed the scrollbar max position."
-          }
-        ]
-      }
-    },
-    "_calculateThresholdExceedance": {
-      "type": "function",
-      "name": "_calculateThresholdExceedance",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "protected",
-      "overriddenFrom": "qx.ui.core.MDragDropScrolling",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Calculates the threshold exceedance (which may be negative).</p>"
-          }
-        ],
-        "@param": [
-          {
-            "name": "@param",
-            "body": "diff {Number} Difference value of one edgeType.",
-            "paramName": "diff",
-            "description": " Difference value of one edgeType.",
-            "type": "Number"
-          },
-          {
-            "name": "@param",
-            "body": "threshold {Number} x-axis or y-axis threshold.",
-            "paramName": "threshold",
-            "description": " x-axis or y-axis threshold.",
-            "type": "Number"
-          }
-        ],
-        "@return": [
-          {
-            "name": "@return",
-            "body": "{Number} Threshold exceedance amount (positive or negative).",
-            "type": "Number",
-            "description": " Threshold exceedance amount (positive or negative)."
-          }
-        ]
-      }
-    },
-    "_calculateScrollAmount": {
-      "type": "function",
-      "name": "_calculateScrollAmount",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "protected",
-      "overriddenFrom": "qx.ui.core.MDragDropScrolling",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Calculates the scroll amount (which may be negative).\n The amount is influenced by the scrollbar size (bigger = faster)\n the exceedanceAmount (bigger = faster) and the slowDownFactor.</p>"
-          }
-        ],
-        "@param": [
-          {
-            "name": "@param",
-            "body": "scrollbarSize {Number} Size of the scrollbar.",
-            "paramName": "scrollbarSize",
-            "description": " Size of the scrollbar.",
-            "type": "Number"
-          },
-          {
-            "name": "@param",
-            "body": "exceedanceAmount {Number} Threshold exceedance amount (positive or negative).",
-            "paramName": "exceedanceAmount",
-            "description": " Threshold exceedance amount (positive or negative).",
-            "type": "Number"
-          }
-        ],
-        "@return": [
-          {
-            "name": "@return",
-            "body": "{Number} Scroll amount (positive or negative).",
-            "type": "Number",
-            "description": " Scroll amount (positive or negative)."
-          }
-        ]
-      }
-    },
-    "_scrollBy": {
-      "type": "function",
-      "name": "_scrollBy",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "protected",
-      "overriddenFrom": "qx.ui.core.MDragDropScrolling",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Scrolls the given scrollable on the given axis for the given amount.</p>"
-          }
-        ],
-        "@param": [
-          {
-            "name": "@param",
-            "body": "scrollable {qx.ui.core.Widget} Scrollable which has scrollbar child controls.",
-            "paramName": "scrollable",
-            "description": " Scrollable which has scrollbar child controls.",
-            "type": "qx.ui.core.Widget"
-          },
-          {
-            "name": "@param",
-            "body": "axis {String} Can be 'y' or 'x'.",
-            "paramName": "axis",
-            "description": " Can be 'y' or 'x'.",
-            "type": "String"
-          },
-          {
-            "name": "@param",
-            "body": "exceedanceAmount {Number} Threshold exceedance amount (positive or negative).",
-            "paramName": "exceedanceAmount",
-            "description": " Threshold exceedance amount (positive or negative).",
-            "type": "Number"
-          }
-        ]
-      }
-    },
-    "__onDrag": {
-      "type": "function",
-      "name": "__onDrag",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "private",
-      "overriddenFrom": "qx.ui.core.MDragDropScrolling",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Event handler for the drag event.</p>"
-          }
-        ],
-        "@param": [
-          {
-            "name": "@param",
-            "body": "e {qx.event.type.Drag} The drag event instance.",
-            "paramName": "e",
-            "description": " The drag event instance.",
-            "type": "qx.event.type.Drag"
-          }
-        ]
-      }
-    },
-    "__onDragend": {
-      "type": "function",
-      "name": "__onDragend",
-      "abstract": false,
-      "mixin": true,
-      "inherited": true,
-      "access": "private",
-      "overriddenFrom": "qx.ui.core.MDragDropScrolling",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Event handler for the dragend event.</p>"
-          }
-        ],
-        "@param": [
-          {
-            "name": "@param",
-            "body": "e {qx.event.type.Drag} The drag event instance.",
-            "paramName": "e",
-            "description": " The drag event instance.",
-            "type": "qx.event.type.Drag"
           }
         ]
       }
@@ -2319,6 +1049,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -2343,6 +1074,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -2368,6 +1100,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -2385,6 +1118,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -2409,6 +1143,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -2434,6 +1169,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -2451,6 +1187,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -2475,6 +1212,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -2500,6 +1238,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -2517,7 +1256,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -2542,7 +1281,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -2568,7 +1307,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -2586,7 +1325,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -2610,7 +1349,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -2635,7 +1374,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -2653,7 +1392,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -2678,7 +1417,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -2704,7 +1443,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -2722,7 +1461,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -2747,7 +1486,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -2773,7 +1512,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -2791,7 +1530,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -2816,7 +1555,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -2842,7 +1581,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -2860,7 +1599,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -2885,7 +1624,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -2911,7 +1650,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -2929,7 +1668,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -2954,7 +1693,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -2980,7 +1719,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -2998,7 +1737,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -3023,7 +1762,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -3049,7 +1788,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -3067,7 +1806,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -3092,7 +1831,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "is",
       "jsdoc": {
         "@description": [
@@ -3117,7 +1856,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -3143,7 +1882,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -3161,7 +1900,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -3186,7 +1925,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "is",
       "jsdoc": {
         "@description": [
@@ -3211,7 +1950,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -3237,7 +1976,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -3255,7 +1994,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -3280,7 +2019,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "is",
       "jsdoc": {
         "@description": [
@@ -3305,7 +2044,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -3331,7 +2070,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -3349,7 +2088,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -3374,7 +2113,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "is",
       "jsdoc": {
         "@description": [
@@ -3399,7 +2138,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -3425,7 +2164,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -3443,7 +2182,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -3469,7 +2208,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -3487,7 +2226,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -3513,7 +2252,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -3531,7 +2270,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -3556,7 +2295,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -3582,7 +2321,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -3600,7 +2339,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -3625,7 +2364,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -3651,7 +2390,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -3669,7 +2408,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -3694,7 +2433,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -3720,7 +2459,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -3738,7 +2477,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -3763,7 +2502,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -3789,7 +2528,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -3807,7 +2546,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -3833,7 +2572,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -3851,7 +2590,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -3876,7 +2615,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -3902,7 +2641,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -3920,7 +2659,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -3945,7 +2684,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -3971,7 +2710,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -3989,7 +2728,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -4014,7 +2753,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -4040,7 +2779,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -4058,7 +2797,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -4083,7 +2822,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -4109,7 +2848,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -4127,7 +2866,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -4152,7 +2891,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -4178,7 +2917,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -4196,7 +2935,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -4221,7 +2960,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -4247,7 +2986,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -4265,7 +3004,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -4291,7 +3030,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -4309,7 +3048,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -4334,7 +3073,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -4360,7 +3099,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -4378,7 +3117,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -4403,7 +3142,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -4429,7 +3168,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -4447,7 +3186,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -4472,7 +3211,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -4498,7 +3237,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -4516,7 +3255,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -4541,7 +3280,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -4567,7 +3306,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -4585,7 +3324,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -4610,7 +3349,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -4636,7 +3375,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -4654,7 +3393,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -4679,7 +3418,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -4705,7 +3444,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -4723,7 +3462,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -4748,7 +3487,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -4774,7 +3513,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -4792,7 +3531,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -4817,7 +3556,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -4843,7 +3582,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -4861,7 +3600,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -4886,7 +3625,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -4912,7 +3651,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -4930,7 +3669,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -4955,7 +3694,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -4981,7 +3720,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -4999,7 +3738,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -5024,7 +3763,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "is",
       "jsdoc": {
         "@description": [
@@ -5049,7 +3788,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -5075,7 +3814,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -5093,7 +3832,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -5118,7 +3857,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "is",
       "jsdoc": {
         "@description": [
@@ -5143,7 +3882,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -5169,7 +3908,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -5187,7 +3926,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -5212,7 +3951,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -5238,7 +3977,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -5256,7 +3995,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "is",
       "jsdoc": {
         "@description": [
@@ -5281,7 +4020,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -5299,7 +4038,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -5324,7 +4063,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "is",
       "jsdoc": {
         "@description": [
@@ -5349,7 +4088,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -5375,7 +4114,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -5393,7 +4132,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -5418,7 +4157,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -5444,7 +4183,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -5462,7 +4201,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -5487,7 +4226,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "is",
       "jsdoc": {
         "@description": [
@@ -5512,7 +4251,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -5538,7 +4277,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -5556,7 +4295,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -5581,7 +4320,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "is",
       "jsdoc": {
         "@description": [
@@ -5606,7 +4345,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -5632,7 +4371,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -5650,7 +4389,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -5675,7 +4414,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "is",
       "jsdoc": {
         "@description": [
@@ -5700,7 +4439,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -5726,7 +4465,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -5744,7 +4483,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -5769,7 +4508,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "is",
       "jsdoc": {
         "@description": [
@@ -5794,7 +4533,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -5820,7 +4559,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -5838,7 +4577,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -5863,7 +4602,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "is",
       "jsdoc": {
         "@description": [
@@ -5888,7 +4627,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -5914,7 +4653,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -5932,7 +4671,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -5957,7 +4696,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "is",
       "jsdoc": {
         "@description": [
@@ -5982,7 +4721,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -6008,7 +4747,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -6026,7 +4765,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -6051,7 +4790,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -6077,7 +4816,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -6095,7 +4834,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -6120,7 +4859,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "is",
       "jsdoc": {
         "@description": [
@@ -6145,7 +4884,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -6171,7 +4910,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -6189,7 +4928,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -6214,7 +4953,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -6240,7 +4979,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.Widget",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -6258,6 +4997,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -6282,6 +5022,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -6307,6 +5048,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -6324,6 +5066,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -6348,6 +5091,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -6373,6 +5117,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -6390,6 +5135,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -6415,6 +5161,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -6432,6 +5179,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -6456,6 +5204,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -6481,6 +5230,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -6498,6 +5248,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -6522,6 +5273,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -6547,6 +5299,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -6564,6 +5317,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -6588,6 +5342,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "is",
       "jsdoc": {
         "@description": [
@@ -6612,6 +5367,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -6637,6 +5393,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -6654,6 +5411,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -6678,6 +5436,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "is",
       "jsdoc": {
         "@description": [
@@ -6702,6 +5461,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -6727,6 +5487,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.Tree",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -6736,121 +5497,32 @@
           }
         ]
       }
-    }
-  },
-  "events": {
-    "changeSelection": {
-      "type": "event",
-      "name": "changeSelection",
+    },
+    "getContentPadding": {
+      "type": "function",
+      "name": "getContentPadding",
       "abstract": false,
       "mixin": true,
+      "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.ui.core.IMultiSelection",
+      "property": "get",
       "jsdoc": {
         "@description": [
           {
             "name": "@description",
-            "body": "<p>Fires after the selection was modified</p>"
+            "body": "Gets the (computed) value of the property <code>contentPadding</code>.\n\nFor further details take a look at the property definition: {@link #contentPadding}."
           }
-        ]
-      }
-    },
-    "changeValue": {
-      "type": "event",
-      "name": "changeValue",
-      "abstract": false,
-      "mixin": true,
-      "access": "public",
-      "overriddenFrom": "qx.ui.form.IField",
-      "jsdoc": {
-        "@description": [
+        ],
+        "@return": [
           {
-            "name": "@description",
-            "body": "<p>Fired when the model value was modified</p>"
-          }
-        ]
-      }
-    },
-    "changeEnabled": {
-      "type": "event",
-      "name": "changeEnabled",
-      "abstract": true,
-      "mixin": false,
-      "access": "public",
-      "overriddenFrom": "qx.ui.form.IForm",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Fired when the enabled state was modified</p>"
-          }
-        ]
-      }
-    },
-    "changeValid": {
-      "type": "event",
-      "name": "changeValid",
-      "abstract": true,
-      "mixin": false,
-      "access": "public",
-      "overriddenFrom": "qx.ui.form.IForm",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Fired when the valid state was modified</p>"
-          }
-        ]
-      }
-    },
-    "changeInvalidMessage": {
-      "type": "event",
-      "name": "changeInvalidMessage",
-      "abstract": true,
-      "mixin": false,
-      "access": "public",
-      "overriddenFrom": "qx.ui.form.IForm",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Fired when the invalidMessage was modified</p>"
-          }
-        ]
-      }
-    },
-    "changeRequired": {
-      "type": "event",
-      "name": "changeRequired",
-      "abstract": true,
-      "mixin": false,
-      "access": "public",
-      "overriddenFrom": "qx.ui.form.IForm",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Fired when the required was modified</p>"
-          }
-        ]
-      }
-    },
-    "changeModelSelection": {
-      "type": "event",
-      "name": "changeModelSelection",
-      "abstract": false,
-      "mixin": true,
-      "access": "public",
-      "overriddenFrom": "qx.ui.form.MModelSelection",
-      "jsdoc": {
-        "@description": [
-          {
-            "name": "@description",
-            "body": "<p>Pseudo event. It will never be fired because the array itself can not\n be changed. But the event description is needed for the data binding.</p>"
+            "name": "@return",
+            "type": "any",
+            "desc": "Returns the value for contentPadding"
           }
         ]
       }
     }
   },
+  "events": {},
   "descendants": []
 }

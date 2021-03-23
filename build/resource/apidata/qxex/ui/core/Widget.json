@@ -13,7 +13,7 @@
         "column": 0
       },
       "end": {
-        "line": 57,
+        "line": 59,
         "column": 3
       }
     }
@@ -23,11 +23,11 @@
     "registerLogicalChild": {
       "location": {
         "start": {
-          "line": 15,
+          "line": 17,
           "column": 4
         },
         "end": {
-          "line": 20,
+          "line": 22,
           "column": 5
         }
       },
@@ -37,6 +37,20 @@
             "name": "@description",
             "body": "<p>Add a logical child to the parent</p>"
           }
+        ],
+        "@param": [
+          {
+            "name": "@param",
+            "body": "parent",
+            "paramName": "parent",
+            "type": ""
+          },
+          {
+            "name": "@param",
+            "body": "child",
+            "paramName": "child",
+            "type": ""
+          }
         ]
       },
       "type": "function",
@@ -45,11 +59,11 @@
     "registerPopupOpeningButton": {
       "location": {
         "start": {
-          "line": 22,
+          "line": 24,
           "column": 4
         },
         "end": {
-          "line": 27,
+          "line": 29,
           "column": 5
         }
       },
@@ -59,11 +73,11 @@
     "contains": {
       "location": {
         "start": {
-          "line": 36,
+          "line": 38,
           "column": 4
         },
         "end": {
-          "line": 55,
+          "line": 57,
           "column": 5
         }
       },

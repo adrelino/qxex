@@ -49,7 +49,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.core.Object",
+      "overriddenFrom": "qx.ui.tree.selection.SelectionManager",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -74,7 +74,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.core.Object",
+      "overriddenFrom": "qx.ui.tree.selection.SelectionManager",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -100,7 +100,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.core.Object",
+      "overriddenFrom": "qx.ui.tree.selection.SelectionManager",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -118,7 +118,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.core.Object",
+      "overriddenFrom": "qx.ui.tree.selection.SelectionManager",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -142,7 +142,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.core.Object",
+      "overriddenFrom": "qx.ui.tree.selection.SelectionManager",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -167,7 +167,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
-      "overriddenFrom": "qx.core.Object",
+      "overriddenFrom": "qx.ui.tree.selection.SelectionManager",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -185,6 +185,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.selection.SelectionManager",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -209,6 +210,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.selection.SelectionManager",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -234,6 +236,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.selection.SelectionManager",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -251,6 +254,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.selection.SelectionManager",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -275,6 +279,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.selection.SelectionManager",
       "property": "is",
       "jsdoc": {
         "@description": [
@@ -299,6 +304,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.selection.SelectionManager",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -324,6 +330,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.selection.SelectionManager",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -341,6 +348,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.selection.SelectionManager",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -365,6 +373,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.selection.SelectionManager",
       "property": "is",
       "jsdoc": {
         "@description": [
@@ -389,6 +398,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.selection.SelectionManager",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -414,6 +424,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.selection.SelectionManager",
       "property": "reset",
       "jsdoc": {
         "@description": [
@@ -431,6 +442,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.selection.SelectionManager",
       "property": "get",
       "jsdoc": {
         "@description": [
@@ -455,6 +467,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.selection.SelectionManager",
       "property": "is",
       "jsdoc": {
         "@description": [
@@ -479,6 +492,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.selection.SelectionManager",
       "property": "set",
       "jsdoc": {
         "@description": [
@@ -504,6 +518,7 @@
       "mixin": false,
       "inherited": true,
       "access": "public",
+      "overriddenFrom": "qx.ui.tree.selection.SelectionManager",
       "property": "reset",
       "jsdoc": {
         "@description": [

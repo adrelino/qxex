@@ -13,7 +13,7 @@
         "column": 0
       },
       "end": {
-        "line": 107,
+        "line": 111,
         "column": 3
       }
     }
@@ -79,13 +79,27 @@
     "_forwardStates": {
       "location": {
         "start": {
-          "line": 50,
+          "line": 54,
           "column": 4
         },
         "end": {
-          "line": 53,
+          "line": 57,
           "column": 5
         }
+      },
+      "jsdoc": {
+        "@description": [
+          {
+            "name": "@description",
+            "body": ""
+          }
+        ],
+        "@lint": [
+          {
+            "name": "@lint",
+            "body": "ignoreReferenceField(_forwardStates)"
+          }
+        ]
       },
       "type": "variable",
       "access": "protected"
@@ -93,11 +107,11 @@
     "add": {
       "location": {
         "start": {
-          "line": 56,
+          "line": 60,
           "column": 4
         },
         "end": {
-          "line": 58,
+          "line": 62,
           "column": 5
         }
       },
@@ -113,11 +127,11 @@
     "addBefore": {
       "location": {
         "start": {
-          "line": 61,
+          "line": 65,
           "column": 4
         },
         "end": {
-          "line": 63,
+          "line": 67,
           "column": 5
         }
       },
@@ -133,11 +147,11 @@
     "_createChildControlImpl": {
       "location": {
         "start": {
-          "line": 66,
+          "line": 70,
           "column": 4
         },
         "end": {
-          "line": 93,
+          "line": 97,
           "column": 5
         }
       },
@@ -152,11 +166,11 @@
     "_updateCaptionBar": {
       "location": {
         "start": {
-          "line": 95,
+          "line": 99,
           "column": 4
         },
         "end": {
-          "line": 105,
+          "line": 109,
           "column": 5
         }
       },

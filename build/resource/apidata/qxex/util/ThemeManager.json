@@ -13,7 +13,7 @@
         "column": 0
       },
       "end": {
-        "line": 51,
+        "line": 63,
         "column": 3
       }
     },
@@ -31,12 +31,26 @@
     "mergeTheme": {
       "location": {
         "start": {
-          "line": 10,
+          "line": 9,
           "column": 2
         },
         "end": {
-          "line": 19,
-          "column": 4
+          "line": 18,
+          "column": 3
+        }
+      },
+      "type": "function",
+      "access": "public"
+    },
+    "mergeThemes": {
+      "location": {
+        "start": {
+          "line": 20,
+          "column": 2
+        },
+        "end": {
+          "line": 31,
+          "column": 3
         }
       },
       "type": "function",
@@ -45,12 +59,12 @@
     "getAll": {
       "location": {
         "start": {
-          "line": 21,
-          "column": 4
+          "line": 33,
+          "column": 2
         },
         "end": {
-          "line": 33,
-          "column": 6
+          "line": 45,
+          "column": 3
         }
       },
       "type": "function",
@@ -59,12 +73,12 @@
     "getCurrent": {
       "location": {
         "start": {
-          "line": 35,
-          "column": 5
+          "line": 47,
+          "column": 2
         },
         "end": {
-          "line": 39,
-          "column": 6
+          "line": 51,
+          "column": 3
         }
       },
       "type": "function",
@@ -73,12 +87,12 @@
     "setByName": {
       "location": {
         "start": {
-          "line": 41,
-          "column": 5
+          "line": 53,
+          "column": 2
         },
         "end": {
-          "line": 49,
-          "column": 6
+          "line": 61,
+          "column": 3
         }
       },
       "type": "function",

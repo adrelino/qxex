@@ -15,7 +15,7 @@
         "column": 0
       },
       "end": {
-        "line": 47,
+        "line": 48,
         "column": 3
       }
     },
@@ -85,20 +85,20 @@
       "jsdoc": {},
       "type": "function",
       "access": "public",
-      "overriddenFrom": "qxex.ui.form.MultiSelectBox",
+      "overriddenFrom": "qx.ui.form.AbstractSelectBox",
       "appearsIn": [
-        "qxex.ui.form.MultiSelectBox",
+        "qx.ui.form.AbstractSelectBox",
         "qx.ui.core.MRemoteChildrenHandling"
       ]
     },
     "getChildByModel": {
       "location": {
         "start": {
-          "line": 30,
+          "line": 31,
           "column": 4
         },
         "end": {
-          "line": 32,
+          "line": 33,
           "column": 5
         }
       },
@@ -108,6 +108,14 @@
             "name": "@description",
             "body": "<p>Alternative to getChildren() and linear search if we have a model for the listItem</p>"
           }
+        ],
+        "@param": [
+          {
+            "name": "@param",
+            "body": "model",
+            "paramName": "model",
+            "type": ""
+          }
         ]
       },
       "type": "function",
@@ -116,11 +124,11 @@
     "destroy": {
       "location": {
         "start": {
-          "line": 35,
+          "line": 36,
           "column": 4
         },
         "end": {
-          "line": 45,
+          "line": 46,
           "column": 5
         }
       },
@@ -634,15 +642,16 @@
         "@description": [
           {
             "name": "@description",
-            "body": "Sets the user value of the property <code>enabled</code>.\n\nFor further details take a look at the property definition: {@link #enabled}."
+            "body": "<p>Set the enabled state of the widget.</p>"
           }
         ],
         "@param": [
           {
             "name": "@param",
-            "type": "Boolean",
-            "paramName": "value",
-            "desc": "Value for enabled"
+            "body": "enabled {Boolean} The enabled state.",
+            "paramName": "enabled",
+            "description": " The enabled state.",
+            "type": "Boolean"
           }
         ]
       }
@@ -660,14 +669,15 @@
         "@description": [
           {
             "name": "@description",
-            "body": "Gets the (computed) value of the property <code>enabled</code>.\n\nFor further details take a look at the property definition: {@link #enabled}."
+            "body": "<p>Return the current set enabled state.</p>"
           }
         ],
         "@return": [
           {
             "name": "@return",
+            "body": "{Boolean} If the widget is enabled.",
             "type": "Boolean",
-            "desc": "Returns the value for enabled"
+            "description": " If the widget is enabled."
           }
         ]
       }
@@ -685,15 +695,16 @@
         "@description": [
           {
             "name": "@description",
-            "body": "Sets the user value of the property <code>required</code>.\n\nFor further details take a look at the property definition: {@link #required}."
+            "body": "<p>Sets the required state of a widget.</p>"
           }
         ],
         "@param": [
           {
             "name": "@param",
-            "type": "Boolean",
-            "paramName": "value",
-            "desc": "Value for required"
+            "body": "required {Boolean} A flag signaling if the widget is required.",
+            "paramName": "required",
+            "description": " A flag signaling if the widget is required.",
+            "type": "Boolean"
           }
         ]
       }
@@ -711,14 +722,15 @@
         "@description": [
           {
             "name": "@description",
-            "body": "Gets the (computed) value of the property <code>required</code>.\n\nFor further details take a look at the property definition: {@link #required}."
+            "body": "<p>Return the current required state of the widget.</p>"
           }
         ],
         "@return": [
           {
             "name": "@return",
+            "body": "{Boolean} True, if the widget is required.",
             "type": "Boolean",
-            "desc": "Returns the value for required"
+            "description": " True, if the widget is required."
           }
         ]
       }
@@ -736,15 +748,16 @@
         "@description": [
           {
             "name": "@description",
-            "body": "Sets the user value of the property <code>valid</code>.\n\nFor further details take a look at the property definition: {@link #valid}."
+            "body": "<p>Sets the valid state of the widget.</p>"
           }
         ],
         "@param": [
           {
             "name": "@param",
-            "type": "Boolean",
-            "paramName": "value",
-            "desc": "Value for valid"
+            "body": "valid {Boolean} The valid state of the widget.",
+            "paramName": "valid",
+            "description": " The valid state of the widget.",
+            "type": "Boolean"
           }
         ]
       }
@@ -762,14 +775,15 @@
         "@description": [
           {
             "name": "@description",
-            "body": "Gets the (computed) value of the property <code>valid</code>.\n\nFor further details take a look at the property definition: {@link #valid}."
+            "body": "<p>Returns the valid state of the widget.</p>"
           }
         ],
         "@return": [
           {
             "name": "@return",
+            "body": "{Boolean} If the state of the widget is valid.",
             "type": "Boolean",
-            "desc": "Returns the value for valid"
+            "description": " If the state of the widget is valid."
           }
         ]
       }
@@ -787,15 +801,16 @@
         "@description": [
           {
             "name": "@description",
-            "body": "Sets the user value of the property <code>invalidMessage</code>.\n\nFor further details take a look at the property definition: {@link #invalidMessage}."
+            "body": "<p>Sets the invalid message of the widget.</p>"
           }
         ],
         "@param": [
           {
             "name": "@param",
-            "type": "String",
-            "paramName": "value",
-            "desc": "Value for invalidMessage"
+            "body": "message {String} The invalid message.",
+            "paramName": "message",
+            "description": " The invalid message.",
+            "type": "String"
           }
         ]
       }
@@ -813,14 +828,15 @@
         "@description": [
           {
             "name": "@description",
-            "body": "Gets the (computed) value of the property <code>invalidMessage</code>.\n\nFor further details take a look at the property definition: {@link #invalidMessage}."
+            "body": "<p>Returns the invalid message of the widget.</p>"
           }
         ],
         "@return": [
           {
             "name": "@return",
+            "body": "{String} The current set message.",
             "type": "String",
-            "desc": "Returns the value for invalidMessage"
+            "description": " The current set message."
           }
         ]
       }
@@ -838,15 +854,16 @@
         "@description": [
           {
             "name": "@description",
-            "body": "Sets the user value of the property <code>requiredInvalidMessage</code>.\n\nFor further details take a look at the property definition: {@link #requiredInvalidMessage}."
+            "body": "<p>Sets the invalid message if required of the widget.</p>"
           }
         ],
         "@param": [
           {
             "name": "@param",
-            "type": "String",
-            "paramName": "value",
-            "desc": "Value for requiredInvalidMessage"
+            "body": "message {String} The invalid message.",
+            "paramName": "message",
+            "description": " The invalid message.",
+            "type": "String"
           }
         ]
       }
@@ -864,14 +881,15 @@
         "@description": [
           {
             "name": "@description",
-            "body": "Gets the (computed) value of the property <code>requiredInvalidMessage</code>.\n\nFor further details take a look at the property definition: {@link #requiredInvalidMessage}."
+            "body": "<p>Returns the invalid message if required of the widget.</p>"
           }
         ],
         "@return": [
           {
             "name": "@return",
+            "body": "{String} The current set message.",
             "type": "String",
-            "desc": "Returns the value for requiredInvalidMessage"
+            "description": " The current set message."
           }
         ]
       }

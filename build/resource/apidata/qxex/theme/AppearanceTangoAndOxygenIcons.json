@@ -1,0 +1,41 @@
+{
+  "className": "qxex.theme.AppearanceTangoAndOxygenIcons",
+  "packageName": "qxex.theme",
+  "name": "AppearanceTangoAndOxygenIcons",
+  "superClass": "qxex.theme.Appearance",
+  "interfaces": [],
+  "mixins": [],
+  "functionName": null,
+  "clazz": {
+    "location": {
+      "start": {
+        "line": 8,
+        "column": 0
+      },
+      "end": {
+        "line": 56,
+        "column": 3
+      }
+    },
+    "jsdoc": {
+      "@description": [
+        {
+          "name": "@description",
+          "body": "<p>Resource management:\n https://qooxdoo.org/documentation/6.0/#/desktop/gui/resources?id=using-qooxdoo-icons-with-widgets</p>"
+        }
+      ],
+      "@asset": [
+        {
+          "name": "@asset",
+          "body": "qx/icon/${qx.icontheme}/16/apps/preferences-clock.png"
+        },
+        {
+          "name": "@asset",
+          "body": "qx/icon/${qx.icontheme}/16/actions/edit-delete.png"
+        }
+      ]
+    }
+  },
+  "type": "theme",
+  "descendants": []
+}
