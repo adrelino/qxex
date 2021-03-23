@@ -248,8 +248,12 @@ qx.Class.define("qxex.ui.control.TimeChooser",
       var time = this.getValue();
 
       // Create help times;
-      var timeBegin = new Date(0); timeBegin.setHours(0); timeBegin.setMinutes(0);
-      var timeEnd   = new Date(0); timeEnd.setHours(23); timeEnd.setMinutes(45);
+      var timeBegin = new Date(0);
+      timeBegin.setHours(0);
+      timeBegin.setMinutes(0);
+      var timeEnd   = new Date(0);
+      timeEnd.setHours(23);
+      timeEnd.setMinutes(45);
 
       var timeFormat = new qx.util.format.DateFormat(qx.locale.Date.getTimeFormat("short")); //todo add "medium" with seconds
 

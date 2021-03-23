@@ -241,7 +241,11 @@ qx.Class.define("qxex.Application",
           for(var j=0; j<depth; j++){
             var C = j==depth-1 ? qx.ui.tree.TreeFile : qx.ui.tree.TreeFolder;
             var bar = new C(this.getText() + " " +j);
-            if(j==depth-1) bar.isSelectable = function(){ return true; };
+            if(j==depth-1){
+                bar.isSelectable = function(){
+                return true;
+              };
+            }
             foo.add(bar);
             parent.add(bar);
             if(j%2==1) parent=bar;
@@ -268,7 +272,9 @@ qx.Class.define("qxex.Application",
 
 
     changeSelectionLogger : function(e){
-      this.debug(e.getData().map(function(item){ return item.getLabel(); }));
+      this.debug(e.getData().map(function(item){
+        return item.getLabel();
+      }));
     }
   }
 });

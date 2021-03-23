@@ -88,7 +88,7 @@ qx.Class.define("qxex.ui.form.FilterTreeSelectBox", {
         }else{
             node.getChildControl("label").setTextColor("black");
         }*/
-        if(showNode){ obj.count++; }
+        showNode && obj.count++;
         obj.all++;
 
         return show;

@@ -103,7 +103,9 @@ qx.Class.define("qxex.ui.control.DateChooser",
         var key = item[0].getModel();
         var man = qxex.util.HolidayDateManager.getInstance();
         var i = man.setLocation(id,key);
-        var arrFiltered = man.hd.getHolidays().filter(function (h) { return h.type == "public"; });
+        var arrFiltered = man.hd.getHolidays().filter(function (h) {
+          return h.type == "public";
+        });
         var color = this.__getHolidayType("public").color;
         var text = "<span style='color:"+color+"'>"+arrFiltered.length+"</span>";
         item[0].setLabel((item[0].getUserData("label") || "") + " ("+text+")");

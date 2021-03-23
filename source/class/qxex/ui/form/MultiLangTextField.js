@@ -75,6 +75,7 @@ qx.Class.define("qxex.ui.form.MultiLangTextField",
         if (this.__items[lang]) {
           return this.__items[lang].getLabel();
         }
+        return "";
       },
 
       _onListChangeSelection: function (e) {

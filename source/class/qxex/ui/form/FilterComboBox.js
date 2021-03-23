@@ -105,7 +105,7 @@ qx.Class.define("qxex.ui.form.FilterComboBox", {
     _onListChangeSelection : function(e)
     {
       if(this.isIgnoreListChangeSelection()) return;
-      return this.base(arguments,e);
+      this.base(arguments,e);
     },
 
 
