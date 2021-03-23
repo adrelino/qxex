@@ -198,7 +198,7 @@ qx.Class.define("qxex.ui.form.AbstractSelectBoxSimpler",
 
         var maxListHeight = this.getMaxListHeight();
         var list = this.getChildControl("list");
-        if (maxListHeight == null || maxListHeight > availableHeigth) {
+        if (maxListHeight === null || maxListHeight > availableHeigth) {
           list.setMaxHeight(availableHeigth);
         } else if (maxListHeight < availableHeigth) {
           list.setMaxHeight(maxListHeight);

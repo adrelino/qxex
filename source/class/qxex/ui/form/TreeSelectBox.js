@@ -194,7 +194,7 @@ qx.Class.define("qxex.ui.form.TreeSelectBox",
       var listItem = this.getChildControl("list").getSelection()[0];
       var atom = this.getChildControl("atom");
       var icon = listItem ? listItem.getIcon() : "";
-      icon == null ? atom.resetIcon() : atom.setIcon(icon);
+      icon === null ? atom.resetIcon() : atom.setIcon(icon);
     },
 
     /**
@@ -206,7 +206,7 @@ qx.Class.define("qxex.ui.form.TreeSelectBox",
       var atom = this.getChildControl("atom");
       var label = listItem ? listItem.getLabel() : "";
       var format = this.getFormat();
-      if (format != null) {
+      if (format !== null) {
         label = format.call(this, listItem);
       }
 
@@ -214,7 +214,7 @@ qx.Class.define("qxex.ui.form.TreeSelectBox",
       if (label && label.translate) {
         label = label.translate();
       }
-      label == null ? atom.resetLabel() : atom.setLabel(label);
+      label === null ? atom.resetLabel() : atom.setLabel(label);
     },
 
     /*

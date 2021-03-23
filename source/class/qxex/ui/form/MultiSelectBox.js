@@ -215,7 +215,7 @@ qx.Class.define("qxex.ui.form.MultiSelectBox",
     __prettyPrintLabel : function(listItem){
         var label = listItem ? listItem.getLabel() : "";
         var format = this.getFormat();
-        if (format != null) {
+        if (format !== null) {
           label = format.call(this, listItem);
         }
 

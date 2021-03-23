@@ -76,7 +76,7 @@ qx.Class.define("qxex.ui.form.DateField",
       var notcreate = true;
       // Apply to popup
       var date = this.getValue();
-      if (date != null)
+      if (date !== null)
       {
         var list = this.getChildControl("list", notcreate);
         list && list.setValue(date);

@@ -120,7 +120,7 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
     readData : function(primaryKey){
       var view = 0;
       var rowIdx = this.__getRowIdxFromPrimaryKey(primaryKey,view);
-      if(rowIdx != null){
+      if(rowIdx !== null){
         return this._getDataFromRowIdx(rowIdx,view);
       }
       return null;
@@ -129,7 +129,7 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
     updateData : function(primaryKey, colIdx, value){
       var view = 0;
       var rowIdx = this.__getRowIdxFromPrimaryKey(primaryKey,view);
-      if(rowIdx != null){
+      if(rowIdx !== null){
         this._model.setValue(colIdx,rowIdx,value,view);
         return true;
       }else{

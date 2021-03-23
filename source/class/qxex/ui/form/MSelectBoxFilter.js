@@ -198,7 +198,7 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
           var showText = filterTextLower.length == 0 || this.getSearchFilter()(item, filterTextLower);
           if(showText) countSearch++;
 
-          var showFilter = (this.__filterCheckBox == null || filterCheckBoxValue == false) || this.getGroupFilter()(item);
+          var showFilter = (this.__filterCheckBox === null || filterCheckBoxValue == false) || this.getGroupFilter()(item);
           if(showFilter) countGroup++;
 
 
