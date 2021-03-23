@@ -1,6 +1,6 @@
 /**
  * Switch themes easily
- * @asset(qxex/themes/40x30/*)
+ * @asset(qxex/themes/96x48/*)
  * @asset(qx/icon/Tango/16/apps/preferences-clock.png)
  * @asset(qx/icon/Oxygen/16/apps/preferences-clock.png)
  */
@@ -48,7 +48,7 @@ qx.Class.define("qxex.ui.control.ThemeSelector",{
       }
 
       if(type=="meta"){
-        this.add(new qx.ui.form.ListItem(title,"qxex/themes/40x30/"+name+".png",name));
+        this.add(new qx.ui.form.ListItem(title,"qxex/themes/96x48/"+name+".png",name));
       }else if(type=="icon"){
         this.add(new qx.ui.form.ListItem(title,"qx/icon/"+title+"/16/apps/preferences-clock.png",name));
       }

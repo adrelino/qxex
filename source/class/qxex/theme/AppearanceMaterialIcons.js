@@ -56,6 +56,6 @@ qx.Theme.define("qxex.theme.AppearanceMaterialIcons", {
           width: 16
         };
       }
-    },
+    }
   }
 });

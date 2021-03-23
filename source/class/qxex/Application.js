@@ -77,6 +77,9 @@ qx.Class.define("qxex.Application",
       ////////////
       //control
 
+      var button = new qx.ui.form.Button("Hi","icon/16/apps/preferences-clock.png");// "@MaterialIcons/access_time/16");
+      doc.add(button,{left:300,top:50});
+
       var widget = new qxex.ui.control.LanguageSelector();
       container.addWidgetWithLabel(widget);
 
