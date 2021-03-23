@@ -131,8 +131,8 @@ qx.Class.define("qxex.ui.control.DateChooser",
       }
 
       var obj = fun.apply(man.hd, args);  //getCountries(), getStates(country) or getRegions(country,state)
-      var keys = []
-      if (obj){//} && id != "country") {
+      var keys = [];
+      if (obj){ //} && id != "country") {
         keys.push("");
       }
       for (var key in obj) keys.push(key);
@@ -162,7 +162,7 @@ qx.Class.define("qxex.ui.control.DateChooser",
         "school" :    {color: "#00a62a", label: this.tr("School holiday")},//green  //Schulfrei
         "optional" :  {color: "#0045a6", label: this.tr("Optional holiday")},//blue
         "observance" :{color: "#6c00a6", label: this.tr("Observance day")}//magenta  //Gedenktag / Aktionstag / Kirchenfest / kirchlicher Feiertag
-      }
+      };
       if(opt_key){
         return obj[opt_key];
       }
@@ -206,7 +206,7 @@ qx.Class.define("qxex.ui.control.DateChooser",
         "country" :   {label: this.tr("Country")},
         "state" :     {label: this.tr("All") + " " + this.__getStateName(opt_key)},
         "region" :    {label: this.tr("All") + " " + this.tr("Regions")}
-      }
+      };
       if(id){
         return obj[id];
       }

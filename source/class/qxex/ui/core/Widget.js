@@ -11,6 +11,8 @@ qx.Class.define("qxex.ui.core.Widget",
   {
     /**
      * Add a logical child to the parent
+     * @param parent
+     * @param child
      */
     registerLogicalChild : function(parent, child)
     {
@@ -44,7 +46,7 @@ qx.Class.define("qxex.ui.core.Widget",
         var predLogical = child.getUserData("$$parentLogical");
 
         //go up hierarchy, logical parents taking precedence over layout ones.
-        child = predLogical ? predLogical : pred
+        child = predLogical ? predLogical : pred;
 
         if (parent == child) {
           return true;

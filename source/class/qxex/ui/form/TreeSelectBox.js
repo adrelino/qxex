@@ -115,7 +115,7 @@ qx.Class.define("qxex.ui.form.TreeSelectBox",
 
       switch(id)
       {
-        case "root" :
+        case "root":
           control = new qx.ui.tree.TreeFolder("Root").set({
           open : true
         });

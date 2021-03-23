@@ -72,7 +72,7 @@ qx.Class.define("qxex.Application",
 
         container.add(label);
         container.add(widget);
-      }
+      };
 
       ////////////
       //control
@@ -102,7 +102,7 @@ qx.Class.define("qxex.Application",
 
       {
         var that = this;
-        var closure = function(){ //to catch widget
+        (function(){ //to catch widget
           var widget = new qxex.ui.control.TimeChooser();
           container.addWidgetWithLabel(widget);
           widget.addListener("execute",function(e){
@@ -111,7 +111,7 @@ qx.Class.define("qxex.Application",
           widget.addListener("changeValue",function(e){
             this.info(e.getData());
           },that);
-        }();
+        })();
       }
 
       //only to illustrate effects of changing locale
@@ -180,6 +180,9 @@ qx.Class.define("qxex.Application",
         container.addWidgetWithLabel(widget);
       }
 
+      /**
+       *
+       */
       function foo(){
         var widget = new qxex.ui.control.DateChooser();
         container.addWidgetWithLabel(widget);
@@ -238,7 +241,7 @@ qx.Class.define("qxex.Application",
           for(var j=0; j<depth; j++){
             var C = j==depth-1 ? qx.ui.tree.TreeFile : qx.ui.tree.TreeFolder;
             var bar = new C(this.getText() + " " +j);
-            if(j==depth-1) bar.isSelectable = function(){return true};
+            if(j==depth-1) bar.isSelectable = function(){ return true; };
             foo.add(bar);
             parent.add(bar);
             if(j%2==1) parent=bar;
@@ -265,7 +268,7 @@ qx.Class.define("qxex.Application",
 
 
     changeSelectionLogger : function(e){
-      this.debug(e.getData().map(function(item){return item.getLabel()}));
+      this.debug(e.getData().map(function(item){ return item.getLabel(); }));
     }
   }
 });

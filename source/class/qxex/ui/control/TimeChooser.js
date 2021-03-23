@@ -138,7 +138,7 @@ qx.Class.define("qxex.ui.control.TimeChooser",
 
       switch(id)
       {
-        case "slider" :
+        case "slider":
           control = new qxex.ui.form.KnobIconSlider();
           control.setKnobIcon("icon/16/apps/preferences-clock.png");
           control.setKnobSize(14);
@@ -165,17 +165,17 @@ qx.Class.define("qxex.ui.control.TimeChooser",
           this._add(control,{row:1, column:0, colSpan:3});
           break;
 
-        case "minLabel" :
+        case "minLabel":
           control = this.__makeChildLabel(true);
           this._add(control,{row:0, column:0});
           break;
 
-        case "currLabel" :
+        case "currLabel":
           control = this.__makeChildLabel();
           this._add(control,{row:0, column:1});
           break;
 
-        case "maxLabel" :
+        case "maxLabel":
           control = this.__makeChildLabel(true);
           this._add(control,{row:0, column:2});
           break;
@@ -232,7 +232,7 @@ qx.Class.define("qxex.ui.control.TimeChooser",
      * @return {Date} hours and minutes set correctly
      */
     __sliderValueToTime: function(num){
-      var hours = Math.floor( num / 4.0 );
+      var hours = Math.floor(num / 4.0);
       var minutes = Math.round((num / 4.0 - hours) * 60);
       var date=new Date(0);
       date.setHours(hours);
@@ -254,7 +254,7 @@ qx.Class.define("qxex.ui.control.TimeChooser",
       var timeFormat = new qx.util.format.DateFormat(qx.locale.Date.getTimeFormat("short")); //todo add "medium" with seconds
 
       this.getChildControl("minLabel").setValue(timeFormat.format(timeBegin));
-      this.getChildControl("currLabel").setValue( (this.getLabel() || "") + (timeFormat.format(time) || "--:--"));
+      this.getChildControl("currLabel").setValue((this.getLabel() || "") + (timeFormat.format(time) || "--:--"));
       this.getChildControl("maxLabel").setValue(timeFormat.format(timeEnd));
 
       timeFormat.dispose();

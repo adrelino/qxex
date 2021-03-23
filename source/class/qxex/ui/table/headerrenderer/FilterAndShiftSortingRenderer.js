@@ -53,7 +53,7 @@ qx.Class.define("qxex.ui.table.headerrenderer.FilterAndShiftSortingRenderer",
      */
     getWidget : function(col)
     {
-      if (! this.__widget)
+      if (!this.__widget)
       {
         return null;
       }
@@ -77,7 +77,7 @@ qx.Class.define("qxex.ui.table.headerrenderer.FilterAndShiftSortingRenderer",
       this.updateHeaderCell(cellInfo, widget);
 
       // Is this the first widget we've generated?
-      if (! this.__widget)
+      if (!this.__widget)
       {
         // Yup. Create an array for holding the widgets
         this.__widget = [];

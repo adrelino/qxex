@@ -246,7 +246,7 @@ qx.Class.define("qxex.ui.form.MultiSelectBox",
       var total=items.length;
       var iconFun = function(listItem){
         return listItem.getIcon();
-      }
+      };
 
       this.synchronizeButtonWithSelection(atom, listItems, total, this.__prettyPrintLabel.bind(this), hasIcons, iconFun);
     },

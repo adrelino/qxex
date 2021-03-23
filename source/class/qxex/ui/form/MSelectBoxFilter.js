@@ -31,7 +31,7 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
     {
       check : "Function",
       init  : function(item, filterTextLower) {
-        return item.getLabel().toLowerCase().indexOf(filterTextLower) > -1
+        return item.getLabel().toLowerCase().indexOf(filterTextLower) > -1;
       }
     }
   },
@@ -96,7 +96,7 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
     box.add(this.__filterLabel);
 
     this.__filterTextField.setPlaceholder(this.tr("type to filter, backspace to clear"));
-    box.setToolTipText(this.trc("tooltip","Start typing to filter list entries. Use backspace to undo filtering character-wise."))
+    box.setToolTipText(this.trc("tooltip","Start typing to filter list entries. Use backspace to undo filtering character-wise."));
 
     popup.addBefore(box,list);
 

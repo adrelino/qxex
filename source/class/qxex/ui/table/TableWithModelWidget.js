@@ -224,7 +224,8 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
 
     __setUpColumns : function(){
       // Set the columns
-      var column_names = [], column_labels=[];
+      var column_names = [];
+      var column_labels = [];
       this.__columnsArr = [];
       var idx=0; 
       
