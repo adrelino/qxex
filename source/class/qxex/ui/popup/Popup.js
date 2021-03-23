@@ -47,6 +47,10 @@ qx.Class.define("qxex.ui.popup.Popup",
   {
     __childrenBox : null,
 
+    // overridden
+    /**
+     * @lint ignoreReferenceField(_forwardStates)
+     */
     _forwardStates :
     {
       active : true

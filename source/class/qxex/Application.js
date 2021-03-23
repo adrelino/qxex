@@ -77,42 +77,28 @@ qx.Class.define("qxex.Application",
       ////////////
       //control
 
-      {
-        var widget = new qxex.ui.control.LanguageSelector();
+      var widget = new qxex.ui.control.LanguageSelector();
+      container.addWidgetWithLabel(widget);
+
+      var excludedThemes = ["qx.theme.Indigo"];
+      var widget = new qxex.ui.control.ThemeSelector(excludedThemes);
+      container.addWidgetWithLabel(widget,"(meta)");
+
+      var excludedThemes = [];
+      var widget = new qxex.ui.control.ThemeSelector(excludedThemes,"icon");
+      container.addWidgetWithLabel(widget,"(icon)");
+
+      var that = this;
+      (function(){ //to catch widget
+        var widget = new qxex.ui.control.TimeChooser();
         container.addWidgetWithLabel(widget);
-      }
-
-      {
-        var excludedThemes = ["qx.theme.Indigo"];
-        var widget = new qxex.ui.control.ThemeSelector(excludedThemes);
-        // widget.addListener("changeValue",function(e){
-        //   textfield.setValue(e.getData());
-        //   textfield.focus();
-        //   textfield.selectAllText();
-        //   document.execCommand('copy');
-        // },this);
-        container.addWidgetWithLabel(widget,"(meta)");
-      }
-
-      {
-        var excludedThemes = [];
-        var widget = new qxex.ui.control.ThemeSelector(excludedThemes,"icon");
-        container.addWidgetWithLabel(widget,"(icon)");
-      }
-
-      {
-        var that = this;
-        (function(){ //to catch widget
-          var widget = new qxex.ui.control.TimeChooser();
-          container.addWidgetWithLabel(widget);
-          widget.addListener("execute",function(e){
-            this.warn(widget.getValue());
-          },that);
-          widget.addListener("changeValue",function(e){
-            this.info(e.getData());
-          },that);
-        })();
-      }
+        widget.addListener("execute",function(e){
+          this.warn(widget.getValue());
+        },that);
+        widget.addListener("changeValue",function(e){
+          this.info(e.getData());
+        },that);
+      })();
 
       //only to illustrate effects of changing locale
 //       {
@@ -122,18 +108,14 @@ qx.Class.define("qxex.Application",
 
       ////////////
       //form
-      {
-        var tristateBox = new qxex.ui.form.TristateCheckBox();
-        tristateBox.addListener("changeValue",function(e){
-          var value = e.getData();
-          tristateBox.setLabel(value+"");
-        });
-        tristateBox.setValue(true);
+      var tristateBox = new qxex.ui.form.TristateCheckBox();
+      tristateBox.addListener("changeValue",function(e){
+        var value = e.getData();
+        tristateBox.setLabel(value+"");
+      });
+      tristateBox.setValue(true);
+      container.addWidgetWithLabel(tristateBox);
 
-        container.addWidgetWithLabel(tristateBox);
-      }
-
-      {
       var singleSelect2 = new qx.ui.form.SelectBox();
       container.addWidgetWithLabel(singleSelect2);
 
@@ -166,24 +148,17 @@ qx.Class.define("qxex.Application",
       }
       multiSelect.setSelectionByModelArr([2,3]);
       singleSelect.MIN_LIST_ITEMS_TO_SHOW_FILTER=2;
-      }
-      {
-        var widget = new qxex.ui.form.KnobIconSlider();
-        widget.setKnobIcon("icon/16/apps/preferences-clock.png");
-        widget.setKnobSize(14);
-        container.addWidgetWithLabel(widget);
-      }
 
 
-      {
-        var widget = new qxex.ui.form.TimeField();
-        container.addWidgetWithLabel(widget);
-      }
+      var widget = new qxex.ui.form.KnobIconSlider();
+      widget.setKnobIcon("icon/16/apps/preferences-clock.png");
+      widget.setKnobSize(14);
+      container.addWidgetWithLabel(widget);
 
-      /**
-       *
-       */
-      function foo(){
+      var widget = new qxex.ui.form.TimeField();
+      container.addWidgetWithLabel(widget);
+
+      (function(){
         var widget = new qxex.ui.control.DateChooser();
         container.addWidgetWithLabel(widget);
         
@@ -205,17 +180,14 @@ qx.Class.define("qxex.Application",
         },this);
 
         widget.setValue(new Date("2021-01-01"));
-      }
-      foo();
+      })();
 
-      {
-        var widget = new qxex.ui.form.DateField();
-        container.addWidgetWithLabel(widget);
-      }
-      {
-        var widget = new qxex.ui.form.MultiLangTextField();
-        container.addWidgetWithLabel(widget);
-      }
+
+      var widget = new qxex.ui.form.DateField();
+      container.addWidgetWithLabel(widget);
+
+      var widget = new qxex.ui.form.MultiLangTextField();
+      container.addWidgetWithLabel(widget);
 
       // var button = new qx.ui.form.Button(null,"icon/16/apps/preferences-clock.png");
       // doc.add(button,{left:2,top:800-17});
@@ -224,7 +196,7 @@ qx.Class.define("qxex.Application",
       // textfield.setWidth(200);
       // doc.add(textfield,{left:2,top:900-18});
 
-      {
+      (function(){
         var arr = [new qxex.ui.form.TreeSelectBox(),new qxex.ui.form.FilterTreeSelectBox()];
 
         for (var k=0; k< arr.length; k++){
@@ -254,7 +226,7 @@ qx.Class.define("qxex.Application",
         tree.setSelection([foo]);
         tree.addListener("changeSelection",this.changeSelectionLogger,this);
         }
-      }
+      })();
 
 
     },
