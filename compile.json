@@ -3,16 +3,17 @@
   "targets": [
     {
       "type": "source",
-      "outputPath": "compiled/source",
-      "bundle": {
-        "include": "qx.*"
-      }
+      "outputPath": "compiled/source"
     },
     {
       "type": "build",
-      "outputPath": "compiled/build"
+      "outputPath": "compiled/build",
+      "minify" : "minify"
     }
   ],
+  "bundle": {
+    "include": ["qx.*"]
+  },
   "defaultTarget": "source",
   "locales": [
     "da",
@@ -67,6 +68,9 @@
       //,"qx" : true
     }
   },
+  "libraries": [
+    "."
+  ],
   "applications": [
     {
       "class": "qxex.Application",
@@ -79,7 +83,7 @@
         "qx.theme.TangibleLight",
         "qx.theme.TangibleDark"
       ]
-    },
+    }/*,
     {
       //https://github.com/qooxdoo/qxl.apiviewer/blob/master/README.md
       "class": "qxl.apiviewer.Application",
@@ -100,6 +104,6 @@
           "qxex.u*"
         ]
       }
-    }
+    }*/
   ]
 }

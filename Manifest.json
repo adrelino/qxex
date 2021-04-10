@@ -22,8 +22,8 @@
     "translation": "source/translation"
   },
   "requires": {
+    //"qooxdoo/qxl.apiviewer": "^1.0.18",
     "@qooxdoo/framework": "^6.0.0",
-    "@qooxdoo/compiler": "^1.0.0",
-    "qooxdoo/qxl.apiviewer": "^1.0.18"
+    "@qooxdoo/compiler": "^1.0.0"
   }
 }
