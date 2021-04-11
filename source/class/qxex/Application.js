@@ -49,7 +49,7 @@ qx.Class.define("qxex.Application",
       }
 
       //mix our own theme additions into all available themes
-      qxex.util.ThemeManager.mergeThemes();
+      qxex.util.ThemeManager.mergeMaterialAndModernThemes(qxex.theme.AppearanceMaterialIcons, qxex.theme.AppearanceTangoAndOxygenIcons);
 
 
       /*

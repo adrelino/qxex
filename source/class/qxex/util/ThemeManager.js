@@ -17,14 +17,14 @@ qx.Class.define("qxex.util.ThemeManager", {
 			}
 		},
 
-		mergeThemes: function () {
-			var themesA = [qxex.theme.AppearanceMaterialIcons, qxex.theme.AppearanceTangoAndOxygenIcons];
+		//e.g. qxex.theme.AppearanceMaterialIcons, qxex.theme.AppearanceTangoAndOxygenIcons
+		//or Decoration
+		mergeMaterialAndModernThemes: function (materialTheme, modernTheme) {
 			var themes = qx.Theme.getAll();
 			for (var key in themes) {
 				var theme = themes[key];
-				if (theme.type === themesA[0].type) {
-					var themeMixin = theme.name.indexOf("qx.theme.tangible") == 0 ? themesA[0] : themesA[1];
-					// qx.Theme.include(theme, themeMixin);
+				if (theme.type === materialTheme.type) {
+					var themeMixin = theme.name.indexOf("qx.theme.tangible"/*Appearance/Decoration*/) == 0 ? materialTheme : modernTheme;
 					qx.Theme.patch(theme, themeMixin); //if we overwrite stuff
 				}
 			}
