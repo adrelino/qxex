@@ -72,7 +72,10 @@ qx.Class.define("qxex.ui.control.ThemeSelector",{
     __type : "",
 
     _updateTheme : function(){
-      this.setModelSelection([qxex.util.ThemeManager.getCurrent(this.__type)]);
+      var children = this.getChildren();
+      if(children.length){
+        this.setModelSelection([qxex.util.ThemeManager.getCurrent(this.__type)]);
+      }
     }
   },
 
