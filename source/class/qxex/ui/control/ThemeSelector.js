@@ -12,7 +12,7 @@ qx.Class.define("qxex.ui.control.ThemeSelector",{
      * Fired after the new theme has been set.
      * Get the new theme with e.getData() (e.g. "qx.theme.Simple").
      */
-    "changeValue" : "qx.event.type.Data"
+    "changeTheme" : "qx.event.type.Data"
   },
 
   /**
@@ -59,7 +59,7 @@ qx.Class.define("qxex.ui.control.ThemeSelector",{
     this.addListener("changeSelection",function(e){
       var name = e.getData()[0].getModel();
       qxex.util.ThemeManager.setByName(name);
-      this.fireDataEvent("changeValue",name);
+      this.fireDataEvent("changeTheme",name);
     },this);
 
     //listen for theme changes made somewhere else
