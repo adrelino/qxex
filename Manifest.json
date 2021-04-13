@@ -12,7 +12,7 @@
         "email": "mail@adrian-haarbach.de"
       }
     ],
-    "version": "1.0.0"
+    "version": "1.0.1"
   },
   "provides": {
     "namespace": "qxex",
@@ -22,7 +22,7 @@
     "translation": "source/translation"
   },
   "requires": {
-    //"qooxdoo/qxl.apiviewer": "^1.0.18",
+    "qooxdoo/qxl.apiviewer": "^1.0.18",
     "@qooxdoo/framework": "^6.0.0",
     "@qooxdoo/compiler": "^1.0.0"
   }

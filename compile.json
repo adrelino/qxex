@@ -79,7 +79,7 @@
         "qx.theme.TangibleLight",
         "qx.theme.TangibleDark"
       ]
-    }/*,
+    },
     {
       //https://github.com/qooxdoo/qxl.apiviewer/blob/master/README.md
       "class": "qxl.apiviewer.Application",
@@ -100,6 +100,6 @@
           "qxex.u*"
         ]
       }
-    }*/
+    }
   ]
 }
