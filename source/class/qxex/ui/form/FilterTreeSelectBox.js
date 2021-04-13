@@ -30,7 +30,7 @@ qx.Class.define("qxex.ui.form.FilterTreeSelectBox", {
     },
 
     filterList : function(filterText){
-      var textField = this.__filterTextField;
+      var textField = this.getFilterTextField();
       var root = this.getChildControl("list").getRoot();
 //       textField.addListener("input",function(e){
 //          var text = e.getData().toLowerCase();
