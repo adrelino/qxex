@@ -136,6 +136,15 @@
       "access": "public",
       "overriddenFrom": "qxex.ui.form.MSelectBoxFilter"
     },
+    "getFilterTextField": {
+      "type": "function",
+      "name": "getFilterTextField",
+      "abstract": false,
+      "mixin": true,
+      "inherited": true,
+      "access": "public",
+      "overriddenFrom": "qxex.ui.form.MSelectBoxFilter"
+    },
     "addFilterCheckBox": {
       "type": "function",
       "name": "addFilterCheckBox",

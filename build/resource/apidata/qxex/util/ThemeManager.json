@@ -42,10 +42,10 @@
       "type": "function",
       "access": "public"
     },
-    "mergeThemes": {
+    "mergeMaterialAndModernThemes": {
       "location": {
         "start": {
-          "line": 20,
+          "line": 22,
           "column": 2
         },
         "end": {
@@ -53,6 +53,7 @@
           "column": 3
         }
       },
+      "jsdoc": {},
       "type": "function",
       "access": "public"
     },
