@@ -63,7 +63,12 @@ qx.Class.define("qxex.Application",
 
       var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(5));
       container.setMargin(10);
-      doc.add(container);
+      var scroll = new qx.ui.container.Scroll().set({
+        margin: 5,
+        width: 250
+      });
+      scroll.add(container);
+      doc.add(scroll,{top:0,left:0,bottom:0});
 
       container.addWidgetWithLabel = function(widget, additional){
         var href = '<a href="../apiviewer/#'+widget.classname+'" target="qxex_api">'+widget.classname+'</a>';
@@ -102,12 +107,6 @@ qx.Class.define("qxex.Application",
           this.info(e.getData());
         },that);
       })();
-
-      //only to illustrate effects of changing locale
-//       {
-//         var widget = new qx.ui.control.DateChooser();
-//         container.addWidgetWithLabel(widget);
-//       }
 
       ////////////
       //form
@@ -191,13 +190,6 @@ qx.Class.define("qxex.Application",
 
       var widget = new qxex.ui.form.MultiLangTextField();
       container.addWidgetWithLabel(widget);
-
-      // var button = new qx.ui.form.Button(null,"icon/16/apps/preferences-clock.png");
-      // doc.add(button,{left:2,top:800-17});
-
-      // var textfield = new qx.ui.form.TextField();
-      // textfield.setWidth(200);
-      // doc.add(textfield,{left:2,top:900-18});
 
       (function(){
         var arr = [new qxex.ui.form.TreeSelectBox(),new qxex.ui.form.FilterTreeSelectBox()];
