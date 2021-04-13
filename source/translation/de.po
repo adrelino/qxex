@@ -1,16 +1,6 @@
-#
+#. NO LONGER USED
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.0\n"
-"Report-Msgid-Bugs-To: you@your.org\n"
-"POT-Creation-Date: 2015-12-08 12:13+0200\n"
-"PO-Revision-Date: 2015-12-08 12:13+0200\n"
-"Last-Translator: you <you@your.org>\n"
-"Language-Team: Team <yourteam@your.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-
 #: qxex/ui/control/DateChooser.js
 msgid "Bank holiday"
 msgstr "Bank Feiertag"
@@ -83,8 +73,7 @@ msgstr "Staaten"
 msgid "states and territories"
 msgstr "Bundesstaaten und Territorien"
 
-#. Label
-#: qxex/ui/form/MultiSelectBox.js qxex/ui/control/DateChooser.js
+#: qxex/ui/control/DateChooser.js
 msgid "All"
 msgstr "Alle"
 
@@ -108,12 +97,8 @@ msgstr "Suchfilter"
 
 #. tooltip
 #: qxex/ui/form/MSelectBoxFilter.js
-msgid ""
-"Start typing to filter list entries. Use backspace to undo filtering "
-"character-wise."
-msgstr ""
-"Tippen Sie den gewünschten Text ein um zu filtern. Mit der Rücktaste löschen"
-" Sie ihn wieder Buchstabe für Buchstabe."
+msgid "Start typing to filter list entries. Use backspace to undo filtering character-wise."
+msgstr "Tippen Sie den gewünschten Text ein um zu filtern. Mit der Rücktaste löschen Sie ihn wieder Buchstabe für Buchstabe."
 
 #: qxex/ui/form/MSelectBoxFilter.js
 msgid "type to filter, backspace to clear"
@@ -134,8 +119,7 @@ msgstr "Bitte wählen Sie mindestens einen Eintrag"
 msgid "You can select multiple items"
 msgstr "Mehrfachauswahl möglich"
 
-#. Label
-#: qxex/util/LanguageManager.js qxex/ui/form/MultiSelectBox.js
+#: qxex/util/LanguageManager.js
 msgid "None"
 msgstr "Keine"
 
@@ -144,20 +128,17 @@ msgstr "Keine"
 msgid "Use Shift-click or Crtl-click for multiple selection"
 msgstr "Hochstelltaste+Klick oder Strg+Klick verwenden"
 
-#. label
-#: qxex/ui/table/headerrenderer/FilterHeaderCell.js
+#. NO LONGER USED
 msgid "Enter texts which must match appropriate column:"
 msgstr "Texte eintragen welche mit der Spalte übereinstimmen müssen:"
 
-#. label
-#: qxex/ui/table/headerrenderer/FilterHeaderCell.js
+#. NO LONGER USED
 msgid "Whether text must match exactly"
 msgstr "Ob der Text genau übereinstimmen muss"
 
-#. label
-#: qxex/ui/table/headerrenderer/FilterHeaderCell.js
+#. NO LONGER USED
 msgid "click to toggle between 3 states: true, false, both"
 msgstr "Klicken um zwischen 3 Zuständen zu wechseln: Wahr, Falsch, Beides"
 
-#~ msgid "Press backspace to clear the filter"
-#~ msgstr "Rücktaste drücken um den Filter zu löschen"
+#. NO LONGER USED
+msgstr ""

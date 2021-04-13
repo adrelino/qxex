@@ -1,105 +1,148 @@
-#
+#. NO LONGER USED
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.0\n"
-"Report-Msgid-Bugs-To: you@your.org\n"
-"POT-Creation-Date: 2015-12-08 12:13+0200\n"
-"PO-Revision-Date: 2015-12-08 12:13+0200\n"
-"Last-Translator: you <you@your.org>\n"
-"Language-Team: Team <yourteam@your.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-
 #. tooltip
-#: qxex/ui/form/DateField.js:81
+#: qxex/ui/form/DateField.js
 msgid "Invalid format. Correctly formatted example: %1"
 msgstr ""
 
-#: qxex/ui/form/FilterTreeSelectBox.js:40 qxex/ui/form/MSelectBoxFilter.js:74
+#: qxex/ui/form/MSelectBoxFilter.js
 msgid "type to filter, backspace to clear"
 msgstr ""
 
 #. tooltip
-#: qxex/ui/form/FilterTreeSelectBox.js:41 qxex/ui/form/MSelectBoxFilter.js:75
-msgid ""
-"Start typing to filter list entries. Use backspace to undo filtering "
-"character-wise."
+#: qxex/ui/form/MSelectBoxFilter.js
+msgid "Start typing to filter list entries. Use backspace to undo filtering character-wise."
 msgstr ""
 
-#: qxex/ui/form/FilterTreeSelectBox.js:45 qxex/ui/form/MSelectBoxFilter.js:79
+#. NO LONGER USED
 msgid "Press backspace to clear the filter"
 msgstr ""
 
-#: qxex/ui/form/MSelectBoxFilter.js:70
+#: qxex/ui/form/MSelectBoxFilter.js
 msgid "Search filter"
 msgstr ""
 
-#: qxex/ui/form/MSelectBoxFilter.js:101
+#: qxex/ui/form/MSelectBoxFilter.js
 msgid "Group filter"
 msgstr ""
 
 #. tooltip
-#: qxex/ui/form/MSelectBoxFilter.js:104
+#: qxex/ui/form/MSelectBoxFilter.js
 msgid "Check to filter out entries based on group filter"
 msgstr ""
 
 #. Label
-#: qxex/ui/form/MSelectBoxSyncButtonStyle.js:19
+#: qxex/ui/form/MSelectBoxSyncButtonStyle.js
 msgid "%1/%2 chosen"
 msgstr ""
 
 #. Tooltip
-#: qxex/ui/form/MSelectBoxSyncButtonStyle.js:24
+#: qxex/ui/form/MSelectBoxSyncButtonStyle.js
 msgid "Please select at least one item"
 msgstr ""
 
 #. Tooltip
-#: qxex/ui/form/MSelectBoxSyncButtonStyle.js:28
+#: qxex/ui/form/MSelectBoxSyncButtonStyle.js
 msgid "You can select multiple items"
 msgstr ""
 
-#. Label
-#: qxex/ui/form/MultiSelectBox.js:38
+#: qxex/ui/control/DateChooser.js
 msgid "All"
 msgstr ""
 
-#. Label
-#: qxex/ui/form/MultiSelectBox.js:47
+#: qxex/util/LanguageManager.js
 msgid "None"
 msgstr ""
 
 #. statusLine
-#: qxex/ui/form/MultiSelectBox.js:59
+#: qxex/ui/form/MultiSelectBox.js
 msgid "Use Shift-click or Crtl-click for multiple selection"
 msgstr ""
 
-#. label
-#: qxex/ui/table/headerrenderer/FilterHeaderCell.js:79
+#. NO LONGER USED
 msgid "click to toggle between 3 states: true, false, both"
 msgstr ""
 
-#. label
-#: qxex/ui/table/headerrenderer/FilterHeaderCell.js:116
+#. NO LONGER USED
 msgid "Enter texts which must match appropriate column:"
 msgstr ""
 
-#. label
-#: qxex/ui/table/headerrenderer/FilterHeaderCell.js:149
+#. NO LONGER USED
 msgid "Whether text must match exactly"
 msgstr ""
 
-#~ msgid ""
-#~ msgstr ""
+#. NO LONGER USED
+msgstr ""
 
-#~ msgid "Last year"
-#~ msgstr ""
+#: qxex/ui/control/DateChooser.js
+msgid "Holiday"
+msgstr ""
 
-#~ msgid "Last month"
-#~ msgstr ""
+#: qxex/ui/control/DateChooser.js
+msgid "Public holiday"
+msgstr ""
 
-#~ msgid "Next month"
-#~ msgstr ""
+#: qxex/ui/control/DateChooser.js
+msgid "Bank holiday"
+msgstr ""
 
-#~ msgid "Next year"
-#~ msgstr ""
+#: qxex/ui/control/DateChooser.js
+msgid "School holiday"
+msgstr ""
+
+#: qxex/ui/control/DateChooser.js
+msgid "Optional holiday"
+msgstr ""
+
+#: qxex/ui/control/DateChooser.js
+msgid "Observance day"
+msgstr ""
+
+#: qxex/ui/control/DateChooser.js
+msgid "federated states"
+msgstr ""
+
+#: qxex/ui/control/DateChooser.js
+msgid "states and territories"
+msgstr ""
+
+#: qxex/ui/control/DateChooser.js
+msgid "regions"
+msgstr ""
+
+#: qxex/ui/control/DateChooser.js
+msgid "provinces and territories"
+msgstr ""
+
+#: qxex/ui/control/DateChooser.js
+msgid "cantons"
+msgstr ""
+
+#: qxex/ui/control/DateChooser.js
+msgid "autonomous communities"
+msgstr ""
+
+#: qxex/ui/control/DateChooser.js
+msgid "departments and overseas regions"
+msgstr ""
+
+#: qxex/ui/control/DateChooser.js
+msgid "countries and provinces"
+msgstr ""
+
+#: qxex/ui/control/DateChooser.js
+msgid "U.S. states"
+msgstr ""
+
+#: qxex/ui/control/DateChooser.js
+msgid "states"
+msgstr ""
+
+#: qxex/ui/control/DateChooser.js
+msgid "Country"
+msgstr ""
+
+#: qxex/ui/control/DateChooser.js
+msgid "Regions"
+msgstr ""
