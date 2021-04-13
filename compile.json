@@ -31,9 +31,6 @@
   "environment": {
     "qx.icontheme": "Tango"
   },
-  "ignores" : [
-    "Holidays"
-  ],
   "eslintConfig": {
     "extends" : [
       //"eslint:recommended"
@@ -62,10 +59,6 @@
       "space-before-blocks" : "off",
       "quotes" : "off",
       "no-unused-vars" : "off"
-    },
-    "globals" : {
-      "Holidays" : true
-      //,"qx" : true
     }
   },
   "libraries": [

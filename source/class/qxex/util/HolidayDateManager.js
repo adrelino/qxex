@@ -9,6 +9,7 @@
  * https://github.com/commenthol/date-holidays-parser/blob/master/docs/Holidays.md 
  *
  * @asset(qxex/date-holidays/dist/umd.min.js)
+ * @ignore Holidays
  */
 qx.Class.define("qxex.util.HolidayDateManager", {
 	type: "singleton",
