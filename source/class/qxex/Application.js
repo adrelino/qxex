@@ -83,7 +83,7 @@ qx.Class.define("qxex.Application",
       var widget = new qxex.ui.control.LanguageSelector();
       container.addWidgetWithLabel(widget);
 
-      var excludedThemes = ["qx.theme.Indigo"];
+      var excludedThemes = [];//"qx.theme.Indigo"];
       var widget = new qxex.ui.control.ThemeSelector(excludedThemes);
       container.addWidgetWithLabel(widget,"(meta)");
 

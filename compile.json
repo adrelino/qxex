@@ -29,7 +29,7 @@
     "zh"
   ],
   "environment": {
-    "qx.icontheme": "Tango"
+    "qx.icontheme": ["Oxygen", "Tango"]
   },
   "eslintConfig": {
     "extends" : [
@@ -73,6 +73,9 @@
       "bootPath": "source/boot",
       "include": [
         "qx.theme.Modern",
+        "qx.theme.Classic",
+        "qx.theme.Indigo",
+        "qx.theme.Simple",
         "qx.theme.TangibleLight",
         "qx.theme.TangibleDark"
       ]
