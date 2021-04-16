@@ -208,6 +208,7 @@ qx.Class.define("qxex.Application",
           for(var j=0; j<depth; j++){
             var C = j==depth-1 ? qx.ui.tree.TreeFile : qx.ui.tree.TreeFolder;
             var bar = new C(this.getText() + " " +j);
+            bar.getChildControl("label").setRich(true);
             if(j==depth-1){
                 bar.isSelectable = function(){
                 return true;

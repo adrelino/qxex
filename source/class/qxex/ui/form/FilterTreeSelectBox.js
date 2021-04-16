@@ -43,7 +43,7 @@ qx.Class.define("qxex.ui.form.FilterTreeSelectBox", {
              textField.setTextColor("red");
          }
 
-         this.__filterLabel.setValue(obj.count + "/" + obj.all);
+         this.getFilterLabel().setValue(obj.count + "/" + obj.all);
 //       },this);
     },
 
@@ -51,17 +51,25 @@ qx.Class.define("qxex.ui.form.FilterTreeSelectBox", {
         var noFilter = (text == "");
 
         var showNode = (noFilter && depth==1);
-        if(!showNode){
-          var labelRaw = qx.lang.String.stripTags(node.getLabel());
+        var labelSupportsRich = node.getChildControl("label").isRich();
+        var labelRaw = node.getLabel();
+        
+        if(labelSupportsRich){
+          labelRaw = qx.lang.String.stripTags(labelRaw);
+        }
 
+        if(!showNode){
           var matchPos = labelRaw.toLowerCase().indexOf(text);
           showNode = matchPos >= 0;
           if(showNode){
-            var labelRich = labelRaw.substring(0,matchPos)+"<span style='color:black;font-weight:bold'>"+labelRaw.substr(matchPos,text.length)+"</span>"+labelRaw.substr(matchPos+text.length);
-            node.setLabel(labelRich);
+            if(labelSupportsRich){
+              var labelRich = labelRaw.substring(0,matchPos)+"<span style='color:black;font-weight:bold'>"+labelRaw.substr(matchPos,text.length)+"</span>"+labelRaw.substr(matchPos+text.length);
+              node.setLabel(labelRich);
+            }else{
+              node.setLabel(labelRaw);
+            }
           }
         }else{
-            var labelRaw = qx.lang.String.stripTags(node.getLabel());
             node.setLabel(labelRaw);
         }
 

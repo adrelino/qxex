@@ -117,6 +117,10 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
       return this.__filterTextField;
     },
 
+    getFilterLabel : function(){
+      return this.__filterLabel;
+    },
+
     addFilterCheckBox : function(){
       var list = this.getChildrenContainer();
       var popup = this.getChildControl("popup");
