@@ -10,4 +10,3 @@ skeleton*
 /qx_packages
 .package-cache.json
 package-lock.json
-qx-lock.json
