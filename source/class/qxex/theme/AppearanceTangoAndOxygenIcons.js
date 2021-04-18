@@ -31,6 +31,26 @@ qx.Theme.define("qxex.theme.AppearanceTangoAndOxygenIcons", {
       }
     },
 
+    "multiselectbox/allBtn":
+    {
+      include : "button",
+      style: function (states) {
+        return {
+          icon: "decoration/form/checkbox-checked-focused.png"
+        };
+      }
+    },
+
+    "multiselectbox/noneBtn":
+    {
+      include : "button",
+      style: function (states) {
+        return {
+          icon: "decoration/form/checkbox-focused-invalid.png"
+        };
+      }
+    },
+
     "timechooser/slider/knob":
     {
       style: function (states) {

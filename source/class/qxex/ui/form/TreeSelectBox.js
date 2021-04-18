@@ -139,9 +139,9 @@ qx.Class.define("qxex.ui.form.TreeSelectBox",
 
           control.addListener("changeSelection", this._onListChangeSelection, this);
           control.addListener("pointerdown", this._onListPointerDown, this);
-          control.addListener("close",function(){
+          /*control.addListener("close",function(){
             this.close();
-          },this);
+          },this);*/
 //           control.getChildControl("pane").addListener("tap", this.close, this);
           break;
       }

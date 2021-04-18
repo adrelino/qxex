@@ -137,7 +137,7 @@ qx.Class.define("qxex.Application",
 
       singleSelect.setToolTipText("original tooltip");
 
-      var arr = [singleSelect,singleSelect2,multiSelect,multiSelect2,comboBox];
+      var arr = [singleSelect,singleSelect2,multiSelect,multiSelect2];
       for (var j=0; j< arr.length; j++){
       for (var i = 0; i < 200; i++) {
         var text = this.getText();

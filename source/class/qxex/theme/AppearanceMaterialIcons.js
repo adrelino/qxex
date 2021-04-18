@@ -34,6 +34,26 @@ qx.Theme.define("qxex.theme.AppearanceMaterialIcons", {
       }
     },
 
+    "multiselectbox/allBtn":
+    {
+      include : "button",
+      style: function (states) {
+        return {
+          icon: qx.theme.tangible.Image.URLS["checkbox-checked"]
+        };
+      }
+    },
+
+    "multiselectbox/noneBtn":
+    {
+      include : "button",
+      style: function (states) {
+        return {
+          icon: qx.theme.tangible.Image.URLS["checkbox-blank"]
+        };
+      }
+    },
+
     "timechooser/slider/knob":
     {
       style: function (states) {

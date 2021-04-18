@@ -29,27 +29,6 @@ qx.Class.define("qxex.ui.form.MultiSelectBox",
     this.base(arguments);
 
     this.addListener("keyinput", this._onKeyInput, this);
- 
-    //ALL AND NONE BUTTONS
-    this.__buttonContainer=new qx.ui.container.Composite(new qx.ui.layout.HBox(0));
-    
-    var labelAll="<b style='color:green;'>"+this.trc("Label","All")+"<b>";
-    this.allBtn = new qx.ui.form.Button(labelAll,"decoration/form/checkbox-checked-focused.png").set({
-        focusable: false, rich: true, padding : 2, margin : 0
-    });
-    this.allBtn.addListener("execute", function(e){
-      this.setSelection(this.getSelectables());
-    },this);
-    this.__buttonContainer.add(this.allBtn,{flex : 1});
-    
-    var labelNone="<b style='color:red;'>"+this.trc("Label","None")+"<b>";
-    this.noneBtn = new qx.ui.form.Button(labelNone,"decoration/form/checkbox-focused-invalid.png").set({
-        focusable: false, rich: true, padding : 2, margin : 0
-    });
-    this.noneBtn.addListener("execute", function(e){
-      this.setSelection(null);
-    },this);
-    this.__buttonContainer.add(this.noneBtn,{flex : 1});
 
     //STATUSLABEL
     this.__statusLabel=new qx.ui.basic.Label(
@@ -72,7 +51,7 @@ qx.Class.define("qxex.ui.form.MultiSelectBox",
     appearance :
     {
       refine : true,
-      init : "selectbox"
+      init : "multiselectbox"
     }
   },
 
@@ -93,8 +72,19 @@ qx.Class.define("qxex.ui.form.MultiSelectBox",
   members :
   {  
 
-    __buttonContainer : null,
     __statusLabel : null,
+
+    __makeButton : function(text,textColor,callback,callbackThisPtr){
+      var control = new qx.ui.form.Button(text).set({
+          focusable: false, padding : 2, margin : 0
+      });
+      var label = control.getChildControl("label");
+      label.setTextColor(textColor);
+      control.addListener("execute", function(e){
+        callback.call(callbackThisPtr);
+      },this);
+      return control;
+    },
     /*
     ---------------------------------------------------------------------------
       WIDGET API
@@ -118,8 +108,28 @@ qx.Class.define("qxex.ui.form.MultiSelectBox",
         case "popup":
           //POPUP window config
           control = this.base(arguments, id);
-          control.addBefore(this.__buttonContainer,this.getChildControl("list"));
+          control.addBefore(this.getChildControl("buttonContainer"),this.getChildControl("list"));
           control.add(this.__statusLabel, {flex:1});
+          break;
+
+        //ALL AND NONE BUTTONS
+        case "buttonContainer": 
+          control = new qx.ui.container.Composite(new qx.ui.layout.HBox(0));
+          control.add(this.getChildControl("allBtn"),{flex : 1});
+          control.add(this.getChildControl("noneBtn"),{flex : 1});
+          break;
+
+        case "allBtn":
+          control = this.__makeButton(this.trc("Label","All"),'green',function(e){
+            this.setSelection(this.getSelectables());
+          },this);
+          break;
+
+        case "noneBtn":
+          control = this.__makeButton(this.trc("Label","None"),'red',function(e){
+            this.setSelection(null);
+          },this);
+          break;
       }
 
       return control || this.base(arguments, id);

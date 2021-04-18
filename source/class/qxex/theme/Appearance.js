@@ -24,6 +24,8 @@ qx.Theme.define("qxex.theme.Appearance", {
     "watcheecaptionbar": "window/captionbar",
     "watcheeclosebutton": "window/close-button",
 
+    "multiselectbox": "selectbox",
+
     "timechooser": "datechooser",
     "timechooser/slider": "slider",
     "timechooser/slider/knob": "image",
