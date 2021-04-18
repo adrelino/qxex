@@ -23,15 +23,20 @@ qx.Theme.define("qxex.theme.Appearance", {
   {
     "watcheecaptionbar": "window/captionbar",
     "watcheeclosebutton": "window/close-button",
+    "popup/close-button" : "watcheeclosebutton",
 
     "multiselectbox": "selectbox",
+
+    "datechooser/type" : "multiselectbox",
+    "datechooser/country" : "selectbox",
+    "datechooser/state" : "selectbox",
+    "datechooser/region" : "selectbox",
 
     "timechooser": "datechooser",
     "timechooser/slider": "slider",
     "timechooser/slider/knob": "image",
 
-    "multilangtextfield": "datefield",
-    //"multilangtextfield/list" : "timechooser",
+    "multilangtextfield": "combobox",
 
     "timefield": "datefield",
     "timefield/list": "timechooser"

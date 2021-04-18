@@ -185,10 +185,13 @@ qx.Class.define("qxex.Application",
       })();
 
 
-      var widget = new qxex.ui.form.DateField();
+      var widget = new qxex.ui.form.DateField(true,true);
       container.addWidgetWithLabel(widget);
 
       var widget = new qxex.ui.form.MultiLangTextField();
+      widget.setValue("Guten Tag","de");
+      widget.setValue("Welcome", "en");
+      widget.setValue("Bonjour", "fr");
       container.addWidgetWithLabel(widget);
 
       (function(){

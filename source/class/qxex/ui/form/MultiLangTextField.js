@@ -96,7 +96,7 @@ qx.Class.define("qxex.ui.form.MultiLangTextField",
         var lang = qxex.util.LanguageManager.getInstance().getCurrent();
         var item = this.__items[lang];
         if(item){
-          this.getChildControl("list").setSelection([]);
+          this.getChildControl("list").setSelection([item]);
         }
       }
     }
