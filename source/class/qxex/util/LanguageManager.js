@@ -31,10 +31,10 @@ qx.Class.define("qxex.util.LanguageManager", {
 	},
 
 	members: {
-		getAll: function () {
+		getAll: function (excludeNone) {
 			var locales = qx.locale.Manager.getInstance().getAvailableLocales();
 			var languages = [];
-			languages.push([this.tr("None"), "icon/16/actions/edit-delete.png", qxex.util.LanguageManager.none]);
+			if(!excludeNone) languages.push([this.tr("None"), "icon/16/actions/edit-delete.png", qxex.util.LanguageManager.none]);
 			locales.forEach(function (name) {
 				if (name.length == 2) {
 					var label = qxex.util.LanguageManager.names[name] + " (" + name + ")";

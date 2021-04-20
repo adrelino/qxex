@@ -9,16 +9,17 @@ qx.Class.define("qxex.ui.control.LanguageSelector",{
      * Fired after the new locale has been set.
      * Get the new locale with e.getData() (e.g. "en").
      */
-    "changeValue" : "qx.event.type.Data"
+    "changeLanguage" : "qx.event.type.Data"
   },
 
-  construct : function(){
+  construct : function(opt_options){
     this.base(arguments);
+    var opt_options = opt_options || {};
 
     //var props = { width : 40, height: 30, scale : true};
     //this.getChildControl("atom").getChildControl("icon").set(props);
 
-    qxex.util.LanguageManager.getInstance().getAll().forEach(function(lang){
+    qxex.util.LanguageManager.getInstance().getAll(opt_options.excludeNone).forEach(function(lang){
       var item = new qx.ui.form.ListItem(lang[0],lang[1],lang[2]);
       //item.getChildControl("icon").set(props);
       this.add(item);
@@ -28,10 +29,10 @@ qx.Class.define("qxex.ui.control.LanguageSelector",{
 
     this.addListener("changeSelection",function(e){
       var name = e.getData()[0].getModel();
+      this.fireDataEvent("changeLanguage",name);
       //if(qx.core.Environment.get("qx.dynlocale")){
         qxex.util.LanguageManager.getInstance().setByName(name);
       //}
-      this.fireDataEvent("changeValue",name);
     },this);
 
     // listen for locale changes made somewhere else
@@ -41,7 +42,7 @@ qx.Class.define("qxex.ui.control.LanguageSelector",{
   },
 
   members : {
-    _updateLocale : function(){
+    _updateLocale : function(e){
       this.setModelSelection([qxex.util.LanguageManager.getInstance().getCurrent()]);
     },
 
