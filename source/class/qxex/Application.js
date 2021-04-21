@@ -49,7 +49,7 @@ qx.Class.define("qxex.Application",
       }
 
       //mix our own theme additions into all available themes
-      qxex.util.ThemeManager.mergeMaterialAndModernThemes(qxex.theme.AppearanceMaterialIcons, qxex.theme.AppearanceTangoAndOxygenIcons);
+      //qxex.util.ThemeManager.mergeMaterialAndModernThemes(qxex.theme.AppearanceMaterialIcons, qxex.theme.AppearanceTangoAndOxygenIcons);
 
 
       /*
@@ -88,12 +88,11 @@ qx.Class.define("qxex.Application",
       var widget = new qxex.ui.control.LanguageSelector();
       container.addWidgetWithLabel(widget);
 
-      var excludedThemes = [];//"qx.theme.Indigo"];
-      var widget = new qxex.ui.control.ThemeSelector(excludedThemes);
+      var availableThemes = ["qxex.theme.Modern","qxex.theme.Light","qxex.theme.Dark"];
+      var widget = new qxex.ui.control.ThemeSelector(availableThemes);
       container.addWidgetWithLabel(widget,"(meta)");
 
-      var excludedThemes = [];
-      var widget = new qxex.ui.control.ThemeSelector(excludedThemes,"icon");
+      var widget = new qxex.ui.control.ThemeSelector(null,"icon");
       container.addWidgetWithLabel(widget,"(icon)");
 
       var that = this;

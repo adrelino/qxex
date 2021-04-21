@@ -18,7 +18,7 @@
  * 
  * Applications that use qxex.ui.form.TimeField should extend this theme in their Appearance.js
  */
-qx.Theme.define("qxex.theme.Appearance", {
+qx.Theme.define("qxex.theme.commonbase.AppearanceBase", {
   appearances:
   {
     "watcheecaptionbar": "window/captionbar",

@@ -1,8 +1,8 @@
 /**
  * Switch themes easily
- * @asset(qxex/themes/96x48/*)
- * @asset(qx/icon/Tango/16/apps/preferences-clock.png)
- * @asset(qx/icon/Oxygen/16/apps/preferences-clock.png)
+ * //asset(qxex/themes/96x48/*)
+ * //asset(qx/icon/Tango/16/apps/preferences-clock.png)
+ * //asset(qx/icon/Oxygen/16/apps/preferences-clock.png)
  */
 qx.Class.define("qxex.ui.control.ThemeSelector",{
   extend : qx.ui.form.SelectBox,
@@ -16,16 +16,16 @@ qx.Class.define("qxex.ui.control.ThemeSelector",{
   },
 
   /**
-   * @param excludedThemeNamesArr {String[] ?}  The names of the themes to hide.
+   * @param availableThemes {String[] ?}  The names of the themes to hide.
    * @param type {String ? 'meta'} Whether 'meta' or 'icon' theme.
    */
-  construct : function(excludedThemeNamesArr, type){
+  construct : function(availableThemes, type){
     this.base(arguments);
 
     var type = type || "meta";
     this.__type = type;
 
-    var excludedThemeNamesArr = excludedThemeNamesArr || [];
+    var themesSet = new Set(availableThemes || []);
     
     var themes = qxex.util.ThemeManager.getAll(type);
 
@@ -34,7 +34,7 @@ qx.Class.define("qxex.ui.control.ThemeSelector",{
       var name = theme.name;
       var title = theme.title;
 
-      if(excludedThemeNamesArr.indexOf(name)>=0){
+      if(themesSet.size > 0 && !themesSet.has(name)){
         continue; // theme excluded and not supported (e.g) qooxdoo intrinsic themes
       }
 
@@ -48,9 +48,9 @@ qx.Class.define("qxex.ui.control.ThemeSelector",{
       }
 
       if(type=="meta"){
-        this.add(new qx.ui.form.ListItem(title,"qxex/themes/96x48/"+name+".png",name));
+        this.add(new qx.ui.form.ListItem(title,/*"qxex/themes/96x48/"+name+".png"*/null,name));
       }else if(type=="icon"){
-        this.add(new qx.ui.form.ListItem(title,"qx/icon/"+title+"/16/apps/preferences-clock.png",name));
+        this.add(new qx.ui.form.ListItem(title,/*"qx/icon/"+title+"/16/apps/preferences-clock.png"*/null,name));
       }
     }
 

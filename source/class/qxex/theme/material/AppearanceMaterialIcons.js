@@ -4,8 +4,9 @@
  * qooxdoo/framework/source/class/qx/theme/tangible/Appearance.js
  * qooxdoo/framework/source/class/qx/theme/tangible/Image.js
  */
-qx.Theme.define("qxex.theme.AppearanceMaterialIcons", {
-  extend: qxex.theme.Appearance,
+qx.Theme.define("qxex.theme.material.AppearanceMaterialIcons", {
+  include: qxex.theme.commonbase.AppearanceBase,
+  extend: qx.theme.tangible.Appearance,
   appearances:
   {
     "datefield/button2":

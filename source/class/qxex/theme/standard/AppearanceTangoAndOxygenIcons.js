@@ -5,8 +5,9 @@
  * @asset(qx/icon/${qx.icontheme}/16/apps/preferences-clock.png)
  * @asset(qx/icon/${qx.icontheme}/16/actions/edit-delete.png)
  */
-qx.Theme.define("qxex.theme.AppearanceTangoAndOxygenIcons", {
-  extend: qxex.theme.Appearance,
+qx.Theme.define("qxex.theme.standard.AppearanceTangoAndOxygenIcons", {
+  include: qxex.theme.commonbase.AppearanceBase,
+  extend: qx.theme.modern.Appearance,
   appearances:
   {
     "datefield/button2":

@@ -67,17 +67,17 @@
   "applications": [
     {
       "class": "qxex.Application",
-      "theme": "qx.theme.TangibleLight",
+      "theme": "qxex.theme.Light",
       "name": "qxex",
       "title": "qxex Demo Application",
       "bootPath": "source/boot",
       "include": [
-        "qx.theme.Modern",
-        "qx.theme.Classic",
-        "qx.theme.Indigo",
-        "qx.theme.Simple",
-        "qx.theme.TangibleLight",
-        "qx.theme.TangibleDark"
+        "qxex.theme.Modern",
+        //"qx.theme.Classic",
+        //"qx.theme.Indigo",
+        //"qx.theme.Simple",
+        "qxex.theme.Light",
+        "qxex.theme.Dark"
       ]
     },
     {
