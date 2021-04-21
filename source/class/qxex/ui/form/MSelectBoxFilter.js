@@ -95,7 +95,7 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
     }
     box.add(this.__filterLabel);
 
-    this.__filterTextField.setPlaceholder(this.tr("type to filter, backspace to clear"));
+    this.__filterTextField.setPlaceholder(this.tr("[search]"));//this.tr("type to filter, backspace to clear"));
     box.setToolTipText(this.trc("tooltip","Start typing to filter list entries. Use backspace to undo filtering character-wise."));
 
     popup.addBefore(box,list);

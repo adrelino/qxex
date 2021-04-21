@@ -137,6 +137,7 @@ qx.Class.define("qxex.ui.table.headerrenderer.FilterHeaderCell",
               anonymous: false,
               allowShrinkX: true
             });
+            control.setPlaceholder(this.tr("[search]"));
             control.setToolTipText(this.trc("label", "Enter texts which must match appropriate column:"));
             control.addListener("input", function(event) {
                 var text=event.getData();

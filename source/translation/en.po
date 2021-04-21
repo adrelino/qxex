@@ -6,7 +6,7 @@ msgstr ""
 msgid "Invalid format. Correctly formatted example: %1"
 msgstr ""
 
-#: qxex/ui/form/MSelectBoxFilter.js
+#. NO LONGER USED
 msgid "type to filter, backspace to clear"
 msgstr ""
 
@@ -145,4 +145,8 @@ msgstr ""
 
 #: qxex/ui/control/DateChooser.js
 msgid "Regions"
+msgstr ""
+
+#: qxex/ui/form/MSelectBoxFilter.js
+msgid "[search]"
 msgstr ""
