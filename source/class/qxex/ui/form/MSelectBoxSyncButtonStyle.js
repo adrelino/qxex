@@ -1,13 +1,21 @@
 /** 
  * Mixin which adds syncing capability to (Multi) SelectBox so that the icon and label of the button matches the selection
+ *
+ * @asset(qx/icon/${qx.icontheme}/32/actions/edit-delete.png)
  */
 qx.Mixin.define("qxex.ui.form.MSelectBoxSyncButtonStyle", {
     properties :
     {
-      //Icon to display when multiple items are selected but have different icons
+      /** Icon to display when multiple items are selected but have different icons */
       someIcon :
       {
         init : null
+      },
+
+      /** Icon to display when no items are selected */
+      noneIcon :
+      {
+        init : "icon/32/actions/edit-delete.png"
       }
     },
     members : {
@@ -22,7 +30,7 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxSyncButtonStyle", {
         if(length==0){
           label = "<b style='color:red;'>"+label+"<b>";
           this.setToolTipText(this.trc("Tooltip","Please select at least one item"));
-          if(hasIcons) atom.setIcon("icon/32/actions/edit-delete.png");
+          if(hasIcons) atom.setIcon(this.getNoneIcon());
         }else if(length==1){
           label+=" : "+labelFun(listItems[0]);
           this.setToolTipText(this.trc("Tooltip","You can select multiple items"));

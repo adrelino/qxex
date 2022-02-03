@@ -14,7 +14,7 @@ qx.Class.define("qxex.ui.popup.Popup",
     this._setLayout(new qx.ui.layout.Canvas());
 
     this.__childrenBox = new qx.ui.container.Composite(layout || new qx.ui.layout.VBox());
-    this._add(this.__childrenBox,{top:0,left:0,right:0,bottom:0});
+    this._add(this.__childrenBox,layout ? null : {top:0,left:0,right:0,bottom:0});
 
     //this.setAppearance("watcheepopup");
     this.addState("active");
