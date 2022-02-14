@@ -85,6 +85,7 @@ qx.Class.define("qxex.ui.form.FilterComboBox", {
     {
       var popup = this.getChildControl("popup");
       var iden = e.getKeyIdentifier();
+      const listIdentifier = ["Up", "Down", "PageUp", "PageDown", "Escape", "Tab"];
 
       if (iden == "Enter" && !popup.isVisible())
       {
@@ -95,9 +96,12 @@ qx.Class.define("qxex.ui.form.FilterComboBox", {
       {
         //this.getChildControl("textfield").handleKeyPress(e);
       }
+      else if (listIdentifier.includes(iden)) {  //needed due to https://github.com/qooxdoo/qooxdoo/pull/10284/
+          this.base(arguments, e);
+      }
       else
       {
-        this.base(arguments, e);
+        //this.base(arguments, e);  do nothing for keys typed into search field!
       }
     },
 
