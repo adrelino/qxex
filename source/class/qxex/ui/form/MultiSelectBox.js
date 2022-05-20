@@ -116,6 +116,7 @@ qx.Class.define("qxex.ui.form.MultiSelectBox", {
             },
             this
           );
+
           break;
 
         case "noneBtn":
@@ -127,6 +128,7 @@ qx.Class.define("qxex.ui.form.MultiSelectBox", {
             },
             this
           );
+
           break;
       }
 

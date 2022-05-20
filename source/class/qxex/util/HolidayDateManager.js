@@ -55,6 +55,7 @@ qx.Class.define("qxex.util.HolidayDateManager", {
           },
           this
         );
+
         dynLoader.addListener("failed", function (e) {
           var data = e.getData();
           console.log("failed to load " + data.script);

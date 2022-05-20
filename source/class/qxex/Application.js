@@ -102,6 +102,7 @@ qx.Class.define("qxex.Application", {
           },
           that
         );
+
         widget.addListener(
           "changeValue",
           function (e) {

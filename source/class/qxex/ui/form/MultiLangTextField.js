@@ -28,6 +28,7 @@ qx.Class.define("qxex.ui.form.MultiLangTextField", {
         this,
         this
       );
+
     qx.locale.Manager.getInstance().addListener("changeLocale", this._updateLocale, this);
     this._updateLocale();
     var textField = this.getChildControl("textfield");
