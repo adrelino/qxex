@@ -9,7 +9,7 @@
 ************************************************************************ */
 
 /**
- * This is the main application class of your custom application "qooxdoo-extensions"
+ * This is the main application class of your custom application "qxex"
  *
  * @asset(qx/icon/${qx.icontheme}/16/apps/preferences-clock.png)
  */

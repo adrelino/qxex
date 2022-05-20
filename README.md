@@ -1,4 +1,4 @@
-# qooxdoo-extensions
+# qxex
 Additional GUI widgets (in `ui/*`) and utilities (static/singleton Manager's in `util/`) for qooxdoo apps.
 
 ## Demo
@@ -8,8 +8,8 @@ Additional GUI widgets (in `ui/*`) and utilities (static/singleton Manager's in 
 
 ### setup
 ```shell
-git clone https://github.com/adrelino/qooxdoo-extensions.git
-cd qooxdoo-extensions
+git clone https://github.com/adrelino/qxex.git
+cd qxex
 npm install
 ./serve.sh
 ```
