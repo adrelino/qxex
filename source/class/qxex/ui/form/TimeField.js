@@ -4,7 +4,7 @@
 ************************************************************************ */
 
 /**
- * A *time field* is like a combo box with the time slider as popup. 
+ * A *time field* is like a combo box with the time slider as popup.
  * It is complementary to qooxdoo's built-in *date field*.
  * As button to open the slider a watch icon is shown at the right to the textfield.
  *
@@ -21,37 +21,33 @@
  * @childControl popup {qx.ui.popup.Popup} popup which shows the list control
  * --asset(qx/icon/${qx.icontheme}/16/apps/preferences-clock.png)
  */
-qx.Class.define("qxex.ui.form.TimeField",
-{
-  extend : qxex.ui.form.DateField,
-  
-  properties : {
+qx.Class.define("qxex.ui.form.TimeField", {
+  extend: qxex.ui.form.DateField,
+
+  properties: {
     // overridden
-    appearance :
-    {
-      refine : true,
-      init : "timefield"
+    appearance: {
+      refine: true,
+      init: "timefield"
     }
   },
-  
+
   /*
   *****************************************************************************
      MEMBERS
   *****************************************************************************
   */
 
-  statics :
-  {
-    __timeFormat : null,
-    __formatterTime : null,
+  statics: {
+    __timeFormat: null,
+    __formatterTime: null,
 
     /**
      * Get the shared default date formatter
      *
      * @return {qx.util.format.DateFormat} The shared date formatter
      */
-    getDefaultTimeFormatter : function()
-    {
+    getDefaultTimeFormatter() {
       var format = qx.locale.Date.getTimeFormat("short").toString(); //todo add "medium" with seconds
 
       if (format == this.__timeFormat) {
@@ -69,10 +65,7 @@ qx.Class.define("qxex.ui.form.TimeField",
     }
   },
 
-
-  members :
-  {
-
+  members: {
     /*
     ---------------------------------------------------------------------------
       PROTECTED METHODS
@@ -84,7 +77,7 @@ qx.Class.define("qxex.ui.form.TimeField",
      * {@link #getDefaultTimeFormatter}. You can overrride this method to
      * define your own default format.
      */
-    _setDefaultDateFormat : function() {
+    _setDefaultDateFormat() {
       this.setDateFormat(qxex.ui.form.TimeField.getDefaultTimeFormatter());
     },
 
@@ -95,12 +88,10 @@ qx.Class.define("qxex.ui.form.TimeField",
     */
 
     // overridden
-    _createChildControlImpl : function(id, hash)
-    {
+    _createChildControlImpl(id, hash) {
       var control;
 
-      switch(id)
-      {
+      switch (id) {
         case "list":
           control = new qxex.ui.control.TimeChooser();
           control.setFocusable(false);
@@ -108,34 +99,13 @@ qx.Class.define("qxex.ui.form.TimeField",
           control.addListener("execute", this._onChangeDate, this);
           break;
 
-//         case "button":
-//           control = this.base(arguments, id);
-//           control.setIcon("icon/16/apps/preferences-clock.png");
-//           break;
+        //         case "button":
+        //           control = this.base(arguments, id);
+        //           control.setIcon("icon/16/apps/preferences-clock.png");
+        //           break;
       }
 
-      return control || this.base(arguments, id);
+      return control || super._createChildControlImpl(id);
     }
-
-   /*
-   ---------------------------------------------------------------------------
-     EVENT LISTENERS
-   ---------------------------------------------------------------------------
-   */
-    
-   /**
-    * Handler method which handles the click on the slider popup.
-    *
-    * @param e {qx.event.type.Mouse} The mouse event of the click.
-    */
-//     _onChangeDate : function(e)
-//     {
-//       var textField = this.getChildControl("textfield");
-//       var date = this.getChildControl("list").getValue(); // list is instanceof qxex.ui.control.TimeChooser
-//       var min= date.getMinutes();
-//       if(min==0) min="00";
-//       textField.setValue(date.getHours()+":"+min); // currently ignore seconds when from slider
-//       this.__closePopup();
-//     }
   }
 });

@@ -1,6 +1,6 @@
 /**
  * A *time chooser* is a small slider with a header bar to choose the time from 0:00h to 23:25h in 15min steps
- * 
+ *
  * The clock icon for the knob is slightly scaled
  * @asset(qx/icon/${qx.icontheme}/16/apps/preferences-clock.png)
  *
@@ -9,29 +9,22 @@
  * @childControl currLabel {qx.ui.basic.Label} header bar label center, shows the currently selected time
  * @childControl maxLabel {qx.ui.basic.Label} header bar label right
  */
-qx.Class.define("qxex.ui.control.TimeChooser",
-{
-  extend :qx.ui.core.Widget,
-  include : [
-    qx.ui.core.MExecutable,
-    qx.ui.form.MForm
-  ],
-  implement : [
-    qx.ui.form.IExecutable,
-    qx.ui.form.IForm,
-    qx.ui.form.IDateForm
-  ],
+qx.Class.define("qxex.ui.control.TimeChooser", {
+  extend: qx.ui.core.Widget,
+  include: [qx.ui.core.MExecutable, qx.ui.form.MForm],
 
-  events : {
+  implement: [qx.ui.form.IExecutable, qx.ui.form.IForm, qx.ui.form.IDateForm],
+
+  events: {
     /**
      * fired when slider is released
      */
-    "execute" : "qx.event.type.Event",
-    
+    execute: "qx.event.type.Event",
+
     /**
      * fired when slider is dragged
      */
-    "changeValue" : "qx.event.type.Data"
+    changeValue: "qx.event.type.Data"
   },
 
   /*
@@ -39,14 +32,14 @@ qx.Class.define("qxex.ui.control.TimeChooser",
      CONSTRUCTOR
   *****************************************************************************
   */
-  
+
   /**
    * @param time {Date ? null} The initial time to show. The date part is ignored.
    * If <code>null</code> the current day (today) is shown.
    */
-  construct : function(time) {
-    this.base(arguments);
-    
+  construct(time) {
+    super();
+
     //set the layout
     var layout = new qx.ui.layout.Grid();
     layout.setSpacing(1);
@@ -70,7 +63,7 @@ qx.Class.define("qxex.ui.control.TimeChooser",
       qx.locale.Manager.getInstance().addListener("changeLocale", this._updateTimePane, this);
     }
 
-    if(!time){
+    if (!time) {
       time = new Date(0);
       time.setHours(0); //date with hour 0
     }
@@ -79,42 +72,37 @@ qx.Class.define("qxex.ui.control.TimeChooser",
     //register pointer up and down handler to avoid blur on header label click
     this.addListener("pointerdown", this._onPointerUpDown, this);
     this.addListener("pointerup", this._onPointerUpDown, this);
-
   },
 
- 
-  properties : {
-
+  properties: {
     // overridden
-    appearance :
-    {
-      refine : true,
-      init : "timechooser"
+    appearance: {
+      refine: true,
+      init: "timechooser"
     },
-    
+
     /** The knobIcon to show in the slider. Gets scaled to 14x14 px by default */
-    knobIcon : {
-      check : "String",
-      apply : "_applyKnobIcon",
-      nullable : true
+    knobIcon: {
+      check: "String",
+      apply: "_applyKnobIcon",
+      nullable: true
     },
 
     /** The label to show left to the current time */
-    label : {
-      init : "",
-      check : "String",
-      apply : "_applyLabel",
-      nullable : true
+    label: {
+      init: "",
+      check: "String",
+      apply: "_applyLabel",
+      nullable: true
     },
 
     /** The fime value of the widget. */
-    value :
-    {
-      check : "Date",
-      init : null,
-      nullable : true,
-      event : "changeValue",
-      apply : "_applyValue"
+    value: {
+      check: "Date",
+      init: null,
+      nullable: true,
+      event: "changeValue",
+      apply: "_applyValue"
     }
   },
 
@@ -124,8 +112,7 @@ qx.Class.define("qxex.ui.control.TimeChooser",
   *****************************************************************************
   */
 
-  members : {
-
+  members: {
     /*
     ---------------------------------------------------------------------------
       WIDGET INTERNALS
@@ -133,82 +120,79 @@ qx.Class.define("qxex.ui.control.TimeChooser",
     */
 
     //overridden
-    _createChildControlImpl : function(id, hash){
+    _createChildControlImpl(id, hash) {
       var control;
 
-      switch(id)
-      {
+      switch (id) {
         case "slider":
           control = new qxex.ui.form.KnobIconSlider();
           control.setKnobSize(16);
 
           control.set({
-            minimum : 0,
-            maximum : 95, // 24h * 60min/h / 15min = 96 (15min steps) from 0..95
-            singleStep :1,
-            pageStep :4,
-            focusable : false, //important so blur works correctly
-            keepFocus : true //important to prohibit a dragstart of the knobIcon in firefox
+            minimum: 0,
+            maximum: 95, // 24h * 60min/h / 15min = 96 (15min steps) from 0..95
+            singleStep: 1,
+            pageStep: 4,
+            focusable: false, //important so blur works correctly
+            keepFocus: true //important to prohibit a dragstart of the knobIcon in firefox
           });
 
-          control.addListener("pointerup", function(){
-              this.execute();
-          },this);
+          control.addListener("pointerup", () => {
+            this.execute();
+          });
 
-          control.addListener("changeValue", function(e) {
+          control.addListener("changeValue", e => {
             var num = e.getData();
             var time = this.__sliderValueToTime(num);
             this.setValue(time);
-          }, this);
-          
-          this._add(control,{row:1, column:0, colSpan:3});
+          });
+
+          this._add(control, {row: 1, column: 0, colSpan: 3});
           break;
 
         case "minLabel":
           control = this.__makeChildLabel(true);
-          this._add(control,{row:0, column:0});
+          this._add(control, {row: 0, column: 0});
           break;
 
         case "currLabel":
           control = this.__makeChildLabel();
-          this._add(control,{row:0, column:1});
+          this._add(control, {row: 0, column: 1});
           break;
 
         case "maxLabel":
           control = this.__makeChildLabel(true);
-          this._add(control,{row:0, column:2});
+          this._add(control, {row: 0, column: 2});
           break;
       }
 
-      return control || this.base(arguments, id);
+      return control || super._createChildControlImpl(id);
     },
 
-    __makeChildLabel : function(grey){
+    __makeChildLabel(grey) {
       var control = new qx.ui.basic.Label();
-          control.setSelectable(false);
-          if(grey) control.setTextColor("#808080"); // "grey"
+      control.setSelectable(false);
+      if (grey) control.setTextColor("#808080"); // "grey"
       return control;
     },
 
     // property apply
-    _applyKnobIcon : function(value, old)
-    {
+    _applyKnobIcon(value, old) {
       this.getChildControl("slider").setKnobIcon(value || null);
     },
-    
+
     // property apply
-    _applyLabel : function(value, old)
-    {
+    _applyLabel(value, old) {
       this._updateTimePane();
     },
 
     //property apply
-    _applyValue : function(value, old){
+    _applyValue(value, old) {
       var num = this.__timeToSliderValue(value);
 
       //Move slider to the position hours + 4 * minutes/15 in the Date Object
       this.getChildControl("slider").setValue(num);
-      
+
       //Show the new time formatted in header pane;
       this._updateTimePane();
     },
@@ -218,11 +202,11 @@ qx.Class.define("qxex.ui.control.TimeChooser",
      * @param time {Date} hours and minutes set correctly
      * @return {Number} slider value in range 0 - 96
      */
-    __timeToSliderValue: function(time){
-      if(!time) return 0;
+    __timeToSliderValue(time) {
+      if (!time) return 0;
       var hours = time.getHours();
       var minutes = time.getMinutes();
-      return hours*4 + Math.floor(minutes/15.0); //floors minutes to lower 15 minute intervals
+      return hours * 4 + Math.floor(minutes / 15.0); //floors minutes to lower 15 minute intervals
     },
 
     /**
@@ -230,27 +214,26 @@ qx.Class.define("qxex.ui.control.TimeChooser",
      * @param num {Number} slider value in range 0 - 96
      * @return {Date} hours and minutes set correctly
      */
-    __sliderValueToTime: function(num){
+    __sliderValueToTime(num) {
       var hours = Math.floor(num / 4.0);
       var minutes = Math.round((num / 4.0 - hours) * 60);
-      var date=new Date(0);
+      var date = new Date(0);
       date.setHours(hours);
       date.setMinutes(minutes);
       return date;
     },
 
-
     /**
      * Updates the header/time pane with the formatted current time value.
      */
-    _updateTimePane : function(){
+    _updateTimePane() {
       var time = this.getValue();
 
       // Create help times;
       var timeBegin = new Date(0);
       timeBegin.setHours(0);
       timeBegin.setMinutes(0);
-      var timeEnd   = new Date(0);
+      var timeEnd = new Date(0);
       timeEnd.setHours(23);
       timeEnd.setMinutes(45);
 
@@ -261,7 +244,6 @@ qx.Class.define("qxex.ui.control.TimeChooser",
       this.getChildControl("maxLabel").setValue(timeFormat.format(timeEnd));
 
       timeFormat.dispose();
-
     },
 
     /**
@@ -270,20 +252,15 @@ qx.Class.define("qxex.ui.control.TimeChooser",
      *
      * @param e {qx.event.type.Pointer} The pointer up / down event
      */
-    _onPointerUpDown : function(e) {
+    _onPointerUpDown(e) {
       var target = e.getTarget();
 
-      if (target == this.getChildControl("minLabel") ||
-          target == this.getChildControl("currLabel") ||
-          target == this.getChildControl("maxLabel")) {
+      if (target == this.getChildControl("minLabel") || target == this.getChildControl("currLabel") || target == this.getChildControl("maxLabel")) {
         e.stopPropagation();
         return;
       }
     }
-
   },
-
-
 
   /*
   *****************************************************************************
@@ -291,7 +268,7 @@ qx.Class.define("qxex.ui.control.TimeChooser",
   *****************************************************************************
   */
 
-  destruct : function() {
+  destruct() {
     if (qx.core.Environment.get("qx.dynlocale")) {
       qx.locale.Manager.getInstance().removeListener("changeLocale", this._updateTimePane, this);
     }

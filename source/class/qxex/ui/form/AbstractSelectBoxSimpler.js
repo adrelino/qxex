@@ -5,12 +5,10 @@
  * @childControl atom {qx.ui.basic.Atom} shows the text and icon of the content
  * @childControl arrow {qx.ui.basic.Image} shows the arrow to open the popup
  */
-qx.Class.define("qxex.ui.form.AbstractSelectBoxSimpler",
-{
-  extend : qx.ui.form.AbstractSelectBox,
-  include : qxex.ui.form.MSelectBoxBlur,
-  type : "abstract",
-
+qx.Class.define("qxex.ui.form.AbstractSelectBoxSimpler", {
+  extend: qx.ui.form.AbstractSelectBox,
+  include: qxex.ui.form.MSelectBoxBlur,
+  type: "abstract",
 
   /*
   *****************************************************************************
@@ -18,10 +16,8 @@ qx.Class.define("qxex.ui.form.AbstractSelectBoxSimpler",
   *****************************************************************************
   */
 
-
-  construct : function()
-  {
-    this.base(arguments);
+  construct() {
+    super();
 
     this._createChildControl("atom");
     this._createChildControl("spacer");
@@ -44,9 +40,7 @@ qx.Class.define("qxex.ui.form.AbstractSelectBoxSimpler",
   *****************************************************************************
   */
 
-
-  members :
-  {
+  members: {
     /*
     ---------------------------------------------------------------------------
       WIDGET API
@@ -54,13 +48,11 @@ qx.Class.define("qxex.ui.form.AbstractSelectBoxSimpler",
     */
 
     // overridden
-    _createChildControlImpl : function(id, hash)
-    {
+    _createChildControlImpl(id, hash) {
       var control;
 
-      switch(id)
-      {
-         case "spacer":
+      switch (id) {
+        case "spacer":
           control = new qx.ui.core.Spacer();
           this._add(control, {flex: 1});
           break;
@@ -71,7 +63,7 @@ qx.Class.define("qxex.ui.form.AbstractSelectBoxSimpler",
           control.setAnonymous(true);
           control.setRich(true);
 
-          this._add(control, {flex:1});
+          this._add(control, {flex: 1});
           break;
 
         case "arrow":
@@ -84,22 +76,22 @@ qx.Class.define("qxex.ui.form.AbstractSelectBoxSimpler",
         case "popup":
           //control = this.base(arguments,id);
           control = new qxex.ui.popup.Popup();
-          control.getChildControl("captionbar").set({padding:0});
-          control.getChildControl("close-button").set({margin:2});
+          control.getChildControl("captionbar").set({padding: 0});
+          control.getChildControl("close-button").set({margin: 2});
           control.add(this.getChildControl("list"));
           control.addListener("changeVisibility", this._onPopupChangeVisibility, this);
           this._fixPopupBlur(control);
       }
 
-      return control || this.base(arguments, id);
+      return control || super._createChildControlImpl(id);
     },
 
     // overridden
     /**
      * @lint ignoreReferenceField(_forwardStates)
      */
-    _forwardStates : {
-      focused : true
+    _forwardStates: {
+      focused: true
     },
 
     /**
@@ -107,21 +99,18 @@ qx.Class.define("qxex.ui.form.AbstractSelectBoxSimpler",
      *
      * @param e {qx.event.type.Pointer} Pointer event
      */
-    _onTap : function(e) {
+    _onTap(e) {
       this.toggle();
     },
 
     //overridden: do nothing when selectBox looses focus to e.g. textfield inside popup. Closing is handled via popup Manager and autohide
-    _onBlur : function(e){
-
-    },
+    _onBlur(e) {},
 
     /*
     ---------------------------------------------------------------------------
       EVENT LISTENERS
     ---------------------------------------------------------------------------
     */
-
 
     /**
      * Listener method for "pointerover" event
@@ -132,21 +121,18 @@ qx.Class.define("qxex.ui.form.AbstractSelectBoxSimpler",
      *
      * @param e {qx.event.type.Pointer} Pointer event
      */
-    _onPointerOver : function(e)
-    {
+    _onPointerOver(e) {
       if (!this.isEnabled() || e.getTarget() !== this) {
         return;
       }
 
-      if (this.hasState("abandoned"))
-      {
+      if (this.hasState("abandoned")) {
         this.removeState("abandoned");
         this.addState("pressed");
       }
 
       this.addState("hovered");
     },
-
 
     /**
      * Listener method for "pointerout" event
@@ -157,33 +143,29 @@ qx.Class.define("qxex.ui.form.AbstractSelectBoxSimpler",
      *
      * @param e {qx.event.type.Pointer} Pointer event
      */
-    _onPointerOut : function(e)
-    {
+    _onPointerOut(e) {
       if (!this.isEnabled() || e.getTarget() !== this) {
         return;
       }
 
       this.removeState("hovered");
 
-      if (this.hasState("pressed"))
-      {
+      if (this.hasState("pressed")) {
         this.removeState("pressed");
         this.addState("abandoned");
       }
     },
 
     // overridden
-    _onPopupChangeVisibility : function(e)
-    {
-      this.base(arguments, e); // popup states
+    _onPopupChangeVisibility(e) {
+      super._onPopupChangeVisibility(e); // popup states
 
       // Synchronize the current selection to the list selection
       // when the popup is closed. The list selection may be invalid
       // because of the quick selection handling which is not
       // directly applied to the selectbox
       var popup = this.getChildControl("popup");
-      if (!popup.isVisible())
-      {
+      if (!popup.isVisible()) {
         //on closing of popup via autohide, we don't use _onBlur anymore
         this.fireDataEvent("changeSelection", this.getSelection());
       } else {

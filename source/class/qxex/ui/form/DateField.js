@@ -8,20 +8,18 @@
 /**
  * A *date field* with invalid states when we cant parse the date
  */
-qx.Class.define("qxex.ui.form.DateField",
-{
-  extend : qx.ui.form.DateField,
+qx.Class.define("qxex.ui.form.DateField", {
+  extend: qx.ui.form.DateField,
 
   /**
    * @param withClearButton {Boolean ? false} Whether to add an additional button to clear the date.
    * @param showHoliday
    */
-  construct : function(withClearButton, showHoliday)
-  {
-    this.base(arguments);
+  construct(withClearButton, showHoliday) {
+    super();
     this.__showHoliday = showHoliday;
     showHoliday && this.removeListener("blur", this._onBlur, this);
-    if(withClearButton) this._createChildControl("button2");
+    if (withClearButton) this._createChildControl("button2");
   },
 
   /*
@@ -30,28 +28,25 @@ qx.Class.define("qxex.ui.form.DateField",
   *****************************************************************************
   */
 
-  members :
-  {
+  members: {
     // overridden
-    _createChildControlImpl : function(id, hash)
-    {
+    _createChildControlImpl(id, hash) {
       var control;
 
-      switch(id)
-      {
+      switch (id) {
         case "button2":
-          control = new qx.ui.form.Button();//null,xbGetQxIcon("16/actions/edit-delete.png"));
+          control = new qx.ui.form.Button(); //null,xbGetQxIcon("16/actions/edit-delete.png"));
           control.setFocusable(false);
           control.setKeepActive(true);
           control.addState("inner");
-          control.addListener("execute", function(e){
+          control.addListener("execute", e => {
             this.setValue(null);
-          }, this);
+          });
           this._add(control);
           break;
 
         case "list":
-          if(!this.__showHoliday) break;
+          if (!this.__showHoliday) break;
           control = new qxex.ui.control.DateChooser();
           control.setFocusable(false);
           control.setKeepFocus(true);
@@ -59,25 +54,23 @@ qx.Class.define("qxex.ui.form.DateField",
           control.addListener("execute", this._onChangeDate, this);
           break;
 
-       case "popup":
-          if(!this.__showHoliday) break;
-          control = this.base(arguments, id);
+        case "popup":
+          if (!this.__showHoliday) break;
+          control = super._createChildControlImpl(id);
           control.setAutoHide(true);
           control.removeListener("pointerup", this._onChangeDate, this);
           break;
       }
 
-      return control || this.base(arguments, id);
+      return control || super._createChildControlImpl(id);
     },
 
     //overridden
-    _onTextFieldChangeValue : function(e)
-    {
+    _onTextFieldChangeValue(e) {
       var notcreate = true;
       // Apply to popup
       var date = this.getValue();
-      if (date !== null)
-      {
+      if (date !== null) {
         var list = this.getChildControl("list", notcreate);
         list && list.setValue(date);
       }
@@ -87,8 +80,7 @@ qx.Class.define("qxex.ui.form.DateField",
     },
 
     //overridden
-    setValue : function(value)
-    {
+    setValue(value) {
       // set the date to the textfield
       var textField = this.getChildControl("textfield");
       textField.setValue(this.getDateFormat().format(value));
@@ -109,7 +101,7 @@ qx.Class.define("qxex.ui.form.DateField",
     /**
      * Call to avoid that the popup closes on blur.
      */
-    removeOriginalBlurListener : function (){
+    removeOriginalBlurListener() {
       this.removeListener("blur", this._onBlur, this);
     },
 
@@ -120,8 +112,7 @@ qx.Class.define("qxex.ui.form.DateField",
      *
      * @return {Date} The currently set date.
      */
-    getValue : function()
-    {
+    getValue() {
       // get the value of the textfield
       var textfieldValue = this.getChildControl("textfield").getValue();
 
@@ -133,7 +124,7 @@ qx.Class.define("qxex.ui.form.DateField",
       } catch (ex) {
         this.setValid(false);
         var formatter = this.getDateFormat();
-        this.setInvalidMessage(this.trc("tooltip","Invalid format. Correctly formatted example: %1",formatter.format(new Date())));
+        this.setInvalidMessage(this.trc("tooltip", "Invalid format. Correctly formatted example: %1", formatter.format(new Date())));
         return null;
       }
     }

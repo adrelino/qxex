@@ -1,17 +1,15 @@
 /**
  * All available icons: https://marella.me/material-icons/demo/
- * 
+ *
  * qooxdoo/framework/source/class/qx/theme/tangible/Appearance.js
  * qooxdoo/framework/source/class/qx/theme/tangible/Image.js
  */
 qx.Theme.define("qxex.theme.material.AppearanceMaterialIcons", {
   include: qxex.theme.commonbase.AppearanceBase,
   extend: qx.theme.tangible.Appearance,
-  appearances:
-  {
-    "datefield/button2":
-    {
-      style: function (states) {
+  appearances: {
+    "datefield/button2": {
+      style(states) {
         return {
           icon: "@MaterialIcons/delete_forever/14",
           padding: [0, 0, 0, 0],
@@ -22,9 +20,8 @@ qx.Theme.define("qxex.theme.material.AppearanceMaterialIcons", {
       }
     },
 
-    "multilangtextfield/button":
-    {
-      style: function (states) {
+    "multilangtextfield/button": {
+      style(states) {
         return {
           icon: "@MaterialIcons/do_not_disturb/14",
           padding: [0, 0, 0, 0],
@@ -35,29 +32,26 @@ qx.Theme.define("qxex.theme.material.AppearanceMaterialIcons", {
       }
     },
 
-    "multiselectbox/allBtn":
-    {
-      include : "button",
-      style: function (states) {
+    "multiselectbox/allBtn": {
+      include: "button",
+      style(states) {
         return {
           icon: qx.theme.tangible.Image.URLS["checkbox-checked"]
         };
       }
     },
 
-    "multiselectbox/noneBtn":
-    {
-      include : "button",
-      style: function (states) {
+    "multiselectbox/noneBtn": {
+      include: "button",
+      style(states) {
         return {
           icon: qx.theme.tangible.Image.URLS["checkbox-blank"]
         };
       }
     },
 
-    "timechooser/slider/knob":
-    {
-      style: function (states) {
+    "timechooser/slider/knob": {
+      style(states) {
         return {
           source: "@MaterialIcons/access_time/16",
           width: 16,
@@ -66,9 +60,8 @@ qx.Theme.define("qxex.theme.material.AppearanceMaterialIcons", {
       }
     },
 
-    "timefield/button":
-    {
-      style: function (states) {
+    "timefield/button": {
+      style(states) {
         return {
           icon: "@MaterialIcons/access_time/14",
           padding: [0, 0, 0, 0],

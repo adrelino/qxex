@@ -4,21 +4,19 @@
 qx.Class.define("qxex.ui.form.KnobIconSlider", {
   extend: qx.ui.form.Slider,
 
-  construct: function () {
-    this.base(arguments);
-    this.setCursor("pointer");//https://developer.mozilla.org/de/docs/Web/CSS/cursor
+  construct() {
+    super();
+    this.setCursor("pointer"); //https://developer.mozilla.org/de/docs/Web/CSS/cursor
   },
 
   properties: {
-    knobIcon:
-    {
+    knobIcon: {
       check: "String",
       apply: "_applyKnobIcon",
       nullable: true
     },
 
-    knobSize:
-    {
+    knobSize: {
       check: "Number",
       apply: "_applyKnobSize",
       nullable: true
@@ -26,8 +24,7 @@ qx.Class.define("qxex.ui.form.KnobIconSlider", {
   },
 
   members: {
-
-    _createChildControlImpl: function (id) {
+    _createChildControlImpl(id) {
       var control;
 
       switch (id) {
@@ -44,11 +41,11 @@ qx.Class.define("qxex.ui.form.KnobIconSlider", {
           break;
       }
 
-      return control || this.base(arguments, id);
+      return control || super._createChildControlImpl(id);
     },
 
     // property apply
-    _applyKnobIcon: function (value, old) {
+    _applyKnobIcon(value, old) {
       var knob = this.getChildControl("knob");
 
       //var dec = new qx.ui.decoration.Decorator();
@@ -61,7 +58,7 @@ qx.Class.define("qxex.ui.form.KnobIconSlider", {
       //knob.setIcon(value); //Atom
     },
 
-    _applyKnobSize: function (value, old) {
+    _applyKnobSize(value, old) {
       var knob = this.getChildControl("knob");
       knob.set({
         scale: true,
@@ -70,15 +67,14 @@ qx.Class.define("qxex.ui.form.KnobIconSlider", {
       });
     },
 
-    _onPointerDown: function (e) {
-      this.setCursor("ew-resize");//col-resize
-      this.base(arguments, e);
+    _onPointerDown(e) {
+      this.setCursor("ew-resize"); //col-resize
+      super._onPointerDown(e);
     },
 
-    _onPointerUp: function (e) {
+    _onPointerUp(e) {
       this.setCursor("pointer");
-      this.base(arguments, e);
+      super._onPointerUp(e);
     }
-
   }
 });

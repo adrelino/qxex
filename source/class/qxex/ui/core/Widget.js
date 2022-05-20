@@ -1,29 +1,24 @@
-qx.Class.define("qxex.ui.core.Widget",
-{
-
+qx.Class.define("qxex.ui.core.Widget", {
   /*
   *****************************************************************************
      STATICS
   *****************************************************************************
   */
 
-  statics :
-  {
+  statics: {
     /**
      * Add a logical child to the parent
      * @param parent
      * @param child
      */
-    registerLogicalChild : function(parent, child)
-    {
-      child.setUserData("$$parentLogical",parent);
+    registerLogicalChild(parent, child) {
+      child.setUserData("$$parentLogical", parent);
       //we need to change the singleton's contains method latest on first time use of our logical child functionality
       qx.ui.popup.Manager.getInstance().setContainsFunction(qxex.ui.core.Widget.contains);
     },
 
-    registerPopupOpeningButton : function(button, popup)
-    {
-      popup.setUserData("$$nonBlurSibling",button);
+    registerPopupOpeningButton(button, popup) {
+      popup.setUserData("$$nonBlurSibling", button);
       //we need to change the singleton's contains method latest on first time use of our logical child functionality
       qx.ui.popup.Manager.getInstance().setContainsFunction(qxex.ui.core.Widget.contains);
     },
@@ -35,11 +30,9 @@ qx.Class.define("qxex.ui.core.Widget",
      * @param child {qx.ui.core.Widget} The child widget
      * @return {Boolean} Whether one of the "child"'s parents is "parent"
      */
-    contains : function(parent, child)
-    {
-      while (child)
-      {
-        if(parent.getUserData("$$nonBlurSibling") == child){
+    contains(parent, child) {
+      while (child) {
+        if (parent.getUserData("$$nonBlurSibling") == child) {
           return true;
         }
         var pred = child.getLayoutParent();
