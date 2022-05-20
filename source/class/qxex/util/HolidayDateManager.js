@@ -46,15 +46,11 @@ qx.Class.define("qxex.util.HolidayDateManager", {
       var urls = this.self(arguments).dynScriptUrls;
       if (!this.__libraryLoaded) {
         var dynLoader = new qx.util.DynamicScriptLoader(urls);
-        dynLoader.addListenerOnce(
-          "ready",
-          function () {
-            console.log("all scripts have been loaded!");
-            this.__libraryLoaded = true;
-            callback.call(tthis); //1st call
-          },
-          this
-        );
+        dynLoader.addListenerOnce("ready", () => {
+          console.log("all scripts have been loaded!");
+          this.__libraryLoaded = true;
+          callback.call(tthis); //1st call
+        });
 
         dynLoader.addListener("failed", function (e) {
           var data = e.getData();
@@ -127,13 +123,9 @@ qx.Class.define("qxex.util.HolidayDateManager", {
       if (this.__libraryLoaded) {
         callback.call(tthis);
       } else {
-        this.addListenerOnce(
-          "initialized",
-          function () {
-            callback.call(tthis);
-          },
-          this
-        );
+        this.addListenerOnce("initialized", () => {
+          callback.call(tthis);
+        });
       }
     },
 
@@ -141,13 +133,9 @@ qx.Class.define("qxex.util.HolidayDateManager", {
       if (this.__libraryLoaded) {
         callback.call(tthis, this.__formatDate(date));
       } else {
-        this.addListenerOnce(
-          "initialized",
-          function () {
-            callback.call(tthis, this.__formatDate(date));
-          },
-          this
-        );
+        this.addListenerOnce("initialized", () => {
+          callback.call(tthis, this.__formatDate(date));
+        });
       }
     }
   }
