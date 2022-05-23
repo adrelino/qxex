@@ -188,7 +188,7 @@ qx.Class.define("qxex.ui.form.MultiSelectBox", {
 
     /**
      * Adrians Convenience Helper Method
-     * @param modelArr {String[]}
+     * @param {String[]} modelArr
      */
     setSelectionByModelArr(modelArr) {
       //return null !!??
@@ -266,7 +266,7 @@ qx.Class.define("qxex.ui.form.MultiSelectBox", {
     /**
      * Toggles the popup's visibility.
      *
-     * @param e {qx.event.type.Mouse} Mouse event
+     * @param {qx.event.type.Mouse} e Mouse event
      */
     _onTap(e) {
       var isListOpen = this.getChildControl("popup").isVisible();
@@ -281,7 +281,7 @@ qx.Class.define("qxex.ui.form.MultiSelectBox", {
     /**
      * Forwards key event to list widget.
      *
-     * @param e {qx.event.type.KeyInput} Key event
+     * @param {qx.event.type.KeyInput} e Key event
      */
     _onKeyInput(e) {
       // clone the event and re-calibrate the event

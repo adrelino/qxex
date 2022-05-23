@@ -16,7 +16,7 @@ qx.Class.define("qxex.ui.control.ThemeSelector", {
   },
 
   /**
-   * @param availableThemes {String[] ?}  The names of the themes to hide.
+   * @param {String[] ?} availableThemes  The names of the themes to hide.
    * @param type {String ? 'meta'} Whether 'meta' or 'icon' theme.
    */
   construct(availableThemes, type) {

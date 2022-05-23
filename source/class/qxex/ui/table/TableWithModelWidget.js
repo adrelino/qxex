@@ -79,6 +79,10 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
       return this;
     },
 
+    /**
+     *
+     * @param {number} idx
+     */
     setPrimaryKeyColumn(idx) {
       if (this.__primaryKeyColumnIdx != -1) {
         //can only be set once
@@ -201,8 +205,8 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
     /**
      * Lookup the row index of the data entry by using its primary key.
      *
-     * @param primaryKey {String} the primaryKey of the data entry.
-     * @param view {Number} the view, usually 0 works fine.
+     * @param {String} primaryKey the primaryKey of the data entry.
+     * @param {Number} view the view, usually 0 works fine.
      * @return {number | null} if no row with this primary key exists.
      */
     __getRowIdxFromPrimaryKey(primaryKey, view) {

@@ -34,7 +34,7 @@ qx.Class.define("qxex.ui.control.TimeChooser", {
   */
 
   /**
-   * @param time {Date ? null} The initial time to show. The date part is ignored.
+   * @param {Date ? null} time The initial time to show. The date part is ignored.
    * If <code>null</code> the current day (today) is shown.
    */
   construct(time) {
@@ -199,7 +199,7 @@ qx.Class.define("qxex.ui.control.TimeChooser", {
 
     /**
      * Inverse of __sliderValueToTime
-     * @param time {Date} hours and minutes set correctly
+     * @param {Date} time hours and minutes set correctly
      * @return {Number} slider value in range 0 - 96
      */
     __timeToSliderValue(time) {
@@ -211,7 +211,7 @@ qx.Class.define("qxex.ui.control.TimeChooser", {
 
     /**
      * Inverse of __timeToSliderValue
-     * @param num {Number} slider value in range 0 - 96
+     * @param {Number} num slider value in range 0 - 96
      * @return {Date} hours and minutes set correctly
      */
     __sliderValueToTime(num) {
@@ -250,7 +250,7 @@ qx.Class.define("qxex.ui.control.TimeChooser", {
      * Handler which stops the propagation of the tap event if
      * the header labels will be tapped.
      *
-     * @param e {qx.event.type.Pointer} The pointer up / down event
+     * @param {qx.event.type.Pointer} e The pointer up / down event
      */
     _onPointerUpDown(e) {
       var target = e.getTarget();

@@ -97,7 +97,7 @@ qx.Class.define("qxex.ui.form.AbstractSelectBoxSimpler", {
     /**
      * Toggles the popup's visibility.
      *
-     * @param e {qx.event.type.Pointer} Pointer event
+     * @param {qx.event.type.Pointer} e Pointer event
      */
     _onTap(e) {
       this.toggle();
@@ -119,7 +119,7 @@ qx.Class.define("qxex.ui.form.AbstractSelectBoxSimpler", {
      * <li>Removes "abandoned" and adds "pressed" state (if "abandoned" state is set)</li>
      * </ul>
      *
-     * @param e {qx.event.type.Pointer} Pointer event
+     * @param {qx.event.type.Pointer} e Pointer event
      */
     _onPointerOver(e) {
       if (!this.isEnabled() || e.getTarget() !== this) {
@@ -141,7 +141,7 @@ qx.Class.define("qxex.ui.form.AbstractSelectBoxSimpler", {
      * <li>Adds "abandoned" and removes "pressed" state (if "pressed" state is set)</li>
      * </ul>
      *
-     * @param e {qx.event.type.Pointer} Pointer event
+     * @param {qx.event.type.Pointer} e Pointer event
      */
     _onPointerOut(e) {
       if (!this.isEnabled() || e.getTarget() !== this) {

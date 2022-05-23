@@ -12,7 +12,7 @@ qx.Class.define("qxex.ui.form.DateField", {
   extend: qx.ui.form.DateField,
 
   /**
-   * @param withClearButton {Boolean ? false} Whether to add an additional button to clear the date.
+   * @param {Boolean ? false} withClearButton Whether to add an additional button to clear the date.
    * @param showHoliday
    */
   construct(withClearButton, showHoliday) {

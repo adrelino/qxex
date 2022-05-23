@@ -56,7 +56,7 @@ qx.Class.define("qxex.ui.form.MultiLangTextField", {
     __currentLang: null,
     /**
      * Set the value in the language lang.
-     * @param value {String} The value in the language lang
+     * @param {String} value The value in the language lang
      * @param lang {String ? 'none'}
      */
     setValue(value, lang) {

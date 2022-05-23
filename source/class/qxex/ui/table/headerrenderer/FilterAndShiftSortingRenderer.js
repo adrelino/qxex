@@ -39,7 +39,7 @@ qx.Class.define("qxex.ui.table.headerrenderer.FilterAndShiftSortingRenderer", {
     /**
      * Get the header cell widget that contains the textfield
      *
-     * @param col {Integer}
+     * @param {Number} col
      *   The column number for which the header cell widget is requested
      *
      * @return {smart.headerrenderer.HeaderCellWithMenu}

@@ -26,8 +26,8 @@ qx.Class.define("qxex.ui.core.Widget", {
     /**
      * Whether the "parent" widget contains the "child" widget.
      *
-     * @param parent {qx.ui.core.Widget} The parent widget
-     * @param child {qx.ui.core.Widget} The child widget
+     * @param {qx.ui.core.Widget} parent The parent widget
+     * @param {qx.ui.core.Widget} child The child widget
      * @return {Boolean} Whether one of the "child"'s parents is "parent"
      */
     contains(parent, child) {

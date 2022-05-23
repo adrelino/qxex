@@ -78,6 +78,12 @@ qx.Class.define("qxex.util.HolidayDateManager", {
       this.fireEvent("initialized");
     },
 
+    /**
+     *
+     * @param {String} id
+     * @param {any} value
+     * @returns
+     */
     setLocation(id, value) {
       var idx = this.__idToIdx[id];
       this.__args[idx] = value;

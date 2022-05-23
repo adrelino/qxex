@@ -58,7 +58,7 @@ qx.Class.define("qxex.ui.control.LanguageSelector", {
 
     /**
      * Set the current language.
-     * @param key {String} language like "de", "en", etc.
+     * @param {String} key language like "de", "en", etc.
      */
     setCurrentLanguage(key) {
       this.setModelSelection([key]);
