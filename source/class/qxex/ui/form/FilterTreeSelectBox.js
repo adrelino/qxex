@@ -44,30 +44,36 @@ qx.Class.define("qxex.ui.form.FilterTreeSelectBox", {
       //       },this);
     },
 
+    /**
+     * Used for filtering a tree
+     * 
+     * @param {object} node 
+     * @param {string} text all lowercase, already toLowerCase called before root call
+     * @param {number} depth 
+     * @param {any} obj 
+     * @returns 
+     */
     setNodeVisibilityAndRecurseIntoChildren(node, text, depth, obj) {
       var noFilter = text == "";
 
       var showNode = noFilter && depth == 1;
       var labelSupportsRich = node.getChildControl("label").isRich();
-      var labelRaw = node.getLabel();
+      var labelOriginal = node.__labelOriginal || node.getLabel();
+      if (!node.__labelOriginal) node.__labelOriginal = labelOriginal; //on first DFS, save original rich label;
 
-      if (labelSupportsRich) {
-        labelRaw = qx.lang.String.stripTags(labelRaw);
-      }
+      var labelStrippedLower = node.__labelStrippedLower || qx.lang.String.stripTags(labelOriginal).toLowerCase(); //cache
+      if(!node.__labelStrippedLower) node.__labelStrippedLower = labelStrippedLower;
 
-      if (!showNode) {
-        var matchPos = labelRaw.toLowerCase().indexOf(text);
+      if (!showNode && !noFilter) {
+        var matchPos = labelStrippedLower.indexOf(text);
         showNode = matchPos >= 0;
-        if (showNode) {
-          if (labelSupportsRich) {
-            var labelRich = labelRaw.substring(0, matchPos) + "<span style='color:black;font-weight:bold'>" + labelRaw.substr(matchPos, text.length) + "</span>" + labelRaw.substr(matchPos + text.length);
-            node.setLabel(labelRich);
-          } else {
-            node.setLabel(labelRaw);
-          }
+        if (showNode && labelSupportsRich) {
+          let utils = require("utils");
+          let labelWithMatchUnderlined = utils.underlineTextInMarkup(labelOriginal,text, matchPos);
+          node.setLabel(labelWithMatchUnderlined);
         }
       } else {
-        node.setLabel(labelRaw);
+        node.setLabel(labelOriginal);
       }
 
       var children = node.getChildren();

@@ -71,6 +71,9 @@
       "name": "qxex",
       "title": "qxex Demo Application",
       "bootPath": "source/boot",
+      "localModules": {
+        "utils": "./source/js/utils.js"
+      },
       "include": [
         "qxex.theme.Modern",
         //"qx.theme.Classic",
