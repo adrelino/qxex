@@ -55,6 +55,11 @@ qx.Class.define("qxex.ui.table.headerrenderer.FilterHeaderCell", {
       stack.setSelection([value ? this.getChildControl("checkbox") : this.getChildControl("textfield")]);
     },
 
+    clearFilter(){
+      this.getChildControl("filter").setValue("");
+      this.getChildControl("checkbox").setValue(null);
+    },
+
     setFilterText(text) {
       //triggered kein event, ist für das kopieren bei colmove
       this.getChildControl("filter").getSelection()[0].setValue(text);
