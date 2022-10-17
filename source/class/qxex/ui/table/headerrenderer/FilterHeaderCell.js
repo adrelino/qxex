@@ -55,18 +55,21 @@ qx.Class.define("qxex.ui.table.headerrenderer.FilterHeaderCell", {
       stack.setSelection([value ? this.getChildControl("checkbox") : this.getChildControl("textfield")]);
     },
 
+    /**
+     * Clear both variants of stack, textfield and checkbox!
+     */
     clearFilter(){
-      this.getChildControl("filter").setValue("");
+      this.getChildControl("textfield").setValue("");
       this.getChildControl("checkbox").setValue(null);
     },
 
     setFilterText(text) {
       //triggered kein event, ist für das kopieren bei colmove
-      this.getChildControl("filter").getSelection()[0].setValue(text);
+      this.getChildControl("textfield").setValue(text);
     },
 
     getFilterText() {
-      return this.getChildControl("filter").getSelection()[0].getValue();
+      return this.getChildControl("textfield").getValue();
     },
 
     setExactMatch(value) {
