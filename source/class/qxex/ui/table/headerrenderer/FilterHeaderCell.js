@@ -146,6 +146,13 @@ qx.Class.define("qxex.ui.table.headerrenderer.FilterHeaderCell", {
             var text = event.getData();
             this.fireDataEvent("filterTextChanged", text);
           });
+
+          //bugfix: We do not want to end in _onKeyDown of the Table (qx.ui.table.Table has this.addListener("keydown", this._onKeyDown);) e.g. for Ctrl+V text insert in header cells.
+          //Sometimes this triggered pasting text additionally into a field of the table if clipboard listeners were used and focus was set!
+          control.addListener("keydown", e => {
+            e.stopPropagation(); //this.addListener("contextmenu", this._onStopEvent, this);
+          });
+
           break;
 
         case "exactMatchCheckBox":
