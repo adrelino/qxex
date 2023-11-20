@@ -143,7 +143,7 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
     },
 
     _applyGroupFilter() {
-      this.__filterCheckBox && this.__filterCheckBox.fireDataEvent("changeValue", this.__filterCheckBox.getValue());
+      this.__filterCheckBox?.fireDataEvent("changeValue", this.__filterCheckBox.getValue());
     },
 
     //PUBLIC
@@ -153,7 +153,7 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
       this.MIN_LIST_ITEMS_TO_SHOW_FILTER = 0; //if we set programmatically, we want to be able to remove filter again even if we have less than 5 entries!
       this.__showFilter = true;
       this.__filterTextField.setValue(filterText);
-      this.__filterList(filterText, this.__filterCheckBox && this.__filterCheckBox.getValue());
+      this.__filterList(filterText, this.__filterCheckBox?.getValue());
     },
 
     clearFilter() {
@@ -161,7 +161,11 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxFilter", {
     },
 
     setGroupFilterCheckBoxValue(value) {
-      this.__filterCheckBox && this.__filterCheckBox.setValue(value);
+      this.__filterCheckBox?.setValue(value);
+    },
+
+    setGroupFilterCheckBoxEnabled(value){
+      this.__filterCheckBox?.setEnabled(value);
     },
 
     open() {
