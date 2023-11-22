@@ -110,7 +110,7 @@ qx.Class.define("qxex.util.HolidayDateManager", {
       if (typeof Holidays == "undefined") return str;
       var holiday = this.hd.isHoliday(date);
       if (holiday) {
-        str = "<b>" + str + " (" + holiday[0].name + ")<b/>";
+        str = "<b>" + str + " (" + holiday[0].name + ")</b>";
       }
       return str;
     },
@@ -120,7 +120,7 @@ qx.Class.define("qxex.util.HolidayDateManager", {
       if (typeof Holidays == "undefined") return " [holiday loading]";
       var holiday = this.hd.isHoliday(date);
       if (holiday) {
-        str = "<b>" + str + " (" + holiday[0].name + ")<b/>";
+        str = "<b>" + str + " (" + holiday[0].name + ")</b>";
       }
       return str;
     },
