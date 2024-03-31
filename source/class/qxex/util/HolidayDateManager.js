@@ -117,7 +117,9 @@ qx.Class.define("qxex.util.HolidayDateManager", {
 
     formatHoliday(date) {
       var str = "";
-      if (typeof Holidays == "undefined") return " [holiday loading]";
+      if (typeof Holidays == "undefined" || !this.hd) {
+        return " [holiday loading]";
+      }
       var holiday = this.hd.isHoliday(date);
       if (holiday) {
         str = "<b>" + str + " (" + holiday[0].name + ")</b>";
