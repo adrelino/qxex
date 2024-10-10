@@ -172,6 +172,10 @@ qx.Class.define("qxex.ui.form.AbstractSelectBoxSimpler", {
         // ensure that the list is never biger that the max list height and
         // the available space in the viewport
         var distance = popup.getLayoutLocation(this);
+        if (!distance) {
+          this.error("AbstractSelectBoxSimpler._onPopupChangeVisibility(): popup.getLayoutLocation() returns null, no height calculated");
+          return;
+        }
         var viewPortHeight = qx.bom.Viewport.getHeight();
         // distance to the bottom and top borders of the viewport
         var toTop = distance.top;
