@@ -86,6 +86,16 @@ qx.Class.define("qxex.ui.table.headerrenderer.FilterHeaderCell", {
       var control;
 
       switch (id) {
+        case "label":
+          control = new qx.ui.basic.Label(this.getLabel()).set({
+            rich: true,
+            anonymous: true,
+            allowShrinkX: true
+          });
+
+          this._add(control, { row: 0, column: 1 });
+          break;
+
         case "filter":
           control = new qx.ui.container.Stack();
           control.add(this.getChildControl("checkbox"));
@@ -174,7 +184,7 @@ qx.Class.define("qxex.ui.table.headerrenderer.FilterHeaderCell", {
 
           this._add(control, {row: 1, column: 3});
           break;
-      }
+      } // switch
 
       if (id == "checkbox" || id == "textfield") {
         control.setPadding(0, 0, 0, 0);
@@ -196,6 +206,6 @@ qx.Class.define("qxex.ui.table.headerrenderer.FilterHeaderCell", {
       }
 
       return control || super._createChildControlImpl(id);
-    }
+    } // _createChildControlImpl
   }
 });
