@@ -54,7 +54,7 @@ qx.Class.define("qxex.ui.table.headerrenderer.FilterAndShiftSortingRenderer", {
 
     // overridden
     createHeaderCell(cellInfo) {
-      var widget = new qxex.ui.table.headerrenderer.FilterHeaderCell();
+      var widget = new qxex.ui.table.headerrenderer.FilterHeaderCell(cellInfo);
       widget.addListener("headerFilterTextFieldBlur", e => {
         this.fireDataEvent("headerFilterTextFieldBlur", e.getData());
       });

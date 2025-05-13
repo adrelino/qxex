@@ -4,7 +4,7 @@
 qx.Class.define("qxex.ui.table.headerrenderer.FilterHeaderCell", {
   extend: qx.ui.table.headerrenderer.HeaderCell,
 
-  construct() {
+  construct(cellInfo) {
     super();
     this.getLayout().setColumnFlex(2, 0); //the sort icon should be right aligned, so no flex
   },
@@ -90,7 +90,9 @@ qx.Class.define("qxex.ui.table.headerrenderer.FilterHeaderCell", {
           control = new qx.ui.basic.Label(this.getLabel()).set({
             rich: true,
             anonymous: true,
-            allowShrinkX: true
+            allowShrinkX: true,
+            wrap: false               // disable wrapping
+            // textOverflow: "ellipsis"   // optional: show "..." at cutoff or "clip"        
           });
 
           this._add(control, { row: 0, column: 1 });
