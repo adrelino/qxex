@@ -116,7 +116,7 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
 
     readData(primaryKey) {
       var view = 0;
-      var rowIdx = this.__getRowIdxFromPrimaryKey(primaryKey, view);
+      var rowIdx = this._getRowIdxFromPrimaryKey(primaryKey, view);
       if (rowIdx !== null) {
         return this._getDataFromRowIdx(rowIdx, view);
       }
@@ -125,7 +125,7 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
 
     updateData(primaryKey, colIdx, value) {
       var view = 0;
-      var rowIdx = this.__getRowIdxFromPrimaryKey(primaryKey, view);
+      var rowIdx = this._getRowIdxFromPrimaryKey(primaryKey, view);
       if (rowIdx !== null) {
         this._model.setValue(colIdx, rowIdx, value, view);
         return true;
@@ -136,7 +136,7 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
 
     deleteData(primaryKey) {
       var view = 0;
-      var rowIdx = this.__getRowIdxFromPrimaryKey(primaryKey, view);
+      var rowIdx = this._getRowIdxFromPrimaryKey(primaryKey, view);
       if (rowIdx !== null) {
         this._model.removeRows(rowIdx, 1, view);
         return true;
@@ -209,10 +209,10 @@ qx.Class.define("qxex.ui.table.TableWithModelWidget", {
      * @param {Number} view the view, usually 0 works fine.
      * @return {number | null} if no row with this primary key exists.
      */
-    __getRowIdxFromPrimaryKey(primaryKey, view) {
+    _getRowIdxFromPrimaryKey(primaryKey, view) {
       if (this.__primaryKeyColumnIdx == -1) {
         //no primary key column configured
-        this.error("__getRowIdxFromPrimaryKey no primaryKeyColumnIdx configured!");
+        this.error("_getRowIdxFromPrimaryKey no primaryKeyColumnIdx configured!");
         return null;
       }
       var rowIdx = this._model.locate(this.__primaryKeyColumnIdx, primaryKey, view);
