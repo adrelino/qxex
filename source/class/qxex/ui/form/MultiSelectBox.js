@@ -44,6 +44,12 @@ qx.Class.define("qxex.ui.form.MultiSelectBox", {
     appearance: {
       refine: true,
       init: "multiselectbox"
+    },
+
+    isMultiSelect: {
+      check: "Boolean",
+      init: true,
+      apply: "_applyMultiSelect"
     }
   },
 
@@ -89,7 +95,7 @@ qx.Class.define("qxex.ui.form.MultiSelectBox", {
         case "list":
           control = super._createChildControlImpl(id);
           control.setQuickSelection(false);
-          control.setSelectionMode("multi");
+          control.setSelectionMode(this.getIsMultiSelect() ? "multi" : "single");
           control.getChildControl("pane").removeListener("tap", this.close, this); //needed since qooxdoo 5.0.1: they changed the container structure
           break;
 
@@ -133,6 +139,20 @@ qx.Class.define("qxex.ui.form.MultiSelectBox", {
       }
 
       return control || super._createChildControlImpl(id);
+    },
+
+    _applyMultiSelect(multi) {
+      if (multi) {
+        this.getChildControl("list").setSelectionMode("multi");
+        this.getChildControl("allBtn").show();
+        this.getChildControl("noneBtn").show();
+        this.__statusLabel.show();
+      } else {
+        this.getChildControl("list").setSelectionMode("single");
+        this.getChildControl("allBtn").exclude();
+        this.getChildControl("noneBtn").exclude();
+        this.__statusLabel.exclude();
+      }
     },
 
     /*

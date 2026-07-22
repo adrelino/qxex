@@ -30,7 +30,11 @@ qx.Mixin.define("qxex.ui.form.MSelectBoxSyncButtonStyle", {
         this.setToolTipText(this.trc("Tooltip", "Please select at least one item"));
         if (hasIcons) atom.setIcon(this.getNoneIcon());
       } else if (length == 1) {
-        label += " : " + labelFun(listItems[0]);
+        const isMultiSelect = this.getIsMultiSelect ? this.getIsMultiSelect() : true;
+        if (isMultiSelect)
+          label += " : " + labelFun(listItems[0]);
+        else
+          label = labelFun(listItems[0]);
         this.setToolTipText(this.trc("Tooltip", "You can select multiple items"));
         if (hasIcons) atom.setIcon(iconFun(listItems[0]));
       } else {

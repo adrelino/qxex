@@ -76,8 +76,8 @@ qx.Class.define("qxex.ui.form.AbstractSelectBoxSimpler", {
         case "popup":
           //control = this.base(arguments,id);
           control = new qxex.ui.popup.Popup();
+          control.setShowClose(false);
           control.getChildControl("captionbar").set({padding: 0});
-          control.getChildControl("close-button").set({margin: 2});
           control.add(this.getChildControl("list"));
           control.addListener("changeVisibility", this._onPopupChangeVisibility, this);
           this._fixPopupBlur(control);
